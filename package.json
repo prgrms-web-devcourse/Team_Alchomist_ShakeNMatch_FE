@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.4.2",
+    "@digitalroute/cz-conventional-changelog-for-jira": "^7.0.0",
     "@emotion/babel-preset-css-prop": "^11.2.0",
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
@@ -14,6 +15,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "commitizen": "^4.2.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
@@ -56,7 +58,7 @@
       "last 1 safari version"
     ]
   },
-  "resolutions" :{
+  "resolutions": {
     "babel-loader": "8.1.0"
   },
   "devDependencies": {
@@ -68,11 +70,17 @@
     "@storybook/react": "^6.3.12",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
+    "cz-conventional-changelog": "3.3.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
     "prettier": "^2.5.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/@digitalroute/cz-conventional-changelog-for-jira"
+    }
   }
 }
