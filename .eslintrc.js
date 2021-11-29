@@ -39,6 +39,7 @@ module.exports = {
       'index-signature'
     ],
     'react/jsx-pascal-case': ['error'],
+    'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
     '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/explicit-function-return-type': 'error',
