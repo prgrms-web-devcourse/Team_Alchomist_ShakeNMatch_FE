@@ -2,8 +2,16 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    node: true,
+    node: true
   },
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      parserOptions: {
+        project: ['./tsconfig.json']
+      }
+    }
+  ],
   parser: '@typescript-eslint/parser',
   plugins: ['react', '@typescript-eslint'],
   extends: [
@@ -11,7 +19,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'plugin:prettier/recommended',
-    'plugin:react/jsx-runtime',
+    'plugin:react/jsx-runtime'
   ],
   rules: {
     'no-use-before-define': 'off',
@@ -21,14 +29,14 @@ module.exports = {
       'error',
       {
         callbacksLast: true,
-        reservedFirst: true,
-      },
+        reservedFirst: true
+      }
     ],
     '@typescript-eslint/array-type': ['error', { default: 'array' }],
     '@typescript-eslint/ban-tslint-comment': 'error',
     '@typescript-eslint/consistent-indexed-object-style': [
       'error',
-      'index-signature',
+      'index-signature'
     ],
     'react/jsx-pascal-case': ['error'],
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
@@ -46,6 +54,6 @@ module.exports = {
     '@typescript-eslint/no-redeclare': 'error',
     '@typescript-eslint/no-magic-numbers': 'error',
     '@typescript-eslint/no-unused-expressions': 'error',
-    '@typescript-eslint/no-duplicate-imports': 'error',
-  },
+    '@typescript-eslint/no-duplicate-imports': 'error'
+  }
 };
