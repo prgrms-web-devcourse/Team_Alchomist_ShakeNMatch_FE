@@ -5,6 +5,7 @@ import { BUTTON_SIZE } from '../../../utils/constants/size';
 import { THEME_COLOR } from '../../../utils/constants/color';
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+  // Text 컴포넌트의 TextProps import 해오기
   // children: ReactElement<TextProps>;
   type: 'button' | 'reset' | 'submit';
   size: ButtonSizeType;
