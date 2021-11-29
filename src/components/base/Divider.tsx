@@ -4,13 +4,13 @@ import styled from '@emotion/styled';
 import { THEME_COLOR } from '@utils/constants/color';
 
 export interface DividerProps extends HTMLAttributes<HTMLHRElement> {
-  direction: 'horizontal' | 'vertical';
-  size: number;
-  gap: number;
-  color: string;
+  direction?: 'horizontal' | 'vertical';
+  size?: number;
+  gap?: number;
+  color?: string;
 }
 
-const Line = styled.hr<Omit<DividerProps, 'direction'>>`
+const Line = styled.hr<Required<Pick<DividerProps, 'size' | 'gap' | 'color'>>>`
   border: none;
   background-color: ${({ color }): string => color};
 
