@@ -1,12 +1,10 @@
-import type { ReactText } from 'react';
+import type { HTMLAttributes } from 'react';
 import styled from '@emotion/styled';
 
 import type { SizeType } from '@/types';
 import { TEXT_SIZE } from '@utils/constants/size';
 
-export interface TextProps {
-  [prop: string]: any;
-  children: ReactText;
+export interface TextProps extends HTMLAttributes<HTMLSpanElement> {
   size?: SizeType;
   color?: string;
   bold?: boolean;
