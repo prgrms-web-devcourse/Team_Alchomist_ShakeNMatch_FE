@@ -1,19 +1,21 @@
 import styled from '@emotion/styled';
-import type { ReactChildren } from 'react';
+import type { HTMLAttributes, ReactElement } from 'react';
 import type { ButtonSizeType, ButtonColorType } from '../../../types';
-import { BUTTONSIZE, BUTTONCOLOR } from '../../../utils/constants';
+import { BUTTON_SIZE } from '../../../utils/constants/size';
+import { THEME_COLOR } from '../../../utils/constants/color';
 
-interface ButtonProps {
-  children: ReactChildren;
+interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+  // children: ReactElement<TextProps>;
   type: 'button' | 'reset' | 'submit';
   size: ButtonSizeType;
   color: ButtonColorType;
 }
 
 const Button = styled.button<ButtonProps>`
-  width: ${({ size }): string => BUTTONSIZE[size].width};
-  height: ${({ size }): string => BUTTONSIZE[size].height};
-  background-color: ${({ color }): string => BUTTONCOLOR[color]};
+  width: ${({ size }): string => BUTTON_SIZE[size].width};
+  height: ${({ size }): string => BUTTON_SIZE[size].height};
+  background-color: ${({ color }): string =>
+    color ? THEME_COLOR[color] : THEME_COLOR['primary']};
 `;
 
 export default Button;

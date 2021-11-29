@@ -1,4 +1,4 @@
-export const BUTTONSIZE = {
+export const BUTTON_SIZE = {
   lg: {
     width: '300px',
     height: '100px'
@@ -11,10 +11,4 @@ export const BUTTONSIZE = {
     width: '100px',
     height: '50px'
   }
-};
-
-export const BUTTONCOLOR = {
-  default: 'grey',
-  dark: 'black',
-  light: 'white'
 };
