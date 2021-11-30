@@ -2,7 +2,10 @@
   "extends": "./tsconfig.path.json",
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable"],
+    "lib": [
+      "dom",
+      "dom.iterable"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -14,8 +17,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "module": "esnext"
+    "jsx": "react-jsx"
   },
-  "include": ["src", "craco.config.js"]
+  "include": [
+    "src",
+    "craco.config.js"
+  ]
 }
