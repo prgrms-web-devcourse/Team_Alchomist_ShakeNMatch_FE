@@ -4,6 +4,14 @@ module.exports = {
     es2021: true,
     node: true
   },
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      parserOptions: {
+        project: ['./tsconfig.json']
+      }
+    }
+  ],
   parser: '@typescript-eslint/parser',
   plugins: ['react', '@typescript-eslint'],
   extends: [
@@ -12,12 +20,6 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:prettier/recommended',
     'plugin:react/jsx-runtime'
-  ],
-  overrides: [
-    {
-      files: ['*.ts', '*.tsx'],
-      parserOptions: { project: ['./tsconfig.json'] }
-    }
   ],
   rules: {
     'no-use-before-define': 'off',
@@ -37,6 +39,7 @@ module.exports = {
       'index-signature'
     ],
     'react/jsx-pascal-case': ['error'],
+    'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
     '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/explicit-function-return-type': 'error',
