@@ -1,21 +1,22 @@
 import type { ReactElement } from 'react';
 import { Children, isValidElement, useMemo, cloneElement } from 'react';
 import { StyledSectionContainer } from './styled';
-import type { TwoSectionDividerProps } from './types';
+import type { SectionDividerProps } from './types';
 
 const ONE = 1;
 const HUNDRED = 100;
 const DEFAULT_SIZE = '100px';
 
-const TwoSectionDivider = ({
+const SectionDivider = ({
   children,
   ratio = [ONE, ONE],
   direction = 'horizontal',
   width = DEFAULT_SIZE,
   height = DEFAULT_SIZE,
+  radius = '0px',
   rotate = '0deg',
   ...props
-}: TwoSectionDividerProps): ReactElement => {
+}: SectionDividerProps): ReactElement => {
   const ratioSum = useMemo(
     () => ratio.reduce((acc, num) => acc + num),
     [ratio]
@@ -55,6 +56,7 @@ const TwoSectionDivider = ({
     <StyledSectionContainer
       direction={direction}
       height={height}
+      radius={radius}
       rotate={rotate}
       width={width}
       {...props}
@@ -64,4 +66,4 @@ const TwoSectionDivider = ({
   );
 };
 
-export default TwoSectionDivider;
+export default SectionDivider;
