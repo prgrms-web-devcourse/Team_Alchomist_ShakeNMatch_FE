@@ -6,8 +6,7 @@ import { StyledModalBackground, StyledModalContainer } from './styled';
 
 const Modal = ({
   children,
-  width,
-  height,
+  size,
   color,
   visible
 }: ModalProps): ReactElement => {
@@ -25,7 +24,7 @@ const Modal = ({
 
   return ReactDOM.createPortal(
     <StyledModalBackground visible={visible}>
-      <StyledModalContainer color={color} height={height} width={width}>
+      <StyledModalContainer color={color} size={size}>
         {children}
       </StyledModalContainer>
     </StyledModalBackground>,

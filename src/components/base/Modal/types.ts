@@ -3,15 +3,11 @@ import type { ColorType } from '@models';
 
 interface ModalProps {
   children: ReactNode;
-  width?: string;
-  height?: string;
+  size?: 'sm' | 'md' | 'lg';
   color?: ColorType;
   visible: boolean;
 }
 type BackgroundProps = Pick<ModalProps, 'visible'>;
-type ContainerProps = Pick<
-  ModalProps,
-  'children' | 'width' | 'height' | 'color'
->;
+type ContainerProps = Pick<ModalProps, 'children' | 'size' | 'color'>;
 
 export type { ModalProps, BackgroundProps, ContainerProps };

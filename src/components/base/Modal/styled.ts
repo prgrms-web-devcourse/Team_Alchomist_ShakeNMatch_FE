@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
-import { THEME_COLOR } from '@constants/color';
 import type { BackgroundProps, ContainerProps } from './type';
+import { THEME_COLOR } from '@constants/color';
+import { MODAL_SIZE } from '@constants/size';
 
 const StyledModalBackground = styled.div<BackgroundProps>`
   display: ${({ visible }): string => (visible ? 'block' : 'none')};
@@ -13,14 +14,15 @@ const StyledModalBackground = styled.div<BackgroundProps>`
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
-// prop에 대해서는 임의로 설정한 값을 추후 Default 값들로 변경 예정
 const StyledModalContainer = styled.div<ContainerProps>`
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: ${({ width }): string => (width ? width : '100px')};
-  height: ${({ height }): string => (height ? height : '100px')};
+  width: ${({ size }): string =>
+    size ? MODAL_SIZE[size].width : MODAL_SIZE.md.width};
+  height: ${({ size }): string =>
+    size ? MODAL_SIZE[size].height : MODAL_SIZE.md.height};
   background-color: ${({ color }): string =>
     color ? color : THEME_COLOR.primary};
 `;

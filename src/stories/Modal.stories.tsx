@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import { useState } from 'react';
-import Modal from '../components/base/Modal';
+import Modal from '@base/Modal';
 
 export default {
   title: 'Component/Modal',
