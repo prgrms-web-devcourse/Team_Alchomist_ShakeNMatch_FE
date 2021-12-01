@@ -1,3 +1,5 @@
 type SizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
-export type { SizeType };
+type ColorType = 'primay' | 'dark' | 'light';
+
+export type { SizeType, ColorType };

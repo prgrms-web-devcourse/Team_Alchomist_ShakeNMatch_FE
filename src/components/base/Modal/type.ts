@@ -1,11 +1,11 @@
 import type { ReactNode } from 'react';
+import type { ColorType } from '@models';
 
 interface ModalProps {
   children: ReactNode;
   width?: string;
   height?: string;
-  // color 타입은 추후 THEME_COLOR constants로 변경 예정
-  color?: string;
+  color?: ColorType;
   visible: boolean;
 }
 type BackgroundProps = Pick<ModalProps, 'visible'>;

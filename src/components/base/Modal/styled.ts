@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { THEME_COLOR } from '@constants/color';
 import type { BackgroundProps, ContainerProps } from './type';
 
 const StyledModalBackground = styled.div<BackgroundProps>`
@@ -20,7 +21,8 @@ const StyledModalContainer = styled.div<ContainerProps>`
   transform: translate(-50%, -50%);
   width: ${({ width }): string => (width ? width : '100px')};
   height: ${({ height }): string => (height ? height : '100px')};
-  background-color: ${({ color }): string => (color ? color : 'white')};
+  background-color: ${({ color }): string =>
+    color ? color : THEME_COLOR.primary};
 `;
 
 export { StyledModalBackground, StyledModalContainer };
