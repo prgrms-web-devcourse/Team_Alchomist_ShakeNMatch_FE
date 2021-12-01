@@ -1,7 +1,6 @@
-import type { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
-import type { ReactElement } from 'react';
-import type { ButtonSizeType, ButtonColorType } from '../types';
-import Button from '../components/base/Button';
+import type { ReactElement, ReactNode } from 'react';
+import Button from '@base/Button';
+import type { ButtonSizeType, ButtonColorType } from '@base/Button/types';
 
 export default {
   title: 'Component/Button',
@@ -9,13 +8,13 @@ export default {
 };
 
 interface ButtonProps {
-  children: ReactElement<TextProps>;
+  children: ReactNode;
   type: 'button' | 'reset' | 'submit';
   size: ButtonSizeType;
   color: ButtonColorType;
 }
 
-export const Default = (props: ButtonProps): ReactJSXElement => (
+export const Default = (props: ButtonProps): ReactElement => (
   <Button {...props}>
     <div>hi</div>
   </Button>
