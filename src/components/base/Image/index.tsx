@@ -1,27 +1,7 @@
-import type { ReactElement } from 'react';
 import { useState, useEffect, useRef } from 'react';
-import styled from '@emotion/styled';
-
-interface ImageProps {
-  lazy?: boolean;
-  src: string | undefined;
-  width: string;
-  height: string;
-  alt?: string;
-  mode: 'cover' | 'fill' | 'contain';
-  block?: boolean;
-  placeholder?: string;
-  threshold: number;
-}
-
-type StyledImgProps = Pick<ImageProps, 'width' | 'height' | 'mode' | 'block'>;
-
-const StyledImg = styled.img<StyledImgProps>`
-  display: ${({ block }): string | undefined => (block ? 'block' : undefined)};
-  object-fit: ${({ mode }): string => (mode ? mode : 'cover')};
-  width: ${({ width }): string => width};
-  height: ${({ height }): string => height};
-`;
+import { StyledImg } from './styled';
+import type { ReactElement } from 'react';
+import type { ImageProps } from './types';
 
 const LOAD_IMG_EVENT = 'loadImage';
 const DEFAULT_THRESHOLD = 0.3;
