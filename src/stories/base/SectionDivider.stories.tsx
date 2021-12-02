@@ -49,6 +49,12 @@ export default {
     rotate: {
       control: 'inline-radio',
       options: ['-90deg', '-60deg', '-30deg', '0deg', '30deg', '60deg', '90deg']
+    },
+    showDivider: {
+      control: 'boolean'
+    },
+    dividerOptions: {
+      control: 'object'
     }
   }
 };
@@ -74,6 +80,20 @@ export const TwoSections = (props: SectionDividerProps): ReactElement => (
 
 export const ThreeSections = (props: SectionDividerProps): ReactElement => (
   <SectionDivider height={200} width={500} {...props}>
+    <StyledSection></StyledSection>
+    <StyledSection></StyledSection>
+    <StyledSection></StyledSection>
+  </SectionDivider>
+);
+
+export const WithLine = (props: SectionDividerProps): ReactElement => (
+  <SectionDivider
+    dividerOptions={{ gap: 10 }}
+    height={200}
+    showDivider
+    width={500}
+    {...props}
+  >
     <StyledSection></StyledSection>
     <StyledSection></StyledSection>
     <StyledSection></StyledSection>
