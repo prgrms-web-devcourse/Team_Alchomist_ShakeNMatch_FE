@@ -53,7 +53,14 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['error'],
     '@typescript-eslint/no-use-before-define': ['error'],
     '@typescript-eslint/no-redeclare': 'error',
-    '@typescript-eslint/no-magic-numbers': 'error',
+    '@typescript-eslint/no-magic-numbers': [
+      'error',
+      {
+        ignore: [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
+        ignoreArrayIndexes: true,
+        ignoreDefaultValues: true
+      }
+    ],
     '@typescript-eslint/no-unused-expressions': 'error',
     '@typescript-eslint/no-duplicate-imports': 'error'
   }
