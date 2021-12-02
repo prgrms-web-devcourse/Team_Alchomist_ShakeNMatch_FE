@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import { useMemo, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import type { ModalProps } from './type';
+import type { ModalProps } from './types';
 import { StyledModalBackground, StyledModalContainer } from './styled';
 
 const Modal = ({
