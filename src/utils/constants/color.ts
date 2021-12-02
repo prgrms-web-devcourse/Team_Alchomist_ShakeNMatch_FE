@@ -1,7 +1,7 @@
-const THEME_COLOR = {
-  primary: 'grey',
-  dark: 'black',
-  light: 'white'
-};
+enum THEME_COLOR {
+  Primary = 'grey',
+  Dark = 'black',
+  Light = 'white'
+}
 
 export { THEME_COLOR };

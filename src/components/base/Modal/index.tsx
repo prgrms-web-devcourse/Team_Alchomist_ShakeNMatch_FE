@@ -3,18 +3,19 @@ import { useMemo, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import type { ModalProps } from './types';
 import { StyledModalBackground, StyledModalContainer } from './styled';
+import { THEME_COLOR } from '@constants/color';
 
 const Modal = ({
   children,
   size,
-  color,
-  visible
+  color = THEME_COLOR.Primary,
+  visible = false
 }: ModalProps): ReactElement => {
   const topLevelDiv: HTMLDivElement = useMemo(
     () => document.createElement('div'),
     []
   );
-
+  console.log(THEME_COLOR);
   useEffect(() => {
     document.body.appendChild(topLevelDiv);
     return (): void => {

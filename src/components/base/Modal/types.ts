@@ -1,10 +1,9 @@
-import type { ReactNode } from 'react';
-import type { ColorType } from '@models';
+import type { HTMLAttributes } from 'react';
+import type { THEME_COLOR } from '@constants/color';
 
-interface ModalProps {
-  children: ReactNode;
+interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   size?: 'sm' | 'md' | 'lg';
-  color?: ColorType;
+  color?: THEME_COLOR;
   visible: boolean;
 }
 type BackgroundProps = Pick<ModalProps, 'visible'>;
