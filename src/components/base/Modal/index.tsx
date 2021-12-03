@@ -2,20 +2,21 @@ import type { ReactElement } from 'react';
 import { useMemo, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import type { ModalProps } from './types';
+import { MODAL_SIZE } from './types';
 import { StyledModalBackground, StyledModalContainer } from './styled';
 import { THEME_COLOR } from '@constants/color';
 
 const Modal = ({
   children,
-  size,
-  color = THEME_COLOR.Primary,
+  size = MODAL_SIZE.md,
+  color = THEME_COLOR.primary,
   visible = false
 }: ModalProps): ReactElement => {
   const topLevelDiv: HTMLDivElement = useMemo(
     () => document.createElement('div'),
     []
   );
-  console.log(THEME_COLOR);
+
   useEffect(() => {
     document.body.appendChild(topLevelDiv);
     return (): void => {
