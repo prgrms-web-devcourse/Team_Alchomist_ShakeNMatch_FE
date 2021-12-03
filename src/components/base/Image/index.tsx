@@ -29,7 +29,8 @@ const Image = ({
   mode = 'cover',
   block = false,
   placeholder = 'https://via.placeholder.com/300',
-  threshold = DEFAULT_THRESHOLD
+  threshold = DEFAULT_THRESHOLD,
+  ...props
 }: ImageProps): ReactElement => {
   const [loaded, setLoaded] = useState(false);
   const imgRef = useRef<HTMLImageElement | null>(null);
@@ -74,6 +75,7 @@ const Image = ({
       mode={mode}
       src={loaded ? src : placeholder}
       width={width}
+      {...props}
     />
   );
 };

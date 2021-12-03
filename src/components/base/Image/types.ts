@@ -1,6 +1,8 @@
+import type { HTMLAttributes } from 'react';
+
 type ImageMode = 'cover' | 'fill' | 'contain';
 
-interface ImageProps {
+interface ImageProps extends HTMLAttributes<HTMLImageElement> {
   lazy?: boolean;
   src: string;
   width?: number | string;
