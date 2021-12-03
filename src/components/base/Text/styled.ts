@@ -1,15 +1,6 @@
-import type { HTMLAttributes } from 'react';
+import { TEXT_SIZE } from '@constants/size';
 import styled from '@emotion/styled';
-
-import type { SizeType } from '@/types';
-import { TEXT_SIZE } from '@utils/constants/size';
-
-export interface TextProps extends HTMLAttributes<HTMLSpanElement> {
-  size?: SizeType;
-  color?: string;
-  bold?: boolean;
-  block?: boolean;
-}
+import type { TextProps } from './types';
 
 const Text = styled.span<TextProps>`
   font-size: ${({ size }): string =>
@@ -19,4 +10,4 @@ const Text = styled.span<TextProps>`
   display: ${({ block }): string => (block ? 'block' : 'inline')};
 `;
 
-export default Text;
+export { Text };

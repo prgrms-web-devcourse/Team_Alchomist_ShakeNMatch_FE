@@ -1,5 +1,5 @@
-import type { TextProps } from '@base/Text';
 import Text from '@base/Text';
+import type { TextProps } from '@base/Text/types';
 
 export default {
   title: 'Component/Base/Text',
