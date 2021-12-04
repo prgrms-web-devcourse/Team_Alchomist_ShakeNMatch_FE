@@ -11,7 +11,7 @@ interface ImageProps extends HTMLAttributes<HTMLImageElement> {
   mode: ImageMode;
   block?: boolean;
   placeholder?: string;
-  threshold: number;
+  threshold?: number;
 }
 
 type StyledImgProps = Pick<ImageProps, 'width' | 'height' | 'mode' | 'block'>;
