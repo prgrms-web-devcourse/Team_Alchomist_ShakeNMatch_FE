@@ -18,7 +18,7 @@ const BUTTON_COLOR = {
   hover: COLOR.LIGHT_PINK,
   clicked: COLOR.BASIC_PINK,
   disabled: COLOR.DARK_GRAY
-};
+} as const;
 type ButtonColorKeys = keyof typeof BUTTON_COLOR;
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
