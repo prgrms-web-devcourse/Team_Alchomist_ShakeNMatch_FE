@@ -1,15 +1,18 @@
-import type { ReactJSXElement } from '@emotion/react/types/jsx-namespace';
-import Input from '../../components/base/Input';
-import type { InputProps } from '../../components/base/Input';
+import Input from '@base/Input';
+import type { InputProps } from '@base/Input/type';
+import type { ReactElement } from 'react';
 
 export default {
   title: 'Component/Base/Input',
   component: Input,
   argTypes: {
-    inputSize: {
+    inputType: {
       control: 'inline-radio',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-      defaultValue: 'xs'
+      options: ['nickname', 'gender', 'age', 'mbti']
+    },
+    maxLength: {
+      control: 'number',
+      defaultValue: 20
     },
     fontSize: {
       control: 'inline-radio',
@@ -19,14 +22,6 @@ export default {
   }
 };
 
-export const Default = (props: InputProps): ReactJSXElement => {
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <label>text</label>
-      <Input {...props} />
-
-      <label>number</label>
-      <Input {...props} />
-    </div>
-  );
+export const Default = (props: InputProps): ReactElement => {
+  return <Input {...props} />;
 };
