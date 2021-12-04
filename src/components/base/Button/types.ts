@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import { COLOR } from '@constants/colors';
+import type { ColorKeys } from '@models/types';
 
 const BUTTON_SIZE = {
   short: {
@@ -13,19 +13,14 @@ const BUTTON_SIZE = {
 } as const;
 type ButtonSizeKeys = keyof typeof BUTTON_SIZE;
 
-const BUTTON_COLOR = {
-  basic: COLOR.BASIC_WHITE,
-  hover: COLOR.LIGHT_PINK,
-  clicked: COLOR.BASIC_PINK,
-  disabled: COLOR.DARK_GRAY
-} as const;
-type ButtonColorKeys = keyof typeof BUTTON_COLOR;
-
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   type: 'button' | 'reset' | 'submit';
   size?: ButtonSizeKeys;
-  color?: ButtonColorKeys;
+  basicColor?: ColorKeys;
+  hoverColor?: ColorKeys;
+  clickedColor?: ColorKeys;
+  disabledColor?: ColorKeys;
 }
 
 export type { ButtonProps };
-export { BUTTON_SIZE, BUTTON_COLOR };
+export { BUTTON_SIZE };

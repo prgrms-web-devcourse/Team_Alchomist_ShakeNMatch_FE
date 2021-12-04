@@ -14,9 +14,70 @@ export default {
       control: 'inline-radio',
       options: ['short', 'long']
     },
-    color: {
-      control: 'inline-radio',
-      options: ['BASIC', 'HOVER', 'CLICKED', 'DISABLED']
+    basicColor: {
+      control: 'select',
+      options: [
+        'BASIC_WHITE',
+        'LIGHT_GRAY',
+        'DARK_GRAY',
+        'BLACK',
+        'LIGHT_PINK',
+        'BASIC_PINK',
+        'MIDDLE_PINK',
+        'STRONG_PINK',
+        'NAVY',
+        'ORANGE',
+        'VIOLET',
+        'IVORY',
+        'LIGHT_YELLOW',
+        'DARK_YELLOW',
+        'BLUE',
+        'GREEN'
+      ]
+    },
+    hoverColor: {
+      control: 'select',
+      options: [
+        undefined,
+        'BASIC_WHITE',
+        'LIGHT_GRAY',
+        'DARK_GRAY',
+        'BLACK',
+        'LIGHT_PINK',
+        'BASIC_PINK',
+        'MIDDLE_PINK',
+        'STRONG_PINK',
+        'NAVY',
+        'ORANGE',
+        'VIOLET',
+        'IVORY',
+        'LIGHT_YELLOW',
+        'DARK_YELLOW',
+        'BLUE',
+        'GREEN'
+      ]
+    },
+    clickedColor: {
+      control: 'select',
+      options: [
+        undefined,
+        'BASIC_WHITE',
+        'LIGHT_GRAY',
+        'DARK_GRAY',
+        'BLACK',
+        'LIGHT_PINK',
+        'BASIC_PINK',
+        'MIDDLE_PINK',
+        'STRONG_PINK',
+        'NAVY',
+        'ORANGE',
+        'VIOLET',
+        'IVORY',
+        'LIGHT_YELLOW',
+        'DARK_YELLOW',
+        'BLUE',
+        'GREEN'
+      ]
     }
   }
 };
