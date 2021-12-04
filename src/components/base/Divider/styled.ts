@@ -1,9 +1,12 @@
+import { COLOR } from '@constants/colors';
 import styled from '@emotion/styled';
 import type { DividerProps } from './types';
 
-const Line = styled.hr<Required<Pick<DividerProps, 'size' | 'gap' | 'color'>>>`
+const StyledLine = styled.hr<
+  Required<Pick<DividerProps, 'size' | 'gap' | 'color'>>
+>`
   border: none;
-  background-color: ${({ color }): string => color};
+  background-color: ${({ color }): string => COLOR[color]};
 
   &.horizontal {
     display: block;
@@ -21,4 +24,4 @@ const Line = styled.hr<Required<Pick<DividerProps, 'size' | 'gap' | 'color'>>>`
   }
 `;
 
-export { Line };
+export { StyledLine };

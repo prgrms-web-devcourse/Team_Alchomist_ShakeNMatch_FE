@@ -1,11 +1,21 @@
 import Divider from '@base/Divider';
 import type { DividerProps } from '@base/Divider/types';
+import { COLOR } from '@constants/colors';
 import styled from '@emotion/styled';
 import type { ReactElement } from 'react';
 
 export default {
   title: 'Component/Base/Divider',
-  component: Divider
+  component: Divider,
+  argTypes: {
+    size: {
+      control: 'number'
+    },
+    color: {
+      control: 'select',
+      options: Object.keys(COLOR)
+    }
+  }
 };
 
 const Container = styled.div`
