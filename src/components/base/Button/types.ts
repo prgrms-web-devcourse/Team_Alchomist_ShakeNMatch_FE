@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes } from 'react';
 
 const BUTTON_SIZE = {
   lg: {
@@ -19,11 +19,10 @@ type ButtonSizeKeys = keyof typeof BUTTON_SIZE;
 type ButtonColorType = 'dark' | 'primary' | 'light';
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
-  children: ReactNode;
   type: 'button' | 'reset' | 'submit';
   size?: ButtonSizeKeys;
   color?: ButtonColorType;
 }
 
-export type { ButtonProps };
+export type { ButtonProps, ButtonSizeKeys, ButtonColorType };
 export { BUTTON_SIZE };

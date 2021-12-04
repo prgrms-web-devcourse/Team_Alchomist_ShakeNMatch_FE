@@ -1,6 +1,6 @@
 import type { ReactElement, ReactNode } from 'react';
 import Button from '@base/Button';
-import type { ButtonSizeType, ButtonColorType } from '@base/Button/types';
+import type { ButtonSizeKeys, ButtonColorType } from '@base/Button/types';
 
 export default {
   title: 'Component/Button',
@@ -10,7 +10,7 @@ export default {
 interface ButtonProps {
   children: ReactNode;
   type: 'button' | 'reset' | 'submit';
-  size: ButtonSizeType;
+  size: ButtonSizeKeys;
   color: ButtonColorType;
 }
 
