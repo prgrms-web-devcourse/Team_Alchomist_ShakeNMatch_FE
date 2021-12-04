@@ -10,6 +10,8 @@
       "@hooks/*": ["./hooks/*"],
       "@constants": ["./utils/constants"],
       "@constants/*": ["./utils/constants/*"],
+      "@models": ["./models"],
+      "@models/*": ["./models/*"],
       "@utils": ["./utils"],
       "@utils/*": ["./utils/*"],
       "@/*": ["./*"]
