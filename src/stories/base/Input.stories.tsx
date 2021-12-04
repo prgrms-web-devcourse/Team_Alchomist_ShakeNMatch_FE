@@ -23,5 +23,5 @@ export default {
 };
 
 export const Default = (props: InputProps): ReactElement => {
-  return <Input {...props} />;
+  return <Input placeholder='입력' {...props} />;
 };
