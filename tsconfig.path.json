@@ -12,6 +12,8 @@
       "@constants/*": ["./utils/constants/*"],
       "@utils": ["./utils"],
       "@utils/*": ["./utils/*"],
+      "@assets": ["./assets"],
+      "@assets/*": ["./assets/*"],
       "@/*": ["./*"]
     }
   }
