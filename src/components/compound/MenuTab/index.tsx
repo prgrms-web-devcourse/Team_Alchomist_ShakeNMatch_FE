@@ -9,7 +9,7 @@ const MenuTab = ({
   tabText
 }: MenuTabProps): ReactElement => {
   const [onContent, setOnContent] = useState(initialOnChild);
-  const [childrenEl, setChildrenEl] = useState<any>();
+  const [childrenEl, setChildrenEl] = useState<React.ReactFragment[]>();
 
   const handleContent = (e: React.MouseEvent<HTMLDivElement>): void => {
     const { id } = e.currentTarget.dataset;
