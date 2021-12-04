@@ -11,7 +11,7 @@ import type { CarouselItemProps } from '../CarouselItem/types';
 import { StyledCarouselContainer } from './styled';
 import type { CarouselContainerProps } from './types';
 
-const DEFAULT_SELECTED_INDEX = 2;
+const DEFAULT_SELECTED_INDEX = 0;
 
 const CarouselContainer = ({
   children,
