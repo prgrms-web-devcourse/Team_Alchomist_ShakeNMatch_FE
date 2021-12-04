@@ -31,14 +31,8 @@ const StyledContainer = styled.div<Pick<CarouselItemProps, 'backgroundColor'>>`
   grid-template-rows: 1fr 3fr 1fr;
   justify-items: center;
   align-items: center;
-  transition: all 0.3s ease-in;
   animation: ${bounce} 0.3s ease-in-out;
   animation-play-state: ${({ hidden }): string => (hidden ? 'paused' : 'play')};
-
-  & img,
-  button {
-    transition: all 0.3s ease-in;
-  }
 `;
 
 const StyledWrapper = styled.div`
@@ -70,7 +64,6 @@ const StyledPrevButton = styled.button`
   }
 
   &:hover:not(:disabled) {
-    transition: none;
     opacity: 0.8;
   }
 `;
@@ -85,7 +78,6 @@ const StyledNextButton = styled.button`
   border: none;
 
   &:hover:not(:disabled) {
-    transition: none;
     opacity: 0.8;
   }
 

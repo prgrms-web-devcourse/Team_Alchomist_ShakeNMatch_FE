@@ -1,24 +1,15 @@
-/* eslint-disable @typescript-eslint/no-magic-numbers */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import type { HTMLAttributes, ReactElement } from 'react';
+import type { ReactElement } from 'react';
 import {
   useCallback,
   Children,
   useState,
   isValidElement,
   cloneElement,
-  useEffect,
   useMemo
 } from 'react';
-import { StyledWrapper } from '../CarouselItem/styled';
 import type { CarouselItemProps } from '../CarouselItem/types';
 import { StyledCarouselContainer } from './styled';
-
-interface CarouselContainerProps extends HTMLAttributes<HTMLDivElement> {
-  children: ReactElement<CarouselItemProps>[] | ReactElement<CarouselItemProps>;
-  initialSelectedIndex?: number;
-  onChangeItem?(value: number): void;
-}
+import type { CarouselContainerProps } from './types';
 
 const DEFAULT_SELECTED_INDEX = 2;
 
