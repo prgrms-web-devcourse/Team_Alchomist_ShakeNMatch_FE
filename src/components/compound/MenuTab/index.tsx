@@ -14,13 +14,11 @@ const MenuTab = ({
   const handleContent = (e: React.MouseEvent<HTMLDivElement>): void => {
     const { id } = e.currentTarget.dataset;
 
-    if (displayingChildIdx === id) {
+    if (!id || displayingChildIdx === id) {
       return;
     }
 
-    if (id) {
-      setDisplayingChildIdx(id);
-    }
+    id && setDisplayingChildIdx(id);
   };
 
   useEffect(() => {

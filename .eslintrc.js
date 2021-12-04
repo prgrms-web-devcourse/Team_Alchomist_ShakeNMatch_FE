@@ -25,6 +25,7 @@ module.exports = {
     'no-use-before-define': 'off',
     'no-redeclare': 'off',
     'react/button-has-type': ['error'],
+    'no-unused-expressions': 'off',
     'react/jsx-sort-props': [
       'error',
       {
@@ -54,7 +55,7 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': ['error'],
     '@typescript-eslint/no-redeclare': 'error',
     '@typescript-eslint/no-magic-numbers': 'error',
-    '@typescript-eslint/no-unused-expressions': 'error',
+
     '@typescript-eslint/no-duplicate-imports': 'error'
   }
 };
