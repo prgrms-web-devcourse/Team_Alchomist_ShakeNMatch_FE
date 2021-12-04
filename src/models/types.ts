@@ -5,4 +5,4 @@ type ColorType = typeof COLOR[ColorKeys];
 
 type SizeType = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
-export type { ColorType, SizeType };
+export type { ColorKeys, ColorType, SizeType };
