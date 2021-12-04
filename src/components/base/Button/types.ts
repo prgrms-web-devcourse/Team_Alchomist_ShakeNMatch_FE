@@ -1,22 +1,18 @@
 import type { HTMLAttributes } from 'react';
 
 const BUTTON_SIZE = {
-  lg: {
-    width: '300px',
-    height: '100px'
+  short: {
+    width: '180px',
+    height: '52px'
   },
-  md: {
-    width: '200px',
-    height: '75px'
-  },
-  sm: {
-    width: '100px',
-    height: '50px'
+  long: {
+    width: '366px',
+    height: '48px'
   }
 } as const;
 type ButtonSizeKeys = keyof typeof BUTTON_SIZE;
 
-type ButtonColorType = 'dark' | 'primary' | 'light';
+type ButtonColorType = 'BASIC' | 'HOVER' | 'CLICKED' | 'DISABLED';
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   type: 'button' | 'reset' | 'submit';

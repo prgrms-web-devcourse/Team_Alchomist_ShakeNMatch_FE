@@ -12,11 +12,11 @@ export default {
     },
     size: {
       control: 'inline-radio',
-      options: ['sm', 'md', 'lg']
+      options: ['short', 'long']
     },
     color: {
       control: 'inline-radio',
-      options: ['dark', 'primary', 'light']
+      options: ['BASIC', 'HOVER', 'CLICKED', 'DISABLED']
     }
   }
 };
