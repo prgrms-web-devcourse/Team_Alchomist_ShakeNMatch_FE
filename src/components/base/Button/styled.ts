@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
 import type { ButtonProps } from './types';
-import { BUTTON_SIZE } from '@constants/size';
+import { BUTTON_SIZE } from './types';
 import { THEME_COLOR } from '@constants/color';
 
-const Button = styled.button<ButtonProps>`
+const StyledButton = styled.button<ButtonProps>`
   width: ${({ size }): string =>
     size ? BUTTON_SIZE[size].width : BUTTON_SIZE.md.width};
   height: ${({ size }): string =>
@@ -12,4 +12,4 @@ const Button = styled.button<ButtonProps>`
     color ? THEME_COLOR[color] : THEME_COLOR.primary};
 `;
 
-export { Button };
+export { StyledButton };
