@@ -24,5 +24,5 @@ interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   color?: ButtonColorType;
 }
 
-export type { ButtonProps, ButtonSizeKeys, ButtonColorType };
+export type { ButtonProps };
 export { BUTTON_SIZE };

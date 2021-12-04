@@ -1,21 +1,28 @@
-import type { ReactElement, ReactNode } from 'react';
+import type { ReactElement } from 'react';
 import Button from '@base/Button';
-import type { ButtonSizeKeys, ButtonColorType } from '@base/Button/types';
+import type { ButtonProps } from '@base/Button/types';
 
 export default {
   title: 'Component/Button',
-  component: Button
+  component: Button,
+  argTypes: {
+    type: {
+      control: 'inline-radio',
+      options: ['button', 'submit', 'reset']
+    },
+    size: {
+      control: 'inline-radio',
+      options: ['sm', 'md', 'lg']
+    },
+    color: {
+      control: 'inline-radio',
+      options: ['dark', 'primary', 'light']
+    }
+  }
 };
-
-interface ButtonProps {
-  children: ReactNode;
-  type: 'button' | 'reset' | 'submit';
-  size: ButtonSizeKeys;
-  color: ButtonColorType;
-}
 
 export const Default = (props: ButtonProps): ReactElement => (
   <Button {...props}>
-    <div>hi</div>
+    <div>button</div>
   </Button>
 );
