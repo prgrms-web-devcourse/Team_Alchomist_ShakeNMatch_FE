@@ -6,7 +6,8 @@ import type { MenuTabProps } from './types';
 const MenuTab = ({
   children,
   initialOnChild,
-  tabText
+  tabText,
+  onTabChange
 }: MenuTabProps): ReactElement => {
   const [displayingChildIdx, setDisplayingChildIdx] = useState(initialOnChild);
   const [childrenEl, setChildrenEl] = useState<React.ReactFragment[]>();
@@ -19,6 +20,7 @@ const MenuTab = ({
     }
 
     setDisplayingChildIdx(id);
+    onTabChange(id);
   };
 
   useEffect(() => {
