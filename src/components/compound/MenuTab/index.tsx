@@ -18,7 +18,7 @@ const MenuTab = ({
       return;
     }
 
-    id && setDisplayingChildIdx(id);
+    setDisplayingChildIdx(id);
   };
 
   useEffect(() => {

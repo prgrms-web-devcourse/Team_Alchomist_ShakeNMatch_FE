@@ -25,7 +25,7 @@ module.exports = {
     'no-use-before-define': 'off',
     'no-redeclare': 'off',
     'react/button-has-type': ['error'],
-    'no-unused-expressions': 'off',
+
     'react/jsx-sort-props': [
       'error',
       {
