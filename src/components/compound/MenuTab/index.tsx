@@ -8,16 +8,18 @@ const MenuTab = ({
   initialOnChild,
   tabText
 }: MenuTabProps): ReactElement => {
-  const [onContent, setOnContent] = useState(initialOnChild);
+  const [displayingChildIdx, setDisplayingChildIdx] = useState(initialOnChild);
   const [childrenEl, setChildrenEl] = useState<React.ReactFragment[]>();
 
   const handleContent = (e: React.MouseEvent<HTMLDivElement>): void => {
     const { id } = e.currentTarget.dataset;
 
-    if (id) {
-      if (onContent === id) return;
+    if (displayingChildIdx === id) {
+      return;
+    }
 
-      setOnContent(id);
+    if (id) {
+      setDisplayingChildIdx(id);
     }
   };
 
@@ -26,7 +28,8 @@ const MenuTab = ({
       children.map((child, index) =>
         cloneElement(child, {
           style: {
-            display: index === parseInt(onContent, 10) ? 'block' : 'none'
+            display:
+              index === parseInt(displayingChildIdx, 10) ? 'block' : 'none'
           },
           ...child.props
         })
@@ -34,7 +37,7 @@ const MenuTab = ({
     );
 
     setChildrenEl(childrenEl);
-  }, [onContent]);
+  }, [displayingChildIdx]);
 
   return (
     <StyledContainer>
