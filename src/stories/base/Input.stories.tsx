@@ -8,7 +8,7 @@ export default {
   argTypes: {
     inputType: {
       control: 'inline-radio',
-      options: ['nickname', 'gender', 'age', 'mbti']
+      options: ['text', 'number']
     },
     maxLength: {
       control: 'number',
