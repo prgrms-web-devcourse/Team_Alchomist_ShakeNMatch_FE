@@ -12,6 +12,7 @@ const ImageButton = ({
   mode = 'fill',
   onClick,
   disabled = false,
+  dropShadow = false,
   ...props
 }: ImageButtonProps): ReactElement => {
   const handleClick: MouseEventHandler<HTMLButtonElement> = useCallback(
@@ -24,6 +25,7 @@ const ImageButton = ({
   return (
     <Button
       disabled={disabled}
+      dropShadow={dropShadow}
       size={size}
       style={{ padding: 0 }}
       type={type}

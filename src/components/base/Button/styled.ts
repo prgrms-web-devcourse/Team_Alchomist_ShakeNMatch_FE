@@ -36,6 +36,7 @@ const StyledButton = styled.button<ButtonProps>`
   &:disabled {
     cursor: not-allowed;
     background-color: ${COLOR.DARK_GRAY};
+    filter: grayscale(0.7);
   }
 `;
 
