@@ -8,7 +8,8 @@ const StyledButton = styled.button<ButtonProps>`
   cursor: pointer;
   border: none;
   border-radius: 7px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: ${({ dropShadow = true }): string =>
+    dropShadow ? '0px 4px 4px rgba(0, 0, 0, 0.25)' : ''};
   width: ${({ size }): string =>
     size ? BUTTON_SIZE[size].width : BUTTON_SIZE.short.width};
   height: ${({ size }): string =>
@@ -16,20 +17,25 @@ const StyledButton = styled.button<ButtonProps>`
   background-color: ${({ basicColor }): string =>
     basicColor ? COLOR[basicColor] : COLOR.BASIC_WHITE};
 
-  &:hover {
+  &:hover:not(:disabled) {
     ${({ hoverColor }): string | CSSObject =>
       hoverColor
         ? { backgroundColor: `${COLOR[hoverColor]}` }
         : { filter: 'brightness(0.95)' }};
   }
 
-  &:active {
+  &:active:not(:disabled) {
     transform: translateY(3px);
     box-shadow: none;
     ${({ clickedColor }): string | CSSObject =>
       clickedColor
         ? { backgroundColor: `${COLOR[clickedColor]}` }
         : { filter: 'brightness(0.9)' }};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: ${COLOR.DARK_GRAY};
   }
 `;
 

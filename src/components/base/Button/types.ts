@@ -9,6 +9,14 @@ const BUTTON_SIZE = {
   long: {
     width: '366px',
     height: '48px'
+  },
+  kakao: {
+    width: '300px',
+    height: '45px'
+  },
+  google: {
+    width: '189px',
+    height: '45px'
   }
 } as const;
 type ButtonSizeKeys = keyof typeof BUTTON_SIZE;
@@ -16,6 +24,7 @@ type ButtonSizeKeys = keyof typeof BUTTON_SIZE;
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   type: 'button' | 'reset' | 'submit';
   size?: ButtonSizeKeys;
+  dropShadow?: boolean;
   basicColor?: ColorKeys;
   hoverColor?: ColorKeys;
   clickedColor?: ColorKeys;
