@@ -18,8 +18,8 @@ const MODAL_SIZE = {
 type ModalSizeKeys = keyof typeof MODAL_SIZE;
 
 interface ModalProps extends HTMLAttributes<HTMLDivElement> {
-  size?: ModalSizeKeys;
-  color?: ColorKeys;
+  size: ModalSizeKeys;
+  color: ColorKeys;
   visible: boolean;
 }
 type BackgroundProps = Pick<ModalProps, 'visible'>;

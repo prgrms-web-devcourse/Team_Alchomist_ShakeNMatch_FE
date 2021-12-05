@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import type { BackgroundProps, ContainerProps } from './types';
-import { THEME_COLOR } from '@constants/color';
-import { MODAL_SIZE } from '@constants/size';
+import { COLOR } from '@constants/colors';
+import { MODAL_SIZE } from './types';
 
 const StyledModalBackground = styled.div<BackgroundProps>`
   display: ${({ visible }): string => (visible ? 'block' : 'none')};
@@ -19,12 +19,9 @@ const StyledModalContainer = styled.div<ContainerProps>`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: ${({ size }): string =>
-    size ? MODAL_SIZE[size].width : MODAL_SIZE.md.width};
-  height: ${({ size }): string =>
-    size ? MODAL_SIZE[size].height : MODAL_SIZE.md.height};
-  background-color: ${({ color }): string =>
-    color ? color : THEME_COLOR.Primary};
+  width: ${({ size }): string => MODAL_SIZE[size].width};
+  height: ${({ size }): string => MODAL_SIZE[size].height};
+  background-color: ${({ color }): string => COLOR[color]};
 `;
 
 export { StyledModalBackground, StyledModalContainer };
