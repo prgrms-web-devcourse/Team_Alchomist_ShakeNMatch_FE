@@ -2,8 +2,22 @@ import type { ReactElement } from 'react';
 import { StyledInput } from './style';
 import type { InputProps } from './types';
 
-const Input = (props: InputProps): ReactElement => {
-  return <StyledInput type={props.inputType} {...props} />;
+const DEFAULT_MAXLENGTH = 20;
+
+const Input = ({
+  inputType = 'text',
+  fontSize = 'md',
+  maxLength = DEFAULT_MAXLENGTH,
+  ...props
+}: InputProps): ReactElement => {
+  return (
+    <StyledInput
+      fontSize={fontSize}
+      maxLength={maxLength}
+      type={inputType}
+      {...props}
+    />
+  );
 };
 
 export default Input;

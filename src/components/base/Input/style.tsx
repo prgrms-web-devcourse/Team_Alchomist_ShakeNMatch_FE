@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import type { InputProps } from './types';
 import { TEXT_SIZE } from '@utils/constants';
 
-const StyledInput = styled.input<InputProps>`
+const StyledInput = styled.input<Required<Pick<InputProps, 'fontSize'>>>`
   font-size: ${({ fontSize }): string => TEXT_SIZE[fontSize]};
   border-radius: 1rem;
   width: 393px;
