@@ -1,4 +1,4 @@
-import type { TextButtonProps } from '@components/compound/TextButton';
+import type { TextButtonProps } from '@components/compound/TextButton/types';
 import TextButton from '@components/compound/TextButton';
 import type { ReactElement } from 'react';
 
