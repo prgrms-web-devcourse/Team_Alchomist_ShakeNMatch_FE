@@ -1,30 +1,29 @@
 import type { HTMLAttributes } from 'react';
-import type { IThemeColor } from '@constants/color';
+import type { ColorKeys } from '@models/types';
 
 const MODAL_SIZE = {
   lg: {
-    width: '1000px',
-    height: '1000px'
+    width: '574px',
+    height: '668px'
   },
   md: {
-    width: '500px',
-    height: '500px'
+    width: '891px',
+    height: '668px'
   },
   sm: {
-    width: '100px',
-    height: '100px'
+    width: '1080px',
+    height: '840px'
   }
 } as const;
 type ModalSizeKeys = keyof typeof MODAL_SIZE;
-type IModalSize = typeof MODAL_SIZE[ModalSizeKeys];
 
 interface ModalProps extends HTMLAttributes<HTMLDivElement> {
-  size?: IModalSize;
-  color?: IThemeColor;
+  size?: ModalSizeKeys;
+  color?: ColorKeys;
   visible: boolean;
 }
 type BackgroundProps = Pick<ModalProps, 'visible'>;
 type ContainerProps = Pick<ModalProps, 'children' | 'size' | 'color'>;
 
-export type { ModalProps, IModalSize, BackgroundProps, ContainerProps };
+export type { ModalProps, BackgroundProps, ContainerProps };
 export { MODAL_SIZE };

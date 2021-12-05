@@ -2,14 +2,12 @@ import type { ReactElement } from 'react';
 import { useMemo, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import type { ModalProps } from './types';
-import { MODAL_SIZE } from './types';
 import { StyledModalBackground, StyledModalContainer } from './styled';
-import { THEME_COLOR } from '@constants/color';
 
 const Modal = ({
   children,
-  size = MODAL_SIZE.md,
-  color = THEME_COLOR.primary,
+  size = 'md',
+  color = 'BASIC_WHITE',
   visible = false
 }: ModalProps): ReactElement => {
   const topLevelDiv: HTMLDivElement = useMemo(
