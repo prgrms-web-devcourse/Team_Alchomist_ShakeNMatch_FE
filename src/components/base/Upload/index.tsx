@@ -5,22 +5,25 @@ import type {
   ReactElement
 } from 'react';
 import { useState, useRef } from 'react';
+import { AcceptType } from './types';
 import type { UploadProps } from './types';
 import { StyledUploadContainer, StyledInput } from './styled';
+import defaultUploader from '../../../assets/defaultUploader.svg';
 
 const ZERO = 0;
 
 const Upload = ({
   children,
-  droppable,
-  name,
-  accept = 'image/*',
+  droppable = true,
+  name = 'FileUploadInput',
+  accept = 'img',
   value,
   onChangeFile,
   ...props
 }: UploadProps): ReactElement => {
   const [file, setFile] = useState(value);
   const [dragging, setDragging] = useState(false);
+  const [imgSrc, setImgSrc] = useState(defaultUploader);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleFileChange: ChangeEventHandler<HTMLInputElement> = (
@@ -32,6 +35,8 @@ const Upload = ({
     if (!files) return;
 
     const changedFile: File = files[ZERO];
+    const fileUrl = URL.createObjectURL(changedFile);
+    setImgSrc(fileUrl);
 
     setFile(changedFile);
     onChangeFile?.(changedFile);
@@ -74,7 +79,9 @@ const Upload = ({
 
     const dataTransfer = e.dataTransfer as DataTransfer;
     const files = dataTransfer.files;
-    const changedFile = files[ZERO];
+    const changedFile: File = files[ZERO];
+    const fileUrl = URL.createObjectURL(changedFile);
+    setImgSrc(fileUrl);
 
     setFile(changedFile);
     onChangeFile?.(changedFile);
@@ -92,12 +99,14 @@ const Upload = ({
     >
       <StyledInput
         ref={inputRef}
-        accept={accept}
+        accept={AcceptType[accept]}
         name={name}
         type='file'
         onChange={handleFileChange}
       />
-      {typeof children === 'function' ? children(file, dragging) : children}
+      {typeof children === 'function'
+        ? children(file, dragging, imgSrc)
+        : children}
     </StyledUploadContainer>
   );
 };
