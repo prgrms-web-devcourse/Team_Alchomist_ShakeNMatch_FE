@@ -72,4 +72,4 @@ interface IconProps {
   type: IconType;
 }
 
-export type { IconProps };
+export type { IconType, IconProps };
