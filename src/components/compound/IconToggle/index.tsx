@@ -13,8 +13,8 @@ const IconToggle = ({
 }: IconToggleProps): ReactElement => {
   const [isToggled, toggle] = useToggle(initialState);
   const iconType = useMemo(() => {
-    const toggled = isToggled ? 'toggled' : 'notToggled';
-    return ICON_TOGGLE_NAME[name][toggled];
+    const toggledState = isToggled ? 'toggled' : 'notToggled';
+    return ICON_TOGGLE_NAME[name][toggledState];
   }, [name, isToggled]);
 
   const handleToggle = useCallback<ChangeEventHandler<HTMLInputElement>>(
