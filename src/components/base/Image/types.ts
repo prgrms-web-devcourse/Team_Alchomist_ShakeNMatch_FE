@@ -16,4 +16,4 @@ interface ImageProps extends HTMLAttributes<HTMLImageElement> {
 
 type StyledImgProps = Pick<ImageProps, 'width' | 'height' | 'mode' | 'block'>;
 
-export type { ImageProps, StyledImgProps };
+export type { ImageMode, ImageProps, StyledImgProps };

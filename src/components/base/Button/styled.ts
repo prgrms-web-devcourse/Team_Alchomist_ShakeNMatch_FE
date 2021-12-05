@@ -1,15 +1,43 @@
+import type { CSSObject } from '@emotion/styled';
 import styled from '@emotion/styled';
+import { COLOR } from '@constants/colors';
 import type { ButtonProps } from './types';
 import { BUTTON_SIZE } from './types';
-import { THEME_COLOR } from '@constants/color';
 
 const StyledButton = styled.button<ButtonProps>`
+  cursor: pointer;
+  border: none;
+  border-radius: 7px;
+  box-shadow: ${({ dropShadow = true }): string =>
+    dropShadow ? '0px 4px 4px rgba(0, 0, 0, 0.25)' : ''};
   width: ${({ size }): string =>
-    size ? BUTTON_SIZE[size].width : BUTTON_SIZE.md.width};
+    size ? BUTTON_SIZE[size].width : BUTTON_SIZE.short.width};
   height: ${({ size }): string =>
-    size ? BUTTON_SIZE[size].height : BUTTON_SIZE.md.height};
-  background-color: ${({ color }): string =>
-    color ? THEME_COLOR[color] : THEME_COLOR.primary};
+    size ? BUTTON_SIZE[size].height : BUTTON_SIZE.long.height};
+  background-color: ${({ basicColor }): string =>
+    basicColor ? COLOR[basicColor] : COLOR.BASIC_WHITE};
+
+  &:hover:not(:disabled) {
+    ${({ hoverColor }): string | CSSObject =>
+      hoverColor
+        ? { backgroundColor: `${COLOR[hoverColor]}` }
+        : { filter: 'brightness(0.95)' }};
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(3px);
+    box-shadow: none;
+    ${({ clickedColor }): string | CSSObject =>
+      clickedColor
+        ? { backgroundColor: `${COLOR[clickedColor]}` }
+        : { filter: 'brightness(0.9)' }};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: ${COLOR.DARK_GRAY};
+    filter: grayscale(0.7);
+  }
 `;
 
 export { StyledButton };
