@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import type { InputProps } from './type';
-import { TEXT_SIZE } from './type';
+import type { InputProps } from './types';
+import { TEXT_SIZE } from '@utils/constants';
 
 const StyledInput = styled.input<InputProps>`
   font-size: ${({ fontSize }): string => TEXT_SIZE[fontSize]};

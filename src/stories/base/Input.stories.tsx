@@ -1,5 +1,5 @@
 import Input from '@base/Input';
-import type { InputProps } from '@base/Input/type';
+import type { InputProps } from '@base/Input/types';
 import type { ReactElement } from 'react';
 
 export default {
