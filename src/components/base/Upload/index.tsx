@@ -31,11 +31,11 @@ const Upload = ({
   ): void => {
     const target = e.target as HTMLInputElement;
     const files = target.files;
-
     if (!files) return;
 
     const changedFile: File = files[ZERO];
     const fileUrl = URL.createObjectURL(changedFile);
+
     setImgSrc(fileUrl);
     setFile(changedFile);
     onChangeFile?.(changedFile);
@@ -47,6 +47,7 @@ const Upload = ({
 
   const handleDragEnter = (e: DragEvent<HTMLDivElement>): void => {
     if (!droppable) return;
+
     e.preventDefault();
     e.stopPropagation();
 
@@ -59,6 +60,7 @@ const Upload = ({
 
   const handleDragLeave = (e: DragEvent<HTMLDivElement>): void => {
     if (!droppable) return;
+
     e.preventDefault();
     e.stopPropagation();
 
@@ -67,18 +69,21 @@ const Upload = ({
 
   const handleDragOver = (e: DragEvent<HTMLDivElement>): void => {
     if (!droppable) return;
+
     e.preventDefault();
     e.stopPropagation();
   };
 
   const handleFileDrop = (e: DragEvent<HTMLDivElement>): void => {
     if (!droppable) return;
+
     e.preventDefault();
     e.stopPropagation();
 
     const dataTransfer = e.dataTransfer as DataTransfer;
     const files = dataTransfer.files;
     const changedFile: File = files[ZERO];
+
     if (changedFile.type.includes(AcceptType[accept].split('/')[ZERO])) {
       const fileUrl = URL.createObjectURL(changedFile);
       setImgSrc(fileUrl);

@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-// import defaultUploader from '../../../assets/defaultUploader.svg';
 import type { PreviewProps } from './types';
 
 const StyledUploadContainer = styled.div`
