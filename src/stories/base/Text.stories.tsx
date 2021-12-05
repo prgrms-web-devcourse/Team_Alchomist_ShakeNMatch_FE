@@ -1,5 +1,7 @@
 import Text from '@base/Text';
 import type { TextProps } from '@base/Text/types';
+import { TEXT_SIZE } from '@base/Text/types';
+import { COLOR } from '@constants';
 
 export default {
   title: 'Component/Base/Text',
@@ -10,10 +12,11 @@ export default {
     },
     size: {
       control: 'inline-radio',
-      options: ['xs', 'sm', 'md', 'lg', 'xl']
+      options: Object.keys(TEXT_SIZE)
     },
     color: {
-      control: 'color'
+      control: 'select',
+      options: Object.keys(COLOR)
     },
     bold: {
       control: 'boolean'
