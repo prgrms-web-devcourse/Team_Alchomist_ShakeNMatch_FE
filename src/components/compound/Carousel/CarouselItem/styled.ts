@@ -1,3 +1,4 @@
+import { COLOR } from '@constants';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import type { CarouselItemProps } from './types';
@@ -16,7 +17,9 @@ const bounce = keyframes`
   }
 `;
 
-const StyledContainer = styled.div<Pick<CarouselItemProps, 'backgroundColor'>>`
+const StyledContainer = styled.div<
+  Required<Pick<CarouselItemProps, 'backgroundColor'>>
+>`
   display: ${({ hidden }): string => (hidden ? 'none' : 'grid')};
   position: absolute;
   top: 50%;
@@ -24,7 +27,7 @@ const StyledContainer = styled.div<Pick<CarouselItemProps, 'backgroundColor'>>`
   transform: translate(-50%, -50%);
   width: 510px;
   height: 440px;
-  background-color: ${({ backgroundColor }): string => backgroundColor};
+  background-color: ${({ backgroundColor }): string => COLOR[backgroundColor]};
   border-radius: 100px;
   box-shadow: inset -10px -10px 4px rgba(0, 0, 0, 0.25);
   grid-template-columns: 1fr;
@@ -40,12 +43,6 @@ const StyledWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   row-gap: 10px;
-`;
-
-// 임시 이미지
-const StyledImage = styled.img`
-  width: 180px;
-  height: 180px;
 `;
 
 // 임시 버튼
@@ -87,10 +84,4 @@ const StyledNextButton = styled.button`
   }
 `;
 
-export {
-  StyledContainer,
-  StyledWrapper,
-  StyledImage,
-  StyledPrevButton,
-  StyledNextButton
-};
+export { StyledContainer, StyledWrapper, StyledPrevButton, StyledNextButton };

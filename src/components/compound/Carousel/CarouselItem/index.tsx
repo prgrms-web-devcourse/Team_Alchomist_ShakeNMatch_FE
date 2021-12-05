@@ -1,9 +1,9 @@
+import Image from '@base/Image';
 import Text from '@base/Text';
 import type { ReactElement } from 'react';
 import { useCallback } from 'react';
 import {
   StyledContainer,
-  StyledImage,
   StyledNextButton,
   StyledPrevButton,
   StyledWrapper
@@ -11,7 +11,8 @@ import {
 import type { CarouselItemProps } from './types';
 
 const CarouselItem = ({
-  backgroundColor,
+  backgroundColor = 'GREEN',
+  textColor = 'BASIC_WHITE',
   imageSrc,
   title,
   selected = false,
@@ -35,8 +36,8 @@ const CarouselItem = ({
     >
       <StyledPrevButton disabled={!selected} onClick={handlePrev} />
       <StyledWrapper>
-        <StyledImage src={imageSrc} />
-        <Text bold color='white' size='xl'>
+        <Image mode='cover' placeholder='' src={imageSrc} />
+        <Text bold color={textColor} size='xl'>
           {title}
         </Text>
       </StyledWrapper>
