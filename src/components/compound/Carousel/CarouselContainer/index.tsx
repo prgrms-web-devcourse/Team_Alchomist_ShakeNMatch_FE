@@ -1,5 +1,8 @@
-import type { ReactElement } from 'react';
+import useThrottle from '@hooks/useThrottle';
+import useWheel from '@hooks/useWheel';
+import type { AnimationEventHandler, ReactElement } from 'react';
 import {
+  useEffect,
   useCallback,
   Children,
   useState,
@@ -20,6 +23,7 @@ const CarouselContainer = ({
   ...props
 }: CarouselContainerProps): ReactElement => {
   const [selectedIndex, setSelectedIndex] = useState(initialSelectedIndex);
+  const [wheelRef, wheelDelta] = useWheel<HTMLDivElement>();
   const childrenLength: number = useMemo(
     () => Children.toArray(children).length,
     [children]
@@ -47,6 +51,22 @@ const CarouselContainer = ({
     }
   }, [selectedIndex]);
 
+  const handleWheel = useCallback((): void => {
+    if (wheelDelta.deltaY > 0) {
+      handleNext();
+    } else if (wheelDelta.deltaY < 0) {
+      handlePrev();
+    }
+  }, [wheelDelta, handleNext, handlePrev]);
+
+  const [throttleWheel, clearThrottleWheel] = useThrottle(handleWheel);
+
+  const handleAnimationEnd: AnimationEventHandler = (e) => {
+    if (e.type === 'animationend') {
+      clearThrottleWheel();
+    }
+  };
+
   const selectedItem = Children.toArray(children).map((element, index) => {
     if (!isValidElement(element)) return;
 
@@ -54,12 +74,17 @@ const CarouselContainer = ({
       onPrev: handlePrev,
       onNext: handleNext,
       ...element.props,
+      onAnimationEnd: handleAnimationEnd,
       selected: index === selectedIndex
     });
   });
 
+  useEffect(throttleWheel, [wheelDelta]);
+
   return (
-    <StyledCarouselContainer {...props}>{selectedItem}</StyledCarouselContainer>
+    <StyledCarouselContainer ref={wheelRef} {...props}>
+      {selectedItem}
+    </StyledCarouselContainer>
   );
 };
 

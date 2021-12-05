@@ -5,12 +5,13 @@ import moodSrc from '@assets/carouselTheme/big/mood.png';
 import musicSrc from '@assets/carouselTheme/big/music.png';
 import trendingSrc from '@assets/carouselTheme/big/trending.png';
 import weatherSrc from '@assets/carouselTheme/big/weather.png';
+import enfjSrc from '@assets/carouselTheme/mbti/enfj.svg';
 import Carousel from '@components/compound/Carousel';
 import type { CarouselItemProps } from '@components/compound/Carousel/CarouselItem/types';
 import styled from '@emotion/styled';
 
 export default {
-  title: 'Components/Compound/Carousel',
+  title: 'Component/Compound/Carousel',
   component: Carousel
 };
 
@@ -26,7 +27,7 @@ const Wrapper = styled.div`
 export const Card = (props: CarouselItemProps): ReactElement => (
   <Wrapper>
     <Carousel.Item
-      backgroundColor='#BC79C7'
+      backgroundColor='DARK_GRAY'
       imageSrc='https://picsum.photos/180'
       selected={!props.selected}
       title='TRENDING'
@@ -38,7 +39,7 @@ export const Card = (props: CarouselItemProps): ReactElement => (
       }}
     />
     <Carousel.Item
-      backgroundColor='#BC79C7'
+      backgroundColor='GREEN'
       imageSrc='https://picsum.photos/180'
       selected={props.selected}
       title='TRENDING'
@@ -50,7 +51,7 @@ export const Card = (props: CarouselItemProps): ReactElement => (
       }}
     />
     <Carousel.Item
-      backgroundColor='#BC79C7'
+      backgroundColor='LIGHT_GRAY'
       imageSrc='https://picsum.photos/180'
       selected={!props.selected}
       title='TRENDING'
@@ -68,40 +69,45 @@ export const Container = (props: CarouselItemProps): ReactElement => (
   <Wrapper>
     <Carousel.Container>
       <Carousel.Item
-        backgroundColor='#EE9595'
+        backgroundColor='LIGHT_PINK'
         imageSrc={moodSrc}
         selected={!props.selected}
         title='MOOD'
       />
       <Carousel.Item
-        backgroundColor='#F3B57C'
+        backgroundColor='LIGHT_YELLOW'
         imageSrc={weatherSrc}
         selected={props.selected}
         title='WEATHER'
       />
       <Carousel.Item
-        backgroundColor='#6AA1D4'
+        backgroundColor='MIDDLE_PINK'
         imageSrc={mbtiSrc}
         selected={!props.selected}
         title='MBTI'
       />
       <Carousel.Item
-        backgroundColor='#4FA863'
+        backgroundColor='NAVY'
         imageSrc={colorSrc}
         selected={!props.selected}
         title='COLOR'
       />
       <Carousel.Item
-        backgroundColor='#D2D46A'
+        backgroundColor='ORANGE'
         imageSrc={musicSrc}
         selected={!props.selected}
         title='MUSIC'
       />
       <Carousel.Item
-        backgroundColor='#BC79C7'
+        backgroundColor='VIOLET'
         imageSrc={trendingSrc}
         selected={!props.selected}
         title='TRENDING'
+      />
+      <Carousel.Item
+        backgroundColor='NAVY'
+        imageSrc={enfjSrc}
+        selected={!props.selected}
       />
     </Carousel.Container>
   </Wrapper>
