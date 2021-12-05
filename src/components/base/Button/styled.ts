@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import type { ButtonProps } from './types';
 import { BUTTON_SIZE } from './types';
-import { THEME_COLOR } from '@constants/color';
+import { COLOR } from '@constants/colors';
 
 const StyledButton = styled.button<ButtonProps>`
   width: ${({ size }): string =>
@@ -9,7 +9,7 @@ const StyledButton = styled.button<ButtonProps>`
   height: ${({ size }): string =>
     size ? BUTTON_SIZE[size].height : BUTTON_SIZE.md.height};
   background-color: ${({ color }): string =>
-    color ? THEME_COLOR[color] : THEME_COLOR.primary};
+    color ? COLOR[color] : COLOR.BASIC_PINK};
 `;
 
 export { StyledButton };

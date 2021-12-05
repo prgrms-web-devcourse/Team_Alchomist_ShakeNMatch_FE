@@ -8,6 +8,7 @@ const Modal = ({
   children,
   size = 'md',
   color = 'BASIC_WHITE',
+  backgroundColor = 'DARK_GRAY',
   visible = false
 }: ModalProps): ReactElement => {
   const topLevelDiv: HTMLDivElement = useMemo(
@@ -23,7 +24,7 @@ const Modal = ({
   }, []);
 
   return ReactDOM.createPortal(
-    <StyledModalBackground visible={visible}>
+    <StyledModalBackground backgroundColor={backgroundColor} visible={visible}>
       <StyledModalContainer color={color} size={size}>
         {children}
       </StyledModalContainer>

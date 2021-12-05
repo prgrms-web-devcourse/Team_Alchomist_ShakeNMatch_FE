@@ -16,7 +16,7 @@ const BUTTON_SIZE = {
 } as const;
 type ButtonSizeKeys = keyof typeof BUTTON_SIZE;
 
-type ButtonColorType = 'dark' | 'primary' | 'light';
+type ButtonColorType = 'BASIC_WHITE';
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: ReactNode;

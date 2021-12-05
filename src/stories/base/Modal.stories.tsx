@@ -1,13 +1,20 @@
 import type { ReactElement } from 'react';
 import { useState } from 'react';
 import Modal from '@base/Modal';
+import type { ModalProps } from '@base/Modal/types';
 
 export default {
   title: 'Component/Modal',
-  component: Modal
+  component: Modal,
+  argTypes: {
+    size: {
+      control: 'inline-radio',
+      options: [undefined, 'sm', 'md', 'lg']
+    }
+  }
 };
 
-export const Default = (): ReactElement => {
+export const Default = (props: ModalProps): ReactElement => {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
@@ -20,7 +27,12 @@ export const Default = (): ReactElement => {
       >
         click
       </button>
-      <Modal visible={isVisible}>
+      <Modal
+        backgroundColor={props.backgroundColor}
+        color={props.color}
+        size={props.size}
+        visible={isVisible}
+      >
         <div>this is Modal</div>
         <span>inner span</span>
         <button
