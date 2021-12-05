@@ -4,6 +4,12 @@
     "paths": {
       "@base": ["./components/base"],
       "@base/*": ["./components/base/*"],
+      "@compound": ["./components/compound"],
+      "@compound/*": ["./components/compound/*"],
+      "@domain": ["./components/domain"],
+      "@domain/*": ["./components/domain/*"],
+      "@contexts": ["./contexts"],
+      "@contexts/*": ["./contexts/*"],
       "@components": ["./components"],
       "@components/*": ["./components/*"],
       "@hooks": ["./hooks"],
@@ -14,6 +20,8 @@
       "@models/*": ["./models/*"],
       "@utils": ["./utils"],
       "@utils/*": ["./utils/*"],
+      "@routes": ["./routes"],
+      "@routes/*": ["./routes/*"],
       "@/*": ["./*"]
     }
   }
