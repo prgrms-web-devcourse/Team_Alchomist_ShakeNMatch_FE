@@ -2,7 +2,7 @@ import type { RefObject } from 'react';
 import { useEffect, useRef } from 'react';
 
 const useClickAway = <T extends HTMLElement>(
-  handler: (e: Event) => void
+  handler: (e?: Event) => void
 ): RefObject<T> => {
   const ref = useRef<T>(null);
   const saveHandler = useRef(handler);
