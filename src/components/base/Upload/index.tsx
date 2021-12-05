@@ -37,7 +37,6 @@ const Upload = ({
     const changedFile: File = files[ZERO];
     const fileUrl = URL.createObjectURL(changedFile);
     setImgSrc(fileUrl);
-
     setFile(changedFile);
     onChangeFile?.(changedFile);
   };
@@ -80,11 +79,12 @@ const Upload = ({
     const dataTransfer = e.dataTransfer as DataTransfer;
     const files = dataTransfer.files;
     const changedFile: File = files[ZERO];
-    const fileUrl = URL.createObjectURL(changedFile);
-    setImgSrc(fileUrl);
-
-    setFile(changedFile);
-    onChangeFile?.(changedFile);
+    if (changedFile.type.includes(AcceptType[accept].split('/')[ZERO])) {
+      const fileUrl = URL.createObjectURL(changedFile);
+      setImgSrc(fileUrl);
+      setFile(changedFile);
+      onChangeFile?.(changedFile);
+    }
     setDragging(false);
   };
 

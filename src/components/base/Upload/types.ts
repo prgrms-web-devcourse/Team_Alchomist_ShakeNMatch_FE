@@ -16,7 +16,8 @@ interface PreviewProps {
 }
 
 const AcceptType = {
-  img: 'image/*'
+  img: 'image/*',
+  video: 'video/*'
 } as const;
 
 export { AcceptType };
