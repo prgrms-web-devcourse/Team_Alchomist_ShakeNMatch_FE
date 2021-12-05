@@ -32,6 +32,9 @@ export const Default = (props: ModalProps): ReactElement => {
         color={props.color}
         size={props.size}
         visible={isVisible}
+        onClose={(): void => {
+          setIsVisible(false);
+        }}
       >
         <div>this is Modal</div>
         <span>inner span</span>

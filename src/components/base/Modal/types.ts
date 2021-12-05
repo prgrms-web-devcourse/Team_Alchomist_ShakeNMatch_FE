@@ -22,6 +22,7 @@ interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   color: ColorKeys;
   backgroundColor: ColorKeys;
   visible: boolean;
+  onClose(): void;
 }
 type BackgroundProps = Pick<ModalProps, 'visible' | 'backgroundColor'>;
 type ContainerProps = Pick<ModalProps, 'children' | 'size' | 'color'>;
