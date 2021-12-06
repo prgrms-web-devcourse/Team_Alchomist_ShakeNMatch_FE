@@ -1,4 +1,3 @@
-import { COLOR } from '@constants/colors';
 import type { HTMLAttributes } from 'react';
 
 const TEXT_BUTTON = {
@@ -38,7 +37,7 @@ const TEXT_BUTTON = {
     },
     textProps: {
       size: 'md',
-      color: COLOR.BLACK
+      color: 'BLACK'
     }
   },
   LONG_PINK: {
