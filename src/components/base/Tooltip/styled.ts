@@ -1,11 +1,6 @@
 import styled from '@emotion/styled';
 import type { TooltipProps } from './types';
-
-const TOOLTIP_SIZE = {
-  sm: { width: 200, height: 50 },
-  md: { width: 270, height: 75 },
-  lg: { width: 380, height: 100 }
-};
+import { TOOLTIP_SIZE } from './types';
 
 const StyledTooltipWrapper = styled.div`
   position: relative;
