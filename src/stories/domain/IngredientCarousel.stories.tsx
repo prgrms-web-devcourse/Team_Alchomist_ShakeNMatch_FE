@@ -1,9 +1,16 @@
 import IngredientCarousel from '@domain/IngredientCarousel/IngredientCarouselContainer';
+import type { IngredientCarouselProps } from '@domain/IngredientCarousel/IngredientCarouselContainer/types';
 import type { ReactElement } from 'react';
 
 export default {
   title: 'Component/domain/IngredientCarousel',
-  component: IngredientCarousel
+  component: IngredientCarousel,
+  argTypes: {
+    displayType: {
+      control: 'inline-radio',
+      options: ['single', 'double']
+    }
+  }
 };
 
 const DUMMY = [
@@ -33,6 +40,8 @@ const DUMMY = [
   }
 ];
 
-export const Default = (): ReactElement => {
-  return <IngredientCarousel itemList={DUMMY}></IngredientCarousel>;
+export const Default = (props: IngredientCarouselProps): ReactElement => {
+  return (
+    <IngredientCarousel itemList={DUMMY} row={props.row}></IngredientCarousel>
+  );
 };
