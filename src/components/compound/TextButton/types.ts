@@ -51,7 +51,7 @@ const TEXT_BUTTON = {
     },
     textProps: {
       size: 'md',
-      color: COLOR.BASIC_WHITE
+      color: 'BASIC_WHITE'
     }
   }
 } as const;
