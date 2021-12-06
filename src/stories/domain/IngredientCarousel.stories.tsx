@@ -6,7 +6,7 @@ export default {
   title: 'Component/domain/IngredientCarousel',
   component: IngredientCarousel,
   argTypes: {
-    displayType: {
+    row: {
       control: 'inline-radio',
       options: ['single', 'double']
     }
