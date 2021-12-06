@@ -12,7 +12,7 @@ const TEXT_BUTTON = {
     },
     textProps: {
       size: 'sm',
-      color: COLOR.BLACK
+      color: 'BLACK'
     }
   },
   SHORT_PINK: {
