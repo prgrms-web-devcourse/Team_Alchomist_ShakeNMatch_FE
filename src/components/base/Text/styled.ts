@@ -2,7 +2,7 @@ import { COLOR } from '@constants';
 import styled from '@emotion/styled';
 import type { ColorType } from '@models';
 import type { TextProps } from './types';
-import { TEXT_WEIGHT, TEXT_SIZE } from './types';
+import { TEXT_WEIGHT, TEXT_SIZE } from '@utils/constants';
 
 const Text = styled.span<TextProps>`
   font-size: ${({ size }): string =>
