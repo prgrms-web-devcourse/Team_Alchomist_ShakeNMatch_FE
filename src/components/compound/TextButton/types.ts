@@ -25,7 +25,7 @@ const TEXT_BUTTON = {
     },
     textProps: {
       size: 'sm',
-      color: COLOR.BASIC_WHITE
+      color: 'BASIC_WHITE'
     }
   },
   LONG_WHITE: {
