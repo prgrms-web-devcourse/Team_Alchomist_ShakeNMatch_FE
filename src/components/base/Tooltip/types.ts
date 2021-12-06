@@ -7,8 +7,7 @@ const TOOLTIP_SIZE = {
 } as const;
 interface TooltipProps {
   children: ReactElement;
-  message: string;
-  fontSize: string;
+  tooltipMessage: string;
   size?: 'sm' | 'md' | 'lg';
   direction?: 'right' | 'left' | 'top' | 'bottom';
 }

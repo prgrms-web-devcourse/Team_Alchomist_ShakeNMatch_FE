@@ -1,13 +1,13 @@
 import type { ReactElement } from 'react';
 import { StyledTooltipContent, StyledTooltipWrapper } from './styled';
 import type { TooltipProps } from './types';
+import { Text } from '@base';
 
 const Tooltip = ({
   children,
-  message,
-  fontSize = '8px',
-  size = 'md',
+  tooltipMessage = '툴팁메시지',
   direction = 'top',
+  size = 'md',
   ...props
 }: TooltipProps): ReactElement => {
   return (
@@ -16,10 +16,11 @@ const Tooltip = ({
       <StyledTooltipContent
         className='tooltiptext'
         direction={direction}
-        fontSize={fontSize}
         size={size}
       >
-        {message}
+        <Text color={'BASIC_WHITE'} size={'xs'}>
+          {tooltipMessage}
+        </Text>
       </StyledTooltipContent>
     </StyledTooltipWrapper>
   );

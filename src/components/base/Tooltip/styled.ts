@@ -15,16 +15,14 @@ const StyledTooltipWrapper = styled.div`
 `;
 
 const StyledTooltipContent = styled.div<
-  Required<Pick<TooltipProps, 'size' | 'direction' | 'fontSize'>>
+  Required<Pick<TooltipProps, 'size' | 'direction'>>
 >`
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-size: ${({ fontSize }): string | number => fontSize};
   background-color: black;
-  color: #fff;
   text-align: center;
   padding: 5px;
   border-radius: 7px;

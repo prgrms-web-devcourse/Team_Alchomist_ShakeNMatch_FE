@@ -2,14 +2,14 @@ import type { TooltipProps } from '@base/Tooltip/types';
 import Tooltip from '@base/Tooltip';
 import styled from '@emotion/styled';
 import type { ReactElement } from 'react';
+
 export default {
   title: 'Component/Base/Tooltip',
   component: Tooltip,
   argTypes: {
     message: {
       control: 'text',
-      defaultValue:
-        '사용자들이 즐겨찾기에 추가한 칵테일 Top 10 안에 드는 칵테일입니다'
+      defaultValue: '초기메시지값'
     },
     direction: {
       control: 'inline-radio',
@@ -20,10 +20,6 @@ export default {
       control: 'inline-radio',
       defaultValue: 'md',
       options: ['sm', 'md', 'lg']
-    },
-    fontSize: {
-      control: 'text',
-      defaultValue: '8px'
     }
   }
 };
