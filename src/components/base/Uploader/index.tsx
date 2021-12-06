@@ -2,6 +2,7 @@ import type {
   ChangeEvent,
   ChangeEventHandler,
   DragEvent,
+  DragEventHandler,
   ReactElement
 } from 'react';
 import { useState, useRef } from 'react';
@@ -24,19 +25,32 @@ const Upload = ({
   const [imgSrc, setImgSrc] = useState(defaultUploader);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const handleFileChange: ChangeEventHandler<HTMLInputElement> = (
-    e: ChangeEvent<HTMLInputElement>
+  const handleFileChangeOrDrop: ChangeEventHandler<HTMLInputElement> &
+    DragEventHandler<HTMLDivElement> = (
+    e: ChangeEvent<HTMLInputElement> & DragEvent<HTMLDivElement>
   ): void => {
-    const target = e.target as HTMLInputElement;
-    const files = target.files;
-    if (!files) return;
+    let fileContainer: HTMLInputElement | DataTransfer;
 
-    const changedFile: File = files[0];
-    const fileUrl = URL.createObjectURL(changedFile);
+    if (droppable && e.dataTransfer) {
+      e.preventDefault();
+      e.stopPropagation();
+      fileContainer = e.dataTransfer;
+    } else {
+      fileContainer = e.target;
+    }
 
-    setImgSrc(fileUrl);
-    setFile(changedFile);
-    onChangeFile?.(changedFile);
+    if (!fileContainer.files) return;
+
+    const changedFile: File = fileContainer.files && fileContainer.files[0];
+
+    if (changedFile.type.includes(AcceptType[accept].split('/')[0])) {
+      const fileUrl = URL.createObjectURL(changedFile);
+      setImgSrc(fileUrl);
+      setFile(changedFile);
+      onChangeFile?.(changedFile);
+    }
+
+    if (e.dataTransfer) setDragging(false);
   };
 
   const handleChooseFile = (): void => {
@@ -72,32 +86,13 @@ const Upload = ({
     e.stopPropagation();
   };
 
-  const handleFileDrop = (e: DragEvent<HTMLDivElement>): void => {
-    if (!droppable) return;
-
-    e.preventDefault();
-    e.stopPropagation();
-
-    const dataTransfer = e.dataTransfer as DataTransfer;
-    const files = dataTransfer.files;
-    const changedFile: File = files[0];
-
-    if (changedFile.type.includes(AcceptType[accept].split('/')[0])) {
-      const fileUrl = URL.createObjectURL(changedFile);
-      setImgSrc(fileUrl);
-      setFile(changedFile);
-      onChangeFile?.(changedFile);
-    }
-    setDragging(false);
-  };
-
   return (
     <StyledUploadContainer
       onClick={handleChooseFile}
       onDragEnter={handleDragEnter}
       onDragLeave={handleDragLeave}
       onDragOver={handleDragOver}
-      onDrop={handleFileDrop}
+      onDrop={handleFileChangeOrDrop}
       {...props}
     >
       <StyledInput
@@ -105,7 +100,7 @@ const Upload = ({
         accept={AcceptType[accept]}
         name={name}
         type='file'
-        onChange={handleFileChange}
+        onChange={handleFileChangeOrDrop}
       />
       {typeof children === 'function'
         ? children(file, dragging, imgSrc)
