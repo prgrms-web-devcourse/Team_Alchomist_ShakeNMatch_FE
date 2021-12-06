@@ -3,13 +3,21 @@ import styled from '@emotion/styled';
 const StyledLabel = styled.label`
   cursor: pointer;
 
+  & > svg {
+    transition: transform 0.1s ease-in;
+  }
+
   &:hover {
-    filter: brightness(0.95);
-    transform: scale(1.02);
+    & > svg {
+      filter: brightness(0.95);
+      transform: scale(1.02);
+    }
   }
   &:active {
-    filter: brightness(0.9);
-    transform: scale(1.05);
+    & > svg {
+      filter: brightness(0.9);
+      transform: scale(1.05);
+    }
   }
 `;
 
