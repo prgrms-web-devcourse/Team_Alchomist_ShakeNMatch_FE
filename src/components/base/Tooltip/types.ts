@@ -1,3 +1,4 @@
+import type { TEXT_SIZE } from '@utils/constants';
 import type { ReactElement } from 'react';
 
 const TOOLTIP_SIZE = {
@@ -8,8 +9,9 @@ const TOOLTIP_SIZE = {
 interface TooltipProps {
   children: ReactElement;
   tooltipMessage: string;
-  size?: 'sm' | 'md' | 'lg';
   direction?: 'right' | 'left' | 'top' | 'bottom';
+  tooltipSize?: 'sm' | 'md' | 'lg';
+  tooltipMessageSize: keyof typeof TEXT_SIZE;
 }
 
 export { TOOLTIP_SIZE };

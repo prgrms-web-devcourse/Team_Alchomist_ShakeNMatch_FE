@@ -7,7 +7,8 @@ const Tooltip = ({
   children,
   tooltipMessage = '툴팁메시지',
   direction = 'top',
-  size = 'md',
+  tooltipSize = 'md',
+  tooltipMessageSize = 'md',
   ...props
 }: TooltipProps): ReactElement => {
   return (
@@ -16,9 +17,9 @@ const Tooltip = ({
       <StyledTooltipContent
         className='tooltiptext'
         direction={direction}
-        size={size}
+        size={tooltipSize}
       >
-        <Text color={'BASIC_WHITE'} size={'xs'}>
+        <Text color={'BASIC_WHITE'} size={tooltipMessageSize}>
           {tooltipMessage}
         </Text>
       </StyledTooltipContent>

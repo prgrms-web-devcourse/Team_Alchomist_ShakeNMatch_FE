@@ -16,10 +16,15 @@ export default {
       defaultValue: 'right',
       options: ['right', 'left', 'top', 'bottom']
     },
-    size: {
+    tooltipSize: {
       control: 'inline-radio',
       defaultValue: 'md',
       options: ['sm', 'md', 'lg']
+    },
+    tooltipMessageSize: {
+      control: 'inline-radio',
+      defaultValue: 'md',
+      options: ['xs', 'sm', 'md', 'lg', 'xl']
     }
   }
 };
