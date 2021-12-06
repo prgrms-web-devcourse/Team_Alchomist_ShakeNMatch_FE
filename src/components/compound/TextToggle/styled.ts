@@ -5,9 +5,6 @@ import { COLOR } from '@constants';
 
 const StyledToggleContainer = styled.label<StyledToggleContainerProps>`
   display: ${({ block }): string => (block ? 'block' : 'inline-block')};
-`;
-
-const StyledTextBackground = styled.div<StyledTextProps>`
   width: 108px;
   height: 33px;
   border-radius: 16px;
@@ -27,9 +24,4 @@ const StyledToggleInput = styled.input`
   display: none;
 `;
 
-export {
-  StyledToggleContainer,
-  StyledTextBackground,
-  StyledText,
-  StyledToggleInput
-};
+export { StyledToggleContainer, StyledText, StyledToggleInput };

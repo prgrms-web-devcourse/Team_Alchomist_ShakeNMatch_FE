@@ -20,6 +20,7 @@ interface TextToggleProps {
 }
 
 interface StyledToggleContainerProps {
+  toggled: boolean;
   block: boolean;
 }
 
