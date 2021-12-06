@@ -1,8 +1,8 @@
-import Upload from '@base/Upload';
+import Upload from '@base/Uploader';
 import type { ReactElement } from 'react';
-import type { UploadProps } from '@base/Upload/types';
-import { AcceptType } from '@base/Upload/types';
-import { StyledUploadPreview } from '@base/Upload/styled';
+import type { UploadProps } from '@base/Uploader/types';
+import { AcceptType } from '@base/Uploader/types';
+import { StyledUploadPreview } from '@base/Uploader/styled';
 
 export default {
   title: 'Component/base/Upload',

@@ -10,8 +10,6 @@ import type { UploadProps } from './types';
 import { StyledUploadContainer, StyledInput } from './styled';
 import defaultUploader from '../../../assets/defaultUploader.svg';
 
-const ZERO = 0;
-
 const Upload = ({
   children,
   droppable = true,
@@ -33,7 +31,7 @@ const Upload = ({
     const files = target.files;
     if (!files) return;
 
-    const changedFile: File = files[ZERO];
+    const changedFile: File = files[0];
     const fileUrl = URL.createObjectURL(changedFile);
 
     setImgSrc(fileUrl);
@@ -53,7 +51,7 @@ const Upload = ({
 
     const dataTransfer = e.dataTransfer as DataTransfer;
 
-    if (dataTransfer.items && dataTransfer.items.length > ZERO) {
+    if (dataTransfer.items && dataTransfer.items.length > 0) {
       setDragging(true);
     }
   };
@@ -82,9 +80,9 @@ const Upload = ({
 
     const dataTransfer = e.dataTransfer as DataTransfer;
     const files = dataTransfer.files;
-    const changedFile: File = files[ZERO];
+    const changedFile: File = files[0];
 
-    if (changedFile.type.includes(AcceptType[accept].split('/')[ZERO])) {
+    if (changedFile.type.includes(AcceptType[accept].split('/')[0])) {
       const fileUrl = URL.createObjectURL(changedFile);
       setImgSrc(fileUrl);
       setFile(changedFile);
