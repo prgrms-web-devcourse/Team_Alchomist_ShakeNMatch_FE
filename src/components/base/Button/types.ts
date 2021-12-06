@@ -1,28 +1,26 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { HTMLAttributes } from 'react';
+import type { ColorKeys } from '@models/types';
 
 const BUTTON_SIZE = {
-  lg: {
-    width: '300px',
-    height: '100px'
+  short: {
+    width: '180px',
+    height: '52px'
   },
-  md: {
-    width: '200px',
-    height: '75px'
-  },
-  sm: {
-    width: '100px',
-    height: '50px'
+  long: {
+    width: '366px',
+    height: '48px'
   }
 } as const;
 type ButtonSizeKeys = keyof typeof BUTTON_SIZE;
 
-type ButtonColorType = 'BASIC_WHITE';
-
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
-  children: ReactNode;
   type: 'button' | 'reset' | 'submit';
+  block?: boolean;
   size?: ButtonSizeKeys;
-  color?: ButtonColorType;
+  basicColor?: ColorKeys;
+  hoverColor?: ColorKeys;
+  clickedColor?: ColorKeys;
+  disabledColor?: ColorKeys;
 }
 
 export type { ButtonProps };
