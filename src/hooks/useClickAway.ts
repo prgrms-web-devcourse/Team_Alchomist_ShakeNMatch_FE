@@ -16,7 +16,7 @@ const useClickAway = <T extends HTMLElement>(
     if (!el) return;
 
     const handleEvent: EventListener = (e) => {
-      if (!el.contains(e.target as Node)) {
+      if (!el.contains(e.target as HTMLElement)) {
         saveHandler.current(e);
       }
     };
