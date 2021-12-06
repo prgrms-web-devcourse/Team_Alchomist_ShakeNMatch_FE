@@ -5,26 +5,21 @@ import type { CarouselItemProps } from './types';
 
 const bounce = keyframes`
   0% {
-    transform: translate(-50%,-50%);
     opacity: 0.7;
-  }
-  50% {
-    transform: translate(-50%, calc(-50% - 3px));
+    transform: translate(0, -5px);
+  },
+  45% {
+    opacity: 1;
+    transform: translate(0, 0);
   }
   100% {
-    transform: translateY(-50%,-50%);
-    opacity: 1;
   }
 `;
 
 const StyledContainer = styled.div<
   Required<Pick<CarouselItemProps, 'backgroundColor'>>
 >`
-  display: ${({ hidden }): string => (hidden ? 'none' : 'grid')};
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: grid;
   width: 510px;
   height: 440px;
   background-color: ${({ backgroundColor }): string => COLOR[backgroundColor]};
@@ -35,7 +30,8 @@ const StyledContainer = styled.div<
   justify-items: center;
   align-items: center;
   animation: ${bounce} 0.3s ease-in-out;
-  animation-play-state: ${({ hidden }): string => (hidden ? 'paused' : 'play')};
+  animation-play-state: ${({ hidden }): string =>
+    hidden ? 'paused' : 'running'};
 `;
 
 const StyledWrapper = styled.div`
