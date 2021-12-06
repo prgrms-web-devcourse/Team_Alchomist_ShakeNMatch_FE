@@ -8,21 +8,25 @@ import type {
 import { useState, useRef } from 'react';
 import { AcceptType } from './types';
 import type { UploadProps } from './types';
-import { StyledUploadContainer, StyledInput } from './styled';
+import {
+  StyledUploadContainer,
+  StyledInput,
+  StyledUploadPreview
+} from './styled';
+import { Text } from '@base';
 import defaultUploader from '../../../assets/defaultUploader.svg';
 
 const Upload = ({
-  children,
   droppable = true,
   name = 'FileUploadInput',
-  accept = 'img',
+  accept = 'image',
   value,
   onChangeFile,
   ...props
 }: UploadProps): ReactElement => {
   const [file, setFile] = useState(value);
   const [dragging, setDragging] = useState(false);
-  const [imgSrc, setImgSrc] = useState(defaultUploader);
+  const [fileSrcUrl, setFileSrcUrl] = useState(defaultUploader);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleFileChangeOrDrop: ChangeEventHandler<HTMLInputElement> &
@@ -45,7 +49,7 @@ const Upload = ({
 
     if (changedFile.type.includes(AcceptType[accept].split('/')[0])) {
       const fileUrl = URL.createObjectURL(changedFile);
-      setImgSrc(fileUrl);
+      setFileSrcUrl(fileUrl);
       setFile(changedFile);
       onChangeFile?.(changedFile);
     }
@@ -102,9 +106,17 @@ const Upload = ({
         type='file'
         onChange={handleFileChangeOrDrop}
       />
-      {typeof children === 'function'
-        ? children(file, dragging, imgSrc)
-        : children}
+      <StyledUploadPreview
+        dragging={dragging}
+        fileSrcType={accept}
+        fileSrcUrl={fileSrcUrl}
+      >
+        {!file ? (
+          <Text size='xs'>{`파일(${accept})을 선택/드래그 해 주세요`}</Text>
+        ) : (
+          <Text size='xs'>{`새 파일(${accept})을 업로드 하려면 클릭/드래그`}</Text>
+        )}
+      </StyledUploadPreview>
     </StyledUploadContainer>
   );
 };

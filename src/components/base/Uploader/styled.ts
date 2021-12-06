@@ -19,7 +19,8 @@ const StyledUploadPreview = styled.div<PreviewProps>`
   height: 197px;
   border: 4px solid;
   border-color: ${({ dragging }): string => (!dragging ? 'black' : 'cyan')};
-  background-image: url(${({ imgSrc }): string => (imgSrc ? imgSrc : '')});
+  background-image: url(${({ fileSrcUrl }): string =>
+    fileSrcUrl ? fileSrcUrl : ''});
   background-size: cover;
   background-position: center;
 `;

@@ -4,21 +4,23 @@ interface UploadProps
   extends HTMLAttributes<HTMLDivElement | HTMLInputElement> {
   droppable: boolean;
   name?: string;
-  accept: 'img';
+  accept: AcceptTypeKeys;
   value: File | null;
   onChangeFile(file: File): void;
 }
 
 interface PreviewProps {
   dragging: boolean;
-  file: File;
-  imgSrc: string;
+  fileSrcType: AcceptTypeKeys;
+  fileSrcUrl: string;
 }
 
 const AcceptType = {
-  img: 'image/*',
+  image: 'image/*',
   video: 'video/*'
 } as const;
 
+type AcceptTypeKeys = keyof typeof AcceptType;
+
 export { AcceptType };
-export type { UploadProps, PreviewProps };
+export type { UploadProps, PreviewProps, AcceptTypeKeys };
