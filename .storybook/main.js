@@ -39,6 +39,7 @@ module.exports = {
     );
     config.resolve.alias['@models'] = path.resolve(__dirname, '../src/models');
     config.resolve.alias['@utils'] = path.resolve(__dirname, '../src/utils');
+    config.resolve.alias['@assets'] = path.resolve(__dirname, '../src/assets');
     config.resolve.alias['@routes'] = path.resolve(__dirname, '../src/routes');
     config.resolve.alias['@'] = path.resolve(__dirname, '../src');
     return config;

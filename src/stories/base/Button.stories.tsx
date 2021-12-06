@@ -78,6 +78,9 @@ export default {
         'BLUE',
         'GREEN'
       ]
+    },
+    disabled: {
+      control: 'boolean'
     }
   }
 };

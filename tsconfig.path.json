@@ -26,6 +26,8 @@
       "@models/*": ["./models/*"],
       "@utils": ["./utils"],
       "@utils/*": ["./utils/*"],
+      "@assets": ["./assets"],
+      "@assets/*": ["./assets/*"],
       "@routes": ["./routes"],
       "@routes/*": ["./routes/*"],
       "@/*": ["./*"]
