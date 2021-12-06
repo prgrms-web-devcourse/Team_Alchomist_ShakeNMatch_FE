@@ -15,6 +15,7 @@ type ButtonSizeKeys = keyof typeof BUTTON_SIZE;
 
 interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   type: 'button' | 'reset' | 'submit';
+  block?: boolean;
   size?: ButtonSizeKeys;
   basicColor?: ColorKeys;
   hoverColor?: ColorKeys;

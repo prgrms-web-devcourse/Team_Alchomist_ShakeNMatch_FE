@@ -6,6 +6,9 @@ export default {
   title: 'Component/TextButton',
   component: TextButton,
   argTypes: {
+    block: {
+      control: 'boolean'
+    },
     buttonType: {
       control: 'inline-radio',
       oprtions: ['SHORT_WHITE', 'SHORT_PINK', 'LONG_WHITE', 'LONG_PINK']

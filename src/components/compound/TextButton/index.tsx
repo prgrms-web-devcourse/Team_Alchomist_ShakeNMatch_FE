@@ -5,11 +5,12 @@ import { TEXT_BUTTON } from './types';
 
 const TextButton = ({
   children,
+  block = false,
   buttonType = 'SHORT_WHITE',
   ...props
 }: TextButtonProps): ReactElement => {
   return (
-    <Button {...TEXT_BUTTON[buttonType].buttonProps} {...props}>
+    <Button block={block} {...TEXT_BUTTON[buttonType].buttonProps} {...props}>
       <Text {...TEXT_BUTTON[buttonType].textProps}>{children}</Text>
     </Button>
   );

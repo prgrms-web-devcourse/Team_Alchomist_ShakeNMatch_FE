@@ -5,6 +5,7 @@ import type { ButtonProps } from './types';
 import { BUTTON_SIZE } from './types';
 
 const StyledButton = styled.button<ButtonProps>`
+  display: ${({ block }): string => (block ? 'block' : 'inline-block')};
   cursor: pointer;
   border: none;
   border-radius: 7px;

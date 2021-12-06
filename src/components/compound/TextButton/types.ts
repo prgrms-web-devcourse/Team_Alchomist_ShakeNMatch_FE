@@ -59,6 +59,7 @@ type TextButtonKeys = keyof typeof TEXT_BUTTON;
 
 interface TextButtonProps extends HTMLAttributes<HTMLButtonElement> {
   children: string;
+  block?: boolean;
   buttonType: TextButtonKeys;
 }
 
