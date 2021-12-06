@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-key */
-import { useState, useEffect, Children } from 'react';
+import { useState, useMemo, useCallback, useEffect, Children } from 'react';
 import type { ReactElement } from 'react';
 import { StyledCarouselContainer, TempButton1, TempButton2 } from './styled';
 import IngredientCarouselItem from '@domain/IngredientCarousel/IngredientCarouselItem';
@@ -18,7 +18,11 @@ const IngredientCarousel = ({
   // 토글된 재료 저장할 상태 및 함수 필요
   // 저장된 재료 상태를 상위로 전달해줄 함수 필요ㅌㅈ
 
-  const lastItemIdx = headItemIdx + ROW_TYPE[row].length - 1;
+  const lastItemIdx = useMemo(
+    () => headItemIdx + ROW_TYPE[row].length - 1,
+    [headItemIdx, row]
+  );
+  const TOTAL_ITEMS = useMemo(() => itemList.length, [itemList]);
 
   useEffect(() => {
     if (headItemIdx === 0) {
@@ -27,21 +31,21 @@ const IngredientCarousel = ({
     if (headItemIdx > 2) {
       setLeftButtonStatus(false);
     }
-    if (lastItemIdx >= itemList.length) {
+    if (lastItemIdx >= TOTAL_ITEMS) {
       setRightButtonStatus(true);
     }
-    if (lastItemIdx < itemList.length) {
+    if (lastItemIdx < TOTAL_ITEMS) {
       setRightButtonStatus(false);
     }
   }, [headItemIdx]);
 
-  const handlePrev = (): void => {
+  const handlePrev = useCallback((): void => {
     setHeadItemIdx((prevHead: number) => prevHead - ROW_TYPE[row].length);
-  };
+  }, [row]);
 
-  const handleNext = (): void => {
+  const handleNext = useCallback((): void => {
     setHeadItemIdx((prevHead: number) => prevHead + ROW_TYPE[row].length);
-  };
+  }, [row]);
 
   const displayItems = itemList.filter(
     (_, index) =>
