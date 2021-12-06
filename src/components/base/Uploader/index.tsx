@@ -47,7 +47,7 @@ const Upload = ({
 
     const changedFile: File = fileContainer.files && fileContainer.files[0];
 
-    if (changedFile.type.includes(AcceptType[accept].split('/')[0])) {
+    if (changedFile.type?.includes(AcceptType[accept].split('/')[0])) {
       const fileUrl = URL.createObjectURL(changedFile);
       setFileSrcUrl(fileUrl);
       setFile(changedFile);
