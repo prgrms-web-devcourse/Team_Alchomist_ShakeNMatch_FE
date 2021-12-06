@@ -1,5 +1,3 @@
-import type { ReactChild } from 'react';
-
 const TEXT_TOGGLE = {
   ingredient: {
     textProps: {
@@ -24,10 +22,5 @@ interface StyledToggleContainerProps {
   block: boolean;
 }
 
-interface StyledTextProps {
-  children?: ReactChild;
-  toggled: boolean;
-}
-
 export { TEXT_TOGGLE };
-export type { StyledToggleContainerProps, TextToggleProps, StyledTextProps };
+export type { StyledToggleContainerProps, TextToggleProps };

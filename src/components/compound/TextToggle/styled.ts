@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
-import Text from '@base/Text';
-import type { StyledToggleContainerProps, StyledTextProps } from './types';
+import type { StyledToggleContainerProps } from './types';
 import { COLOR } from '@constants';
 
 const StyledToggleContainer = styled.label<StyledToggleContainerProps>`
@@ -16,12 +15,8 @@ const StyledToggleContainer = styled.label<StyledToggleContainerProps>`
   user-select: none;
 `;
 
-const StyledText = styled(Text)<StyledTextProps>`
-  color: ${({ toggled }): string => (toggled ? 'white' : 'black')};
-`;
-
 const StyledToggleInput = styled.input`
   display: none;
 `;
 
-export { StyledToggleContainer, StyledText, StyledToggleInput };
+export { StyledToggleContainer, StyledToggleInput };

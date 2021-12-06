@@ -1,8 +1,9 @@
 import useToggle from '@hooks/useToggle';
 import type { ReactElement } from 'react';
-import { StyledToggleContainer, StyledText, StyledToggleInput } from './styled';
+import { StyledToggleContainer, StyledToggleInput } from './styled';
 import { TEXT_TOGGLE } from './types';
 import type { TextToggleProps } from './types';
+import Text from '@base/Text';
 
 const TextToggle = ({
   children,
@@ -27,10 +28,12 @@ const TextToggle = ({
         type='checkbox'
         onChange={handleChange}
       />
-
-      <StyledText toggled={checked} {...TEXT_TOGGLE[toggleType].textProps}>
+      <Text
+        color={checked ? 'BASIC_WHITE' : 'BLACK'}
+        {...TEXT_TOGGLE[toggleType].textProps}
+      >
         {children}
-      </StyledText>
+      </Text>
     </StyledToggleContainer>
   );
 };
