@@ -4,7 +4,7 @@ interface MenuTabProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactElement[];
   initialOnChild: string;
   tabText: string[];
-  onTabChange(id: string): void;
+  onTabChange?(id: string): void;
 }
 
 export type { MenuTabProps };

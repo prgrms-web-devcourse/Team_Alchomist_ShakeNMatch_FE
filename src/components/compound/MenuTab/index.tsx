@@ -20,7 +20,7 @@ const MenuTab = ({
     }
 
     setDisplayingChildIdx(id);
-    onTabChange(id);
+    onTabChange?.(id);
   };
 
   useEffect(() => {
