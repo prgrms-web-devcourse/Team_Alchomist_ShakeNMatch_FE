@@ -23,7 +23,7 @@ const useForm = ({
   validateFn
 }: UseFormProps): UseFormReturnType => {
   const [values, setValues] = useState(initialValues || {});
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<{ [key: string]: any }>({});
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange: ChangeEventHandler<HTMLSelectElement | HTMLInputElement> =
@@ -32,10 +32,13 @@ const useForm = ({
         const { name, value } = e.target;
         setValues((prevValues) => ({ ...prevValues, [name]: value }));
         if (validateOnChange) {
-          const newErrors = validateFn
-            ? validateFn({ ...values, [name]: value })
-            : {};
-          setErrors(newErrors);
+          const newError = validateFn ? validateFn({ [name]: value }) : {};
+          setErrors((prevErrors) => {
+            if (!Object.keys(newError).length) {
+              delete prevErrors[name];
+            }
+            return { ...prevErrors, ...newError };
+          });
         }
       },
       [validateOnChange, validateFn, values]
