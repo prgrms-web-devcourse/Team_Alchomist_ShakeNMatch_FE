@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 import type { ColorKeys } from '@models/types';
 
 const BUTTON_SIZE = {
@@ -21,8 +21,7 @@ const BUTTON_SIZE = {
 } as const;
 type ButtonSizeKeys = keyof typeof BUTTON_SIZE;
 
-interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
-  type: 'button' | 'reset' | 'submit';
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   block?: boolean;
   size?: ButtonSizeKeys;
   dropShadow?: boolean;

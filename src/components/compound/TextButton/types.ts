@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react';
+import type { ButtonProps } from '@base/Button/types';
 
 const TEXT_BUTTON = {
   SHORT_WHITE: {
@@ -57,7 +57,7 @@ const TEXT_BUTTON = {
 
 type TextButtonKeys = keyof typeof TEXT_BUTTON;
 
-interface TextButtonProps extends HTMLAttributes<HTMLButtonElement> {
+interface TextButtonProps extends ButtonProps {
   children: string;
   block?: boolean;
   buttonType: TextButtonKeys;

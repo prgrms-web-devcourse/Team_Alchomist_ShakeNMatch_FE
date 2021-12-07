@@ -1,8 +1,8 @@
 import Icon from '@base/Icon';
 import styled from '@emotion/styled';
 import type { IconProps } from '@base/Icon/types';
-import { ICON_TYPE } from '@constants/icon';
 import type { ReactElement } from 'react';
+import { ICON_TYPES } from '@constants/icon';
 
 export default {
   title: 'Component/Base/Icon',
@@ -11,7 +11,7 @@ export default {
     type: {
       control: 'select',
       defaultValue: 'arrowDownNavy',
-      options: Object.keys(ICON_TYPE)
+      options: Object.keys(ICON_TYPES)
     }
   }
 };
