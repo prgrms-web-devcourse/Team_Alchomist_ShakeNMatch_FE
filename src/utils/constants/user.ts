@@ -19,15 +19,37 @@ const USER_FORM_LABEL_TEXT = {
 
 const USER_VALIDATE_ERROR_MESSAGES = {
   nickname: '2이상 12이하의 글자를 입력하세요.',
-  gender: '',
+  gender: '성별을 선택해주세요.',
   age: '20세 이상만 이용가능합니다.',
-  mbti: ''
+  mbti: 'MBTI를 선택해주세요.'
 };
+const USER_GENDER = ['남자', '여자'] as const;
+
+const USER_MBTI = [
+  'INTJ',
+  'INTP',
+  'ENTJ',
+  'ENTP',
+  'INFJ',
+  'INFP',
+  'ENFJ',
+  'ENFP',
+  'ISTJ',
+  'ISFJ',
+  'ESTJ',
+  'ESFJ',
+  'ISTP',
+  'ISFP',
+  'ESTP',
+  'ESFP'
+] as const;
 
 export {
   MIN_NICKNAME_LENGTH,
   MAX_NICKNAME_LENGTH,
   MIN_AGE,
   USER_FORM_LABEL_TEXT,
-  USER_VALIDATE_ERROR_MESSAGES
+  USER_VALIDATE_ERROR_MESSAGES,
+  USER_GENDER,
+  USER_MBTI
 };
