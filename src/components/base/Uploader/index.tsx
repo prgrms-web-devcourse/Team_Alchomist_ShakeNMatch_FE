@@ -1,9 +1,9 @@
 import type {
   ChangeEvent,
   ChangeEventHandler,
-  DragEvent,
   DragEventHandler,
-  ReactElement
+  ReactElement,
+  DragEvent
 } from 'react';
 import { useState, useRef } from 'react';
 import { AcceptType } from './types';
@@ -32,29 +32,29 @@ const Upload = ({
   const handleFileChangeOrDrop: ChangeEventHandler<HTMLInputElement> &
     DragEventHandler<HTMLDivElement> = (
     e: ChangeEvent<HTMLInputElement> & DragEvent<HTMLDivElement>
-  ): void => {
-    let fileContainer: HTMLInputElement | DataTransfer;
+  ) => {
+    let fileContainer: HTMLInputElement | DataTransfer | null = null;
 
     if (droppable && e.dataTransfer) {
       e.preventDefault();
       e.stopPropagation();
       fileContainer = e.dataTransfer;
-    } else {
+      setDragging(false);
+    } else if (e.target instanceof HTMLInputElement) {
       fileContainer = e.target;
     }
 
-    if (!fileContainer.files) return;
+    if (!fileContainer) return;
 
-    const changedFile: File = fileContainer.files && fileContainer.files[0];
+    const changedFile: File | null =
+      fileContainer.files && fileContainer.files[0];
 
-    if (changedFile.type?.includes(AcceptType[accept].split('/')[0])) {
+    if (changedFile?.type?.includes(AcceptType[accept].split('/')[0])) {
       const fileUrl = URL.createObjectURL(changedFile);
       setFileSrcUrl(fileUrl);
       setFile(changedFile);
       onChangeFile?.(changedFile);
     }
-
-    if (e.dataTransfer) setDragging(false);
   };
 
   const handleChooseFile = (): void => {

@@ -10,6 +10,9 @@ export default {
     accept: {
       control: 'inline-radio',
       options: Object.keys(AcceptType)
+    },
+    droppable: {
+      control: 'boolean'
     }
   }
 };
