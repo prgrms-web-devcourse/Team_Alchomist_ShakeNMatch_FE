@@ -10,7 +10,7 @@ const TEXT_BUTTON = {
       clickedColor: 'BASIC_PINK'
     },
     textProps: {
-      size: 'sm',
+      size: 'xs',
       color: 'BLACK'
     }
   },
@@ -23,7 +23,7 @@ const TEXT_BUTTON = {
       clickedColor: 'STRONG_PINK'
     },
     textProps: {
-      size: 'sm',
+      size: 'xs',
       color: 'BASIC_WHITE'
     }
   },
@@ -36,7 +36,7 @@ const TEXT_BUTTON = {
       clickedColor: 'BASIC_PINK'
     },
     textProps: {
-      size: 'md',
+      size: 'xs',
       color: 'BLACK'
     }
   },
@@ -49,7 +49,7 @@ const TEXT_BUTTON = {
       clickedColor: 'STRONG_PINK'
     },
     textProps: {
-      size: 'md',
+      size: 'xs',
       color: 'BASIC_WHITE'
     }
   }
