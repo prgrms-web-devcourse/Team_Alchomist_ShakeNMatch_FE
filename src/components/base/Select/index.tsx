@@ -1,4 +1,4 @@
-import type { ReactElement, SelectHTMLAttributes } from 'react';
+import type { ReactElement } from 'react';
 import StyledSelect from './styled';
 import type { SelectProps } from './types';
 
