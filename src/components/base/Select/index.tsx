@@ -5,12 +5,14 @@ import type { SelectProps } from './types';
 const Select = ({
   children,
   placeholder = '선택해주세요',
-  defaultValue = 'INFP',
+  value = 'default',
   ...props
 }: SelectProps): ReactElement => {
   return (
-    <StyledSelect defaultValue={defaultValue} {...props}>
-      <option disabled>{placeholder}</option>
+    <StyledSelect value={value} {...props}>
+      <option disabled value='default'>
+        {placeholder}
+      </option>
       {children}
     </StyledSelect>
   );
