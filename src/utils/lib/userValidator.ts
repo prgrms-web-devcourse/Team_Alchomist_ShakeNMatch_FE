@@ -43,7 +43,7 @@ const validateUser = (
         // validate 실패시
         errors[key] = USER_VALIDATE_ERROR_MESSAGES[key];
       }
-    } else {
+    } else if (values[key] !== '') {
       // 아무런 입력값이 없을경우
       errors[key] = USER_VALIDATE_ERROR_MESSAGES[key];
     }

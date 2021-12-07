@@ -12,7 +12,7 @@ const UserInput = ({
   inputType,
   formType,
   errorMessage,
-  value = '',
+  value,
   ...props
 }: UserInputProps & (InputProps | SelectProps)): ReactElement => {
   let inputEl;
@@ -23,7 +23,7 @@ const UserInput = ({
         <Input
           inputType='number'
           name='age'
-          value={value}
+          value={value || ''}
           {...(props as InputProps)}
         />
       );
@@ -33,14 +33,14 @@ const UserInput = ({
         <Input
           inputType='text'
           name='nickname'
-          value={value}
+          value={value || ''}
           {...(props as InputProps)}
         />
       );
       break;
     case 'gender':
       inputEl = (
-        <Select name='gender' value={value} {...(props as SelectProps)}>
+        <Select name='gender' value={value || ''} {...(props as SelectProps)}>
           {USER_GENDER.map((gender) => (
             <option key={gender} value={gender}>
               {gender}
@@ -51,7 +51,7 @@ const UserInput = ({
       break;
     case 'mbti':
       inputEl = (
-        <Select name='mbti' value={value} {...(props as SelectProps)}>
+        <Select name='mbti' value={value || ''} {...(props as SelectProps)}>
           {USER_MBTI.map((mbti) => (
             <option key={mbti} value={mbti}>
               {mbti}

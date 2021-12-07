@@ -11,7 +11,12 @@ import { Text } from '@base';
 
 const UserForm = ({
   type = 'Register',
-  initialValues = { nickname: '', gender: '', age: '', mbti: '' },
+  initialValues = {
+    nickname: null,
+    gender: null,
+    age: null,
+    mbti: null
+  },
   onValidatedValuesChanged,
   onSubmit,
   ...props
