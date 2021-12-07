@@ -2,6 +2,7 @@ import Divider from '@base/Divider';
 import TextButton from '@compound/TextButton';
 import useForm from '@hooks/useForm';
 import type { ReactElement } from 'react';
+import { useEffect, useMemo } from 'react';
 import { StyledForm } from './styled';
 import type { UserFormProps } from './types';
 import UserInput from '../../compound/UserInput';
@@ -11,6 +12,7 @@ import { Text } from '@base';
 const UserForm = ({
   type = 'Register',
   initialValues = { nickname: '', gender: '', age: '', mbti: '' },
+  onValidatedValuesChanged,
   onSubmit,
   ...props
 }: UserFormProps): ReactElement => {
@@ -20,6 +22,17 @@ const UserForm = ({
     onSubmit,
     validateFn: validateUser
   });
+  console.log(Object.keys(values));
+  const validatedValues = useMemo(
+    () =>
+      Object.values(values).filter((value) => value).length -
+      Object.keys(errors).length,
+    [values, errors]
+  );
+
+  useEffect(() => {
+    onValidatedValuesChanged?.(validatedValues);
+  }, [validatedValues, onValidatedValuesChanged]);
 
   if (isLoading) {
     return <Text>isLoading</Text>;

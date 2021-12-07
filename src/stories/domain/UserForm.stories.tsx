@@ -12,6 +12,9 @@ export const Default = (args: UserFormProps): ReactElement => (
     onSubmit={(e): void => {
       alert(JSON.stringify(e));
     }}
+    onValidatedValuesChanged={(value): void => {
+      alert(value);
+    }}
     {...args}
   />
 );
