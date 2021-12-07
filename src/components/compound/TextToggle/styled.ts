@@ -8,7 +8,7 @@ const StyledToggleContainer = styled.label<StyledToggleContainerProps>`
   height: 33px;
   border-radius: 16px;
   background-color: ${({ toggled }): string =>
-    toggled ? COLOR.NAVY : COLOR.BASIC_WHITE};
+    toggled ? COLOR.NAVY : COLOR.LIGHT_WHITE};
   text-align: center;
   line-height: 2.2;
   cursor: pointer;
