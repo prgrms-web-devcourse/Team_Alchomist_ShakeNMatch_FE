@@ -1,5 +1,12 @@
 /* eslint-disable react/jsx-key */
-import { useState, useMemo, useCallback, useEffect, Children } from 'react';
+import {
+  useState,
+  useMemo,
+  useCallback,
+  useEffect,
+  Children,
+  useRef
+} from 'react';
 import type { ReactElement } from 'react';
 import { StyledCarouselContainer, TempButton1, TempButton2 } from './styled';
 import IngredientCarouselItem from '@domain/IngredientCarousel/IngredientCarouselItem';
@@ -10,7 +17,10 @@ const IngredientCarousel = ({
   itemList = [],
   row = 'single'
 }: IngredientCarouselProps): ReactElement => {
-  const [headItemIdx, setHeadItemIdx] = useState(0);
+  const [itemIdx, setHeadItemIdx] = useState({
+    head: 0,
+    tail: 0 + (ROW_TYPE[row].length - 1)
+  });
   const [leftButtonStatus, setLeftButtonStatus] = useState(true);
   const [rightButtonStatus, setRightButtonStatus] = useState(false);
   // 버튼 IconButton으로 변경 필요
@@ -18,42 +28,56 @@ const IngredientCarousel = ({
   // 토글된 재료 저장할 상태 및 함수 필요
   // 저장된 재료 상태를 상위로 전달해줄 함수 필요ㅌㅈ
 
-  const lastItemIdx = useMemo(
-    () => headItemIdx + ROW_TYPE[row].length - 1,
-    [headItemIdx, row]
-  );
+  // const lastItemIdx = useMemo(
+  //   () => itemIdx.head + itemIdx.tail,
+  //   [itemIdx, row]
+  // );
   const TOTAL_ITEMS = useMemo(() => itemList.length, [itemList]);
 
   useEffect(() => {
-    if (headItemIdx === 0) {
+    if (itemIdx.head === 0) {
       setLeftButtonStatus(true);
     }
-    if (headItemIdx > 2) {
+    if (itemIdx.head > ROW_TYPE[row].length - 1) {
       setLeftButtonStatus(false);
     }
-    if (lastItemIdx >= TOTAL_ITEMS) {
+    if (itemIdx.tail >= TOTAL_ITEMS) {
       setRightButtonStatus(true);
     }
-    if (lastItemIdx < TOTAL_ITEMS) {
+    if (itemIdx.tail < TOTAL_ITEMS) {
       setRightButtonStatus(false);
     }
-  }, [headItemIdx]);
+  }, [itemIdx]);
 
   const handlePrev = useCallback((): void => {
-    setHeadItemIdx((prevHead: number) => prevHead - ROW_TYPE[row].length);
+    setHeadItemIdx((prevItemIdx) => ({
+      head: prevItemIdx.head - ROW_TYPE[row].length,
+      tail: prevItemIdx.tail - ROW_TYPE[row].length
+    }));
   }, [row]);
 
   const handleNext = useCallback((): void => {
-    setHeadItemIdx((prevHead: number) => prevHead + ROW_TYPE[row].length);
+    setHeadItemIdx((prevItemIdx) => ({
+      head: prevItemIdx.head + ROW_TYPE[row].length,
+      tail: prevItemIdx.tail + ROW_TYPE[row].length
+    }));
   }, [row]);
 
   const displayItems = itemList.filter(
     (_, index) =>
-      index >= headItemIdx && index < headItemIdx + ROW_TYPE[row].length
+      index >= itemIdx.head && index < itemIdx.head + ROW_TYPE[row].length
   );
 
+  const wheelRef = useRef<HTMLDivElement>(null);
+
+  const handleWheel = (e: WheelEvent): void => {
+    console.log(e.deltaX, e.deltaY);
+  };
+
+  wheelRef.current?.addEventListener('wheel', handleWheel);
+
   return (
-    <StyledCarouselContainer row={row}>
+    <StyledCarouselContainer ref={wheelRef} row={row}>
       <TempButton1 disabled={leftButtonStatus} onClick={handlePrev} />
       {Children.toArray(
         displayItems.map((item) => <IngredientCarouselItem text={item.name} />)
