@@ -18,7 +18,7 @@ const $starEmpty = AiOutlineStar;
 const $flagFull = FaBookmark;
 const $flagEmpty = FaRegBookmark;
 
-export const ICON_TYPE = {
+const ICON_TYPES = {
   arrowDownNavy: $arrowDown,
   arrowLeftNavy: $arrowLeft,
   arrowRightNavy: $arrowRight,
@@ -32,4 +32,6 @@ export const ICON_TYPE = {
   starEmpty: $starEmpty,
   flagFull: $flagFull,
   flagEmpty: $flagEmpty
-};
+} as const;
+
+export { ICON_TYPES };
