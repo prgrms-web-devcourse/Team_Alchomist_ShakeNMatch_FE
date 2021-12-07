@@ -10,9 +10,7 @@ const Select = ({
 }: SelectProps): ReactElement => {
   return (
     <StyledSelect value={value} {...props}>
-      <option disabled value='default'>
-        {placeholder}
-      </option>
+      <option value='default'>{placeholder}</option>
       {children}
     </StyledSelect>
   );

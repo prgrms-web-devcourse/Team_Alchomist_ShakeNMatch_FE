@@ -3,7 +3,7 @@ import Input from '@base/Input';
 import type { InputProps } from '@base/Input/types';
 import Select from '@base/Select';
 import type { SelectProps } from '@base/Select/types';
-import { MBTI, USER_FORM_LABEL_TEXT } from '@constants';
+import { USER_FORM_LABEL_TEXT, USER_GENDER, USER_MBTI } from '@constants';
 import type { ReactElement } from 'react';
 import { StyledErrorContainer, StyledLabel } from './styled';
 import type { UserInputProps } from './types';
@@ -41,16 +41,19 @@ const UserInput = ({
     case 'gender':
       inputEl = (
         <Select name='gender' value={value} {...(props as SelectProps)}>
-          <option>남자</option>
-          <option>여자</option>
+          {USER_GENDER.map((gender) => (
+            <option key={gender} value={gender}>
+              {gender}
+            </option>
+          ))}
         </Select>
       );
       break;
     case 'mbti':
       inputEl = (
         <Select name='mbti' value={value} {...(props as SelectProps)}>
-          {MBTI.map((mbti) => (
-            <option key={mbti} value={mbti.toLowerCase()}>
+          {USER_MBTI.map((mbti) => (
+            <option key={mbti} value={mbti}>
               {mbti}
             </option>
           ))}

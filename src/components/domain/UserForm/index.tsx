@@ -10,7 +10,7 @@ import { Text } from '@base';
 
 const UserForm = ({
   type = 'Register',
-  initialValues,
+  initialValues = { nickname: '', gender: '', age: '', mbti: '' },
   onSubmit,
   ...props
 }: UserFormProps): ReactElement => {
@@ -24,8 +24,6 @@ const UserForm = ({
   if (isLoading) {
     return <Text>isLoading</Text>;
   }
-
-  console.log(values, errors);
 
   return (
     <StyledForm onSubmit={handleSubmit} {...props}>
