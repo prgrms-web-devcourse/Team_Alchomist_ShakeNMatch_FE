@@ -3,12 +3,12 @@ import type { ColorKeys } from '@models/types';
 
 const BUTTON_SIZE = {
   short: {
-    width: '180px',
-    height: '52px'
+    width: '90px',
+    height: '30px'
   },
   long: {
-    width: '366px',
-    height: '48px'
+    width: '220px',
+    height: '30px'
   },
   kakao: {
     width: '300px',
