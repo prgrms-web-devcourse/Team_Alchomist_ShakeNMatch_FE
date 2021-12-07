@@ -22,7 +22,6 @@ const UserForm = ({
     onSubmit,
     validateFn: validateUser
   });
-  console.log(Object.keys(values));
   const validatedValues = useMemo(
     () =>
       Object.values(values).filter((value) => value).length -
