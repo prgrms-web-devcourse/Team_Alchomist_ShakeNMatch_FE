@@ -1,10 +1,9 @@
 import type { TextSizeKeys } from '@models';
-import type { HTMLAttributes } from 'react';
+import type { InputHTMLAttributes } from 'react';
 
-interface InputProps extends HTMLAttributes<HTMLInputElement> {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   inputType?: 'text' | 'number';
   fontSize?: TextSizeKeys;
-  maxLength?: number;
 }
 
 export type { InputProps };

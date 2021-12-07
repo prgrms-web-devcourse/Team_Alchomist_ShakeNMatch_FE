@@ -1,19 +1,6 @@
-type IconType =
-  | 'starFull'
-  | 'starEmpty'
-  | 'flagFull'
-  | 'flagEmpty'
-  | 'arrowDownNavy'
-  | 'arrowUpNavy'
-  | 'arrowRightNavy'
-  | 'arrowLeftNavy'
-  | 'arrowDownWhite'
-  | 'arrowUpWhite'
-  | 'arrowRightWhite'
-  | 'arrowLeftWhite'
-  | 'back';
+import type { SVGAttributes } from 'react';
 
-export const ICON_SIZE = {
+const ICON_SIZE = {
   starFull: {
     width: '20px',
     height: '20px'
@@ -66,10 +53,25 @@ export const ICON_SIZE = {
     width: '60px',
     height: '60px'
   }
-};
+} as const;
 
-interface IconProps {
+type IconType =
+  | 'starFull'
+  | 'starEmpty'
+  | 'flagFull'
+  | 'flagEmpty'
+  | 'arrowDownNavy'
+  | 'arrowUpNavy'
+  | 'arrowRightNavy'
+  | 'arrowLeftNavy'
+  | 'arrowDownWhite'
+  | 'arrowUpWhite'
+  | 'arrowRightWhite'
+  | 'arrowLeftWhite'
+  | 'back';
+interface IconProps extends SVGAttributes<HTMLOrSVGElement> {
   type: IconType;
 }
 
-export type { IconType, IconProps };
+export { ICON_SIZE };
+export type { IconProps, IconType };

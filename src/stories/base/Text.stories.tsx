@@ -1,7 +1,6 @@
 import Text from '@base/Text';
 import type { TextProps } from '@base/Text/types';
-import { TEXT_SIZE } from '@base/Text/types';
-import { COLOR } from '@constants';
+import { COLOR, TEXT_SIZE } from '@constants';
 
 export default {
   title: 'Component/Base/Text',

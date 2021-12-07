@@ -3,7 +3,7 @@ import Button from '@base/Button';
 import type { ButtonProps } from '@base/Button/types';
 
 export default {
-  title: 'Component/Button',
+  title: 'Component/Base/Button',
   component: Button,
   argTypes: {
     type: {
