@@ -1,5 +1,5 @@
 import Select from '@base/Select';
-import { MBTI } from '@constants';
+import { USER_MBTI } from '@constants';
 import type { ReactElement } from 'react';
 
 export default {
@@ -13,7 +13,7 @@ export const Default = (): ReactElement => (
       console.log(e);
     }}
   >
-    {MBTI.map((mbti) => (
+    {USER_MBTI.map((mbti) => (
       <option key={mbti} value={mbti.toLowerCase()}>
         {mbti}
       </option>

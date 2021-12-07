@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
 import SectionDivider from '@base/SectionDivider';
 import type { SectionDividerProps } from '@base/SectionDivider/types';
+import { COLOR } from '@constants';
 import styled from '@emotion/styled';
 import type { ReactElement } from 'react';
 
@@ -61,13 +62,13 @@ export default {
 
 const StyledSection = styled.div`
   &:nth-of-type(3n) {
-    background-color: aliceblue;
+    background-color: ${COLOR.BLUE};
   }
   &:nth-of-type(3n + 1) {
-    background-color: darkblue;
+    background-color: ${COLOR.GREEN};
   }
   &:nth-of-type(3n + 2) {
-    background-color: darkcyan;
+    background-color: ${COLOR.LIGHT_PINK};
   }
 `;
 
