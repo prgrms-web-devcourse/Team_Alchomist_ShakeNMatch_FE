@@ -2,6 +2,8 @@ import {
   MAX_NICKNAME_LENGTH,
   MIN_AGE,
   MIN_NICKNAME_LENGTH,
+  USER_GENDER,
+  USER_MBTI,
   USER_VALIDATE_ERROR_MESSAGES
 } from '@constants';
 import type {
@@ -11,15 +13,19 @@ import type {
   ValidateUserArgsType
 } from '@models';
 
-const validateNickName: ValidateFnType = (values) =>
-  values.length >= MIN_NICKNAME_LENGTH && values.length <= MAX_NICKNAME_LENGTH;
-const validateAge: ValidateFnType = (values) => parseInt(values, 10) >= MIN_AGE;
+const validateNickName: ValidateFnType = (value) =>
+  value.length >= MIN_NICKNAME_LENGTH && value.length <= MAX_NICKNAME_LENGTH;
+const validateAge: ValidateFnType = (value) => parseInt(value, 10) >= MIN_AGE;
+const validateGender: ValidateFnType = (value) =>
+  value.length > 0 && USER_GENDER.some((gender) => gender === value);
+const validateMBTI: ValidateFnType = (value) =>
+  value.length > 0 && USER_MBTI.some((mbti) => mbti === value);
 
 const validateFunctions = {
   nickname: validateNickName,
   age: validateAge,
-  gender: null,
-  mbti: null
+  gender: validateGender,
+  mbti: validateMBTI
 } as const;
 
 const validateUser = (
@@ -30,10 +36,12 @@ const validateUser = (
   const validateKeys = Object.keys(values) as ValidateKeys[];
   validateKeys.forEach((key) => {
     if (values[key]) {
-      const isValidated = validateFunctions[key]?.(values[key]);
+      const isValidated = validateFunctions[key](values[key]);
       if (isValidated === false) {
         errors[key] = USER_VALIDATE_ERROR_MESSAGES[key];
       }
+    } else {
+      errors[key] = USER_VALIDATE_ERROR_MESSAGES[key];
     }
   });
 
