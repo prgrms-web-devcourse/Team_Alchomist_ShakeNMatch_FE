@@ -41,30 +41,28 @@ const FormValidateIdentifier = ({
   }, [flowRef.current]);
 
   return (
-    <div>
-      <Glass
-        className='glass'
+    <Glass
+      className='glass'
+      currentNum={tasksDone}
+      fulfilledNum={totalTasksToDone}
+      height={height}
+      width={width}
+      {...props}
+    >
+      <WaterFlow
+        ref={flowRef}
         currentNum={tasksDone}
         fulfilledNum={totalTasksToDone}
         height={height}
         width={width}
-        {...props}
-      >
-        <WaterFlow
-          ref={flowRef}
-          currentNum={tasksDone}
-          fulfilledNum={totalTasksToDone}
-          height={height}
-          width={width}
-        />
-        <Gage
-          currentNum={tasksDone}
-          fulfilledNum={totalTasksToDone}
-          height={height}
-          width={width}
-        />
-      </Glass>
-    </div>
+      />
+      <Gage
+        currentNum={tasksDone}
+        fulfilledNum={totalTasksToDone}
+        height={height}
+        width={width}
+      />
+    </Glass>
   );
 };
 
