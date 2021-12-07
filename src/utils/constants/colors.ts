@@ -1,6 +1,6 @@
 const COLOR = {
   BASIC_WHITE: '#FFFFFF',
-  LIGHT_WHITE: '#f6faf7',
+  LIGHT_WHITE: '#fbfbfb',
   LIGHT_GRAY: '#E5E0E0',
   DARK_GRAY: '#C4C4C4',
   BLACK: '#090A0A',
