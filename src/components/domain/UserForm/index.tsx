@@ -5,7 +5,7 @@ import type { ReactElement } from 'react';
 import { StyledForm } from './styled';
 import type { UserFormProps } from './types';
 import UserInput from '../../compound/UserInput';
-import { validateUser } from '@utils/lib/validator';
+import { validateUser } from '@utils/lib/userValidator';
 import { Text } from '@base';
 
 const UserForm = ({
