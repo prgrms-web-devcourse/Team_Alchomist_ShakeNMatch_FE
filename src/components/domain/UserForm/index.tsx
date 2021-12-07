@@ -28,6 +28,10 @@ const UserForm = ({
       Object.keys(errors).length,
     [values, errors]
   );
+  const isValuesAllValidated = useMemo(
+    () => Object.keys(initialValues).length - validatedValues === 0,
+    [initialValues, validatedValues]
+  );
 
   useEffect(() => {
     onValidatedValuesChanged?.(validatedValues);
@@ -36,7 +40,6 @@ const UserForm = ({
   if (isLoading) {
     return <Text>isLoading</Text>;
   }
-
   return (
     <StyledForm onSubmit={handleSubmit} {...props}>
       <UserInput
@@ -73,7 +76,11 @@ const UserForm = ({
         onChange={handleChange}
       />
       <Divider color='BASIC_WHITE' />
-      <TextButton buttonType='LONG_PINK' type='submit'>
+      <TextButton
+        buttonType='LONG_PINK'
+        disabled={!isValuesAllValidated}
+        type='submit'
+      >
         {type === 'Register' ? '회원가입' : '수정하기'}
       </TextButton>
     </StyledForm>
