@@ -17,6 +17,6 @@ export const Default = (): ReactElement => (
     toggleType='ingredient'
     onChange={handleToggle}
   >
-    재료명
+    세상에서 가장 긴 이름의 술
   </TextToggle>
 );
