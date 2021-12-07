@@ -12,7 +12,7 @@ interface TextToggleProps {
   children: string;
   block: boolean;
   name: string;
-  on?: boolean;
+  initialState?: boolean;
   toggleType: TextToggleKeys;
   onChange(): void;
 }

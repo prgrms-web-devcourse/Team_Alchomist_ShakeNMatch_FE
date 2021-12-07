@@ -1,13 +1,11 @@
-import type { HTMLAttributes } from 'react';
+import type { ImgHTMLAttributes } from 'react';
 
 type ImageMode = 'cover' | 'fill' | 'contain';
 
-interface ImageProps extends HTMLAttributes<HTMLImageElement> {
+interface ImageProps extends ImgHTMLAttributes<HTMLImageElement> {
   lazy?: boolean;
-  src: string;
   width?: number | string;
   height?: number | string;
-  alt?: string;
   mode: ImageMode;
   block?: boolean;
   placeholder?: string;
@@ -16,4 +14,4 @@ interface ImageProps extends HTMLAttributes<HTMLImageElement> {
 
 type StyledImgProps = Pick<ImageProps, 'width' | 'height' | 'mode' | 'block'>;
 
-export type { ImageProps, StyledImgProps };
+export type { ImageMode, ImageProps, StyledImgProps };

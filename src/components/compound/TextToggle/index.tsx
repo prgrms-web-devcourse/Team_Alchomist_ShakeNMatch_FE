@@ -9,11 +9,11 @@ const TextToggle = ({
   children,
   block = false,
   name,
-  on = false,
+  initialState = false,
   toggleType = 'ingredient',
   onChange
 }: TextToggleProps): ReactElement => {
-  const [checked, toggle] = useToggle(on);
+  const [isToggled, toggle] = useToggle(initialState);
 
   const handleChange = (): void => {
     toggle();
@@ -21,15 +21,15 @@ const TextToggle = ({
   };
 
   return (
-    <StyledToggleContainer block={block} toggled={checked}>
+    <StyledToggleContainer block={block} toggled={isToggled}>
       <StyledToggleInput
-        checked={checked}
+        checked={isToggled}
         name={name}
         type='checkbox'
         onChange={handleChange}
       />
       <Text
-        color={checked ? 'BASIC_WHITE' : 'BLACK'}
+        color={isToggled ? 'BASIC_WHITE' : 'BLACK'}
         {...TEXT_TOGGLE[toggleType].textProps}
       >
         {children}
