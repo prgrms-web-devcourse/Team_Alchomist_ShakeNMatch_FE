@@ -64,6 +64,7 @@ module.exports = {
       }
     ],
     '@typescript-eslint/no-unused-expressions': 'error',
-    '@typescript-eslint/no-duplicate-imports': 'error'
+    '@typescript-eslint/no-duplicate-imports': 'error',
+    '@typescript-eslint/jsx-key': 'off'
   }
 };
