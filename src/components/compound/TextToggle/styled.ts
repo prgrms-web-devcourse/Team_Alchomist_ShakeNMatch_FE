@@ -13,6 +13,7 @@ const StyledToggleContainer = styled.label<StyledToggleContainerProps>`
   line-height: 2.2;
   cursor: pointer;
   user-select: none;
+  padding: 0 20px;
 `;
 
 const StyledToggleInput = styled.input`
