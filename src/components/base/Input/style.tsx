@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import type { InputProps } from './types';
+
 import { TEXT_SIZE } from '@utils/constants';
 
 const StyledInput = styled.input<Required<Pick<InputProps, 'fontSize'>>>`
