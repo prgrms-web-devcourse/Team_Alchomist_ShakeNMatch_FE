@@ -4,7 +4,7 @@ import Modal from '@base/Modal';
 import type { ModalProps } from '@base/Modal/types';
 
 export default {
-  title: 'Component/base/Modal',
+  title: 'Component/Base/Modal',
   component: Modal,
   argTypes: {
     size: {

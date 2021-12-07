@@ -3,7 +3,7 @@ import TextButton from '@components/compound/TextButton';
 import type { ReactElement } from 'react';
 
 export default {
-  title: 'Component/TextButton',
+  title: 'Component/Compound/TextButton',
   component: TextButton,
   argTypes: {
     block: {
