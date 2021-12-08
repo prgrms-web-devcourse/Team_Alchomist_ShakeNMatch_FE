@@ -1,5 +1,6 @@
 import type { TEXT_SIZE, TEXT_WEIGHT } from '@constants';
 import type { COLOR } from '@constants/colors';
+import type { THEMES } from '@constants/themes';
 
 type ColorKeys = keyof typeof COLOR;
 type ColorType = typeof COLOR[ColorKeys];
@@ -11,6 +12,8 @@ type ITextSize = typeof TEXT_SIZE[TextSizeKeys];
 type TextWeightKeys = keyof typeof TEXT_WEIGHT;
 type ITextWeight = typeof TEXT_WEIGHT[TextWeightKeys];
 
+type ITHEME = keyof typeof THEMES;
+
 export type {
   ColorKeys,
   ColorType,
@@ -18,5 +21,6 @@ export type {
   ITextSize,
   ITextWeight,
   TextSizeKeys,
-  TextWeightKeys
+  TextWeightKeys,
+  ITHEME
 };
