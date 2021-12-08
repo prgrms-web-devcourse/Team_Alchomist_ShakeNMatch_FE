@@ -11,7 +11,7 @@ export const Default = (): ReactElement => {
   return (
     <IngredientToggleList
       ingredients={DUMMY}
-      onSelect={(): void => {
+      onItemSelected={(): void => {
         console.log('재료 변경');
       }}
     />

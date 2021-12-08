@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 
 const StyledContainer = styled.div`
-  border: 1px solid;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import { useState, Children, useEffect } from 'react';
 import type { ReactElement } from 'react';
 import TextToggle from '@compound/TextToggle';
@@ -7,17 +6,15 @@ import type { IngredientToggleListProps } from './types';
 
 const IngredientToggleList = ({
   ingredients,
-  onSelect
+  onItemSelected,
+  ...props
 }: IngredientToggleListProps): ReactElement => {
   const [selectedIngredients, setSelectedIngredients] = useState(
     new Set<string>([])
   );
 
-  // 주석
-  console.log(selectedIngredients);
-
   useEffect(() => {
-    onSelect(selectedIngredients);
+    onItemSelected(selectedIngredients);
   }, [selectedIngredients]);
 
   const handleToggle = (toggledIngredient: string): void => {
@@ -39,9 +36,10 @@ const IngredientToggleList = ({
   };
 
   return (
-    <StyledContainer>
+    <StyledContainer {...props}>
       {Children.toArray(
         ingredients.map((ingredient) => (
+          // eslint-disable-next-line react/jsx-key
           <TextToggle name={ingredient.name} onChange={handleToggle}>
             {ingredient.name}
           </TextToggle>

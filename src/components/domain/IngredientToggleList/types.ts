@@ -1,10 +1,12 @@
+import type { HTMLAttributes } from 'react';
+
 interface Ingredient {
   name: string;
 }
 
-interface IngredientToggleListProps {
+interface IngredientToggleListProps extends HTMLAttributes<HTMLDivElement> {
   ingredients: Ingredient[];
-  onSelect(selectedIngredients: Set<string>): void;
+  onItemSelected(selectedIngredients: Set<string>): void;
 }
 
 export type { IngredientToggleListProps };
