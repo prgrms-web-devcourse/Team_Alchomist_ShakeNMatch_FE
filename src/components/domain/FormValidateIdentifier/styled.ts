@@ -5,6 +5,7 @@ import styled from '@emotion/styled';
 import type { GageProps, GlassProps } from './types';
 
 const FULL_DEGREE = 360;
+const HALF = 1.8;
 
 const flow = keyframes`
   0% {
@@ -37,6 +38,36 @@ const shake = keyframes`
   }
 `;
 
+const waterLikeAnimation = keyframes`
+  25%{
+    transform: skew(2deg, 2deg) scale(1.05); 
+  }
+  50% {
+    transform: skew(0,0) scale(1);
+  }
+  75%{
+    transform: skew(-2deg, -3deg) scale(1.05);  
+  }
+`;
+
+const rotateSlowly = keyframes`
+  0% {
+    transform: rotate(10deg);
+  }
+  25%{
+    transform: rotate(14deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  75%{
+    transform: rotate(6deg);
+  }
+  100%{
+    transform: rotate(10deg);
+  }
+`;
+
 const Glass = styled.div<GlassProps>`
   position: relative;
   border-right: 2px solid ${COLOR.LIGHT_WHITE};
@@ -62,6 +93,7 @@ const Glass = styled.div<GlassProps>`
       transition: 'box-shadow 0.8s ease-in'
     }}
   transform: rotate(10deg);
+  animation: ${rotateSlowly} linear 10s infinite;
 
   &:hover {
     animation: ${shake} 0.3s ease-in-out 2;
@@ -92,18 +124,6 @@ const WaterFlow = styled.div<GlassProps>`
   animation-play-state: paused;
 `;
 
-const waterLikeAnimation = keyframes`
-  25%{
-    transform: skew(2deg, 2deg) scale(1.05); 
-  }
-  50% {
-    transform: skew(0,0) scale(1);
-  }
-  75%{
-    transform: skew(-2deg, -3deg) scale(1.05);  
-  }
-`;
-
 const Gage = styled.div<GageProps>`
   position: absolute;
   width: ${({ width }): string => `calc(${width} + 50%)`};
@@ -113,11 +133,16 @@ const Gage = styled.div<GageProps>`
     `calc(${height} * ${currentNum} / ${fulfilledNum} + 15px)`};
   bottom: -20px;
   left: -25%;
-  transition: height 0.2s ease-in-out;
+  transition: height 0.5s 100ms cubic-bezier(0.96, 0.01, 0.73, 0.9),
+    filter 0.5s ease-in-out;
   animation: ${waterLikeAnimation} 3s linear infinite;
   background: linear-gradient(${COLOR.ORANGE}, ${COLOR.STRONG_PINK});
   filter: ${({ currentNum, fulfilledNum }): string =>
-    `hue-rotate(${(FULL_DEGREE * currentNum) / fulfilledNum}deg)`};
+    `hue-rotate(${
+      currentNum < 2 || currentNum === fulfilledNum
+        ? (FULL_DEGREE * currentNum) / fulfilledNum
+        : ((FULL_DEGREE * currentNum) / fulfilledNum) * HALF
+    }deg)`};
   z-index: 2;
 `;
 
