@@ -7,27 +7,31 @@ import type { IngredientToggleListProps } from './types';
 const IngredientToggleList = ({
   ingredients,
   onItemSelected,
+  userIngredients,
   ...props
 }: IngredientToggleListProps): ReactElement => {
   const [selectedIngredients, setSelectedIngredients] = useState(
-    new Set<string>([])
+    new Set(userIngredients)
   );
 
   useEffect(() => {
-    onItemSelected(selectedIngredients);
+    onItemSelected?.(Array.from(selectedIngredients));
   }, [selectedIngredients]);
 
-  const handleToggle = (toggledIngredient: string): void => {
-    if (selectedIngredients.has(toggledIngredient)) {
+  const handleToggle = (toggledIngredient: {
+    name: string;
+    toggled: boolean;
+  }): void => {
+    if (selectedIngredients.has(toggledIngredient.name)) {
       setSelectedIngredients((prevIngredients) => {
-        prevIngredients.delete(toggledIngredient);
+        prevIngredients.delete(toggledIngredient.name);
         const nextIngredients = new Set(prevIngredients);
 
         return nextIngredients;
       });
     } else {
       setSelectedIngredients((prevIngredients) => {
-        prevIngredients.add(toggledIngredient);
+        prevIngredients.add(toggledIngredient.name);
         const nextIngredients = new Set(prevIngredients);
 
         return nextIngredients;
@@ -40,7 +44,11 @@ const IngredientToggleList = ({
       {Children.toArray(
         ingredients.map((ingredient) => (
           // eslint-disable-next-line react/jsx-key
-          <TextToggle name={ingredient.name} onChange={handleToggle}>
+          <TextToggle
+            initialState={selectedIngredients.has(ingredient.name)}
+            name={ingredient.name}
+            onChange={handleToggle}
+          >
             {ingredient.name}
           </TextToggle>
         ))

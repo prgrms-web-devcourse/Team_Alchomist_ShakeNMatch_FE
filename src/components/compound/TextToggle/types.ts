@@ -14,7 +14,7 @@ interface TextToggleProps {
   name: string;
   initialState?: boolean;
   toggleType?: TextToggleKeys;
-  onChange(e: string): void;
+  onChange?(toggledIngredient: { name: string; toggled: boolean }): void;
 }
 
 interface StyledToggleContainerProps {

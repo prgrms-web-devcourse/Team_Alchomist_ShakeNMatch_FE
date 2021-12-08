@@ -7,26 +7,31 @@ export default {
   component: IngredientToggleList
 };
 
+const userIngredients = ['보드카1', '깔루아1', '룩사르도 마라스키노1'];
+
 export const Default = (): ReactElement => {
+  const submitSelectedIngredients = (selectedIngredients: string[]): void => {
+    console.log(selectedIngredients, '저장!');
+  };
+
   return (
     <IngredientToggleList
       ingredients={DUMMY}
-      onItemSelected={(): void => {
-        console.log('재료 변경');
-      }}
+      userIngredients={userIngredients}
+      onItemSelected={submitSelectedIngredients}
     />
   );
 };
 
 const DUMMY = [
   {
-    name: '보드카'
+    name: '보드카1'
   },
   {
     name: '룩사르도 마라스키노'
   },
   {
-    name: '깔루아'
+    name: '깔루아1'
   },
   {
     name: '앰버 자메이카 럼'
@@ -59,7 +64,7 @@ const DUMMY = [
     name: '보드카'
   },
   {
-    name: '룩사르도 마라스키노'
+    name: '룩사르도 마라스키노1'
   },
   {
     name: '깔루아'

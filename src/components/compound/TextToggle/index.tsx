@@ -17,7 +17,7 @@ const TextToggle = ({
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     toggle();
-    onChange(e.target.name);
+    onChange?.({ name: e.target.name, toggled: !isToggled });
   };
 
   return (
