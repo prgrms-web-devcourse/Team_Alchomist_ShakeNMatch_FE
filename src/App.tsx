@@ -1,5 +1,7 @@
+import { Router } from '@routes';
+
 function App(): JSX.Element {
-  return <div></div>;
+  return <Router />;
 }
 
 export default App;
