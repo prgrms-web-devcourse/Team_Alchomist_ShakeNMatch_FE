@@ -8,10 +8,11 @@ import {
   useRef
 } from 'react';
 import type { ReactElement } from 'react';
-import { StyledCarouselContainer, TempButton1, TempButton2 } from './styled';
+import { StyledCarouselContainer } from './styled';
 import IngredientCarouselItem from '@domain/IngredientCarousel/IngredientCarouselItem';
 import type { IngredientCarouselProps } from './types';
 import { ROW_TYPE } from './types';
+import IconButton from '@compound/IconButton';
 
 const IngredientCarousel = ({
   itemList = [],
@@ -78,11 +79,31 @@ const IngredientCarousel = ({
 
   return (
     <StyledCarouselContainer ref={wheelRef} row={row}>
-      <TempButton1 disabled={leftButtonStatus} onClick={handlePrev} />
+      <IconButton
+        disabled={leftButtonStatus}
+        name='arrowLeftNavy'
+        style={{
+          position: 'absolute',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          left: '30px'
+        }}
+        onClick={handlePrev}
+      />
       {Children.toArray(
         displayItems.map((item) => <IngredientCarouselItem text={item.name} />)
       )}
-      <TempButton2 disabled={rightButtonStatus} onClick={handleNext} />
+      <IconButton
+        disabled={rightButtonStatus}
+        name='arrowRightNavy'
+        style={{
+          position: 'absolute',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          right: '30px'
+        }}
+        onClick={handleNext}
+      />
     </StyledCarouselContainer>
   );
 };
