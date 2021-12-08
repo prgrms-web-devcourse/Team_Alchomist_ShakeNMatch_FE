@@ -2,7 +2,7 @@ import Image from '@base/Image';
 import type { ReactElement } from 'react';
 
 export default {
-  title: 'Component/Image',
+  title: 'Component/Base/Image',
   component: Image
 };
 

@@ -1,4 +1,4 @@
-import type { HTMLAttributes } from 'react';
+import type { ButtonProps } from '@base/Button/types';
 
 const TEXT_BUTTON = {
   SHORT_WHITE: {
@@ -10,7 +10,7 @@ const TEXT_BUTTON = {
       clickedColor: 'BASIC_PINK'
     },
     textProps: {
-      size: 'sm',
+      size: 'xs',
       color: 'BLACK'
     }
   },
@@ -23,7 +23,7 @@ const TEXT_BUTTON = {
       clickedColor: 'STRONG_PINK'
     },
     textProps: {
-      size: 'sm',
+      size: 'xs',
       color: 'BASIC_WHITE'
     }
   },
@@ -36,7 +36,7 @@ const TEXT_BUTTON = {
       clickedColor: 'BASIC_PINK'
     },
     textProps: {
-      size: 'md',
+      size: 'xs',
       color: 'BLACK'
     }
   },
@@ -49,7 +49,7 @@ const TEXT_BUTTON = {
       clickedColor: 'STRONG_PINK'
     },
     textProps: {
-      size: 'md',
+      size: 'xs',
       color: 'BASIC_WHITE'
     }
   }
@@ -57,7 +57,7 @@ const TEXT_BUTTON = {
 
 type TextButtonKeys = keyof typeof TEXT_BUTTON;
 
-interface TextButtonProps extends HTMLAttributes<HTMLButtonElement> {
+interface TextButtonProps extends ButtonProps {
   children: string;
   block?: boolean;
   buttonType: TextButtonKeys;

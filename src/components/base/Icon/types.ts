@@ -1,3 +1,5 @@
+import type { SVGAttributes } from 'react';
+
 const ICON_SIZE = {
   starFull: {
     width: '20px',
@@ -67,9 +69,9 @@ type IconType =
   | 'arrowRightWhite'
   | 'arrowLeftWhite'
   | 'back';
-interface IconProps {
+interface IconProps extends SVGAttributes<HTMLOrSVGElement> {
   type: IconType;
 }
 
 export { ICON_SIZE };
-export type { IconProps };
+export type { IconProps, IconType };

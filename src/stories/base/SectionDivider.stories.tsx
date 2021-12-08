@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import type { ReactElement } from 'react';
 
 export default {
-  title: 'Component/Base',
+  title: 'Component/Base/SectionDivider',
   component: SectionDivider,
   argTypes: {
     ratio: {
