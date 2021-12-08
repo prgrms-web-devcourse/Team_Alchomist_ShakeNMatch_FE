@@ -22,16 +22,16 @@ const IngredientToggleList = ({
     name: string;
     toggled: boolean;
   }): void => {
-    if (selectedIngredients.has(toggledIngredient.name)) {
+    if (toggledIngredient.toggled) {
       setSelectedIngredients((prevIngredients) => {
-        prevIngredients.delete(toggledIngredient.name);
+        prevIngredients.add(toggledIngredient.name);
         const nextIngredients = new Set(prevIngredients);
 
         return nextIngredients;
       });
     } else {
       setSelectedIngredients((prevIngredients) => {
-        prevIngredients.add(toggledIngredient.name);
+        prevIngredients.delete(toggledIngredient.name);
         const nextIngredients = new Set(prevIngredients);
 
         return nextIngredients;
