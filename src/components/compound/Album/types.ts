@@ -21,6 +21,8 @@ type AlbumAttributeKeys = keyof typeof ALBUM_ATTRIBUTES;
 interface AlbumProps {
   type?: AlbumAttributeKeys;
   text?: string;
+  imageWidth?: string;
+  imageHeight?: string;
   imageSrc?: string;
 }
 
