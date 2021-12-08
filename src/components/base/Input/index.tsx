@@ -6,7 +6,7 @@ const DEFAULT_MAXLENGTH = 20;
 
 const Input = ({
   inputType = 'text',
-  fontSize = 'md',
+  fontSize = 'xs',
   maxLength = DEFAULT_MAXLENGTH,
   ...props
 }: InputProps): ReactElement => {

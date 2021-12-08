@@ -73,5 +73,5 @@ interface IconProps extends SVGAttributes<HTMLOrSVGElement> {
   type: IconType;
 }
 
-export type { IconType, IconProps };
 export { ICON_SIZE };
+export type { IconProps, IconType };

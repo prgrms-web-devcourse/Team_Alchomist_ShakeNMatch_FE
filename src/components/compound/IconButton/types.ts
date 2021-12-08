@@ -1,8 +1,7 @@
 import type { IconType } from '@base/Icon/types';
-import type { HTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 
-interface IconButtonProps extends HTMLAttributes<HTMLButtonElement> {
-  type: 'button' | 'reset' | 'submit';
+interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   name: IconType;
 }
 

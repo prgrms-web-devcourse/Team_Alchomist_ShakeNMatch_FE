@@ -3,16 +3,16 @@ import type { ColorKeys } from '@models/types';
 
 const MODAL_SIZE = {
   sm: {
-    width: '574px',
-    height: '668px'
+    width: '320px',
+    height: '360px'
   },
   md: {
-    width: '891px',
-    height: '668px'
+    width: '680px',
+    height: '480px'
   },
   lg: {
-    width: '1080px',
-    height: '840px'
+    width: '1040px',
+    height: '640px'
   }
 } as const;
 type ModalSizeKeys = keyof typeof MODAL_SIZE;

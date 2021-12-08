@@ -8,5 +8,5 @@ export default {
 };
 
 export const Default = ({ name, type }: IconButtonProps): ReactElement => (
-  <IconButton name={name} type={type} />
+  <IconButton name={name || 'flagEmpty'} type={type} />
 );

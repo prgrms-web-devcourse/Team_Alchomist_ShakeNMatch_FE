@@ -22,6 +22,9 @@ const StyledModalContainer = styled.div<ContainerProps>`
   width: ${({ size }): string => MODAL_SIZE[size].width};
   height: ${({ size }): string => MODAL_SIZE[size].height};
   background-color: ${({ color }): string => COLOR[color]};
+  border-radius: 12px;
+  padding: 5px;
+  box-sizing: border-box;
 `;
 
 export { StyledModalBackground, StyledModalContainer };
