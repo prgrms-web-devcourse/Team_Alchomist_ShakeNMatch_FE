@@ -5,7 +5,6 @@ import {
   useEffect,
   useCallback,
   Children,
-  useState,
   isValidElement,
   cloneElement,
   useMemo
@@ -18,11 +17,10 @@ const DEFAULT_SELECTED_INDEX = 0;
 
 const CarouselContainer = ({
   children,
-  initialSelectedIndex = DEFAULT_SELECTED_INDEX,
+  selectedIndex = DEFAULT_SELECTED_INDEX,
   onChangeItem,
   ...props
 }: CarouselContainerProps): ReactElement => {
-  const [selectedIndex, setSelectedIndex] = useState(initialSelectedIndex);
   const [wheelRef, wheelDelta] = useWheel<HTMLDivElement>();
   const childrenLength: number = useMemo(
     () => Children.toArray(children).length,
@@ -31,23 +29,17 @@ const CarouselContainer = ({
 
   const handleNext = useCallback(() => {
     if (selectedIndex < childrenLength - 1) {
-      setSelectedIndex((prevIndex) => prevIndex + 1);
-
       onChangeItem?.(selectedIndex + 1);
     } else {
-      setSelectedIndex(0);
-
       onChangeItem?.(0);
     }
   }, [childrenLength, selectedIndex]);
 
   const handlePrev = useCallback(() => {
     if (0 < selectedIndex) {
-      setSelectedIndex((prevIndex) => prevIndex - 1);
-
       onChangeItem?.(selectedIndex - 1);
     } else {
-      setSelectedIndex(childrenLength - 1);
+      onChangeItem?.(childrenLength - 1);
     }
   }, [selectedIndex]);
 
@@ -73,9 +65,9 @@ const CarouselContainer = ({
     return cloneElement<CarouselItemProps>(element, {
       onPrev: handlePrev,
       onNext: handleNext,
-      ...element.props,
       onAnimationEnd: handleAnimationEnd,
-      selected: index === selectedIndex
+      selected: index === selectedIndex,
+      ...element.props
     });
   });
 
