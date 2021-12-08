@@ -6,7 +6,7 @@ interface Ingredient {
 
 interface IngredientToggleListProps extends HTMLAttributes<HTMLDivElement> {
   ingredients: Ingredient[];
-  userIngredients: string[];
+  initialStoredIngredients: string[];
   onItemSelected?(selectedIngredients: string[]): void;
 }
 

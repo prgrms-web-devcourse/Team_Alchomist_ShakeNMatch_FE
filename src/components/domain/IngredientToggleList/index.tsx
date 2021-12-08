@@ -7,11 +7,11 @@ import type { IngredientToggleListProps } from './types';
 const IngredientToggleList = ({
   ingredients,
   onItemSelected,
-  userIngredients,
+  initialStoredIngredients,
   ...props
 }: IngredientToggleListProps): ReactElement => {
   const [selectedIngredients, setSelectedIngredients] = useState(
-    new Set(userIngredients)
+    new Set(initialStoredIngredients)
   );
 
   useEffect(() => {
