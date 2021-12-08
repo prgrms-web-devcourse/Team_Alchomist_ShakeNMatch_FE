@@ -1,3 +1,5 @@
+import type { HTMLAttributes } from 'react';
+
 interface Item {
   name: string;
 }
@@ -17,5 +19,9 @@ const ROW_TYPE = {
 } as const;
 type RowTypeKeys = keyof typeof ROW_TYPE;
 
-export type { IngredientCarouselProps };
+interface StyledCarouselContainerProps extends HTMLAttributes<HTMLDivElement> {
+  row: 'single' | 'double';
+}
+
+export type { IngredientCarouselProps, StyledCarouselContainerProps };
 export { ROW_TYPE };

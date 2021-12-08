@@ -1,9 +1,5 @@
 import styled from '@emotion/styled';
-import type { HTMLAttributes } from 'react';
-
-interface StyledCarouselContainerProps extends HTMLAttributes<HTMLDivElement> {
-  row: 'single' | 'double';
-}
+import type { StyledCarouselContainerProps } from './types';
 
 const StyledCarouselContainer = styled.div<StyledCarouselContainerProps>`
   position: relative;
