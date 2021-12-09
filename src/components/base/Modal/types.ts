@@ -3,8 +3,8 @@ import type { ColorKeys } from '@models/types';
 
 const MODAL_SIZE = {
   sm: {
-    width: '320px',
-    height: '360px'
+    width: '360px',
+    height: '400px'
   },
   md: {
     width: '680px',
@@ -22,7 +22,7 @@ interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   color: ColorKeys;
   backgroundColor: ColorKeys;
   visible: boolean;
-  onClose(): void;
+  onClose?(): void;
 }
 type BackgroundProps = Pick<ModalProps, 'visible' | 'backgroundColor'>;
 type ContainerProps = Pick<ModalProps, 'children' | 'size' | 'color'>;
