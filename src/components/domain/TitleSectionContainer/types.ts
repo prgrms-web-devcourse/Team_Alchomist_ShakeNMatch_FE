@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ReactChild } from 'react';
+import type { HTMLAttributes } from 'react';
 import type { TextSizeKeys, ColorKeys } from '@models/types';
 
 interface TitleSectionContainerProps extends HTMLAttributes<HTMLDivElement> {
@@ -11,7 +11,6 @@ interface TitleSectionContainerProps extends HTMLAttributes<HTMLDivElement> {
   dividerWidth: string;
   dividerThickness?: string;
   gap?: string | number;
-  content: ReactChild[];
 }
 
 export type { TitleSectionContainerProps };
