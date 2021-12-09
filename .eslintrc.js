@@ -22,6 +22,7 @@ module.exports = {
     'plugin:react/jsx-runtime'
   ],
   rules: {
+    'react/jsx-key': 'off',
     'no-use-before-define': 'off',
     'no-redeclare': 'off',
     'react/button-has-type': ['error'],
@@ -63,7 +64,7 @@ module.exports = {
         ignoreEnums: true
       }
     ],
-    '@typescript-eslint/no-unused-expressions': 'error',
+    '@typescript-eslint/no-unused-expressions': 'off',
     '@typescript-eslint/no-duplicate-imports': 'error',
     '@typescript-eslint/jsx-key': 'off'
   }
