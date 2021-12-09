@@ -1,6 +1,18 @@
 import type { ReactElement } from 'react';
-import { useState, useEffect, cloneElement, Children } from 'react';
-import { StyledContainer, StyledTab, StyledTabWrapper } from './styled';
+import {
+  useMemo,
+  useState,
+  useRef,
+  useEffect,
+  cloneElement,
+  Children
+} from 'react';
+import {
+  StyledContainer,
+  StyledTab,
+  StyledTabWrapper,
+  StyledBackground
+} from './styled';
 import type { MenuTabProps } from './types';
 
 const MenuTab = ({
@@ -11,6 +23,25 @@ const MenuTab = ({
 }: MenuTabProps): ReactElement => {
   const [displayingChildIdx, setDisplayingChildIdx] = useState(initialOnChild);
   const [childrenEl, setChildrenEl] = useState<React.ReactFragment[]>();
+  const [backgroundSize, setBackgroundSize] = useState<number>();
+  const firstTabRef = useRef<HTMLDivElement | null>(null);
+  const secondTabRef = useRef<HTMLDivElement | null>(null);
+
+  const firstTabSize = useMemo(() => {
+    if (firstTabRef.current) {
+      return firstTabRef.current.offsetHeight;
+    }
+  }, [firstTabRef.current]);
+
+  useEffect(() => {
+    if (initialOnChild === '0') {
+      firstTabRef.current &&
+        setBackgroundSize(firstTabRef.current.offsetHeight);
+    } else {
+      secondTabRef.current &&
+        setBackgroundSize(secondTabRef.current.offsetHeight);
+    }
+  }, []);
 
   const handleContent = (e: React.MouseEvent<HTMLDivElement>): void => {
     const { id } = e.currentTarget.dataset;
@@ -19,6 +50,7 @@ const MenuTab = ({
       return;
     }
 
+    setBackgroundSize(e.currentTarget.offsetHeight);
     setDisplayingChildIdx(id);
     onTabChange?.(id);
   };
@@ -45,12 +77,23 @@ const MenuTab = ({
       <StyledTabWrapper>
         {Children.toArray(
           tabText.map((text, index) => (
-            // eslint-disable-next-line react/jsx-key
-            <StyledTab data-id={index} onClick={handleContent}>
+            <StyledTab
+              ref={index === 0 ? firstTabRef : secondTabRef}
+              data-id={index}
+              isSelected={
+                index === parseInt(displayingChildIdx, 10) ? true : false
+              }
+              onClick={handleContent}
+            >
               {text}
             </StyledTab>
           ))
         )}
+        <StyledBackground
+          firstTabSize={firstTabSize}
+          selectedTab={displayingChildIdx}
+          size={backgroundSize}
+        />
       </StyledTabWrapper>
     </StyledContainer>
   );
