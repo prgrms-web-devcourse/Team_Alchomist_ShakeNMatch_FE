@@ -5,7 +5,7 @@ import Image from '@base/Image';
 import { StyledContainer } from './styled';
 
 const DEFAULT_TYPE = 'alcohol';
-const DEFAULT_TEXT = 'mojito';
+const DEFAULT_TEXT = '';
 const DEFAULT_IMAGE_WIDTH = '70px';
 const DEFAULT_IMAGE_HEIGHT = '70px';
 const DEFAULT_IMAGE_SRC = 'http://via.placeholder.com/100x100';
