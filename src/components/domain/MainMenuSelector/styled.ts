@@ -20,7 +20,7 @@ const StyledThemeContainer = styled.div<StyledMenuContainerProps>`
   position: relative;
   background-color: ${COLOR.STRONG_PINK};
   border-radius: 50px;
-  cursor: pointer;
+  cursor: ${({ selected }): string => (selected ? 'default' : 'pointer')};
   ${({ selected }): string =>
     selected
       ? `& .textWrapper {
@@ -39,8 +39,7 @@ const StyledJangoContainer = styled.div<StyledMenuContainerProps>`
   position: relative;
   background-color: ${COLOR.NAVY};
   border-radius: 50px;
-  cursor: pointer;
-
+  cursor: ${({ selected }): string => (selected ? 'default' : 'pointer')};
   ${({ selected }): string =>
     selected
       ? `& .textWrapper {

@@ -13,7 +13,7 @@ import type { MainMenuSelectorProps } from './types';
 
 const ONE_POINT_TWO = 1.2;
 const INITIAL_GAP = 300;
-const CHANGE_GAP = 100;
+const CHANGE_GAP = 50;
 const INITIAL_RATIO = [1, 1];
 const THEME_HOVERED_RATIO = [ONE_POINT_TWO, 1];
 const JANGO_HOVERED_RATIO = [1, ONE_POINT_TWO];
