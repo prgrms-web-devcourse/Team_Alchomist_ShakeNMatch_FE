@@ -1,7 +1,7 @@
 import type { HTMLAttributes } from 'react';
 
 interface ThemeSelectorProps extends HTMLAttributes<HTMLDivElement> {
-  initialThemeIndex?: number;
+  initialMainIndex?: number;
   initialDetailIndex?: number;
   onChangeIndex?(value: { theme: number; detail: number }): void;
 }

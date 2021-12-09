@@ -8,28 +8,27 @@ import { SectionDividerContent } from './styled';
 import type { ThemeSelectorProps } from './types';
 
 const ThemeSelector = ({
-  initialThemeIndex = 0,
+  initialMainIndex = 0,
   initialDetailIndex = 0,
   onChangeIndex,
   ...props
 }: ThemeSelectorProps): ReactElement => {
-  const [selectedThemeIndex, setSelectedThemeIndex] =
-    useState(initialThemeIndex);
+  const [selectedMainIndex, setSelectedMainIndex] = useState(initialMainIndex);
   const [selectedDetailIndex, setSelectedDetailIndex] =
     useState(initialDetailIndex);
   const selectedThemeName = useMemo(
-    () => (Object.keys(THEMES) as ITHEME[])[selectedThemeIndex],
-    [selectedThemeIndex]
+    () => (Object.keys(THEMES) as ITHEME[])[selectedMainIndex],
+    [selectedMainIndex]
   );
   const handleChangeTheme = (value: number): void => {
-    setSelectedThemeIndex(value);
+    setSelectedMainIndex(value);
     setSelectedDetailIndex(0);
     onChangeIndex?.({ theme: value, detail: 0 });
   };
 
   const handleChangeDetail = (value: number): void => {
     setSelectedDetailIndex(value);
-    onChangeIndex?.({ theme: selectedThemeIndex, detail: value });
+    onChangeIndex?.({ theme: selectedMainIndex, detail: value });
   };
 
   return (
@@ -43,7 +42,7 @@ const ThemeSelector = ({
     >
       <SectionDividerContent>
         <Carousel.Container
-          selectedIndex={selectedThemeIndex}
+          selectedIndex={selectedMainIndex}
           onChangeItem={handleChangeTheme}
         >
           {Object.keys(THEMES).map((theme) => (
