@@ -2,6 +2,9 @@ import styled from '@emotion/styled';
 import type { TooltipProps } from './types';
 import { TOOLTIP_SIZE } from './types';
 
+const MARGIN = 20;
+const MINUS = -1;
+
 const StyledTooltipWrapper = styled.div`
   position: relative;
   display: block;
@@ -15,7 +18,7 @@ const StyledTooltipWrapper = styled.div`
 `;
 
 const StyledTooltipContent = styled.div<
-  Required<Pick<TooltipProps, 'size' | 'direction'>>
+  Required<Pick<TooltipProps, 'tooltipSize' | 'direction'>>
 >`
   position: absolute;
   display: flex;
@@ -27,14 +30,14 @@ const StyledTooltipContent = styled.div<
   padding: 5px;
   border-radius: 7px;
   z-index: 1;
-  top: ${({ direction, size }): string => {
+  top: ${({ direction, tooltipSize }): string => {
     let position = '';
-    const margin = 20;
-    const minus = -1;
     switch (direction) {
       case 'top':
         position =
-          ((TOOLTIP_SIZE[size].height + margin) * minus).toString() + 'px';
+          tooltipSize &&
+          ((TOOLTIP_SIZE[tooltipSize].height + MARGIN) * MINUS).toString() +
+            'px';
         break;
       case 'bottom':
         position = '105%';
@@ -49,10 +52,8 @@ const StyledTooltipContent = styled.div<
     return position;
   }};
 
-  left: ${({ direction, size }): string => {
+  left: ${({ direction, tooltipSize }): string => {
     let position = '';
-    const margin = 20;
-    const minus = -1;
     switch (direction) {
       case 'top':
         position = '0px';
@@ -65,14 +66,18 @@ const StyledTooltipContent = styled.div<
         break;
       case 'left':
         position =
-          ((TOOLTIP_SIZE[size].width + margin) * minus).toString() + 'px';
+          tooltipSize &&
+          ((TOOLTIP_SIZE[tooltipSize].width + MARGIN) * MINUS).toString() +
+            'px';
         break;
     }
     return position;
   }};
   visibility: hidden;
-  width: ${({ size }): string => TOOLTIP_SIZE[size].width + 'px'};
-  height: ${({ size }): string => TOOLTIP_SIZE[size].height + 'px'};
+  width: ${({ tooltipSize }): string =>
+    tooltipSize && TOOLTIP_SIZE[tooltipSize].width + 'px'};
+  height: ${({ tooltipSize }): string =>
+    tooltipSize && TOOLTIP_SIZE[tooltipSize].height + 'px'};
 `;
 
 export { StyledTooltipWrapper, StyledTooltipContent };
