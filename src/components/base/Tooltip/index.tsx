@@ -19,7 +19,7 @@ const Tooltip = ({
         direction={direction}
         tooltipSize={tooltipSize}
       >
-        <Text color={'BASIC_WHITE'} size={tooltipMessageSize}>
+        <Text color='BASIC_WHITE' size={tooltipMessageSize}>
           {tooltipMessage}
         </Text>
       </StyledTooltipContent>
