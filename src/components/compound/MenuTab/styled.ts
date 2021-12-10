@@ -6,7 +6,6 @@ const StyledContainer = styled.div`
   flex-direction: column;
   position: relative;
   height: 100%;
-  border: 1px solid;
   padding-right: 44px;
 `;
 

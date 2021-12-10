@@ -17,7 +17,7 @@ import type { MenuTabProps } from './types';
 
 const MenuTab = ({
   children,
-  initialOnChild,
+  initialOnChild = '0',
   tabText,
   onTabChange
 }: MenuTabProps): ReactElement => {
