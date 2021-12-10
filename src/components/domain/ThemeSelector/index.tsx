@@ -3,7 +3,7 @@ import Carousel from '@compound/Carousel';
 import { THEMES } from '@constants/themes';
 import type { ITHEME } from '@models';
 import type { ReactElement } from 'react';
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { SectionDividerContent } from './styled';
 import type { ThemeSelectorProps } from './types';
 
@@ -20,7 +20,7 @@ const ThemeSelector = ({
     () => (Object.keys(THEMES) as ITHEME[])[selectedMainIndex],
     [selectedMainIndex]
   );
-  const handleChangeTheme = (value: number): void => {
+  const handleChangeMain = (value: number): void => {
     setSelectedMainIndex(value);
     setSelectedDetailIndex(0);
     onChangeIndex?.({ main: value, detail: 0 });
@@ -31,19 +31,28 @@ const ThemeSelector = ({
     onChangeIndex?.({ main: selectedMainIndex, detail: value });
   };
 
+  // 최초 렌더링 시
+  useEffect(() => {
+    if (!selectedThemeName) {
+      handleChangeMain(0);
+    } else if (!THEMES[selectedThemeName][selectedDetailIndex]) {
+      handleChangeDetail(0);
+    }
+  }, []);
+
   return (
     <SectionDivider
-      dividerOptions={{ gap: 20 }}
+      dividerOptions={{ color: 'TRANSPARENT', gap: 20 }}
       height={500}
       ratio={[1, 1]}
       showDivider
       width={1000}
       {...props}
     >
-      <SectionDividerContent>
+      <SectionDividerContent className='mainCarousel'>
         <Carousel.Container
           selectedIndex={selectedMainIndex}
-          onChangeItem={handleChangeTheme}
+          onChangeItem={handleChangeMain}
         >
           {Object.keys(THEMES).map((theme) => (
             <Carousel.Item
@@ -54,7 +63,7 @@ const ThemeSelector = ({
           ))}
         </Carousel.Container>
       </SectionDividerContent>
-      <SectionDividerContent>
+      <SectionDividerContent className='detailCarousel'>
         <Carousel.Container
           selectedIndex={selectedDetailIndex}
           onChangeItem={handleChangeDetail}
