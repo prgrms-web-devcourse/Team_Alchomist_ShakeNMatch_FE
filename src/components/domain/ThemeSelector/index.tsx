@@ -23,12 +23,12 @@ const ThemeSelector = ({
   const handleChangeTheme = (value: number): void => {
     setSelectedMainIndex(value);
     setSelectedDetailIndex(0);
-    onChangeIndex?.({ theme: value, detail: 0 });
+    onChangeIndex?.({ main: value, detail: 0 });
   };
 
   const handleChangeDetail = (value: number): void => {
     setSelectedDetailIndex(value);
-    onChangeIndex?.({ theme: selectedMainIndex, detail: value });
+    onChangeIndex?.({ main: selectedMainIndex, detail: value });
   };
 
   return (
