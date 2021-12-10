@@ -33,7 +33,7 @@ const CarouselContainer = ({
     } else {
       onChangeItem?.(0);
     }
-  }, [childrenLength, selectedIndex]);
+  }, [childrenLength, selectedIndex, onChangeItem]);
 
   const handlePrev = useCallback(() => {
     if (0 < selectedIndex) {
@@ -41,7 +41,7 @@ const CarouselContainer = ({
     } else {
       onChangeItem?.(childrenLength - 1);
     }
-  }, [selectedIndex]);
+  }, [selectedIndex, onChangeItem]);
 
   const handleWheel = useCallback((): void => {
     if (wheelDelta.deltaY > 0) {
