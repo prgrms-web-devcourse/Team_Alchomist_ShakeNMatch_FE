@@ -1,12 +1,6 @@
-/* eslint-disable react/jsx-key */
-import {
-  useState,
-  useMemo,
-  useCallback,
-  useEffect,
-  Children,
-  useRef
-} from 'react';
+import { useState, useCallback, useEffect, Children } from 'react';
+import useWheel from '@hooks/useWheel';
+import useThrottle from '@hooks/useThrottle';
 import type { ReactElement } from 'react';
 import { StyledCarouselContainer } from './styled';
 import IngredientCarouselItem from '@domain/IngredientCarousel/IngredientCarouselItem';
@@ -14,73 +8,56 @@ import type { IngredientCarouselProps } from './types';
 import { ROW_TYPE } from './types';
 import IconButton from '@compound/IconButton';
 
+const CLEAR_THROTTLE_TIME = 500;
+
 const IngredientCarousel = ({
   itemList = [],
   row = 'single'
 }: IngredientCarouselProps): ReactElement => {
-  const [itemIdx, setHeadItemIdx] = useState({
+  const [itemIdx, setItemIdx] = useState({
     head: 0,
     tail: 0 + (ROW_TYPE[row].length - 1)
   });
-  const [leftButtonStatus, setLeftButtonStatus] = useState(true);
-  const [rightButtonStatus, setRightButtonStatus] = useState(false);
-  // 버튼 IconButton으로 변경 필요
-  // 앨범을 토글할 수 있도록 할 새로운 컴포넌트 필요
-  // 토글된 재료 저장할 상태 및 함수 필요
-  // 저장된 재료 상태를 상위로 전달해줄 함수 필요ㅌㅈ
-
-  // const lastItemIdx = useMemo(
-  //   () => itemIdx.head + itemIdx.tail,
-  //   [itemIdx, row]
-  // );
-  const TOTAL_ITEMS = useMemo(() => itemList.length, [itemList]);
-
-  useEffect(() => {
-    if (itemIdx.head === 0) {
-      setLeftButtonStatus(true);
-    }
-    if (itemIdx.head > ROW_TYPE[row].length - 1) {
-      setLeftButtonStatus(false);
-    }
-    if (itemIdx.tail >= TOTAL_ITEMS) {
-      setRightButtonStatus(true);
-    }
-    if (itemIdx.tail < TOTAL_ITEMS) {
-      setRightButtonStatus(false);
-    }
-  }, [itemIdx]);
+  const [wheelRef, wheelDelta] = useWheel<HTMLDivElement>();
 
   const handlePrev = useCallback((): void => {
-    setHeadItemIdx((prevItemIdx) => ({
+    setItemIdx((prevItemIdx) => ({
       head: prevItemIdx.head - ROW_TYPE[row].length,
       tail: prevItemIdx.tail - ROW_TYPE[row].length
     }));
   }, [row]);
 
   const handleNext = useCallback((): void => {
-    setHeadItemIdx((prevItemIdx) => ({
+    setItemIdx((prevItemIdx) => ({
       head: prevItemIdx.head + ROW_TYPE[row].length,
       tail: prevItemIdx.tail + ROW_TYPE[row].length
     }));
   }, [row]);
+
+  const handleWheel = useCallback((): void => {
+    if (wheelDelta.deltaY > 0 && itemIdx.tail < itemList.length - 1) {
+      handleNext();
+    } else if (wheelDelta.deltaY < 0 && itemIdx.head > 0) {
+      handlePrev();
+    }
+  }, [wheelDelta, handleNext, handlePrev]);
+
+  const [throttleWheel, clearThrottleWheel] = useThrottle(handleWheel);
+
+  useEffect(() => {
+    throttleWheel();
+    setTimeout(clearThrottleWheel, CLEAR_THROTTLE_TIME);
+  }, [wheelDelta.deltaY]);
 
   const displayItems = itemList.filter(
     (_, index) =>
       index >= itemIdx.head && index < itemIdx.head + ROW_TYPE[row].length
   );
 
-  const wheelRef = useRef<HTMLDivElement>(null);
-
-  const handleWheel = (e: WheelEvent): void => {
-    console.log(e.deltaX, e.deltaY);
-  };
-
-  wheelRef.current?.addEventListener('wheel', handleWheel);
-
   return (
     <StyledCarouselContainer ref={wheelRef} row={row}>
       <IconButton
-        disabled={leftButtonStatus}
+        disabled={itemIdx.head === 0}
         name='arrowLeftNavy'
         style={{
           position: 'absolute',
@@ -94,7 +71,7 @@ const IngredientCarousel = ({
         displayItems.map((item) => <IngredientCarouselItem text={item.name} />)
       )}
       <IconButton
-        disabled={rightButtonStatus}
+        disabled={itemIdx.tail >= itemList.length - 1}
         name='arrowRightNavy'
         style={{
           position: 'absolute',
