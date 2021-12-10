@@ -57,13 +57,5 @@ const DUMMYLIST = [
   {
     name: '술이야',
     icon: 'https://via.placeholder.com/130x150'
-  },
-  {
-    name: '맨날 술이야',
-    icon: 'https://via.placeholder.com/130x150'
-  },
-  {
-    name: '호로로로로로롤로로롤로',
-    icon: 'https://via.placeholder.com/130x150'
   }
 ];

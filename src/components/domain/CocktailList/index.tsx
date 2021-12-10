@@ -5,17 +5,18 @@ import { StyledContainer, StyledMotionWrapper } from './styled';
 import type { CocktailListProps } from './types';
 import Album from '@compound/Album';
 
+const DEFAULT_MSG = '죄송합니다. 추천 칵테일이 존재하지 않습니다.';
+
 const CocktailList = ({
   cocktailList = [],
-  noResultMsg = '죄송합니다. 추천 칵테일이 존재하지 않습니다.'
+  noResultMsg = DEFAULT_MSG
 }: CocktailListProps): ReactElement => {
-  console.log(cocktailList);
   return (
     <StyledContainer>
       {cocktailList.length ? (
         Children.toArray(
-          cocktailList.map((cocktail) => (
-            <StyledMotionWrapper>
+          cocktailList.map((cocktail, index) => (
+            <StyledMotionWrapper resultIndex={index}>
               <Album
                 imageSrc={cocktail.icon}
                 text={cocktail.name}
