@@ -15,7 +15,8 @@ const COLOR = {
   LIGHT_YELLOW: '#FEE500',
   DARK_YELLOW: '#D2D46A',
   BLUE: '#6AA1D4',
-  GREEN: '#4FA863'
+  GREEN: '#4FA863',
+  TRANSPARENT: 'transparent'
 } as const;
 
 const ICON_COLOR = {
