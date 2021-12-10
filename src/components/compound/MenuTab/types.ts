@@ -7,4 +7,14 @@ interface MenuTabProps extends HTMLAttributes<HTMLDivElement> {
   onTabChange?(id: string): void;
 }
 
-export type { MenuTabProps };
+interface StyledTabProps extends HTMLAttributes<HTMLDivElement> {
+  isSelected: boolean;
+}
+
+interface StyledBackgroundProps {
+  selectedTab: string;
+  size?: number;
+  firstTabSize?: number;
+}
+
+export type { MenuTabProps, StyledTabProps, StyledBackgroundProps };

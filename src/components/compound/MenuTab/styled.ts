@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-magic-numbers */
 import styled from '@emotion/styled';
-import type { HTMLAttributes } from 'react';
+import type { StyledTabProps, StyledBackgroundProps } from './types';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -18,10 +17,6 @@ const StyledTabWrapper = styled.div`
   height: 100%;
 `;
 
-interface StyledTabProps extends HTMLAttributes<HTMLDivElement> {
-  isSelected: boolean;
-}
-
 const StyledTab = styled.div<StyledTabProps>`
   position: relative;
   writing-mode: vertical-rl;
@@ -37,12 +32,6 @@ const StyledTab = styled.div<StyledTabProps>`
   background-color: transparent;
   z-index: 100;
 `;
-
-interface StyledBackgroundProps {
-  selectedTab: string;
-  size?: number;
-  firstTabSize?: number;
-}
 
 const StyledBackground = styled.div<StyledBackgroundProps>`
   position: absolute;

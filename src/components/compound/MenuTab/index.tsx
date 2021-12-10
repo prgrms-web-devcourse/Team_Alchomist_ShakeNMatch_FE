@@ -80,9 +80,7 @@ const MenuTab = ({
             <StyledTab
               ref={index === 0 ? firstTabRef : secondTabRef}
               data-id={index}
-              isSelected={
-                index === parseInt(displayingChildIdx, 10) ? true : false
-              }
+              isSelected={index === parseInt(displayingChildIdx, 10)}
               onClick={handleContent}
             >
               {text}
