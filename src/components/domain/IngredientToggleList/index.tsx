@@ -43,7 +43,6 @@ const IngredientToggleList = ({
     <StyledContainer {...props}>
       {Children.toArray(
         ingredients.map((ingredient) => (
-          // eslint-disable-next-line react/jsx-key
           <TextToggle
             initialState={selectedIngredients.has(ingredient.name)}
             name={ingredient.name}
