@@ -7,10 +7,18 @@ interface TitleSectionContainerProps extends HTMLAttributes<HTMLDivElement> {
   titleColor?: ColorKeys;
   bold?: boolean;
   dividerVisible?: boolean;
-  dividerColor: ColorKeys;
-  dividerWidth: string;
+  dividerColor?: ColorKeys;
+  dividerWidth?: string;
   dividerThickness?: string;
   gap?: string | number;
 }
 
-export type { TitleSectionContainerProps };
+interface StyledLineProps {
+  visible?: boolean;
+  width?: string | number;
+  height?: string | number;
+  gap?: string | number;
+  color: ColorKeys;
+}
+
+export type { TitleSectionContainerProps, StyledLineProps };
