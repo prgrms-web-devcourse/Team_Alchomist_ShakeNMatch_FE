@@ -6,12 +6,12 @@ const StyledContainer = styled.div`
   flex-direction: column;
   position: relative;
   height: 100%;
-  padding-right: 44px;
+  align-items: center;
 `;
 
 const StyledTabWrapper = styled.div`
   position: absolute;
-  right: 0;
+  right: -44px;
   background-color: lightgray;
   height: 100%;
 `;
@@ -19,14 +19,12 @@ const StyledTabWrapper = styled.div`
 const StyledTab = styled.div<StyledTabProps>`
   position: relative;
   writing-mode: vertical-rl;
-  padding: 0 10px;
   cursor: pointer;
   text-align: center;
-  line-height: 2.5;
   width: 44px;
   font-size: 24px;
   padding: 20px 0px;
-  line-height: 2;
+  line-height: 1.8;
   border-radius: 15px;
   background-color: transparent;
   z-index: 100;
