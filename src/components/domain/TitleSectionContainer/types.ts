@@ -13,4 +13,12 @@ interface TitleSectionContainerProps extends HTMLAttributes<HTMLDivElement> {
   gap?: string | number;
 }
 
-export type { TitleSectionContainerProps };
+interface StyledLineProps {
+  visible?: boolean;
+  width?: string | number;
+  height?: string | number;
+  gap?: string | number;
+  color: ColorKeys;
+}
+
+export type { TitleSectionContainerProps, StyledLineProps };
