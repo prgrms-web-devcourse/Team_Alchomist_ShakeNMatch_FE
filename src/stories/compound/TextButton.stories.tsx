@@ -11,7 +11,7 @@ export default {
     },
     buttonType: {
       control: 'inline-radio',
-      oprtions: ['SHORT_WHITE', 'SHORT_PINK', 'LONG_WHITE', 'LONG_PINK']
+      options: ['SHORT_WHITE', 'SHORT_PINK', 'LONG_WHITE', 'LONG_PINK']
     },
     children: {
       control: 'text'

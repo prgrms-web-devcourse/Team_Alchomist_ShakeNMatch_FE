@@ -1,5 +1,5 @@
 import useToggle from '@hooks/useToggle';
-import type { ReactElement } from 'react';
+import type { ChangeEvent, ReactElement } from 'react';
 import { StyledToggleContainer, StyledToggleInput } from './styled';
 import { TEXT_TOGGLE } from './types';
 import type { TextToggleProps } from './types';
@@ -15,9 +15,9 @@ const TextToggle = ({
 }: TextToggleProps): ReactElement => {
   const [isToggled, toggle] = useToggle(initialState);
 
-  const handleChange = (): void => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     toggle();
-    onChange();
+    onChange?.({ name: e.target.name, toggled: !isToggled });
   };
 
   return (
