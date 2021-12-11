@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import type { ColorKeys } from '@models';
 import { COLOR } from '@constants/colors';
+import type { StyledLineProps } from './types';
 
 const StyledContainer = styled.div`
   display: flex;
@@ -8,14 +8,6 @@ const StyledContainer = styled.div`
   align-items: center;
   justify-content: center;
 `;
-
-interface StyledLineProps {
-  visible?: boolean;
-  width?: string | number;
-  height?: string | number;
-  gap?: string | number;
-  color: ColorKeys;
-}
 
 const StyledLine = styled.hr<StyledLineProps>`
   display: block;
