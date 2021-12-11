@@ -19,19 +19,19 @@ const IngredientToggleList = ({
   }, [selectedIngredients]);
 
   const handleToggle = (toggledIngredient: {
-    name: string;
+    id: string;
     toggled: boolean;
   }): void => {
     if (toggledIngredient.toggled) {
       setSelectedIngredients((prevIngredients) => {
-        prevIngredients.add(toggledIngredient.name);
+        prevIngredients.add(toggledIngredient.id);
         const nextIngredients = new Set(prevIngredients);
 
         return nextIngredients;
       });
     } else {
       setSelectedIngredients((prevIngredients) => {
-        prevIngredients.delete(toggledIngredient.name);
+        prevIngredients.delete(toggledIngredient.id);
         const nextIngredients = new Set(prevIngredients);
 
         return nextIngredients;
@@ -42,13 +42,13 @@ const IngredientToggleList = ({
   return (
     <StyledContainer {...props}>
       {Children.toArray(
-        ingredients.map((ingredient) => (
+        ingredients.map(({ id, name }) => (
           <TextToggle
-            initialState={selectedIngredients.has(ingredient.name)}
-            name={ingredient.name}
+            id={id}
+            initialState={selectedIngredients.has(id)}
             onChange={handleToggle}
           >
-            {ingredient.name}
+            {name}
           </TextToggle>
         ))
       )}
