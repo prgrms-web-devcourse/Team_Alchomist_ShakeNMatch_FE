@@ -61,7 +61,7 @@ const MenuTab = ({
         cloneElement(child, {
           style: {
             display:
-              index === parseInt(displayingChildIdx, 10) ? 'block' : 'none'
+              index === parseInt(displayingChildIdx, 10) ? 'flex' : 'none'
           },
           ...child.props
         })
