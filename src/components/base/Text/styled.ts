@@ -4,7 +4,7 @@ import type { ColorType } from '@models';
 import type { TextProps } from './types';
 import { TEXT_WEIGHT, TEXT_SIZE } from '@utils/constants';
 
-const Text = styled.span<TextProps>`
+const StyledText = styled.span<TextProps>`
   font-size: ${({ size }): string =>
     size ? `${TEXT_SIZE[size]}` : `${TEXT_SIZE.md}`};
   color: ${({ color }): ColorType => (color ? COLOR[color] : COLOR.BLACK)};
@@ -13,4 +13,4 @@ const Text = styled.span<TextProps>`
   display: ${({ block }): string => (block ? 'block' : 'inline')};
 `;
 
-export { Text };
+export { StyledText };
