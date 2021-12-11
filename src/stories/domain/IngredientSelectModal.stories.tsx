@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-magic-numbers */
 import IngredientSelectModal from '@domain/IngredientSelectModal';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
@@ -6,8 +7,6 @@ export default {
   title: 'Component/domain/IngredientSelectModal',
   component: IngredientSelectModal
 };
-
-const DUMMY = ['123', '456', '789'];
 
 export const Default = (): ReactElement => {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,13 +22,16 @@ export const Default = (): ReactElement => {
         모달 확인하기
       </button>
       <IngredientSelectModal
-        initialUserIngredient={DUMMY}
+        initialMainIngredient={['1234']}
+        initialSubIngredient={['5678']}
         visible={isVisible}
         onClose={(): void => {
           setIsVisible(false);
         }}
+        // 서버에 새로운 재료를 저장
         onSelectDone={(ingredient: string[]): void => {
-          console.log(ingredient);
+          console.log(`${ingredient}를 서버에 저장!`);
+          setIsVisible(false);
         }}
       />
     </>

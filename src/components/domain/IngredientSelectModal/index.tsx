@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, Children } from 'react';
 import { Modal, Text } from '@base';
 import MenuTab from '@compound/MenuTab';
 import IngredientToggleList from '@domain/IngredientToggleList';
@@ -120,9 +120,11 @@ const IngredientSelectModal = ({
               >
                 <StyledTextContainer>
                   {/* 여기 해쉬맵 생기면, id에 맞는 이름을 매칭해서 넣어줄 것 */}
-                  {selectedMainItems.map((item) => (
-                    <Text size='xs'>{item}</Text>
-                  ))}
+                  {Children.toArray(
+                    selectedMainItems.map((item) => (
+                      <Text size='xs'>{item}</Text>
+                    ))
+                  )}
                 </StyledTextContainer>
               </StyledTitleSectionContainer>
             </StyledTitleSectionContainer>
@@ -142,9 +144,11 @@ const IngredientSelectModal = ({
                 titleText='선택한 재료'
               >
                 <StyledTextContainer>
-                  {selectedSubItems.map((item) => (
-                    <Text size='xs'>{item}</Text>
-                  ))}
+                  {Children.toArray(
+                    selectedSubItems.map((item) => (
+                      <Text size='xs'>{item}</Text>
+                    ))
+                  )}
                 </StyledTextContainer>
               </StyledTitleSectionContainer>
             </StyledTitleSectionContainer>
