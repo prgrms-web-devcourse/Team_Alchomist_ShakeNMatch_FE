@@ -1,22 +1,17 @@
 import useSessionStorage from '@hooks/useSessionStorage';
-import type { IUser } from '@models';
-import type { Dispatch, ReactElement, ReactNode } from 'react';
-import { createContext, useReducer, useContext, useEffect } from 'react';
-import { authReducer } from './reducer';
-import type { IAuthAction, IAuthState } from './types';
+import type { ReactElement, ReactNode } from 'react';
+import { createContext, useContext } from 'react';
+import type { IAuthContext, IAuthState } from './types';
 
-const AuthorizationStateContext = createContext<IAuthState | null>(null);
-const AuthorizationDispatchContext =
-  createContext<Dispatch<IAuthAction> | null>(null);
+const MASTER_ID = 'mooho';
 
-const useAuthorization = (): [
-  IAuthState | null,
-  Dispatch<IAuthAction> | null
-] => {
-  const state = useContext(AuthorizationStateContext);
-  const dispatch = useContext(AuthorizationDispatchContext);
+const AuthorizationContext = createContext<IAuthContext | null>(null);
 
-  return [state, dispatch];
+const useAuthorization = (): IAuthContext => {
+  const state = useContext(AuthorizationContext);
+  if (!state) throw new Error('there is no context!');
+
+  return state;
 };
 
 const AuthorizationProvider = ({
@@ -24,29 +19,29 @@ const AuthorizationProvider = ({
 }: {
   children: ReactNode;
 }): ReactElement => {
-  const [oauthToken, saveOauthToken] = useSessionStorage<string | null>(
-    'token',
-    null
-  );
-  const [user, saveUser] = useSessionStorage<IUser | null>('user', null);
-  const [state, dispatch] = useReducer(authReducer, {
-    oauthToken,
-    user
+  const [state, setState] = useSessionStorage<IAuthState>('auth', {
+    oauthToken: null,
+    user: null,
+    isMaster: false
   });
 
-  useEffect(() => {
-    saveOauthToken(state.oauthToken);
-    saveUser(state.user);
-  }, [state]);
+  const login = ({ oauthToken, user }: Omit<IAuthState, 'isMaster'>): void => {
+    let isMaster = false;
+    if (user?.id === MASTER_ID) {
+      isMaster = true;
+    }
 
-  console.log('rerender!');
+    setState({ oauthToken, user, isMaster });
+  };
+
+  const logout = (): void => {
+    setState({ oauthToken: null, user: null, isMaster: false });
+  };
 
   return (
-    <AuthorizationStateContext.Provider value={state}>
-      <AuthorizationDispatchContext.Provider value={dispatch}>
-        {children}
-      </AuthorizationDispatchContext.Provider>
-    </AuthorizationStateContext.Provider>
+    <AuthorizationContext.Provider value={{ ...state, login, logout }}>
+      {children}
+    </AuthorizationContext.Provider>
   );
 };
 

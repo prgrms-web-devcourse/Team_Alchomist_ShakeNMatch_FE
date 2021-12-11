@@ -3,10 +3,12 @@ import type { IUser } from '@models';
 interface IAuthState {
   oauthToken: string | null;
   user: IUser | null;
+  isMaster?: boolean;
 }
 
-type IAuthAction =
-  | { type: 'LOG_IN'; payload: { oauthToken: string; user: IUser } }
-  | { type: 'LOG_OUT' };
+interface IAuthContext extends IAuthState {
+  login(value: Omit<IAuthState, 'isMaster'>): void;
+  logout(): void;
+}
 
-export type { IAuthState, IAuthAction };
+export type { IAuthState, IAuthContext };
