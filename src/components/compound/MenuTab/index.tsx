@@ -69,7 +69,7 @@ const MenuTab = ({
     );
 
     setChildrenEl(childrenEl);
-  }, [displayingChildIdx]);
+  }, [displayingChildIdx, children]);
 
   return (
     <StyledContainer>
