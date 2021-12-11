@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Modal, Text } from '@base';
 import TextButton from '@compound/TextButton';
 import MenuTab from '@compound/MenuTab';
+import TitleSectionContainer from '@domain/TitleSectionContainer';
 import type { IngredientSelectModalProps } from './types';
 import { StyledTabContentContainer } from './styled';
 
@@ -40,8 +41,8 @@ const IngredientSelectModal = ({
             재료를 추가해보세요
           </Text>
           <MenuTab initialOnChild='0' tabText={['Alcohol', 'Others']}>
-            <div>1 page</div>
-            <div>2 page</div>
+            <TitleSectionContainer titleText='첫번째 페이지'></TitleSectionContainer>
+            <TitleSectionContainer titleText='두번째 페이지'></TitleSectionContainer>
           </MenuTab>
           <TextButton block buttonType='LONG_WHITE'>
             수정완료
