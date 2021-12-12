@@ -4,10 +4,10 @@ import { THEMES } from '@constants/themes';
 import ThemeSelector from '@domain/ThemeSelector';
 import type { ITHEME } from '@models';
 import type { ReactElement } from 'react';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import React, { useCallback, useMemo } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useCallback, useMemo, useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
+  StyledBackButton,
   StyledHeader,
   StyledResultContainer,
   StyledThemePageContainer
@@ -17,10 +17,7 @@ const RADIX_TEN = 10;
 
 const ThemePage = (): ReactElement => {
   const [searchParams, setSearchParams] = useSearchParams();
-  // const [selectedThemes, setSelectedThemes] = useState({
-  //   main: searchParams.get('main'),
-  //   detail: searchParams.get('detail')
-  // });
+  const navigate = useNavigate();
   const selectedThemes = useMemo(
     () => ({
       main: searchParams.get('main') || '0',
@@ -28,7 +25,9 @@ const ThemePage = (): ReactElement => {
     }),
     [searchParams]
   );
-  const showResult = searchParams.get('result');
+  const showResult = useMemo(() => searchParams.get('result'), [searchParams]);
+  const [isMountedWithResult, setIsMountedWithResult] = useState(false); // 최초 접근 지점 확인 ( result 로 바로 접근인지 아닌지에 따라 handleBack navigate 지점 변경)
+
   const handleChangeTheme = useCallback(
     ({ main, detail }: { main: number; detail: number }) => {
       const newSearchParams: {
@@ -59,14 +58,41 @@ const ThemePage = (): ReactElement => {
         result: 'true'
       });
     }
-  }, [selectedThemes]);
+  }, [selectedThemes, setSearchParams]);
+
+  const handleBack = useCallback(() => {
+    if (isMountedWithResult) {
+      const { main, detail } = selectedThemes;
+      setSearchParams({ main, detail }, { replace: true }); // result 페이지로 바로 접근됬을경우
+    } else {
+      navigate(-1); // result 이전에서 접근해 온경우
+    }
+  }, [navigate, isMountedWithResult, selectedThemes, setSearchParams]);
+
+  useEffect(() => {
+    if (showResult) {
+      setIsMountedWithResult(true);
+    }
+  }, []);
 
   return (
     <>
       <StyledHeader />
       <StyledThemePageContainer>
         <h2>
-          <Text bold> 테마 별로 레시피를 추천받아 보세요!</Text>
+          {showResult ? (
+            <>
+              <Text>당신이 선택한 </Text>
+              <Text bold color='BLUE' italic>
+                {`'${
+                  Object.keys(THEMES)[parseInt(selectedThemes.main)] as ITHEME
+                }' `}
+              </Text>
+              <Text>에 어울리는 칵테일!</Text>
+            </>
+          ) : (
+            <Text bold> 테마 별로 레시피를 추천받아 보세요!</Text>
+          )}
         </h2>
         <SectionDivider
           {...(showResult && { className: 'result' })}
@@ -90,10 +116,12 @@ const ThemePage = (): ReactElement => {
             </Text>
           </StyledResultContainer>
         </SectionDivider>
-        {!showResult && (
+        {!showResult ? (
           <TextButton buttonType='LONG_WHITE' onClick={handleResult}>
             결과 보기
           </TextButton>
+        ) : (
+          <StyledBackButton color='NAVY' onClick={handleBack} />
         )}
       </StyledThemePageContainer>
     </>

@@ -1,4 +1,5 @@
 import { COLOR } from '@constants';
+import BackButton from '@domain/BackButton';
 import styled from '@emotion/styled';
 
 // 임시 헤더
@@ -14,7 +15,7 @@ const StyledHeader = styled.header`
 const StyledThemePageContainer = styled.div`
   margin-top: 70px;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 70px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,9 +43,16 @@ const StyledContentContainer = styled.div`
 
 const StyledResultContainer = styled.div``;
 
+const StyledBackButton = styled(BackButton)`
+  position: absolute;
+  left: 10px;
+  bottom: 20px;
+`;
+
 export {
   StyledHeader,
   StyledThemePageContainer,
   StyledContentContainer,
-  StyledResultContainer
+  StyledResultContainer,
+  StyledBackButton
 };
