@@ -30,7 +30,7 @@ const setInterceptors = (
 
       instance.interceptors.response.use(
         (response) => response.data,
-        (error) => Promise.reject(error)
+        (error) => Promise.reject(error.response)
       );
 
       break;
@@ -50,7 +50,7 @@ const setInterceptors = (
 
       instance.interceptors.response.use(
         (response) => response.data,
-        (error) => Promise.reject(error)
+        (error) => Promise.reject(error.response)
       );
 
       break;
@@ -70,7 +70,7 @@ const setInterceptors = (
 
       instance.interceptors.response.use(
         (response) => response.data,
-        (error) => Promise.reject(error)
+        (error) => Promise.reject(error.response)
       );
 
       break;
@@ -78,13 +78,19 @@ const setInterceptors = (
   return instance;
 };
 
-const request = (): AxiosInstance =>
-  setInterceptors(axios.create({ baseURL: BASE_URL }), REQUEST_TYPE.DEFAULT);
+const request = setInterceptors(
+  axios.create({ baseURL: BASE_URL }),
+  REQUEST_TYPE.DEFAULT
+);
 
-const authRequest = (): AxiosInstance =>
-  setInterceptors(axios.create({ baseURL: BASE_URL }), REQUEST_TYPE.AUTH);
+const authRequest = setInterceptors(
+  axios.create({ baseURL: BASE_URL }),
+  REQUEST_TYPE.AUTH
+);
 
-const fileRequest = (): AxiosInstance =>
-  setInterceptors(axios.create({ baseURL: BASE_URL }), REQUEST_TYPE.FILE);
+const fileRequest = setInterceptors(
+  axios.create({ baseURL: BASE_URL }),
+  REQUEST_TYPE.FILE
+);
 
 export { request, authRequest, fileRequest };
