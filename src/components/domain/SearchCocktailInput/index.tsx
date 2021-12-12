@@ -4,7 +4,7 @@ import { Input } from '@base';
 import useDebounce from '@hooks/useDebounce';
 import type { SearchCocktailInputProps } from './types';
 
-const SEARCH_DEBOUNCE_TIME = 2000;
+const SEARCH_DEBOUNCE_TIME = 600;
 
 const SearchCocktailInput = ({
   onSearch
