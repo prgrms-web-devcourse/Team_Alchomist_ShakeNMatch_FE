@@ -11,7 +11,8 @@ const SectionDividerWithTitle = ({
   titleSize = 'md',
   titleText,
   bold,
-  gap = '20px'
+  gap = '20px',
+  alignItems = false
 }: SectionDividerWithTitleProps): ReactElement => {
   const wrappedChildren = Children.toArray(children).map((element) => (
     <StyledSectionDividerContent>{element}</StyledSectionDividerContent>
@@ -19,6 +20,7 @@ const SectionDividerWithTitle = ({
 
   return (
     <TitleSectionContainer
+      alignItems={alignItems}
       bold={bold}
       gap={gap}
       titleColor={titleColor}
