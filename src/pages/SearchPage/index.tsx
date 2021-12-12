@@ -51,6 +51,7 @@ const SearchPage = (): ReactElement => {
         <SearchCocktailInput onSearch={handleSearch} />
       </SectionDividerContent>
       <SectionDividerContent>
+        {/* 상태값 바뀔 때마다 애니메이션 재적용 필요 */}
         <CocktailList cocktailList={results} />
       </SectionDividerContent>
     </SectionDivider>
