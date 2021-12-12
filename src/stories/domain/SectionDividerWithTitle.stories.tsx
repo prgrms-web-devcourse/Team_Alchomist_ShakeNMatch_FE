@@ -10,6 +10,9 @@ export default {
   argTypes: {
     gap: {
       control: 'number'
+    },
+    showDivider: {
+      control: 'boolean'
     }
   }
 };

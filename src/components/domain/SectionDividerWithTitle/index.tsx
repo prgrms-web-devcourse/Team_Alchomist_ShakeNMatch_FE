@@ -7,12 +7,15 @@ import type { SectionDividerWithTitleProps } from './types';
 
 const SectionDividerWithTitle = ({
   children,
-  titleColor,
+  titleColor = 'BLACK',
   titleSize = 'md',
   titleText,
   bold,
   gap = '20px',
-  alignItems = false
+  alignItems = false,
+  ratio = [1, 1],
+  showDivider = false,
+  dividerOptions = { color: 'DARK_GRAY', size: 1 }
 }: SectionDividerWithTitleProps): ReactElement => {
   const wrappedChildren = Children.toArray(children).map((element) => (
     <StyledSectionDividerContent>{element}</StyledSectionDividerContent>
@@ -27,7 +30,13 @@ const SectionDividerWithTitle = ({
       titleSize={titleSize}
       titleText={titleText}
     >
-      <SectionDivider>{wrappedChildren}</SectionDivider>
+      <SectionDivider
+        dividerOptions={dividerOptions}
+        ratio={ratio}
+        showDivider={showDivider}
+      >
+        {wrappedChildren}
+      </SectionDivider>
     </TitleSectionContainer>
   );
 };
