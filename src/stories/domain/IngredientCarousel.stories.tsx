@@ -1,5 +1,5 @@
-import IngredientCarousel from '@domain/IngredientCarousel/IngredientCarouselContainer';
-import type { IngredientCarouselProps } from '@domain/IngredientCarousel/IngredientCarouselContainer/types';
+import IngredientCarousel from '@domain/IngredientCarousel';
+import type { IngredientCarouselProps } from '@domain/IngredientCarousel/types';
 import type { ReactElement } from 'react';
 
 export default {
