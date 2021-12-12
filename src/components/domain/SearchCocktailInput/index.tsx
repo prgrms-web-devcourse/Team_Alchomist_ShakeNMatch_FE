@@ -1,13 +1,13 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import type { ChangeEvent, ReactElement, FormEvent } from 'react';
 import { Input } from '@base';
 import useDebounce from '@hooks/useDebounce';
 import type { SearchCocktailInputProps } from './types';
 
-const SEARCH_DEBOUNCE_TIME = 600;
+const SEARCH_DEBOUNCE_TIME = 2000;
 
 const SearchCocktailInput = ({
-  onSearchDone
+  onSearch
 }: SearchCocktailInputProps): ReactElement => {
   const [keyword, setKeyword] = useState('');
 
@@ -15,28 +15,27 @@ const SearchCocktailInput = ({
     setKeyword(e.currentTarget.value);
   }, []);
 
-  const searchCocktail = useCallback(async (): Promise<void> => {
-    // 임시 api 호출 함수
-    console.log('api호출');
-    // 임시 api 응답 데이터
-    const res = [{ id: '1', name: '1' }];
-    onSearchDone(res);
-  }, []);
+  const handleSearch = (): void => {
+    onSearch(keyword);
+  };
 
-  const debounceSearchCocktail = useDebounce(
-    searchCocktail,
+  const [debounceHandleSearch, clearDebounce] = useDebounce(
+    handleSearch,
     SEARCH_DEBOUNCE_TIME
   );
 
-  const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
-    debounceSearchCocktail();
-  }, []);
+    if (keyword.trim().length) {
+      clearDebounce();
+      onSearch(keyword);
+    }
+  };
 
   useEffect(() => {
     if (keyword.trim().length) {
-      debounceSearchCocktail();
+      debounceHandleSearch();
     }
   }, [keyword]);
 

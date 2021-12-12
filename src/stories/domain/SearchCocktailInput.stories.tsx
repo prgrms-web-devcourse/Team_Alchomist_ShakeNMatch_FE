@@ -9,8 +9,8 @@ export default {
 export const Default = (): ReactElement => {
   return (
     <SearchCocktailInput
-      onSearchDone={(searchResults): void => {
-        console.log('검색된 칵테일: ', searchResults);
+      onSearch={(keyword): void => {
+        console.log('api 호출할 검색어: ', keyword);
       }}
     />
   );

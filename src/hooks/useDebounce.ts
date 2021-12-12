@@ -3,7 +3,7 @@ import { useRef } from 'react';
 const useDebounce = (
   handler: (...args: any) => void,
   delay: number
-): (() => void) => {
+): [() => void, () => void] => {
   const timerRef = useRef<null | NodeJS.Timeout>(null);
 
   const debounceHandler = (): void => {
@@ -12,7 +12,14 @@ const useDebounce = (
     timerRef.current = setTimeout(handler, delay);
   };
 
-  return debounceHandler;
+  const clearDebounce = (): void => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      console.log('devounce cancel');
+    }
+  };
+
+  return [debounceHandler, clearDebounce];
 };
 
 export default useDebounce;
