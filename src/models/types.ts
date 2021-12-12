@@ -1,4 +1,5 @@
 import type {
+  DOMAINS,
   TEXT_SIZE,
   TEXT_WEIGHT,
   USER_VALIDATE_ERROR_MESSAGES
@@ -96,6 +97,8 @@ interface IUser {
   favorites?: Pick<ICocktail, 'id'>[];
 }
 
+type IDomain = keyof typeof DOMAINS;
+
 export type {
   ColorKeys,
   ColorType,
@@ -116,5 +119,6 @@ export type {
   ICocktail,
   IUser,
   IIngredient,
-  IReview
+  IReview,
+  IDomain
 };

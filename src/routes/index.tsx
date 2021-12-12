@@ -1,3 +1,4 @@
+import { DOMAINS } from '@constants';
 import Header from '@domain/Header';
 import ErrorPage from '@pages/ErrorPage';
 import JangoPage from '@pages/JangoPage';
@@ -15,7 +16,7 @@ import { Route, Routes } from 'react-router';
 const Router = (): ReactElement => {
   return (
     <Routes>
-      <Route element={<MainPage />} path='/'></Route>
+      <Route element={<MainPage />} path={`/${DOMAINS.main}`}></Route>
       <Route
         element={
           <>
@@ -25,7 +26,7 @@ const Router = (): ReactElement => {
         }
         path='/jango'
       ></Route>
-      <Route element={<LoginPage />} path='/login'></Route>
+      <Route element={<LoginPage />} path={`/${DOMAINS.login}`}></Route>
       <Route
         element={
           <>
@@ -35,7 +36,7 @@ const Router = (): ReactElement => {
         }
         path='/user/:id'
       ></Route>
-      <Route element={<RegisterPage />} path='/register'></Route>
+      <Route element={<RegisterPage />} path={`/${DOMAINS.register}`}></Route>
       <Route
         element={
           <>
@@ -45,7 +46,10 @@ const Router = (): ReactElement => {
         }
         path='/search/:keyword'
       ></Route>
-      <Route element={<ShoppingPage />} path='/shop/:keyword'></Route>
+      <Route
+        element={<ShoppingPage />}
+        path={`/${DOMAINS.shopping}/:keyword`}
+      ></Route>
       <Route
         element={
           <>
@@ -53,7 +57,7 @@ const Router = (): ReactElement => {
             <ThemePage />
           </>
         }
-        path='/theme'
+        path={`/${DOMAINS.theme}`}
       ></Route>
       <Route
         element={
