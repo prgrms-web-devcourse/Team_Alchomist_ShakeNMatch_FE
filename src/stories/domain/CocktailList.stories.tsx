@@ -19,43 +19,28 @@ export const Default = (): ReactElement => {
 
 const DUMMYLIST = [
   {
+    id: '123',
     name: '블러디 매리',
-    icon: 'https://via.placeholder.com/130x150'
+    type: 'whiskey'
   },
   {
-    name: '깔루아 밀크',
-    icon: 'https://via.placeholder.com/130x150'
+    id: '123',
+    name: '블러디 매리',
+    type: 'whiskey'
   },
   {
-    name: '마티니',
-    icon: 'https://via.placeholder.com/130x150'
+    id: '123',
+    name: '블러디 매리',
+    type: 'whiskey'
   },
   {
-    name: '어쩌고 저꺼고',
-    icon: 'https://via.placeholder.com/130x150'
+    id: '123',
+    name: '블러디 매리',
+    type: 'whiskey'
   },
   {
-    name: '소주가짱',
-    icon: 'https://via.placeholder.com/130x150'
-  },
-  {
-    name: '막걸리한잔',
-    icon: 'https://via.placeholder.com/130x150'
-  },
-  {
-    name: '마더로씨아',
-    icon: 'https://via.placeholder.com/130x150'
-  },
-  {
-    name: '술이들어간다',
-    icon: 'https://via.placeholder.com/130x150'
-  },
-  {
-    name: '에헤라디야',
-    icon: 'https://via.placeholder.com/130x150'
-  },
-  {
-    name: '술이야',
-    icon: 'https://via.placeholder.com/130x150'
+    id: '123',
+    name: '블러디 매리',
+    type: 'whiskey'
   }
 ];
