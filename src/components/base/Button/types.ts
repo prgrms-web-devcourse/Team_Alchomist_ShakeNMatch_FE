@@ -17,6 +17,10 @@ const BUTTON_SIZE = {
   google: {
     width: '189px',
     height: '45px'
+  },
+  headerIcon: {
+    width: '50px',
+    height: '50px'
   }
 } as const;
 type ButtonSizeKeys = keyof typeof BUTTON_SIZE;
