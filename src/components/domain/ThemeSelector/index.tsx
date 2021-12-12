@@ -41,14 +41,7 @@ const ThemeSelector = ({
   }, []);
 
   return (
-    <SectionDivider
-      dividerOptions={{ color: 'TRANSPARENT', gap: 20 }}
-      height={500}
-      ratio={[1, 1]}
-      showDivider
-      width={1000}
-      {...props}
-    >
+    <SectionDivider height={500} ratio={[1, 1]} width={1000} {...props}>
       <SectionDividerContent className='mainCarousel'>
         <Carousel.Container
           selectedIndex={selectedMainIndex}
