@@ -7,8 +7,8 @@ interface TitleSectionContainerProps extends HTMLAttributes<HTMLDivElement> {
   titleColor?: ColorKeys;
   bold?: boolean;
   dividerVisible?: boolean;
-  dividerColor: ColorKeys;
-  dividerWidth: string;
+  dividerColor?: ColorKeys;
+  dividerWidth?: string;
   dividerThickness?: string;
   gap?: string | number;
 }

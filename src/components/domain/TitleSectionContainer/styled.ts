@@ -3,10 +3,11 @@ import { COLOR } from '@constants/colors';
 import type { StyledLineProps } from './types';
 
 const StyledContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, minmax(min-content, auto)) 1fr;
+  justify-items: center;
+  height: 100%;
 `;
 
 const StyledLine = styled.hr<StyledLineProps>`
