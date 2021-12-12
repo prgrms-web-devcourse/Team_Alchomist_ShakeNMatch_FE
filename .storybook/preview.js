@@ -25,10 +25,17 @@ export const decorators = [
             padding: 0;
             margin: 0;
             background: white;
-            min-height: 100%;
+            height: 100vh;
             font-family: Pretendard, -apple-system, BlinkMacSystemFont,
               system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
               'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+          }
+          .sb-show-main.sb-main-padded {
+            padding: 0;
+          }
+          #root {
+            height: 100vh;
+            width: 100%;
           }
         `}
       />

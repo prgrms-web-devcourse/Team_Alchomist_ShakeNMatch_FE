@@ -6,7 +6,7 @@ import type { SectionDividerProps } from './types';
 
 const FULL_PERCENTAGE = 100;
 const DEFAULT_RATIO = [1, 1];
-const DEFAULT_SIZE = '100px';
+const DEFAULT_SIZE = '100%';
 
 const SectionDivider = ({
   children,
