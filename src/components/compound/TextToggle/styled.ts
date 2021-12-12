@@ -4,15 +4,16 @@ import { COLOR } from '@constants';
 
 const StyledToggleContainer = styled.label<StyledToggleContainerProps>`
   display: ${({ block }): string => (block ? 'block' : 'inline-block')};
-  width: 108px;
+  min-width: 108px;
   height: 33px;
   border-radius: 16px;
   background-color: ${({ toggled }): string =>
-    toggled ? COLOR.NAVY : COLOR.BASIC_WHITE};
+    toggled ? COLOR.NAVY : COLOR.LIGHT_WHITE};
   text-align: center;
   line-height: 2.2;
   cursor: pointer;
   user-select: none;
+  padding: 0 20px;
 `;
 
 const StyledToggleInput = styled.input`
