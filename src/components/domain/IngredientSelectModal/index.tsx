@@ -65,8 +65,8 @@ const IngredientSelectModal = ({
     useState(initialSubIngredient);
 
   useEffect(() => {
-    // 전체 재료 목록을 받아와서 저장한다 (컨텍스트)
-    // 받아온 데이터를 컨텍스트에 넣고, 거기서 재료 목록 해쉬맵을 만든다.
+    // 전체 재료 목록 api를 받아와서 컨텍스트에 저장한다.
+    // 거기서 재료 목록 해쉬맵을 만든다.
     // 만약 기존에 받아온 목록이 있다면 그걸 사용한다.
 
     // 임시로 DUMMY
@@ -84,7 +84,6 @@ const IngredientSelectModal = ({
     },
     []
   );
-
   const handleSelectSubItem = useCallback(
     (nextSelectedItems: string[]): void => {
       setSelectedSubItems(nextSelectedItems);
@@ -157,7 +156,6 @@ const IngredientSelectModal = ({
             block
             buttonType='LONG_WHITE'
             onClick={(): void => {
-              // 메인과 서브 함게 서버로
               onSelectDone([...selectedMainItems, ...selectedSubItems]);
             }}
           >

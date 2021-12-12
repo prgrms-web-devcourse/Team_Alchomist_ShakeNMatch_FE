@@ -8,9 +8,10 @@ const StyledTitleSectionContainer = styled(TitleSectionContainer)`
 
 const StyledTextButton = styled(TextButton)`
   position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
 `;
 
 const StyledTabContentContainer = styled.div`
