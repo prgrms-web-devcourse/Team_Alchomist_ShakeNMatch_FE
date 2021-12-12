@@ -4,8 +4,8 @@ interface ICocktail {
   name: string;
 }
 
-interface DebounceInputProps {
+interface SearchCocktailInputProps {
   onSearchDone(searchResults: ICocktail[]): void;
 }
 
-export type { DebounceInputProps };
+export type { SearchCocktailInputProps };

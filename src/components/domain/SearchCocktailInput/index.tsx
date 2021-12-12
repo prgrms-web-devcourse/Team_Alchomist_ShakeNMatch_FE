@@ -2,11 +2,13 @@ import { useEffect, useState, useCallback } from 'react';
 import type { ChangeEvent, ReactElement, FormEvent } from 'react';
 import { Input } from '@base';
 import useDebounce from '@hooks/useDebounce';
-import type { DebounceInputProps } from './types';
+import type { SearchCocktailInputProps } from './types';
 
 const SEARCH_DEBOUNCE_TIME = 600;
 
-const DebounceInput = ({ onSearchDone }: DebounceInputProps): ReactElement => {
+const SearchCocktailInput = ({
+  onSearchDone
+}: SearchCocktailInputProps): ReactElement => {
   const [keyword, setKeyword] = useState('');
 
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>): void => {
@@ -45,4 +47,4 @@ const DebounceInput = ({ onSearchDone }: DebounceInputProps): ReactElement => {
   );
 };
 
-export default DebounceInput;
+export default SearchCocktailInput;
