@@ -1,3 +1,4 @@
+import Header from '@domain/Header';
 import ErrorPage from '@pages/ErrorPage';
 import JangoPage from '@pages/JangoPage';
 import LoginPage from '@pages/LoginPage';
@@ -15,15 +16,55 @@ const Router = (): ReactElement => {
   return (
     <Routes>
       <Route element={<MainPage />} path='/'></Route>
-      <Route element={<JangoPage />} path='/jango'></Route>
+      <Route
+        element={
+          <>
+            <Header />
+            <JangoPage />
+          </>
+        }
+        path='/jango'
+      ></Route>
       <Route element={<LoginPage />} path='/login'></Route>
-      <Route element={<MyPage />} path='/user/:id'></Route>
+      <Route
+        element={
+          <>
+            <Header />
+            <MyPage />
+          </>
+        }
+        path='/user/:id'
+      ></Route>
       <Route element={<RegisterPage />} path='/register'></Route>
-      <Route element={<SearchPage />} path='/search/:keyword'></Route>
+      <Route
+        element={
+          <>
+            <Header />
+            <SearchPage />
+          </>
+        }
+        path='/search/:keyword'
+      ></Route>
       <Route element={<ShoppingPage />} path='/shop/:keyword'></Route>
-      <Route element={<ThemePage />} path='/theme'></Route>
+      <Route
+        element={
+          <>
+            <Header />
+            <ThemePage />
+          </>
+        }
+        path='/theme'
+      ></Route>
+      <Route
+        element={
+          <>
+            <Header />
+            <ErrorPage />
+          </>
+        }
+        path='*'
+      ></Route>
       <Route element={<TestPage />} path='/test'></Route>
-      <Route element={<ErrorPage />} path='*'></Route>
     </Routes>
   );
 };
