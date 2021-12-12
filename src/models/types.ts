@@ -97,7 +97,7 @@ interface IUser {
   favorites?: Pick<ICocktail, 'id'>[];
 }
 
-type IDomain = keyof typeof DOMAINS;
+type IDomain = typeof DOMAINS[keyof typeof DOMAINS];
 
 export type {
   ColorKeys,

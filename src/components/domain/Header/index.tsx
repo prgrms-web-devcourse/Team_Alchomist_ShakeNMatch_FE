@@ -13,7 +13,7 @@ import { getDomain } from '@utils/lib/getDomain';
 import { DOMAINS } from '@constants';
 
 const Header = (): ReactElement => {
-  const { oauthToken } = useAuthorization();
+  const { oauthToken, user } = useAuthorization();
   const location = useLocation();
   const domain = useMemo(() => getDomain(location.pathname), [location]);
   const navigate = useNavigate();
@@ -53,7 +53,7 @@ const Header = (): ReactElement => {
           size='headerIcon'
           src={profileImageSrc}
           onClick={(): void => {
-            handleLink(`/${DOMAINS.profile}`);
+            handleLink(`/${DOMAINS.profile}/${user?.id}`);
           }}
         />
       ) : (
