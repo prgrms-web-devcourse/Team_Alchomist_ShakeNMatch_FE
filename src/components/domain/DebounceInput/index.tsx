@@ -26,11 +26,11 @@ const DebounceInput = ({ onSearchDone }: DebounceInputProps): ReactElement => {
     SEARCH_DEBOUNCE_TIME
   );
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = useCallback((e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
     debounceSearchCocktail();
-  };
+  }, []);
 
   useEffect(() => {
     if (keyword.trim().length) {
