@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
-import type { ShoppingItemProps } from './types';
 import { COLOR } from '@utils/constants/colors';
 
-const StyledContainer = styled.div<ShoppingItemProps>`
+const StyledContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,7 +16,7 @@ const StyledContainer = styled.div<ShoppingItemProps>`
   margin: 20px 0px;
 `;
 
-const StyledImage = styled.div<ShoppingItemProps>`
+const StyledImage = styled.div`
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -25,7 +24,7 @@ const StyledImage = styled.div<ShoppingItemProps>`
   width: 200px;
 `;
 
-const StyledTitle = styled.div<ShoppingItemProps>`
+const StyledTitle = styled.div`
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -33,12 +32,12 @@ const StyledTitle = styled.div<ShoppingItemProps>`
   width: 380px;
 `;
 
-const StyledVerticalLine = styled.div<ShoppingItemProps>`
+const StyledVerticalLine = styled.div`
   border-left: 1px solid ${COLOR.LIGHT_GRAY};
   height: 100px;
 `;
 
-const StyledInfo = styled.div<ShoppingItemProps>`
+const StyledInfo = styled.div`
   display: inline-flex;
   justify-content: center;
   align-items: center;
