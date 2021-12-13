@@ -5,7 +5,7 @@ import CocktailList from '@domain/CocktailList';
 import { Image, Text } from '@base';
 import searchBartender from '@assets/characters/searchBartender.png';
 import SearchCocktailInput from '@domain/SearchCocktailInput';
-import { SectionDividerContent } from './styled';
+import { StyledContentWrapper } from './styled';
 import SectionDividerWithTitle from '@domain/SectionDividerWithTitle';
 
 const DUMMY = [
@@ -36,11 +36,11 @@ const SearchPage = (): ReactElement => {
 
   return (
     <SectionDividerWithTitle alignItems>
-      <SectionDividerContent>
+      <StyledContentWrapper>
         <Text block>찾아 보고 싶은 칵테일이 있나요?</Text>
         <Image mode='contain' src={searchBartender} />
         <SearchCocktailInput onSearch={handleSearch} />
-      </SectionDividerContent>
+      </StyledContentWrapper>
       {/* 상태값 바뀔 때마다 애니메이션 재적용 필요 */}
       <CocktailList cocktailList={results} />
     </SectionDividerWithTitle>
