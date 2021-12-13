@@ -14,7 +14,7 @@ const SectionDividerWithTitle = ({
   gap = '20px',
   alignItems = false,
   ratio = [1, 1],
-  showDivider = false,
+  showContentsDivider = false,
   dividerOptions = { color: 'DARK_GRAY', size: 1 }
 }: SectionDividerWithTitleProps): ReactElement => {
   const wrappedChildren = Children.toArray(children).map((element) => (
@@ -33,7 +33,7 @@ const SectionDividerWithTitle = ({
       <SectionDivider
         dividerOptions={dividerOptions}
         ratio={ratio}
-        showDivider={showDivider}
+        showDivider={showContentsDivider}
       >
         {wrappedChildren}
       </SectionDivider>

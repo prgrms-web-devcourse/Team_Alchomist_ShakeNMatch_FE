@@ -7,8 +7,9 @@ interface SectionDividerWithTitleProps
       TitleSectionContainerProps,
       'titleColor' | 'titleText' | 'titleSize' | 'gap' | 'bold' | 'alignItems'
     >,
-    Pick<SectionDividerProps, 'ratio' | 'showDivider' | 'dividerOptions'> {
+    Pick<SectionDividerProps, 'ratio' | 'dividerOptions'> {
   children: ReactChild | ReactChild[];
+  showContentsDivider?: boolean;
 }
 
 export type { SectionDividerWithTitleProps };
