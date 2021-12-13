@@ -19,7 +19,7 @@ const Modal = ({
   );
 
   const modalRef = useClickAway<HTMLDivElement>(() => {
-    onClose();
+    onClose?.();
   });
 
   useEffect(() => {

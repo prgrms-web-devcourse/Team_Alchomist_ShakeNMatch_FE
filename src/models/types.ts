@@ -1,10 +1,7 @@
-import type {
-  TEXT_SIZE,
-  TEXT_WEIGHT,
-  USER_VALIDATE_ERROR_MESSAGES
-} from '@constants';
+import type { TEXT_SIZE, TEXT_WEIGHT } from '@constants';
 import type { COLOR } from '@constants/colors';
 import type { THEMES } from '@constants/themes';
+import type { USER_VALIDATE_ERROR_MESSAGES } from '@constants/user';
 
 type ColorKeys = keyof typeof COLOR;
 type ColorType = typeof COLOR[ColorKeys];
