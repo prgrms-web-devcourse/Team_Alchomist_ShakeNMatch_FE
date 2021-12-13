@@ -15,9 +15,9 @@ const StyledUploadPreview = styled.div<PreviewProps>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 428px;
-  height: 197px;
-  border: 4px solid;
+  width: 300px;
+  height: 180px;
+  border: 2px solid;
   border-color: ${({ dragging }): string => (!dragging ? 'black' : 'cyan')};
   background-image: ${({ fileSrcUrl }): string =>
     fileSrcUrl ? `url(${fileSrcUrl})` : ''};
