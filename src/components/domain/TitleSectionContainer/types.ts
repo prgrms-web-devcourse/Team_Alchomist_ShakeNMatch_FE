@@ -11,6 +11,7 @@ interface TitleSectionContainerProps extends HTMLAttributes<HTMLDivElement> {
   dividerWidth?: string;
   dividerThickness?: string;
   gap?: string | number;
+  alignItems?: boolean;
 }
 
 interface StyledLineProps {

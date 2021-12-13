@@ -1,12 +1,18 @@
+import type { CSSObject } from '@emotion/styled';
 import styled from '@emotion/styled';
 import { COLOR } from '@constants/colors';
-import type { StyledLineProps } from './types';
+import type { StyledLineProps, TitleSectionContainerProps } from './types';
 
-const StyledContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+const StyledContainer = styled.div<
+  Required<Pick<TitleSectionContainerProps, 'alignItems'>>
+>`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, minmax(min-content, auto)) 1fr;
+  justify-items: center;
+  height: 100%;
+  ${({ alignItems }): CSSObject | boolean =>
+    alignItems && { alignItems: 'center' }}
 `;
 
 const StyledLine = styled.hr<StyledLineProps>`

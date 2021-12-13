@@ -14,10 +14,10 @@ const TitleSectionContainer = ({
   dividerWidth = '200px',
   dividerThickness = '1px',
   gap = '5px',
-  ...props
+  alignItems = false
 }: TitleSectionContainerProps): ReactElement => {
   return (
-    <StyledContainer {...props}>
+    <StyledContainer alignItems={alignItems}>
       <Text bold={bold} color={titleColor} size={titleSize}>
         {titleText}
       </Text>
