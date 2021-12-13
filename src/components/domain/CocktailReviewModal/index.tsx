@@ -1,4 +1,4 @@
-import type { ChangeEventHandler, ReactElement } from 'react';
+import type { ChangeEventHandler, FormEventHandler, ReactElement } from 'react';
 import { useState } from 'react';
 import Button from '@base/Button';
 import Text from '@base/Text';
@@ -6,26 +6,18 @@ import Modal from '@base/Modal';
 import Upload from '@base/Uploader';
 import RatingStar from '@domain/RatingStar';
 import { StyledReviewForm, StyledTextEditor } from './style';
-import type { CocktailReviewModalProps, Review } from './types';
+import type { CocktailReviewModalProps } from './types';
 
 const CocktailReviewModal = (props: CocktailReviewModalProps): ReactElement => {
-  const [review, setReview] = useState<Review>({
-    userFile: null,
-    userRate: 0,
-    userComment: ''
-  });
-
   const [userFile, setUserFile] = useState<File | null>(null);
   const handleChangeFile = (file: File): void => {
     console.log('file changed', file.name);
     setUserFile(file);
-    setReview((prev) => ({ ...prev, userFile: file }));
   };
 
   const [userRate, setUserRate] = useState<number>(0);
   const handleUserRate = (newRate: number): void => {
     setUserRate(newRate);
-    setReview((prev) => ({ ...prev, userRate: newRate }));
   };
 
   const [userComment, setUserComment] = useState<string>('');
@@ -33,21 +25,21 @@ const CocktailReviewModal = (props: CocktailReviewModalProps): ReactElement => {
     e
   ): void => {
     setUserComment(e.target.value);
-    setReview((prev) => ({ ...prev, userComment: userComment }));
   };
 
-  const handleComplete = (): void => {
-    if (!userFile || userComment.length < 9) {
-      alert('업로드한 파일이 없습니다');
+  const onSubmit: FormEventHandler = (): void => {
+    if (!userFile || userComment.length < 2) {
+      alert(
+        '파일이 선택되지 않았거나, 코멘트 길이가 부족합니다. 성의를 보여주세요'
+      );
       return;
     }
-    console.log(userFile?.name, userRate, review);
-    props.visible = false;
-  };
-
-  const handleCancel = (): void => {
-    console.log(userFile?.name, userRate, review);
-    props.visible = false;
+    //API 로직이 들어올 곳 FormData로 묶어서 보내야 한다.
+    props.handleSubmit({
+      userFile: userFile,
+      userRate: userRate,
+      userComment: userComment
+    });
   };
 
   return (
@@ -69,10 +61,10 @@ const CocktailReviewModal = (props: CocktailReviewModalProps): ReactElement => {
         />
 
         <div>
-          <Button type='button' onClick={handleComplete}>
+          <Button type='button' onClick={onSubmit}>
             {'작성완료'}
           </Button>
-          <Button type='button' onClick={handleCancel}>
+          <Button type='button' onClick={props.onCancel}>
             {'취소'}
           </Button>
         </div>
