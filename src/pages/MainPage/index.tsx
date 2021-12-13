@@ -40,7 +40,7 @@ const MainPage = (): ReactElement => {
   return (
     <StyledPageContainer selectedMenu={selectedMenu}>
       <StyledBackButton
-        style={{ display: selectedMenu ? 'inline-block' : 'none' }}
+        visible={!!selectedMenu}
         onClick={(): void => {
           setSelectedMenu(null);
         }}

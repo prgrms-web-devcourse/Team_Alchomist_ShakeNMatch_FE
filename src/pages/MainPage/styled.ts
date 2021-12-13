@@ -25,7 +25,8 @@ const StyledPageContainer = styled.div<StyledPageContainerProps>`
   }
 `;
 
-const StyledBackButton = styled(BackButton)`
+const StyledBackButton = styled(BackButton)<{ visible: boolean }>`
+  display: ${({ visible }): string => (visible ? 'inlnie-block' : 'none')};
   cursor: pointer;
   position: absolute;
   left: 10px;
