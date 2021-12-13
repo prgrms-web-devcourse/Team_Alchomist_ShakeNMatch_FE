@@ -26,5 +26,5 @@ interface AlbumProps {
   imageSrc?: string;
 }
 
-export type { AlbumProps };
+export type { AlbumProps, AlbumAttributeKeys };
 export { ALBUM_ATTRIBUTES };

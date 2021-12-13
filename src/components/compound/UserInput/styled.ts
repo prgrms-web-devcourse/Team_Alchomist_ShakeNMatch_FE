@@ -5,9 +5,10 @@ const StyledLabel = styled.label`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 3px;
+  gap: 5px;
 
-  & input[name='age'] {
+  & input[name='age'],
+  input[name='nickname'] {
     text-align: center;
   }
 `;

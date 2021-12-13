@@ -1,5 +1,5 @@
 import Select from '@base/Select';
-import { USER_MBTI } from '@constants';
+import { USER_MBTI } from '@constants/user';
 import type { ReactElement } from 'react';
 
 export default {

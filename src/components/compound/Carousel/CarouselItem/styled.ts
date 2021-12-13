@@ -18,9 +18,9 @@ const bounce = keyframes`
 `;
 
 const StyledContainer = styled.div<
-  Required<Pick<CarouselItemProps, 'backgroundColor'>>
+  Required<Pick<CarouselItemProps, 'backgroundColor' | 'selected'>>
 >`
-  display: grid;
+  display: ${({ selected }): string => (selected ? 'grid' : 'none')};
   width: ${CAROUSEL_SIZE.width};
   height: ${CAROUSEL_SIZE.height};
   background-color: ${({ backgroundColor }): string => COLOR[backgroundColor]};
@@ -31,8 +31,8 @@ const StyledContainer = styled.div<
   justify-items: center;
   align-items: center;
   animation: ${bounce} 0.3s ease-in-out;
-  animation-play-state: ${({ hidden }): string =>
-    hidden ? 'paused' : 'running'};
+  animation-play-state: ${({ selected }): string =>
+    selected ? 'running' : 'paused'};
 `;
 
 const StyledWrapper = styled.div`
