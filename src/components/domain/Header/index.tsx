@@ -11,6 +11,7 @@ import { useAuthorization } from '@contexts';
 import { useLocation, useNavigate } from 'react-router';
 import { getDomain } from '@utils/lib/getDomain';
 import { DOMAINS } from '@constants';
+import Tooltip from '@base/Tooltip';
 
 const Header = (): ReactElement => {
   const { oauthToken, user } = useAuthorization();
@@ -28,24 +29,38 @@ const Header = (): ReactElement => {
     <StyledHeaderContainer>
       <Logo link size='sm' />
       {domain !== DOMAINS.jango && (
-        <ImageButton
-          mode='contain'
-          size='headerIcon'
-          src={jangoImageSrc}
-          onClick={(): void => {
-            handleLink(`/${DOMAINS.jango}`);
-          }}
-        />
+        <Tooltip
+          direction='bottom'
+          tooltipMessage='내가 가지고 있는 재료를 기반으로 칵테일 추천받기!'
+          tooltipMessageSize='xs'
+          tooltipSize='md'
+        >
+          <ImageButton
+            mode='contain'
+            size='headerIcon'
+            src={jangoImageSrc}
+            onClick={(): void => {
+              handleLink(`/${DOMAINS.jango}`);
+            }}
+          />
+        </Tooltip>
       )}
       {domain !== DOMAINS.theme && (
-        <ImageButton
-          mode='contain'
-          size='headerIcon'
-          src={themeImageSrc}
-          onClick={(): void => {
-            handleLink(`/${DOMAINS.theme}`);
-          }}
-        />
+        <Tooltip
+          direction='bottom'
+          tooltipMessage='테마별로 칵테일 추천받기!'
+          tooltipMessageSize='xs'
+          tooltipSize='sm'
+        >
+          <ImageButton
+            mode='contain'
+            size='headerIcon'
+            src={themeImageSrc}
+            onClick={(): void => {
+              handleLink(`/${DOMAINS.theme}`);
+            }}
+          />
+        </Tooltip>
       )}
       {oauthToken ? (
         <ImageButton
