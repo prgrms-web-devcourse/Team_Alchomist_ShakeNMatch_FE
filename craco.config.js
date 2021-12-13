@@ -12,6 +12,9 @@ module.exports = {
     }
   ],
   babel: {
-    presets: ['@emotion/babel-preset-css-prop']
+    presets: [
+      '@emotion/babel-preset-css-prop',
+      ['@babel/preset-react', { runtime: 'automatic' }]
+    ]
   }
 };

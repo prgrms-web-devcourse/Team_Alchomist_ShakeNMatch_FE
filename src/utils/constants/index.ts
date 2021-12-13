@@ -1,3 +1,6 @@
 export * from './colors';
-export * from './mbti';
 export * from './text';
+export * from './icon';
+export * from './user';
+export * from './domain';
+export * from './logos';

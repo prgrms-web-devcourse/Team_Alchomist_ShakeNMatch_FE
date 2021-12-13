@@ -8,7 +8,7 @@ import Text from '@base/Text';
 const TextToggle = ({
   children,
   block = false,
-  name,
+  id,
   initialState = false,
   toggleType = 'ingredient',
   onChange
@@ -17,14 +17,14 @@ const TextToggle = ({
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     toggle();
-    onChange?.({ name: e.target.name, toggled: !isToggled });
+    onChange?.({ id: e.target.id, toggled: !isToggled });
   };
 
   return (
     <StyledToggleContainer block={block} toggled={isToggled}>
       <StyledToggleInput
         checked={isToggled}
-        name={name}
+        id={id}
         type='checkbox'
         onChange={handleChange}
       />

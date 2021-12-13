@@ -7,7 +7,7 @@ const StyledSectionContainer = styled.div<StyledSectionContainerProps>`
   overflow: hidden;
   flex-direction: ${({ direction }): string | boolean =>
     direction === 'vertical' && 'column'};
-  transition: transform 0.5s ease-in-out;
+  transition: all 0.7s ease-in-out;
   width: ${({ width }): string | number =>
     typeof width === 'string' ? width : `${width}px`};
   height: ${({ height }): string | number =>
@@ -20,7 +20,7 @@ const StyledSectionContainer = styled.div<StyledSectionContainerProps>`
   })};
 
   & > * {
-    transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+    transition: all 0.7s ease-in-out;
   }
 `;
 
