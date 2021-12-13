@@ -1,4 +1,4 @@
-import type { TEXT_SIZE, TEXT_WEIGHT } from '@constants';
+import type { DOMAINS, TEXT_SIZE, TEXT_WEIGHT } from '@constants';
 import type { COLOR } from '@constants/colors';
 import type { THEMES } from '@constants/themes';
 import type { USER_VALIDATE_ERROR_MESSAGES } from '@constants/user';
@@ -95,6 +95,8 @@ interface IUser {
   favorites?: Pick<ICocktail, 'id'>[];
 }
 
+type IDomain = typeof DOMAINS[keyof typeof DOMAINS];
+
 export type {
   ColorKeys,
   ColorType,
@@ -116,5 +118,6 @@ export type {
   ICocktail,
   IUser,
   IIngredient,
-  IReview
+  IReview,
+  IDomain
 };
