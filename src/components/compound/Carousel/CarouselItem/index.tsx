@@ -28,7 +28,7 @@ const CarouselItem = ({
   return (
     <StyledContainer
       backgroundColor={backgroundColor}
-      hidden={!selected}
+      selected={selected}
       {...props}
     >
       <IconButton
