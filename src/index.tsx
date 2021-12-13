@@ -20,10 +20,15 @@ ReactDOM.render(
             padding: 0;
             margin: 0;
             background: white;
-            min-height: 100%;
+            min-height: 100vh;
+            width: 100%;
             font-family: Pretendard, -apple-system, BlinkMacSystemFont,
               system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
               'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+          }
+          #root {
+            height: 100vh;
+            width: 100%;
           }
         `}
       />
