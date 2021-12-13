@@ -1,19 +1,13 @@
 import type { ReactElement } from 'react';
 import { useState, useCallback, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { SectionDivider } from '@base';
 import CocktailList from '@domain/CocktailList';
+import { Image, Text } from '@base';
+import searchBartender from '@assets/characters/searchBartender.png';
 import SearchCocktailInput from '@domain/SearchCocktailInput';
 import { SectionDividerContent } from './styled';
+import SectionDividerWithTitle from '@domain/SectionDividerWithTitle';
 
-// temp
-interface ICocktail {
-  id: string;
-  name: string;
-  type: string;
-}
-
-// temp 응답 결과
 const DUMMY = [
   { id: '123', name: '칵테일', type: 'whiskey' },
   { id: '124', name: '칵테이', type: 'whiskey' },
@@ -24,7 +18,8 @@ const DUMMY = [
 ];
 
 const SearchPage = (): ReactElement => {
-  const [results, setResults] = useState<ICocktail[]>([]);
+  // 여기 추후에 그냥 ICocktail로 교체 (하위에서 걸러서 씀)
+  const [results, setResults] = useState<any[]>([]);
   const { keyword } = useParams();
   const navigate = useNavigate();
 
@@ -40,21 +35,15 @@ const SearchPage = (): ReactElement => {
   }, [keyword]);
 
   return (
-    <SectionDivider
-      dividerOptions={{ gap: 20 }}
-      height={500}
-      ratio={[1, 1]}
-      showDivider
-      width={1000}
-    >
+    <SectionDividerWithTitle alignItems>
       <SectionDividerContent>
+        <Text block>찾아 보고 싶은 칵테일이 있나요?</Text>
+        <Image mode='contain' src={searchBartender} />
         <SearchCocktailInput onSearch={handleSearch} />
       </SectionDividerContent>
-      <SectionDividerContent>
-        {/* 상태값 바뀔 때마다 애니메이션 재적용 필요 */}
-        <CocktailList cocktailList={results} />
-      </SectionDividerContent>
-    </SectionDivider>
+      {/* 상태값 바뀔 때마다 애니메이션 재적용 필요 */}
+      <CocktailList cocktailList={results} />
+    </SectionDividerWithTitle>
   );
 };
 
