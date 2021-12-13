@@ -6,6 +6,7 @@ import MyPage from '@pages/MyPage';
 import RegisterPage from '@pages/RegisterPage';
 import SearchPage from '@pages/SearchPage';
 import ShoppingPage from '@pages/ShoppingPage';
+import TestPage from '@pages/TestPage';
 import ThemePage from '@pages/ThemePage';
 import type { ReactElement } from 'react';
 import { Route, Routes } from 'react-router';
@@ -21,6 +22,7 @@ const Router = (): ReactElement => {
       <Route element={<SearchPage />} path='/search/:keyword'></Route>
       <Route element={<ShoppingPage />} path='/shop/:keyword'></Route>
       <Route element={<ThemePage />} path='/theme'></Route>
+      <Route element={<TestPage />} path='/test'></Route>
       <Route element={<ErrorPage />} path='*'></Route>
     </Routes>
   );

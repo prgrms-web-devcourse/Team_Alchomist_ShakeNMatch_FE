@@ -48,6 +48,53 @@ interface ValidateUserArgsType {
   mbti: IUserMbti;
 }
 
+// api Data Entity
+interface ITheme {
+  id: string;
+  mainCategory: string;
+  subCategory: string;
+}
+
+interface IReview {
+  id: string;
+  rating: number;
+  description: string;
+  imageUrl: string;
+  reviewer: IUser;
+  cocktails: ICocktail;
+}
+
+interface ICocktail {
+  id: string;
+  name: string;
+  themes: ITheme[];
+  reviews: IReview[];
+  recipe: string;
+  imageUrl: string[];
+  likes: number;
+  totalRating: number;
+  ingredients: IIngredient[];
+  volume: string[];
+}
+
+interface IIngredient {
+  id: string;
+  name: string;
+  type: string;
+  isAlcohol: boolean;
+  measure: string;
+}
+
+interface IUser {
+  id: string;
+  nickName: string;
+  isMan: boolean;
+  age: number;
+  mbti: IUserMbti;
+  myIngredients?: IIngredient[];
+  favorites?: Pick<ICocktail, 'id'>[];
+}
+
 export type {
   ColorKeys,
   ColorType,
@@ -64,5 +111,10 @@ export type {
   ValidateFnType,
   ValidateKeys,
   IUserValidateError,
-  ValidateUserArgsType
+  ValidateUserArgsType,
+  ITheme,
+  ICocktail,
+  IUser,
+  IIngredient,
+  IReview
 };
