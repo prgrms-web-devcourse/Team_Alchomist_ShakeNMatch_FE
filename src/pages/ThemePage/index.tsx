@@ -61,7 +61,7 @@ const ThemePage = (): ReactElement => {
             }));
           console.log(newCocktailList);
           setCocktailList({
-            value: newCocktailList as ICocktail[],
+            value: newCocktailList as any[],
             isLoading: false,
             error: null
           });
@@ -77,7 +77,7 @@ const ThemePage = (): ReactElement => {
       });
   };
 
-  const debounceGetCocktailList = useDebounce<[string, string]>(
+  const [debounceGetCocktailList] = useDebounce<[string, string]>(
     (main, detail) => {
       getCocktailList(main, detail);
     },
