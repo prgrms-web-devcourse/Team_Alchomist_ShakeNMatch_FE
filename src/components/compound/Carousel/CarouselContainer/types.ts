@@ -3,7 +3,7 @@ import type { CarouselItemProps } from '../CarouselItem/types';
 
 interface CarouselContainerProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactElement<CarouselItemProps>[] | ReactElement<CarouselItemProps>;
-  initialSelectedIndex?: number;
+  selectedIndex?: number;
   onChangeItem?(value: number): void;
 }
 

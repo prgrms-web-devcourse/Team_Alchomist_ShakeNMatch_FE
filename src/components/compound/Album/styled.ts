@@ -16,6 +16,13 @@ const StyledContainer = styled.div<Required<Pick<AlbumProps, 'type'>>>`
   border: 2px solid ${COLOR.BASIC_WHITE};
   border-radius: ${({ type }): string =>
     ALBUM_ATTRIBUTES[type].shape === 'circle' ? '50%' : '20px'};
+
+  & > span {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 `;
 
 export { StyledContainer };

@@ -17,7 +17,7 @@ export const Default = (): ReactElement => {
   return (
     <IngredientToggleList
       ingredients={DUMMY}
-      userIngredients={userIngredients}
+      initialSelectedIngredients={userIngredients}
       onItemSelected={submitSelectedIngredients}
     />
   );
