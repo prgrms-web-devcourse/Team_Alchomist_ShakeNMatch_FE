@@ -15,33 +15,53 @@ export default {
 
 const DUMMY = [
   {
-    name: '재료1'
+    id: '1',
+    name: '재료1',
+    type: 'juice'
   },
   {
-    name: '재료2'
+    id: '2',
+    name: '재료2',
+    type: 'juice'
   },
   {
-    name: '재료3'
+    id: '3',
+    name: '재료3',
+    type: 'juice'
   },
   {
-    name: '재료4'
+    id: '4',
+    name: '재료4',
+    type: 'juice'
   },
   {
-    name: '재료5'
+    id: '5',
+    name: '재료5',
+    type: 'juice'
   },
   {
-    name: '재료6'
+    id: '6',
+    name: '재료6',
+    type: 'juice'
   },
   {
-    name: '재료7'
+    id: '7',
+    name: '재료7',
+    type: 'juice'
   },
   {
-    name: '재료8'
+    id: '8',
+    name: '재료8',
+    type: 'juice'
   }
 ];
 
 export const Default = (props: IngredientCarouselProps): ReactElement => {
   return (
-    <IngredientCarousel itemList={DUMMY} row={props.row}></IngredientCarousel>
+    <IngredientCarousel
+      albumType='alcohol'
+      itemList={DUMMY}
+      row={props.row}
+    ></IngredientCarousel>
   );
 };

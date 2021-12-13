@@ -13,7 +13,7 @@ const handleToggle = (): void => {
 export const Default = (): ReactElement => (
   <TextToggle
     block={false}
-    name='재료'
+    id='3'
     toggleType='ingredient'
     onChange={handleToggle}
   >
