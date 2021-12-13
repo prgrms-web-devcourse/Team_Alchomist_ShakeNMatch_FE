@@ -1,5 +1,5 @@
-import IngredientCarousel from '@domain/IngredientCarousel/IngredientCarouselContainer';
-import type { IngredientCarouselProps } from '@domain/IngredientCarousel/IngredientCarouselContainer/types';
+import IngredientCarousel from '@domain/IngredientCarousel';
+import type { IngredientCarouselProps } from '@domain/IngredientCarousel/types';
 import type { ReactElement } from 'react';
 
 export default {
@@ -15,33 +15,18 @@ export default {
 
 const DUMMY = [
   {
-    name: '재료1'
-  },
-  {
-    name: '재료2'
-  },
-  {
-    name: '재료3'
-  },
-  {
-    name: '재료4'
-  },
-  {
-    name: '재료5'
-  },
-  {
-    name: '재료6'
-  },
-  {
-    name: '재료7'
-  },
-  {
-    name: '재료8'
+    id: '1',
+    name: '재료1',
+    type: 'whiskey'
   }
 ];
 
 export const Default = (props: IngredientCarouselProps): ReactElement => {
   return (
-    <IngredientCarousel itemList={DUMMY} row={props.row}></IngredientCarousel>
+    <IngredientCarousel
+      albumType='alcohol'
+      itemList={DUMMY}
+      row={props.row}
+    ></IngredientCarousel>
   );
 };

@@ -3,16 +3,17 @@ import useWheel from '@hooks/useWheel';
 import useThrottle from '@hooks/useThrottle';
 import type { ReactElement } from 'react';
 import { StyledCarouselContainer } from './styled';
-import IngredientCarouselItem from '@domain/IngredientCarousel/IngredientCarouselItem';
 import type { IngredientCarouselProps } from './types';
 import { ROW_TYPE } from './types';
 import IconButton from '@compound/IconButton';
+import Album from '@compound/Album';
 
 const CLEAR_THROTTLE_TIME = 500;
 
 const IngredientCarousel = ({
   itemList = [],
-  row = 'single'
+  row = 'single',
+  albumType = 'alcohol'
 }: IngredientCarouselProps): ReactElement => {
   const [itemIdx, setItemIdx] = useState({
     head: 0,
@@ -68,7 +69,7 @@ const IngredientCarousel = ({
         onClick={handlePrev}
       />
       {Children.toArray(
-        displayItems.map((item) => <IngredientCarouselItem text={item.name} />)
+        displayItems.map((item) => <Album text={item.name} type={albumType} />)
       )}
       <IconButton
         disabled={itemIdx.tail >= itemList.length - 1}

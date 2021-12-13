@@ -1,12 +1,17 @@
 import type { HTMLAttributes } from 'react';
+import type { AlbumAttributeKeys } from '@compound/Album/types';
 
-interface Item {
+// temp
+interface ICocktail {
+  id: string;
   name: string;
+  type: string;
 }
 
 interface IngredientCarouselProps {
-  itemList: Item[];
+  itemList: ICocktail[];
   row?: RowTypeKeys;
+  albumType: AlbumAttributeKeys;
 }
 
 const ROW_TYPE = {
