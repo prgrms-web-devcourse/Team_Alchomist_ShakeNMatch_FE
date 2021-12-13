@@ -1,5 +1,6 @@
 import type { TEXT_SIZE, TEXT_WEIGHT } from '@constants';
 import type { COLOR } from '@constants/colors';
+import type { THEMES } from '@constants/themes';
 import type { USER_VALIDATE_ERROR_MESSAGES } from '@constants/user';
 
 type ColorKeys = keyof typeof COLOR;
@@ -12,6 +13,7 @@ type ITextSize = typeof TEXT_SIZE[TextSizeKeys];
 type TextWeightKeys = keyof typeof TEXT_WEIGHT;
 type ITextWeight = typeof TEXT_WEIGHT[TextWeightKeys];
 
+type ITHEME = keyof typeof THEMES;
 // user Form
 type IUserFormType = 'Register' | 'EditProfile';
 type IUserInputType = 'nickname' | 'gender' | 'age' | 'mbti';
@@ -54,6 +56,7 @@ export type {
   ITextWeight,
   TextSizeKeys,
   TextWeightKeys,
+  ITHEME,
   IUserInputType,
   IUserFormType,
   IUserGender,
