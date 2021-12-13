@@ -11,7 +11,7 @@ const StyledModalBackground = styled.div<BackgroundProps>`
   width: 100vw;
   height: 100vh;
   z-index: 1000;
-  background-color: ${({ backgroundColor }): string => backgroundColor};
+  background-color: ${({ backgroundColor }): string => COLOR[backgroundColor]};
 `;
 
 const StyledModalContainer = styled.div<ContainerProps>`
