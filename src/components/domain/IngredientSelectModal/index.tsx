@@ -10,6 +10,7 @@ import {
   StyledTabContentContainer,
   StyledTextContainer
 } from './styled';
+import type { IIngredient } from '@models/types';
 
 // 임시 컨텍스트 재료
 const DUMMY = [
@@ -43,13 +44,6 @@ const DUMMY = [
   }
 ];
 
-// 추후 models에서 IIngredient로 대체 (PICK)
-interface IngredientToggle {
-  id: string;
-  name: string;
-  isAlcohol: boolean;
-}
-
 const IngredientSelectModal = ({
   visible,
   initialMainIngredient,
@@ -57,7 +51,7 @@ const IngredientSelectModal = ({
   onClose,
   onSelectDone
 }: IngredientSelectModalProps): ReactElement => {
-  const [ingredientList, setIngredientList] = useState<IngredientToggle[]>([]);
+  const [ingredientList, setIngredientList] = useState<IIngredient[]>([]);
   const [selectedMainItems, setSelectedMainItems] = useState(
     initialMainIngredient
   );
@@ -102,17 +96,19 @@ const IngredientSelectModal = ({
       {visible && (
         <StyledTabContentContainer>
           <MenuTab initialOnChild='0' tabText={['Alcohol', 'Others']}>
-            <StyledTitleSectionContainer titleText='재료를 추가해보세요!'>
-              <IngredientToggleList
-                // 모든 재료 배열 (술)
-                ingredients={ingredientList.filter(
-                  ({ id, name, isAlcohol }) => isAlcohol && { id, name }
-                )}
-                // 유저가 보유 중인 최초 재료 배열 (술)
-                // 컨텍스트 User.myIngredients 에서 isAlcohol이 true인 것들의 배열
-                initialSelectedIngredients={initialMainIngredient}
-                onItemSelected={handleSelectMainItem}
-              />
+            <section>
+              <StyledTitleSectionContainer titleText='재료를 추가해보세요!'>
+                <IngredientToggleList
+                  // 모든 재료 배열 (술)
+                  ingredients={ingredientList.filter(
+                    ({ id, name, isAlcohol }) => isAlcohol && { id, name }
+                  )}
+                  // 유저가 보유 중인 최초 재료 배열 (술)
+                  // 컨텍스트 User.myIngredients 에서 isAlcohol이 true인 것들의 배열
+                  initialSelectedIngredients={initialMainIngredient}
+                  onItemSelected={handleSelectMainItem}
+                />
+              </StyledTitleSectionContainer>
               <StyledTitleSectionContainer
                 titleSize='sm'
                 titleText='선택한 재료'
@@ -120,37 +116,35 @@ const IngredientSelectModal = ({
                 <StyledTextContainer>
                   {/* 여기 해쉬맵 생기면, id에 맞는 이름을 매칭해서 넣어줄 것 */}
                   {Children.toArray(
-                    selectedMainItems.map((item) => (
-                      <Text size='xs'>{item}</Text>
-                    ))
+                    selectedMainItems.map((id) => <Text size='xs'>{id}</Text>)
                   )}
                 </StyledTextContainer>
               </StyledTitleSectionContainer>
-            </StyledTitleSectionContainer>
-            <StyledTitleSectionContainer titleText='재료를 추가해보세요!'>
-              <IngredientToggleList
-                // 모든 재료 배열 (술 이외)
-                ingredients={ingredientList.filter(
-                  ({ id, name, isAlcohol }) => !isAlcohol && { id, name }
-                )}
-                // 유저가 보유 중인 최초 재료 배열 (술 이외)
-                // 컨텍스트 User.myIngredients 에서 isAlcohol이 false 것들의 배열
-                initialSelectedIngredients={initialSubIngredient}
-                onItemSelected={handleSelectSubItem}
-              />
+            </section>
+            <section>
+              <StyledTitleSectionContainer titleText='재료를 추가해보세요!'>
+                <IngredientToggleList
+                  // 모든 재료 배열 (술 이외)
+                  ingredients={ingredientList.filter(
+                    ({ id, name, isAlcohol }) => !isAlcohol && { id, name }
+                  )}
+                  // 유저가 보유 중인 최초 재료 배열 (술 이외)
+                  // 컨텍스트 User.myIngredients 에서 isAlcohol이 false 것들의 배열
+                  initialSelectedIngredients={initialSubIngredient}
+                  onItemSelected={handleSelectSubItem}
+                />
+              </StyledTitleSectionContainer>
               <StyledTitleSectionContainer
                 titleSize='sm'
                 titleText='선택한 재료'
               >
                 <StyledTextContainer>
                   {Children.toArray(
-                    selectedSubItems.map((item) => (
-                      <Text size='xs'>{item}</Text>
-                    ))
+                    selectedSubItems.map((id) => <Text size='xs'>{id}</Text>)
                   )}
                 </StyledTextContainer>
               </StyledTitleSectionContainer>
-            </StyledTitleSectionContainer>
+            </section>
           </MenuTab>
           <StyledTextButton
             block

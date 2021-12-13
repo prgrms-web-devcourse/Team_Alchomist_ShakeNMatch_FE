@@ -1,15 +1,8 @@
 import type { HTMLAttributes } from 'react';
-
-// 추후 models에서 IIngredient로 대체
-interface Ingredient {
-  id: string;
-  name: string;
-  type: string;
-  isAlcohol: boolean;
-}
+import type { IIngredient } from '@models/types';
 
 interface IngredientToggleListProps extends HTMLAttributes<HTMLDivElement> {
-  ingredients: Pick<Ingredient, 'id' | 'name'>[];
+  ingredients: Pick<IIngredient, 'id' | 'name'>[];
   initialSelectedIngredients: string[];
   onItemSelected?(selectedIngredients: string[]): void;
 }
