@@ -63,12 +63,12 @@ const UserInput = ({
 
   return (
     <StyledLabel>
-      <Text dangerously size='xs'>
+      <Text color='NAVY' dangerously size='xxs'>
         {USER_FORM_LABEL_TEXT[formType][inputType]}
       </Text>
       {inputEl}
       <StyledErrorContainer>
-        <Text color='STRONG_PINK' size='xs'>
+        <Text color='STRONG_PINK' size='xxxs'>
           {errorMessage}
         </Text>
       </StyledErrorContainer>

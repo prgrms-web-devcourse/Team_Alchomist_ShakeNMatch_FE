@@ -1,4 +1,3 @@
-import Divider from '@base/Divider';
 import TextButton from '@compound/TextButton';
 import useForm from '@hooks/useForm';
 import type { ReactElement } from 'react';
@@ -54,7 +53,6 @@ const UserForm = ({
         value={values.nickname}
         onChange={handleChange}
       />
-      <Divider color='LIGHT_GRAY' />
       <UserInput
         errorMessage={errors.gender}
         formType={type}
@@ -62,7 +60,6 @@ const UserForm = ({
         value={values.gender}
         onChange={handleChange}
       />
-      <Divider color='LIGHT_GRAY' />
 
       <UserInput
         errorMessage={errors.age}
@@ -71,7 +68,6 @@ const UserForm = ({
         value={values.age}
         onChange={handleChange}
       />
-      <Divider color='LIGHT_GRAY' />
 
       <UserInput
         errorMessage={errors.mbti}
@@ -80,7 +76,6 @@ const UserForm = ({
         value={values.mbti}
         onChange={handleChange}
       />
-      <Divider color='BASIC_WHITE' />
       <TextButton
         buttonType='LONG_PINK'
         disabled={!isValuesAllValidated}

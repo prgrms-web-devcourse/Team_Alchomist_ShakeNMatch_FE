@@ -9,10 +9,8 @@ const HALF = 1.8;
 
 const flow = keyframes`
   0% {
-
   }
   45% {
-
     top: 0;
   }
   100% {
@@ -73,11 +71,10 @@ const Glass = styled.div<GlassProps>`
   border-right: 2px solid ${COLOR.LIGHT_WHITE};
   border-left: 2px solid ${COLOR.LIGHT_WHITE};
   border-bottom: 3px solid ${COLOR.LIGHT_WHITE};
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-radius: 2px 2px 5px 5px;
   width: ${({ width }): string => width};
   height: ${({ height }): string => height};
-  box-shadow: 0px 1px 3px -1px ${COLOR.BLUE};
+  box-shadow: 0px 0.5px 3px -1px ${COLOR.BLUE};
   background: linear-gradient(
     to right,
     ${COLOR.LIGHT_WHITE} 70%,
