@@ -7,8 +7,8 @@ interface IAuthState {
 }
 
 interface IAuthContext extends IAuthState {
-  login(value: Omit<IAuthState, 'isMaster'>): void;
-  logout(): void;
+  setAuthState(value: Omit<IAuthState, 'isMaster'>): void;
+  clearAuthState(): void;
 }
 
 export type { IAuthState, IAuthContext };
