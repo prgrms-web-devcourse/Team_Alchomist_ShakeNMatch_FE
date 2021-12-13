@@ -70,7 +70,7 @@ interface ICocktail {
   themes: ITheme[];
   reviews: IReview[];
   recipe: string;
-  imageUrl: string[];
+  type: string;
   likes: number;
   totalRating: number;
   ingredients: IIngredient[];

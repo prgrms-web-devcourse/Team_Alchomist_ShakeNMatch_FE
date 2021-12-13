@@ -18,7 +18,7 @@ const CocktailList = ({
           cocktailList.map((cocktail, index) => (
             <StyledMotionWrapper resultIndex={index}>
               <Album
-                imageSrc={cocktail.icon}
+                imageSrc={cocktail.type}
                 text={cocktail.name}
                 type='result'
               />
