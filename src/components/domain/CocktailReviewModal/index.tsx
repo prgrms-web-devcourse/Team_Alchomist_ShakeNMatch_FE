@@ -1,38 +1,12 @@
-import styled from '@emotion/styled';
-import type { ReactElement } from 'react';
+import type { ChangeEventHandler, ReactElement } from 'react';
 import { useState } from 'react';
 import Button from '@base/Button';
 import Text from '@base/Text';
 import Modal from '@base/Modal';
-import type { ModalProps } from '@base/Modal/types';
 import Upload from '@base/Uploader';
 import RatingStar from '@domain/RatingStar';
-
-type CocktailReviewModalProps = ModalProps;
-interface Review {
-  userFile: File | null;
-  userRate: number;
-  userComment: string;
-}
-
-const StyledReviewForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-`;
-
-const StyledTextEditor = styled.textarea`
-  padding: 10px;
-  width: 100%;
-  max-width: 100%;
-  line-height: 1.5;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  box-shadow: 1px 1px 1px #999;
-`;
+import { StyledReviewForm, StyledTextEditor } from './style';
+import type { CocktailReviewModalProps, Review } from './types';
 
 const CocktailReviewModal = (props: CocktailReviewModalProps): ReactElement => {
   const [review, setReview] = useState<Review>({
@@ -42,7 +16,6 @@ const CocktailReviewModal = (props: CocktailReviewModalProps): ReactElement => {
   });
 
   const [userFile, setUserFile] = useState<File | null>(null);
-
   const handleChangeFile = (file: File): void => {
     console.log('file changed', file.name);
     setUserFile(file);
@@ -50,27 +23,37 @@ const CocktailReviewModal = (props: CocktailReviewModalProps): ReactElement => {
   };
 
   const [userRate, setUserRate] = useState<number>(0);
-
   const handleUserRate = (newRate: number): void => {
     setUserRate(newRate);
     setReview((prev) => ({ ...prev, userRate: newRate }));
   };
 
+  const [userComment, setUserComment] = useState<string>('');
+  const handleUserComment: ChangeEventHandler<HTMLTextAreaElement> = (
+    e
+  ): void => {
+    setUserComment(e.target.value);
+    setReview((prev) => ({ ...prev, userComment: userComment }));
+  };
+
   const handleComplete = (): void => {
-    if (!userFile) {
+    if (!userFile || userComment.length < 9) {
       alert('업로드한 파일이 없습니다');
+      return;
     }
     console.log(userFile?.name, userRate, review);
+    props.visible = false;
   };
 
   const handleCancel = (): void => {
     console.log(userFile?.name, userRate, review);
+    props.visible = false;
   };
 
   return (
     <Modal {...props}>
       <StyledReviewForm>
-        <Text>{'칵테일 리뷰 모달'}</Text>
+        <Text size='sm'>{'칵테일 리뷰 모달'}</Text>
         <Upload
           accept='image'
           droppable={true}
@@ -78,7 +61,12 @@ const CocktailReviewModal = (props: CocktailReviewModalProps): ReactElement => {
           onChangeFile={handleChangeFile}
         />
         <RatingStar mode='edit' onRateChange={handleUserRate} />
-        <StyledTextEditor />
+        <StyledTextEditor
+          autoFocus
+          maxLength={50}
+          placeholder='칵테일에 대한 간단한 코멘트를 적어주세요(최대 50자)'
+          onChange={handleUserComment}
+        />
 
         <div>
           <Button type='button' onClick={handleComplete}>
