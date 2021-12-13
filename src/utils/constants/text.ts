@@ -1,5 +1,6 @@
 const TEXT_SIZE = {
-  xxs: '0.5rem',
+  xxxs: '0.5rem',
+  xxs: '0.8rem',
   xs: '1rem',
   sm: '1.5rem',
   md: '2rem',

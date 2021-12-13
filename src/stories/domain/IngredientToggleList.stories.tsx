@@ -17,7 +17,7 @@ export const Default = (): ReactElement => {
   return (
     <IngredientToggleList
       ingredients={DUMMY}
-      userIngredients={userIngredients}
+      initialSelectedIngredients={userIngredients}
       onItemSelected={submitSelectedIngredients}
     />
   );
@@ -25,111 +25,31 @@ export const Default = (): ReactElement => {
 
 const DUMMY = [
   {
-    name: '보드카1'
+    id: '1234',
+    name: '보드카',
+    type: 'liquor',
+    isAlcohol: true,
+    measure: 'ml'
   },
   {
-    name: '룩사르도 마라스키노'
+    id: '2345',
+    name: '위스키',
+    type: 'whiskey',
+    isAlcohol: true,
+    measure: 'ml'
   },
   {
-    name: '깔루아1'
+    id: '3456',
+    name: '극상 설탕',
+    type: 'sugar',
+    isAlcohol: false,
+    measure: 'ml'
   },
   {
-    name: '앰버 자메이카 럼'
-  },
-  {
-    name: '진'
-  },
-  {
-    name: '세상에서 가장 긴 이름을 가진 술 이름은 무엇일까'
-  },
-  {
-    name: '보드카'
-  },
-  {
-    name: '룩사르도 마라스키노'
-  },
-  {
-    name: '깔루아'
-  },
-  {
-    name: '앰버 자메이카 럼'
-  },
-  {
-    name: '진'
-  },
-  {
-    name: '세상에서 가장'
-  },
-  {
-    name: '보드카'
-  },
-  {
-    name: '룩사르도 마라스키노1'
-  },
-  {
-    name: '깔루아'
-  },
-  {
-    name: '앰버 자메이카 럼'
-  },
-  {
-    name: '진'
-  },
-  {
-    name: '세상에서 가장 긴 이름을'
-  },
-  {
-    name: '보드카'
-  },
-  {
-    name: '룩사르도 마라스키노'
-  },
-  {
-    name: '깔루아'
-  },
-  {
-    name: '앰버 자메이카 럼'
-  },
-  {
-    name: '진'
-  },
-  {
-    name: '세상에서 가장 긴 이름을 가진 술'
-  },
-  {
-    name: '보드카'
-  },
-  {
-    name: '룩사르도 마라스키노'
-  },
-  {
-    name: '깔루아'
-  },
-  {
-    name: '앰버 자메이카 럼'
-  },
-  {
-    name: '진'
-  },
-  {
-    name: '세상에서 가장 긴 이름을 가진 술 이름은 무엇일까'
-  },
-  {
-    name: '보드카'
-  },
-  {
-    name: '룩사르도 마라스키노'
-  },
-  {
-    name: '깔루아'
-  },
-  {
-    name: '앰버 자메이카 럼'
-  },
-  {
-    name: '진'
-  },
-  {
-    name: '세상에서 가장 긴 이름을 가진 술 이름은 무엇일까'
+    id: '5678',
+    name: '우스터 소스',
+    type: 'syrup',
+    isAlcohol: false,
+    measure: 'ml'
   }
 ];

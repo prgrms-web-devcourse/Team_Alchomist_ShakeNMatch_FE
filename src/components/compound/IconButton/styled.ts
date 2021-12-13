@@ -18,6 +18,7 @@ const StyledButton = styled.button`
   }
 
   &:disabled {
+    opacity: 0.2;
     filter: brightness(0.85) grayscale(0.3);
   }
 `;
