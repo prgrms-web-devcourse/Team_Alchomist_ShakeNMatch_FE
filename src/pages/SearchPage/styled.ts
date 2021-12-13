@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const SectionDividerContent = styled.div`
+const StyledContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -8,4 +8,4 @@ const SectionDividerContent = styled.div`
   align-items: center;
 `;
 
-export { SectionDividerContent };
+export { StyledContentWrapper };
