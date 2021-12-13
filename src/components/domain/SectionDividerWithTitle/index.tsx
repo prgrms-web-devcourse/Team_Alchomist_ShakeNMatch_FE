@@ -18,7 +18,9 @@ const SectionDividerWithTitle = ({
   alignItems = true,
   ratio = [1, 1],
   showContentsDivider = false,
-  dividerOptions = { color: 'DARK_GRAY', size: 1 }
+  dividerOptions = { color: 'DARK_GRAY', size: 1 },
+  withHeader = false,
+  ...props
 }: SectionDividerWithTitleProps): ReactElement => {
   const wrappedChildren = Children.toArray(children).map((element) => (
     <StyledSectionDividerContent alignItems={alignItems}>
@@ -31,10 +33,11 @@ const SectionDividerWithTitle = ({
       alignItems={alignItems}
       bold={bold}
       gap={gap}
-      style={{ paddingTop: HEADER_HEIGHT }}
+      style={withHeader ? { paddingTop: HEADER_HEIGHT } : undefined}
       titleColor={titleColor}
       titleSize={titleSize}
       titleText={titleText}
+      {...props}
     >
       <SectionDivider
         dividerOptions={dividerOptions}

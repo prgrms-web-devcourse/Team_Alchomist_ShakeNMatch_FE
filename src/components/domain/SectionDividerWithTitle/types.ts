@@ -10,6 +10,7 @@ interface SectionDividerWithTitleProps
     Pick<SectionDividerProps, 'ratio' | 'dividerOptions' | 'width' | 'height'> {
   children: ReactChild | ReactChild[];
   showContentsDivider?: boolean;
+  withHeader?: boolean;
 }
 
 export type { SectionDividerWithTitleProps };
