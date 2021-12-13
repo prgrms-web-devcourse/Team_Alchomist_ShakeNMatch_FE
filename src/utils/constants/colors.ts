@@ -17,6 +17,7 @@ const COLOR = {
   DARK_YELLOW: '#D2D46A',
   BLUE: '#6AA1D4',
   GREEN: '#4FA863',
+  RED: '#D61D1D',
   TRANSPARENT: 'transparent'
 } as const;
 
