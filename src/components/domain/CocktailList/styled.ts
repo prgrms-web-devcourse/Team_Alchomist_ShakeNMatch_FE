@@ -8,6 +8,7 @@ const StyledContainer = styled.div`
   flex-wrap: wrap;
   padding: 0 22px;
   gap: 22px;
+  overflow-y: scroll;
 `;
 
 const delayTime = 100;

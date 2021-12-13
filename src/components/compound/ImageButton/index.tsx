@@ -24,6 +24,7 @@ const ImageButton = ({
 
   return (
     <Button
+      basicColor='TRANSPARENT'
       disabled={disabled}
       dropShadow={dropShadow}
       size={size}

@@ -1,4 +1,5 @@
 import { COLOR } from '@constants';
+import { HEADER_HEIGHT } from '@constants/headerHeight';
 import styled from '@emotion/styled';
 
 const StyledHeaderContainer = styled.header`
@@ -10,6 +11,7 @@ const StyledHeaderContainer = styled.header`
   border-bottom: 2px solid ${COLOR.LIGHT_GRAY};
   padding-right: 10px;
   align-items: center;
+  height: ${HEADER_HEIGHT};
 
   & > *:first-child {
     margin-right: auto;

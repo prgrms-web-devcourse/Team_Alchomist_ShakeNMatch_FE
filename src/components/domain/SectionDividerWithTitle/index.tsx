@@ -12,6 +12,8 @@ const SectionDividerWithTitle = ({
   titleText,
   bold,
   gap = '20px',
+  width,
+  height,
   alignItems = false,
   ratio = [1, 1],
   showContentsDivider = false,
@@ -32,8 +34,10 @@ const SectionDividerWithTitle = ({
     >
       <SectionDivider
         dividerOptions={dividerOptions}
+        height={height}
         ratio={ratio}
         showDivider={showContentsDivider}
+        width={width}
       >
         {wrappedChildren}
       </SectionDivider>
