@@ -1,26 +1,15 @@
-import { COLOR } from '@constants';
+import TextButton from '@compound/TextButton';
+import { HEADER_HEIGHT } from '@constants/headerHeight';
 import BackButton from '@domain/BackButton';
 import styled from '@emotion/styled';
 
-// 임시 헤더
-const StyledHeader = styled.header`
-  position: fixed;
-  width: 100%;
-  height: 70px;
-  top: 0;
-  left: 0;
-  background-color: ${COLOR.IVORY};
-`;
-
 const StyledThemePageContainer = styled.div`
-  margin-top: 70px;
-  width: 100%;
-  height: calc(100vh - 70px);
+  padding-top: ${HEADER_HEIGHT};
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
-
   & > div:nth-of-type(1):not(.result) {
     transform: translate(50vw, 0);
   }
@@ -41,7 +30,15 @@ const StyledContentContainer = styled.div`
   }
 `;
 
-const StyledResultContainer = styled.div``;
+const StyledResultContainer = styled.div`
+  overflow-y: scroll;
+`;
+
+const StyledResultButton = styled(TextButton)`
+  position: absolute;
+  bottom: 130px;
+  left: calc(50% - 110px);
+`;
 
 const StyledBackButton = styled(BackButton)`
   position: absolute;
@@ -50,9 +47,9 @@ const StyledBackButton = styled(BackButton)`
 `;
 
 export {
-  StyledHeader,
   StyledThemePageContainer,
   StyledContentContainer,
   StyledResultContainer,
+  StyledResultButton,
   StyledBackButton
 };
