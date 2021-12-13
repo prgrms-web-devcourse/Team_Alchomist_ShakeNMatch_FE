@@ -6,7 +6,8 @@ const StyledContainer = styled.div`
   justify-content: center;
   align-content: flex-start;
   width: 820px;
-  height: 500px;
+  height: 320px;
+  overflow-y: scroll;
   gap: 10px;
   padding: 10px;
 `;

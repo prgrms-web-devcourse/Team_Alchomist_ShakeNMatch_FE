@@ -9,7 +9,7 @@ const IconButton = ({
   ...props
 }: IconButtonProps): ReactElement => {
   return (
-    <StyledButton type={type} {...props}>
+    <StyledButton id={props.id ? props.id : ''} type={type} {...props}>
       <Icon type={name} />
     </StyledButton>
   );
