@@ -28,6 +28,7 @@ const MyPage = (): ReactElement => {
     <SectionDividerWithTitle
       dividerOptions={{ size: 1, color: 'LIGHT_GRAY' }}
       showContentsDivider
+      withHeader
     >
       <Carousel.Container
         selectedIndex={selectedIndex}
