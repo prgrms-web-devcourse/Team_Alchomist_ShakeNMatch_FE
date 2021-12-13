@@ -1,6 +1,5 @@
 import ImageButton from '@compound/ImageButton';
 import { COLOR } from '@constants';
-import BackButton from '@domain/BackButton';
 import Logo from '@domain/Logo';
 import type { CSSObject } from '@emotion/styled';
 import styled from '@emotion/styled';
@@ -22,19 +21,6 @@ const StyledPageContainer = styled.div<StyledPageContainerProps>`
         return { top: '15%' };
       }
     }}
-  }
-`;
-
-const StyledBackButton = styled(BackButton)<{ visible: boolean }>`
-  display: ${({ visible }): string => (visible ? 'inlnie-block' : 'none')};
-  cursor: pointer;
-  position: absolute;
-  left: 10px;
-  bottom: 20px;
-  z-index: 1001;
-  transition: transform 0.1s ease-in-out;
-  &:hover {
-    transform: scale(1.05);
   }
 `;
 
@@ -66,7 +52,6 @@ const StyledLogo = styled(Logo)`
 
 export {
   StyledPageContainer,
-  StyledBackButton,
   StyledLogoContainer,
   StyledKaKaoButton,
   StyledLogo

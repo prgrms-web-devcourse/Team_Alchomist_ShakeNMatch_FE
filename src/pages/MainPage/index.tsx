@@ -1,18 +1,13 @@
 import MainMenuSelector from '@domain/MainMenuSelector';
 import type { ReactElement } from 'react';
 import { useEffect, useState, useCallback } from 'react';
-import {
-  StyledBackButton,
-  StyledKaKaoButton,
-  StyledLogo,
-  StyledLogoContainer,
-  StyledPageContainer
-} from './styled';
-import kakaoSrc from '@assets/oauthAssets/kakao_login.png';
+import { StyledLogo, StyledLogoContainer, StyledPageContainer } from './styled';
 import TextButton from '@compound/TextButton';
 import { useAuthorization } from '@contexts';
 import { useNavigate } from 'react-router';
 import { DOMAINS } from '@constants';
+import BackButton from '@domain/BackButton';
+import KaKaoButton from '@domain/KaKaoButton';
 
 const LOGIN_MODAL_DELAY_MS = 1000;
 let timerId: null | NodeJS.Timeout = null;
@@ -39,10 +34,6 @@ const MainPage = (): ReactElement => {
     };
   }, [selectedMenu]);
 
-  const handleLogin = (): void => {
-    console.log('login!');
-  };
-
   const handleLink = useCallback((): void => {
     if (selectedMenu) {
       navigate(`/${DOMAINS[selectedMenu]}`);
@@ -51,12 +42,13 @@ const MainPage = (): ReactElement => {
 
   return (
     <StyledPageContainer selectedMenu={selectedMenu}>
-      <StyledBackButton
-        visible={!!selectedMenu}
-        onClick={(): void => {
-          setSelectedMenu(null);
-        }}
-      />
+      {selectedMenu && (
+        <BackButton
+          onClick={(): void => {
+            setSelectedMenu(null);
+          }}
+        />
+      )}
       <MainMenuSelector
         selectedMenu={selectedMenu}
         onMenuSelected={(menu): void => {
@@ -70,13 +62,7 @@ const MainPage = (): ReactElement => {
             Click!
           </TextButton>
         ) : (
-          <StyledKaKaoButton
-            size='kakao'
-            src={kakaoSrc}
-            style={{ opacity: isShowButton ? 1 : 0 }}
-            type='button'
-            onClick={handleLogin}
-          />
+          <KaKaoButton />
         )}
       </StyledLogoContainer>
     </StyledPageContainer>
