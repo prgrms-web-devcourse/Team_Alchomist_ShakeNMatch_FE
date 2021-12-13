@@ -2,7 +2,7 @@ import type { HTMLAttributes, ReactElement } from 'react';
 
 interface MenuTabProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactElement[];
-  initialOnChild: string;
+  initialOnChild?: string;
   tabText: string[];
   onTabChange?(id: string): void;
 }

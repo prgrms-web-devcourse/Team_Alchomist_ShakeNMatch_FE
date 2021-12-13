@@ -17,7 +17,7 @@ import type { MenuTabProps } from './types';
 
 const MenuTab = ({
   children,
-  initialOnChild,
+  initialOnChild = '0',
   tabText,
   onTabChange
 }: MenuTabProps): ReactElement => {
@@ -61,7 +61,7 @@ const MenuTab = ({
         cloneElement(child, {
           style: {
             display:
-              index === parseInt(displayingChildIdx, 10) ? 'block' : 'none'
+              index === parseInt(displayingChildIdx, 10) ? 'flex' : 'none'
           },
           ...child.props
         })
@@ -69,7 +69,7 @@ const MenuTab = ({
     );
 
     setChildrenEl(childrenEl);
-  }, [displayingChildIdx]);
+  }, [displayingChildIdx, children]);
 
   return (
     <StyledContainer>
