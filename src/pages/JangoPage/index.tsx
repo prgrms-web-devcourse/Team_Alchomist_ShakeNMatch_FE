@@ -34,7 +34,7 @@ const myIngredients = [
   }
 ];
 
-// 추천 겨로가
+// 추천 결과 응답 데이터
 const recommended = [
   {
     id: '1',
@@ -42,7 +42,7 @@ const recommended = [
     themes: [],
     reviews: [],
     recipe: '',
-    imageUrl: [],
+    type: '',
     likes: 0,
     totalRating: '',
     ingredients: [],
@@ -54,7 +54,7 @@ const recommended = [
     themes: [],
     reviews: [],
     recipe: '',
-    imageUrl: [],
+    type: '',
     likes: 0,
     totalRating: '',
     ingredients: [],
@@ -66,7 +66,7 @@ const recommended = [
     themes: [],
     reviews: [],
     recipe: '',
-    imageUrl: [],
+    type: '',
     likes: 0,
     totalRating: '',
     ingredients: [],
@@ -134,8 +134,7 @@ const JangoPage = (): ReactElement => {
   };
 
   return (
-    // 여기 페이지 전체 뭐로 묶을지?
-    <div>
+    <>
       <SectionDividerWithTitle titleText='가지고 계신 재료로 레시피를 추천 받아 보세요!'>
         <StyledIngredientContainer style={{ width: '100%', height: '100%' }}>
           <Text>알콜</Text>
@@ -158,7 +157,7 @@ const JangoPage = (): ReactElement => {
           cocktailList={recommendedCocktails.map((cocktail) => ({
             id: cocktail.id,
             name: cocktail.name,
-            icon: 'whiskey'
+            type: 'whiskey'
           }))}
         />
       </SectionDividerWithTitle>
@@ -171,7 +170,7 @@ const JangoPage = (): ReactElement => {
         onClose={closeModal}
         onSelectDone={handleSelectDone}
       />
-    </div>
+    </>
   );
 };
 

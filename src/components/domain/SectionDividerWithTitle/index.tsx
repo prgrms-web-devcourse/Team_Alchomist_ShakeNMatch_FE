@@ -12,13 +12,15 @@ const SectionDividerWithTitle = ({
   titleText,
   bold,
   gap = '20px',
-  alignItems = false,
+  alignItems = true,
   ratio = [1, 1],
   showContentsDivider = false,
   dividerOptions = { color: 'DARK_GRAY', size: 1 }
 }: SectionDividerWithTitleProps): ReactElement => {
   const wrappedChildren = Children.toArray(children).map((element) => (
-    <StyledSectionDividerContent>{element}</StyledSectionDividerContent>
+    <StyledSectionDividerContent alignItems={alignItems}>
+      {element}
+    </StyledSectionDividerContent>
   ));
 
   return (
