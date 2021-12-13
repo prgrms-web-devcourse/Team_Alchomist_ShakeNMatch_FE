@@ -1,6 +1,6 @@
 import MainMenuSelector from '@domain/MainMenuSelector';
 import type { ReactElement } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import {
   StyledBackButton,
   StyledKaKaoButton,
@@ -9,6 +9,10 @@ import {
   StyledPageContainer
 } from './styled';
 import kakaoSrc from '@assets/oauthAssets/kakao_login.png';
+import TextButton from '@compound/TextButton';
+import { useAuthorization } from '@contexts';
+import { useNavigate } from 'react-router';
+import { DOMAINS } from '@constants';
 
 const LOGIN_MODAL_DELAY_MS = 1000;
 let timerId: null | NodeJS.Timeout = null;
@@ -17,15 +21,17 @@ const MainPage = (): ReactElement => {
   const [selectedMenu, setSelectedMenu] = useState<'theme' | 'jango' | null>(
     null
   );
-  const [isShowLoginButton, setIsShowLoginButton] = useState(false);
+  const { oauthToken } = useAuthorization();
+  const [isShowButton, setIsShowButton] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (selectedMenu === 'jango') {
+    if (selectedMenu) {
       timerId = setTimeout((): void => {
-        setIsShowLoginButton(true);
+        setIsShowButton(true);
       }, LOGIN_MODAL_DELAY_MS);
     } else {
-      setIsShowLoginButton(false);
+      setIsShowButton(false);
     }
 
     return (): void => {
@@ -36,6 +42,12 @@ const MainPage = (): ReactElement => {
   const handleLogin = (): void => {
     console.log('login!');
   };
+
+  const handleLink = useCallback((): void => {
+    if (selectedMenu) {
+      navigate(`/${DOMAINS[selectedMenu]}`);
+    }
+  }, [selectedMenu]);
 
   return (
     <StyledPageContainer selectedMenu={selectedMenu}>
@@ -52,14 +64,20 @@ const MainPage = (): ReactElement => {
         }}
       />
       <StyledLogo className='logo' size='md' />
-      <StyledLogoContainer>
-        <StyledKaKaoButton
-          size='kakao'
-          src={kakaoSrc}
-          style={{ opacity: isShowLoginButton ? 1 : 0 }}
-          type='button'
-          onClick={handleLogin}
-        />
+      <StyledLogoContainer style={{ display: isShowButton ? 'flex' : 'none' }}>
+        {oauthToken || selectedMenu === 'theme' ? (
+          <TextButton buttonType='LONG_WHITE' onClick={handleLink}>
+            Click!
+          </TextButton>
+        ) : (
+          <StyledKaKaoButton
+            size='kakao'
+            src={kakaoSrc}
+            style={{ opacity: isShowButton ? 1 : 0 }}
+            type='button'
+            onClick={handleLogin}
+          />
+        )}
       </StyledLogoContainer>
     </StyledPageContainer>
   );
