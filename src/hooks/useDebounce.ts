@@ -1,15 +1,17 @@
 import { useRef } from 'react';
 
-const useDebounce = (
-  handler: (...args: any) => void,
+const useDebounce = <T extends any[]>(
+  handler: (...args: T) => void,
   delay: number
-): (() => void) => {
+): ((...args: T) => void) => {
   const timerRef = useRef<null | NodeJS.Timeout>(null);
 
-  const debounceHandler = (): void => {
+  const debounceHandler = (...args: T): void => {
     if (timerRef.current) clearTimeout(timerRef.current);
 
-    timerRef.current = setTimeout(handler, delay);
+    timerRef.current = setTimeout(() => {
+      handler(...args);
+    }, delay);
   };
 
   return debounceHandler;
