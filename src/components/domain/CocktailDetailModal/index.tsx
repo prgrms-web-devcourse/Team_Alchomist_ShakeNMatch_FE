@@ -9,12 +9,7 @@ import UserReviewItem from './UserReviewItem';
 import TextButton from '@compound/TextButton';
 import TitleSectionContainer from '@domain/TitleSectionContainer';
 import CocktailReviewModal from '@domain/CocktailReviewModal';
-import {
-  StyledIngredientListWrapper,
-  StyledReviewListWrapper,
-  StyledLeftSection,
-  StyledRightSection
-} from './style';
+import { StyledIngredientListWrapper, StyledReviewListWrapper } from './style';
 import {
   MOCK_INGREDIENT_DATA,
   MOCK_COCKTAIL_NAME,
@@ -28,8 +23,12 @@ const CocktailDetailModal = ({
   visible,
   onClose
 }: CocktailDetailModalProps): ReactElement => {
-  const [isVisible, setIsVisible] = useState(false); //리뷰모달
-  const [userReview, setUserReview] = useState<Review | null>(null);
+  const [isVisible, setIsVisible] = useState(false); //칵테일 리뷰 모달을 컨트롤
+  const [userReview, setUserReview] = useState<Review | null>(null); //리뷰 모달에서 리턴받은 값
+
+  useEffect(() => {
+    console.log('API 호출 로직');
+  }, [userReview]);
 
   const handleComplete = (reviewInfo: Review): void => {
     console.log(reviewInfo);
@@ -62,51 +61,50 @@ const CocktailDetailModal = ({
             tabText={['Ingredients & Method', 'Reviews']}
           >
             <SectionDivider>
-              <StyledLeftSection>
-                <Image
-                  alt='Image'
-                  height='100%'
-                  mode='cover'
-                  src='https://picsum.photos/500'
-                  width='100%'
-                />
-              </StyledLeftSection>
-              <StyledRightSection>
-                <TitleSectionContainer
-                  dividerVisible
-                  titleText={MOCK_COCKTAIL_NAME}
-                >
-                  <StyledIngredientListWrapper>
-                    {MOCK_INGREDIENT_DATA.map(() => (
-                      <IngredientItem />
-                    ))}
-                    <Text size='sm'>
-                      {'칵테일 레시피에 대한 정보가 들어가는 곳입니다'}
-                    </Text>
-                  </StyledIngredientListWrapper>
-                </TitleSectionContainer>
-              </StyledRightSection>
+              <Image
+                alt='Image'
+                height='100%'
+                mode='cover'
+                src='https://picsum.photos/500'
+                width='100%'
+              />
+              <TitleSectionContainer
+                dividerVisible
+                titleText={MOCK_COCKTAIL_NAME}
+              >
+                <StyledIngredientListWrapper>
+                  <Text size='md'>{'- 재료 -'}</Text>
+                  {MOCK_INGREDIENT_DATA.map(() => (
+                    <IngredientItem />
+                  ))}
+                  <Text size='md'>{'- 조제법- '}</Text>
+                  <br />
+                  <Text size='sm'>
+                    {
+                      '칵테일 레시피에 대한 정보가 들어가는 곳입니다칵테일 레시피에 대한 정보가 들어가는 곳입니다칵테일 레시피에 대한 정보가 들어가는 곳입니다칵테일 레시피에 대한 정보가 들어가는 곳입니다칵테일 레시피에 대한 정보가 들어가는 곳입니다칵테일 레시피에 대한 정보가 들어가는 곳입니다칵테일 레시피에 대한 정보가 들어가는 곳입니다칵테일 레시피에 대한 정보가 들어가는 곳입니다칵테일 레시피에 대한 정보가 들어가는 곳입니다칵테일 레시피에 대한 정보가 들어가는 곳입니다'
+                    }
+                  </Text>
+                </StyledIngredientListWrapper>
+              </TitleSectionContainer>
             </SectionDivider>
             <SectionDivider>
-              <StyledLeftSection>
-                <Image
-                  alt='Image'
-                  height='100%'
-                  mode='cover'
-                  src='https://picsum.photos/500'
-                  width='100%'
-                />
-              </StyledLeftSection>
-              <StyledRightSection>
-                <TitleSectionContainer
-                  dividerVisible
-                  titleText={MOCK_COCKTAIL_NAME}
-                >
-                  <StyledReviewListWrapper>
-                    {MOCK_REVIEW_DATA.map(() => (
-                      <UserReviewItem />
-                    ))}
-                  </StyledReviewListWrapper>
+              <Image
+                alt='Image'
+                height='100%'
+                mode='cover'
+                src='https://picsum.photos/500'
+                width='100%'
+              />
+
+              <TitleSectionContainer
+                dividerVisible
+                titleText={MOCK_COCKTAIL_NAME}
+              >
+                <StyledReviewListWrapper>
+                  <Text size='md'>{'- 사용자 리뷰- '}</Text>
+                  {MOCK_REVIEW_DATA.map(() => (
+                    <UserReviewItem />
+                  ))}
                   <TextButton
                     buttonType='LONG_WHITE'
                     dropShadow
@@ -118,8 +116,8 @@ const CocktailDetailModal = ({
                   >
                     {'리뷰작성'}
                   </TextButton>
-                </TitleSectionContainer>
-              </StyledRightSection>
+                </StyledReviewListWrapper>
+              </TitleSectionContainer>
             </SectionDivider>
           </MenuTab>
           <CocktailReviewModal
