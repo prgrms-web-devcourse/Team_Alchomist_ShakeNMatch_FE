@@ -1,4 +1,5 @@
 import { SectionDivider } from '@base';
+import { HEADER_HEIGHT } from '@constants/headerHeight';
 import TitleSectionContainer from '@domain/TitleSectionContainer';
 import type { ReactElement } from 'react';
 import { Children } from 'react';
@@ -11,7 +12,9 @@ const SectionDividerWithTitle = ({
   titleSize = 'md',
   titleText,
   bold,
-  gap = '20px',
+  gap = '0px',
+  width,
+  height,
   alignItems = true,
   ratio = [1, 1],
   showContentsDivider = false,
@@ -28,14 +31,17 @@ const SectionDividerWithTitle = ({
       alignItems={alignItems}
       bold={bold}
       gap={gap}
+      style={{ paddingTop: HEADER_HEIGHT }}
       titleColor={titleColor}
       titleSize={titleSize}
       titleText={titleText}
     >
       <SectionDivider
         dividerOptions={dividerOptions}
+        height={height}
         ratio={ratio}
         showDivider={showContentsDivider}
+        width={width}
       >
         {wrappedChildren}
       </SectionDivider>

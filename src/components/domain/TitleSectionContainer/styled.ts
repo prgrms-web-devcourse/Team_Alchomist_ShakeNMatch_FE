@@ -12,7 +12,7 @@ const StyledContainer = styled.div<
   justify-items: center;
   height: 100%;
   ${({ alignItems }): CSSObject | boolean =>
-    alignItems && { alignItems: 'center' }}
+    alignItems && { alignItems: 'center' }};
 `;
 
 const StyledLine = styled.hr<StyledLineProps>`

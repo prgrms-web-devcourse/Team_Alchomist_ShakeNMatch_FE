@@ -1,3 +1,4 @@
+import { COLOR } from '@constants';
 import { css, Global } from '@emotion/react';
 import emotionNormalize from 'emotion-normalize';
 import React from 'react';
@@ -15,11 +16,10 @@ ReactDOM.render(
           *, *::after, *::before {
             box-sizing: border-box;
           }
-          html,
           body {
             padding: 0;
             margin: 0;
-            background: white;
+            background: ${COLOR.IVORY};
             min-height: 100vh;
             width: 100%;
             font-family: Pretendard, -apple-system, BlinkMacSystemFont,
@@ -27,8 +27,8 @@ ReactDOM.render(
               'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
           }
           #root {
+            position: relative;
             height: 100vh;
-            width: 100%;
           }
         `}
       />
