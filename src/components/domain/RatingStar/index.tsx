@@ -6,17 +6,20 @@ import type { RatingStarProps } from './types';
 const RatingStar = ({
   mode = 'edit',
   maxRate = 5,
-  rateTobeDisplayed = 0
+  rateTobeDisplayed = 0,
+  onRateChange
 }: RatingStarProps): ReactElement => {
   const [rating, setRating] = useState<number>(rateTobeDisplayed);
   const childrenArray = new Array(maxRate).fill(1);
 
   const handleClick: MouseEventHandler = (e): void => {
-    if (parseInt(e.currentTarget.id) === rating) {
+    const newRate = parseInt(e.currentTarget.id);
+    onRateChange?.(newRate);
+    if (newRate === rating) {
       setRating((prevRating) => prevRating - 1);
       return;
     }
-    setRating(parseInt(e.currentTarget.id));
+    setRating(newRate);
   };
 
   return mode === 'edit' ? (
