@@ -31,10 +31,7 @@ export const Default = (args: SectionDividerWithTitleProps): ReactElement => (
       />
     </div>
     <div>
-      <UserForm
-        initialValues={{ nickname: null, gender: null, age: null, mbti: null }}
-        type='Register'
-      />
+      <UserForm type='Register' />
     </div>
   </SectionDividerWithTitle>
 );
