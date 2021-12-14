@@ -8,7 +8,6 @@ import MyPage from '@pages/MyPage';
 import RegisterPage from '@pages/RegisterPage';
 import SearchPage from '@pages/SearchPage';
 import ShoppingPage from '@pages/ShoppingPage';
-import TestPage from '@pages/TestPage';
 import ThemePage from '@pages/ThemePage';
 import type { ReactElement } from 'react';
 import { Route, Routes } from 'react-router';
@@ -68,7 +67,6 @@ const Router = (): ReactElement => {
         }
         path='*'
       ></Route>
-      <Route element={<TestPage />} path='/test'></Route>
     </Routes>
   );
 };

@@ -25,7 +25,10 @@ const AuthorizationProvider = ({
     isMaster: false
   });
 
-  const login = ({ oauthToken, user }: Omit<IAuthState, 'isMaster'>): void => {
+  const setAuthState = ({
+    oauthToken,
+    user
+  }: Omit<IAuthState, 'isMaster'>): void => {
     let isMaster = false;
     if (user?.id === MASTER_ID) {
       isMaster = true;
@@ -34,12 +37,14 @@ const AuthorizationProvider = ({
     setState({ oauthToken, user, isMaster });
   };
 
-  const logout = (): void => {
+  const clearAuthState = (): void => {
     setState({ oauthToken: null, user: null, isMaster: false });
   };
 
   return (
-    <AuthorizationContext.Provider value={{ ...state, login, logout }}>
+    <AuthorizationContext.Provider
+      value={{ ...state, setAuthState, clearAuthState }}
+    >
       {children}
     </AuthorizationContext.Provider>
   );
