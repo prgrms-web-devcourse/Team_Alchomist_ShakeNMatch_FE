@@ -30,7 +30,7 @@ export const Default = (): ReactElement => {
       </button>
       <p>
         <label>{'파일이름'}</label>
-        <div>{userReview ? userReview.userFile.name : '-'}</div>
+        <div>{userReview ? userReview.userFile?.name : '-'}</div>
         <label>{'평점'}</label>
         <div>{userReview ? userReview.userRate.toString() : '0'}</div>
         <label>{'한줄 평'}</label>

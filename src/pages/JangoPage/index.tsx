@@ -135,7 +135,10 @@ const JangoPage = (): ReactElement => {
 
   return (
     <>
-      <SectionDividerWithTitle titleText='가지고 계신 재료로 레시피를 추천 받아 보세요!'>
+      <SectionDividerWithTitle
+        titleText='가지고 계신 재료로 레시피를 추천 받아 보세요!'
+        withHeader
+      >
         <StyledIngredientContainer style={{ width: '100%', height: '100%' }}>
           <Text>알콜</Text>
           <IngredientCarousel

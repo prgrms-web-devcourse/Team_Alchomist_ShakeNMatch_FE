@@ -1,5 +1,6 @@
 import ShoppingItem from '@domain/ShoppingItem';
 import TitleSectionContainer from '@domain/TitleSectionContainer';
+import { Children } from 'react';
 import type { ReactElement } from 'react';
 import { StyledContainer } from './styled';
 
@@ -33,15 +34,16 @@ const DUMMY_DATA = [
     vendor: 'YAHOO'
   }
 ];
-const shoppingItemList = DUMMY_DATA.map((shoppingItem) => (
-  <ShoppingItem
-    imageSrc={shoppingItem.imageSrc}
-    index={shoppingItem.id}
-    price={shoppingItem.price}
-    title={shoppingItem.title}
-    vendor={shoppingItem.vendor}
-  ></ShoppingItem>
-));
+const shoppingItemList = Children.toArray(
+  DUMMY_DATA.map((shoppingItem) => (
+    <ShoppingItem
+      imageSrc={shoppingItem.imageSrc}
+      price={shoppingItem.price}
+      title={shoppingItem.title}
+      vendor={shoppingItem.vendor}
+    ></ShoppingItem>
+  ))
+);
 
 const ShoppingPage = (): ReactElement => {
   return (

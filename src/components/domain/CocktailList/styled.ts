@@ -6,7 +6,7 @@ const StyledContainer = styled.div`
   width: 630px;
   display: flex;
   flex-wrap: wrap;
-  padding: 0 22px;
+  padding: 22px 22px;
   gap: 22px;
   overflow-y: scroll;
 `;
