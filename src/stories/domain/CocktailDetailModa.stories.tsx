@@ -1,4 +1,4 @@
-import { Button } from '@base';
+import Album from '@compound/Album';
 import CocktailDetailModal from '@domain/CocktailDetailModal';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
@@ -13,14 +13,13 @@ export const Default = (): ReactElement => {
     useState(false);
   return (
     <>
-      <Button
-        type='button'
+      <Album
+        text='마티니'
+        type='result'
         onClick={(): void => {
           setIsCocktailDetailModalVisible(true);
         }}
-      >
-        {'카드'}
-      </Button>
+      />
       <CocktailDetailModal
         backgroundColor='DARK_GRAY'
         color='IVORY'
