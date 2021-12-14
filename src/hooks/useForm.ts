@@ -2,15 +2,15 @@ import type { ChangeEventHandler, FormEventHandler } from 'react';
 import { useCallback, useState } from 'react';
 
 interface UseFormProps<T extends { [key: string]: any }> {
-  initialValues: T;
+  initialValues: Partial<T>;
   validateOnChange?: boolean;
-  onSubmit?(value: T): any;
+  onSubmit?(value: Partial<T>): any;
   validateFn?(args: any): any;
 }
 
 interface UseFormReturnType<T extends { [key: string]: any }> {
-  values: T;
-  errors: Partial<T>;
+  values: Partial<T>;
+  errors: { [key: string]: any };
   isLoading: boolean;
   handleChange: ChangeEventHandler<HTMLSelectElement | HTMLInputElement>;
   handleSubmit: FormEventHandler;
@@ -22,7 +22,7 @@ const useForm = <T>({
   onSubmit, // Submit 이벤트
   validateFn // validate 함수
 }: UseFormProps<T>): UseFormReturnType<T> => {
-  const [values, setValues] = useState<T>(initialValues); // Form 내부 값
+  const [values, setValues] = useState<Partial<T>>(initialValues); // Form 내부 값
   const [errors, setErrors] = useState<Partial<T>>({}); // validate Errors
   const [isLoading, setIsLoading] = useState(false); // submit 진행중 여부
 
