@@ -5,6 +5,7 @@ import RegisterModal from '@domain/RegisterModal';
 import type { IUser, IUserForm } from '@models';
 import type { ReactElement } from 'react';
 import { useNavigate } from 'react-router';
+import type { IRegisterRequestBody } from './types';
 
 // test email
 const TEST_EMAIL = 'rlaangh77@naver.com';
@@ -13,7 +14,7 @@ const RegisterPage = (): ReactElement => {
   const navigate = useNavigate();
 
   const postRegister = async (
-    values: Partial<IUser>
+    values: IRegisterRequestBody
   ): Promise<IUser | undefined> => {
     console.log(values);
     const data = await request.post<IUser, IUser>('/user/join', values);
@@ -27,17 +28,16 @@ const RegisterPage = (): ReactElement => {
     console.log(TEST_EMAIL);
     console.log('posting!');
     const { nickname, age, gender, mbti } = value;
-    request.get('user/nickname/alangGY').then((data) => {
+    if (nickname && age && gender && mbti) {
+      const data = await postRegister({
+        nickname,
+        age,
+        mbti,
+        isMan: gender === '남자' ? true : false,
+        email: TEST_EMAIL
+      });
       console.log(data);
-    });
-    const data = await postRegister({
-      nickname,
-      age,
-      mbti,
-      isMan: gender === '남자' ? true : false,
-      email: TEST_EMAIL
-    });
-    console.log(data);
+    }
   };
 
   return (

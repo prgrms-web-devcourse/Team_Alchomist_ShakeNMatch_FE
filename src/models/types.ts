@@ -87,12 +87,20 @@ interface IIngredient {
 
 interface IUser {
   id: string;
-  nickName: string;
+  email: string;
+  nickname: string;
   isMan: boolean;
   age: number;
   mbti: IUserMbti;
   myIngredients?: IIngredient[];
   favorites?: Pick<ICocktail, 'id'>[];
+}
+
+interface IUserForm {
+  nickname: string | null;
+  gender: IUserGender | null;
+  age: number | null;
+  mbti: IUserMbti | null;
 }
 
 type IDomain = typeof DOMAINS[keyof typeof DOMAINS];
@@ -108,6 +116,7 @@ export type {
   ITHEME,
   IUserInputType,
   IUserFormType,
+  IUserForm,
   IUserGender,
   IUserMbti,
   ValidateFnType,
