@@ -19,7 +19,7 @@ export const Default = (): ReactElement => {
           setIsCocktailDetailModalVisible(true);
         }}
       >
-        {'Click'}
+        {'카드'}
       </Button>
       <CocktailDetailModal
         backgroundColor='DARK_GRAY'
