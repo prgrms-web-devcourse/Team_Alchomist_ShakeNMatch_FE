@@ -10,4 +10,4 @@ const StyledReview = styled.div`
   margin: 9px;
 `;
 
-export default StyledReview;
+export { StyledReview };
