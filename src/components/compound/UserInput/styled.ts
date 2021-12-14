@@ -26,7 +26,7 @@ const StyledNicknameInputContainer = styled.div`
 const StyledCheckButton = styled.button<{ color: ColorKeys }>`
   position: absolute;
   top: 50%;
-  right: 0;
+  right: 2px;
   transform: translate(0, -50%);
   padding: 5px 3px;
   border: none;

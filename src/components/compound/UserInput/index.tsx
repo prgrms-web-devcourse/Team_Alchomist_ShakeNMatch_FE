@@ -117,15 +117,13 @@ const UserInput = ({
               type='button'
               onClick={handleCheckNickname}
             >
-              {checkNicknameAPIState.isLoading ? (
-                <Text bold size='xxxs'>
-                  체크 중...
-                </Text>
-              ) : (
-                <Text bold size='xxxs'>
-                  {checkNicknameAPIState.value ? '사용 가능' : '중복 검사'}
-                </Text>
-              )}
+              <Text bold color='BASIC_WHITE' size='xxxs'>
+                {checkNicknameAPIState.isLoading
+                  ? '체크 중...'
+                  : checkNicknameAPIState.value
+                  ? '사용 가능'
+                  : '중복 검사'}
+              </Text>
             </StyledCheckButton>
           )}
         </StyledNicknameInputContainer>
