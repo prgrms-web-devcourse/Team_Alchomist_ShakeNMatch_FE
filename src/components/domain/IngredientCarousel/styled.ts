@@ -7,7 +7,7 @@ const StyledCarouselContainer = styled.div<StyledCarouselContainerProps>`
   flex-wrap: wrap;
   width: 630px;
   height: ${({ row }): string | undefined =>
-    row === 'single' ? undefined : '300px'};
+    row === 'single' ? '150px' : '300px'};
   justify-content: flex-start;
   gap: 30px;
   padding: 0 90px;
