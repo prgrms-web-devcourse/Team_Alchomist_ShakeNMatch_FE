@@ -9,6 +9,7 @@ import { StyledReviewForm, StyledTextEditor } from './style';
 import type { CocktailReviewModalProps } from './types';
 
 const CocktailReviewModal = (props: CocktailReviewModalProps): ReactElement => {
+  console.log('CocktailReveiwModal');
   const [userFile, setUserFile] = useState<File | null>(null);
   const handleChangeFile = (file: File): void => {
     console.log('file changed', file.name);

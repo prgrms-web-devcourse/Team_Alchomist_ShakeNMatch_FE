@@ -9,13 +9,14 @@ export default {
 };
 
 export const Default = (): ReactElement => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isCocktailDetailModalVisible, setIsCocktailDetailModalVisible] =
+    useState(false);
   return (
     <>
       <Button
         type='button'
         onClick={(): void => {
-          setIsVisible(true);
+          setIsCocktailDetailModalVisible(true);
         }}
       >
         {'Click'}
@@ -24,7 +25,11 @@ export const Default = (): ReactElement => {
         backgroundColor='DARK_GRAY'
         color='IVORY'
         size='lg'
-        visible={isVisible}
+        visible={isCocktailDetailModalVisible}
+        onClose={(): void => {
+          console.log('CocktailDetailModal Closed');
+          setIsCocktailDetailModalVisible(false);
+        }}
       />
     </>
   );
