@@ -15,10 +15,11 @@ const Album = ({
   text = DEFAULT_TEXT,
   imageWidth = DEFAULT_IMAGE_WIDTH,
   imageHeight = DEFAULT_IMAGE_HEIGHT,
-  imageSrc = DEFAULT_IMAGE_SRC
+  imageSrc = DEFAULT_IMAGE_SRC,
+  onClick
 }: AlbumProps): ReactElement => {
   return (
-    <StyledContainer type={type}>
+    <StyledContainer type={type} onClick={onClick}>
       <Image
         height={imageHeight}
         mode='cover'

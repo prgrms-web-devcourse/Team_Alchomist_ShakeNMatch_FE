@@ -1,3 +1,5 @@
+import type { HTMLAttributes } from 'react';
+
 const ALBUM_ATTRIBUTES = {
   alcohol: {
     width: '130px',
@@ -18,7 +20,7 @@ const ALBUM_ATTRIBUTES = {
 
 type AlbumAttributeKeys = keyof typeof ALBUM_ATTRIBUTES;
 
-interface AlbumProps {
+interface AlbumProps extends HTMLAttributes<HTMLDivElement> {
   type?: AlbumAttributeKeys;
   text?: string;
   imageWidth?: string;
