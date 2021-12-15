@@ -12,6 +12,7 @@ const StyledHeaderContainer = styled.header`
   padding-right: 10px;
   align-items: center;
   height: ${HEADER_HEIGHT};
+  background-color: ${COLOR.STRONG_PINK};
 
   & > *:first-child {
     margin-right: auto;
