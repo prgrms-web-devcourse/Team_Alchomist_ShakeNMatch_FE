@@ -12,6 +12,7 @@ const StyledHeaderContainer = styled.header`
   padding-right: 10px;
   align-items: center;
   height: ${HEADER_HEIGHT};
+  column-gap: 10px;
 
   & > *:first-child {
     margin-right: auto;
