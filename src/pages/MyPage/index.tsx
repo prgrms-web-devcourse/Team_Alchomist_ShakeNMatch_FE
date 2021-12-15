@@ -7,6 +7,7 @@ import { useSearchParams } from 'react-router-dom';
 import UserForm from '@domain/UserForm';
 import CocktailList from '@domain/CocktailList';
 import SectionDividerWithTitle from '@domain/SectionDividerWithTitle';
+import type { IUserForm } from '@models';
 
 const TEN_RADIX = 10;
 
@@ -17,7 +18,12 @@ const MyPage = (): ReactElement => {
     [searchParams]
   );
   // 유저 임시정보
-  const user = { nickname: 'Alang', age: 15, gender: '남자', mbti: 'INFP' };
+  const user: IUserForm = {
+    nickname: 'Alang',
+    age: 15,
+    gender: '남자',
+    mbti: 'INFP'
+  };
   // 칵테일 임시정보
   const cocktails: any[] = [];
   const handleChangeItem = (index: number): void => {

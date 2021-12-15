@@ -1,12 +1,13 @@
 import TextButton from '@compound/TextButton';
 import useForm from '@hooks/useForm';
 import type { ReactElement } from 'react';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useCallback, useState } from 'react';
 import { StyledForm } from './styled';
 import type { UserFormProps } from './types';
 import UserInput from '../../compound/UserInput';
 import { validateUser } from '@utils/lib/userValidator';
 import { Text } from '@base';
+import type { IUserForm } from '@models';
 
 const UserForm = ({
   type = 'Register',
@@ -20,12 +21,14 @@ const UserForm = ({
   onSubmit,
   ...props
 }: UserFormProps): ReactElement => {
-  const { values, errors, isLoading, handleChange, handleSubmit } = useForm({
-    initialValues,
-    validateOnChange: true,
-    onSubmit,
-    validateFn: validateUser
-  });
+  const { values, errors, isLoading, handleChange, handleSubmit } =
+    useForm<IUserForm>({
+      initialValues,
+      validateOnChange: true,
+      onSubmit,
+      validateFn: validateUser
+    });
+  const [nicknameChecked, setNicknameChecked] = useState(false);
   const validatedValues = useMemo(
     () =>
       Object.values(values).filter((value) => value).length -
@@ -33,9 +36,15 @@ const UserForm = ({
     [values, errors]
   );
   const isValuesAllValidated = useMemo(
-    () => Object.keys(initialValues).length - validatedValues === 0,
-    [initialValues, validatedValues]
+    () =>
+      Object.keys(initialValues).length - validatedValues === 0 &&
+      nicknameChecked,
+    [initialValues, validatedValues, nicknameChecked]
   );
+
+  const handleNickNameChecked = useCallback((value: boolean) => {
+    setNicknameChecked(value);
+  }, []);
 
   useEffect(() => {
     onValidatedValuesChanged?.(validatedValues);
@@ -50,14 +59,15 @@ const UserForm = ({
         errorMessage={errors.nickname}
         formType={type}
         inputType='nickname'
-        value={values.nickname}
+        value={values.nickname || ''}
         onChange={handleChange}
+        onNicknameChecked={handleNickNameChecked}
       />
       <UserInput
         errorMessage={errors.gender}
         formType={type}
         inputType='gender'
-        value={values.gender}
+        value={values.gender || ''}
         onChange={handleChange}
       />
 
@@ -65,7 +75,7 @@ const UserForm = ({
         errorMessage={errors.age}
         formType={type}
         inputType='age'
-        value={values.age}
+        value={values.age || ''}
         onChange={handleChange}
       />
 
@@ -73,7 +83,7 @@ const UserForm = ({
         errorMessage={errors.mbti}
         formType={type}
         inputType='mbti'
-        value={values.mbti}
+        value={values.mbti || ''}
         onChange={handleChange}
       />
       <TextButton

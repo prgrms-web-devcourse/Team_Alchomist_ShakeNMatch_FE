@@ -4,6 +4,7 @@ interface UserInputProps {
   inputType: IUserInputType;
   formType: IUserFormType;
   errorMessage?: string;
+  onNicknameChecked?(value: boolean): void;
 }
 
 export type { UserInputProps };
