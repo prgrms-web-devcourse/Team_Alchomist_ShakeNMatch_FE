@@ -22,11 +22,13 @@ const SectionDividerWithTitle = ({
   withHeader = false,
   ...props
 }: SectionDividerWithTitleProps): ReactElement => {
-  const wrappedChildren = Children.toArray(children).map((element) => (
-    <StyledSectionDividerContent alignItems={alignItems}>
-      {element}
-    </StyledSectionDividerContent>
-  ));
+  const wrappedChildren = Children.toArray(
+    children.map((element) => (
+      <StyledSectionDividerContent alignItems={alignItems}>
+        {element}
+      </StyledSectionDividerContent>
+    ))
+  );
 
   return (
     <TitleSectionContainer

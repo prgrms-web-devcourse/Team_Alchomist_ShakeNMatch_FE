@@ -52,7 +52,7 @@ const StyledTooltipContent = styled.div<
     return position;
   }};
 
-  left: ${({ direction, tooltipSize }): string => {
+  right: ${({ direction, tooltipSize }): string => {
     let position = '';
     switch (direction) {
       case 'top':
@@ -62,7 +62,7 @@ const StyledTooltipContent = styled.div<
         position = '0px';
         break;
       case 'right':
-        position = '105%';
+        position = '-105%';
         break;
       case 'left':
         position =

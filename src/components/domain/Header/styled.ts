@@ -13,6 +13,7 @@ const StyledHeaderContainer = styled.header`
   align-items: center;
   height: ${HEADER_HEIGHT};
   background-color: ${COLOR.STRONG_PINK};
+  column-gap: 10px;
 
   & > *:first-child {
     margin-right: auto;

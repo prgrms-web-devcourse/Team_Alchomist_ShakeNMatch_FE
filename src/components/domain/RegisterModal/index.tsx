@@ -28,12 +28,6 @@ const RegisterModal = ({
           />
         </IdentifierContainer>
         <UserForm
-          initialValues={{
-            nickname: null,
-            gender: null,
-            age: null,
-            mbti: null
-          }}
           type='Register'
           onSubmit={onSubmit}
           onValidatedValuesChanged={(value): void => {

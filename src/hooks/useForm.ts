@@ -1,29 +1,29 @@
 import type { ChangeEventHandler, FormEventHandler } from 'react';
 import { useCallback, useState } from 'react';
 
-interface UseFormProps {
-  initialValues: { [key: string]: any };
+interface UseFormProps<T extends { [key: string]: any }> {
+  initialValues: Partial<T>;
   validateOnChange?: boolean;
-  onSubmit?(value: { [key: string]: any }): any;
+  onSubmit?(value: Partial<T>): any;
   validateFn?(args: any): any;
 }
 
-interface UseFormReturnType {
-  values: { [key: string]: any };
+interface UseFormReturnType<T extends { [key: string]: any }> {
+  values: Partial<T>;
   errors: { [key: string]: any };
   isLoading: boolean;
   handleChange: ChangeEventHandler<HTMLSelectElement | HTMLInputElement>;
   handleSubmit: FormEventHandler;
 }
 
-const useForm = ({
+const useForm = <T>({
   initialValues, // 초기값
   validateOnChange = false, // onChange event시 validate 진행 여부
   onSubmit, // Submit 이벤트
   validateFn // validate 함수
-}: UseFormProps): UseFormReturnType => {
-  const [values, setValues] = useState(initialValues || {}); // Form 내부 값
-  const [errors, setErrors] = useState<{ [key: string]: any }>({}); // validate Errors
+}: UseFormProps<T>): UseFormReturnType<T> => {
+  const [values, setValues] = useState<Partial<T>>(initialValues); // Form 내부 값
+  const [errors, setErrors] = useState<Partial<T>>({}); // validate Errors
   const [isLoading, setIsLoading] = useState(false); // submit 진행중 여부
 
   const handleChange: ChangeEventHandler<HTMLSelectElement | HTMLInputElement> =
@@ -36,7 +36,7 @@ const useForm = ({
           setErrors((prevErrors) => {
             // 해당 name value에 error 가 없으면
             if (!Object.keys(newError).length) {
-              delete prevErrors[name]; // 기존 error 객체에서 name property 삭제
+              delete prevErrors[name as keyof T]; // 기존 error 객체에서 name property 삭제
             }
             return { ...prevErrors, ...newError }; // 새로운 error 객체 반환
           });
