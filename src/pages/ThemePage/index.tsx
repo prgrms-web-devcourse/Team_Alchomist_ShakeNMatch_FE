@@ -1,6 +1,7 @@
 import { request } from '@apis/config';
-import { SectionDivider, Text } from '@base';
+import { Divider, SectionDivider, Text } from '@base';
 import { THEMES } from '@constants/themes';
+import BackButton from '@domain/BackButton';
 import CocktailList from '@domain/CocktailList';
 import ThemeSelector from '@domain/ThemeSelector';
 import useDebounce from '@hooks/useDebounce';
@@ -9,7 +10,6 @@ import type { ReactElement } from 'react';
 import { useCallback, useMemo, useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
-  StyledBackButton,
   StyledResultButton,
   StyledResultContainer,
   StyledThemePageContainer
@@ -158,6 +158,7 @@ const ThemePage = (): ReactElement => {
             <Text> 테마 별로 레시피를 추천받아 보세요!</Text>
           )}
         </h2>
+        <Divider color='TRANSPARENT' gap={5} />
         <SectionDivider
           {...(showResult && { className: 'result' })}
           width='200vw'
@@ -180,7 +181,7 @@ const ThemePage = (): ReactElement => {
             결과 보기
           </StyledResultButton>
         ) : (
-          <StyledBackButton color='NAVY' onClick={handleBack} />
+          <BackButton color='NAVY' onClick={handleBack} />
         )}
       </StyledThemePageContainer>
     </>

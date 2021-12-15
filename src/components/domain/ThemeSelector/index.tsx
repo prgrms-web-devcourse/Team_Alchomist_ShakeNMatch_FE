@@ -6,6 +6,7 @@ import type { ReactElement } from 'react';
 import { useMemo, useState, useEffect } from 'react';
 import { SectionDividerContent } from './styled';
 import type { ThemeSelectorProps } from './types';
+import imageSrc from '@assets/carouselTheme/big/color.png';
 
 const ThemeSelector = ({
   initialMainIndex = 0,
@@ -41,23 +42,14 @@ const ThemeSelector = ({
   }, []);
 
   return (
-    <SectionDivider
-      dividerOptions={{ gap: 100, color: 'TRANSPARENT' }}
-      ratio={[1, 1]}
-      showDivider
-      {...props}
-    >
+    <SectionDivider ratio={[1, 1]} {...props}>
       <SectionDividerContent className='mainCarousel'>
         <Carousel.Container
           selectedIndex={selectedMainIndex}
           onChangeItem={handleChangeMain}
         >
           {Object.keys(THEMES).map((theme) => (
-            <Carousel.Item
-              key={theme}
-              imageSrc='https://via.placeholder.com/150'
-              title={theme}
-            />
+            <Carousel.Item key={theme} imageSrc={imageSrc} title={theme} />
           ))}
         </Carousel.Container>
       </SectionDividerContent>
@@ -70,7 +62,7 @@ const ThemeSelector = ({
             <Carousel.Item
               key={detailTheme}
               backgroundColor='LIGHT_PINK'
-              imageSrc='https://via.placeholder.com/150'
+              imageSrc='https://picsum.photos/200'
               title={detailTheme}
             />
           ))}
