@@ -7,4 +7,9 @@ interface ChaningTextProps {
   textColor?: ColorKeys;
 }
 
-export type { ChaningTextProps };
+interface StyledContainerProps {
+  visible: boolean;
+  transitionDelay: number;
+}
+
+export type { ChaningTextProps, StyledContainerProps };
