@@ -12,8 +12,6 @@ const DEFAULT_IMAGE_SRC = 'https://picsum.photos/200';
 const Album = ({
   type = DEFAULT_TYPE,
   text = DEFAULT_TEXT,
-  imageWidth = DEFAULT_IMAGE_WIDTH,
-  imageHeight = DEFAULT_IMAGE_HEIGHT,
   imageSrc = DEFAULT_IMAGE_SRC,
   onClick
 }: AlbumProps): ReactElement => {
