@@ -14,6 +14,7 @@ import {
   StyledResultContainer,
   StyledThemePageContainer
 } from './styled';
+import SearchBot from '@domain/SearchBot';
 
 const RADIX_TEN = 10;
 // 임시 상수
@@ -183,6 +184,7 @@ const ThemePage = (): ReactElement => {
           <StyledBackButton color='NAVY' onClick={handleBack} />
         )}
       </StyledThemePageContainer>
+      <SearchBot />
     </>
   );
 };
