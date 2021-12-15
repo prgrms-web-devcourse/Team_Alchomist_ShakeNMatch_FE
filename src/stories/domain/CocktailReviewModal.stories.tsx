@@ -37,7 +37,6 @@ export const Default = (): ReactElement => {
         <div>{userReview ? userReview.userComment : '없음'}</div>
       </p>
       <CocktailReviewModal
-        backgroundColor={'BASIC_WHITE'}
         color={'BASIC_WHITE'}
         handleSubmit={handleComplete}
         size={'sm'}
