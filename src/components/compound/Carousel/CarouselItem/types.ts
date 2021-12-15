@@ -2,14 +2,14 @@ import type { ColorKeys } from '@models';
 import type { HTMLAttributes } from 'react';
 
 const CAROUSEL_SIZE = {
-  width: '380px',
-  height: '330px'
+  width: '400px',
+  height: '360px'
 } as const;
 
 const CAROUSEL_IMAGE_SIZE = {
   withTitle: {
-    width: '135px',
-    height: '135px'
+    width: '180px',
+    height: '180px'
   },
   withoutTitle: {
     width: '220px',

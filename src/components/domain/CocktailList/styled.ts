@@ -1,14 +1,20 @@
 import styled from '@emotion/styled';
 import type { CSSObject } from '@emotion/styled';
 import type { StyledMotionWrapperProps } from './types';
+import { COLOR } from '@constants';
 
 const StyledContainer = styled.div`
   width: 630px;
+  height: 80%;
   display: flex;
   flex-wrap: wrap;
   padding: 22px 22px;
   gap: 22px;
   overflow-y: scroll;
+  border-radius: 10px;
+  box-shadow: inset 0 -2px 5px -4px ${COLOR.BLACK};
+  border-bottom: 1px solid ${COLOR.IVORY};
+  z-index: 3;
 `;
 
 const delayTime = 100;

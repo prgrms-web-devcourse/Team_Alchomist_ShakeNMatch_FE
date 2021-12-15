@@ -12,12 +12,17 @@ const COLOR = {
   NAVY: '#142F43',
   ORANGE: '#F3B57C',
   VIOLET: '#B000B9',
-  IVORY: '#F0EFE3',
+  IVORY: '#f4f6e8',
   LIGHT_YELLOW: '#FEE500',
   DARK_YELLOW: '#D2D46A',
   BLUE: '#6AA1D4',
   GREEN: '#4FA863',
   RED: '#D61D1D',
+  DEEP_BROWN: 'rgb(93, 62, 55)',
+  DARK_BROWN: 'rgb(56,38,33)',
+  DARK_BROWN_OPACITY: 'rgba(56,38,33,0.4)',
+  BROWN: '#b55945',
+  DARK_GREEN: '#00251a',
   TRANSPARENT: 'transparent'
 } as const;
 
