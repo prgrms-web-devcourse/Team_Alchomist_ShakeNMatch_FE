@@ -24,15 +24,13 @@ const ChangingText = ({
 
     const changeText = (): void => {
       const index = textIndex.current++;
-      console.log(index);
-      console.log(textList[index % textList.length]);
+
       setTextContent(textList[index % textList.length]);
     };
 
     const visibleInterval = setInterval(changeVisible, intervalTime);
 
     changeText();
-    // eslint-disable-next-line @typescript-eslint/no-magic-numbers
     const textInterval = setInterval(
       changeText,
       intervalTime * 2 + TRANSITION_DELAY
