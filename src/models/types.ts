@@ -64,6 +64,12 @@ interface IReview {
   cocktails: ICocktail;
 }
 
+interface ICocktailSimple {
+  id: string;
+  name: string;
+  type: string;
+}
+
 interface ICocktail {
   id: string;
   name: string;
@@ -124,6 +130,7 @@ export type {
   IUserValidateError,
   ValidateUserArgsType,
   ITheme,
+  ICocktailSimple,
   ICocktail,
   IUser,
   IIngredient,
