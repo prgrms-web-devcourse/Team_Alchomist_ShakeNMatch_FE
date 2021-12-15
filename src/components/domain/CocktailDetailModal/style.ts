@@ -49,9 +49,16 @@ const StyledReviewListWrapper = styled.div`
   }
 `;
 
+const StyledImageContainer = styled.div`
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  overflow: hidden;
+`;
+
 export {
   StyledLeftSection,
   StyledRightSection,
   StyledIngredientListWrapper,
-  StyledReviewListWrapper
+  StyledReviewListWrapper,
+  StyledImageContainer
 };

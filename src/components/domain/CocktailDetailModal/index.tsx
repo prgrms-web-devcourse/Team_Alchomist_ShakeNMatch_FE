@@ -9,11 +9,16 @@ import UserReviewItem from './UserReviewItem';
 import TextButton from '@compound/TextButton';
 import TitleSectionContainer from '@domain/TitleSectionContainer';
 import CocktailReviewModal from '@domain/CocktailReviewModal';
-import { StyledIngredientListWrapper, StyledReviewListWrapper } from './style';
+import {
+  StyledIngredientListWrapper,
+  StyledReviewListWrapper,
+  StyledImageContainer
+} from './style';
 import {
   MOCK_INGREDIENT_DATA,
   MOCK_COCKTAIL_NAME,
-  MOCK_REVIEW_DATA
+  MOCK_REVIEW_DATA,
+  MOCK_COCKTAIL_INSTRUCTION
 } from './types';
 
 const CocktailDetailModal = ({
@@ -31,9 +36,7 @@ const CocktailDetailModal = ({
   }, [userReview]);
 
   const handleComplete = (reviewInfo: Review): void => {
-    console.log(reviewInfo);
     setUserReview(reviewInfo);
-    console.log(userReview);
     setIsVisible(false);
   };
 
@@ -42,9 +45,6 @@ const CocktailDetailModal = ({
       onClose?.();
     }
   };
-  useEffect((): void => {
-    console.log('mounted');
-  }, []);
 
   return (
     <Modal
@@ -61,13 +61,15 @@ const CocktailDetailModal = ({
             tabText={['Ingredients & Method', 'Reviews']}
           >
             <SectionDivider>
-              <Image
-                alt='Image'
-                height='100%'
-                mode='cover'
-                src='https://picsum.photos/500'
-                width='100%'
-              />
+              <StyledImageContainer>
+                <Image
+                  alt='Image'
+                  height='100%'
+                  mode='cover'
+                  src='https://picsum.photos/500'
+                  width='100%'
+                />
+              </StyledImageContainer>
               <TitleSectionContainer
                 dividerVisible
                 titleText={MOCK_COCKTAIL_NAME}
@@ -79,49 +81,46 @@ const CocktailDetailModal = ({
                   ))}
                   <Text size='md'>{'- 조제법- '}</Text>
                   <br />
-                  <Text size='sm'>
-                    {
-                      '칵테일 레시피에 대한 정보가 들어가는 곳입니다칵테일 레시피에 대한 정보가 들어가는 곳입니다칵테일 레시피에 대한 정보가 들어가는 곳입니다칵테일 레시피에 대한 정보가 들어가는 곳입니다칵테일 레시피에 대한 정보가 들어가는 곳입니다칵테일 레시피에 대한 정보가 들어가는 곳입니다칵테일 레시피에 대한 정보가 들어가는 곳입니다칵테일 레시피에 대한 정보가 들어가는 곳입니다칵테일 레시피에 대한 정보가 들어가는 곳입니다칵테일 레시피에 대한 정보가 들어가는 곳입니다'
-                    }
-                  </Text>
+                  <Text size='sm'>{MOCK_COCKTAIL_INSTRUCTION}</Text>
                 </StyledIngredientListWrapper>
               </TitleSectionContainer>
             </SectionDivider>
             <SectionDivider>
-              <Image
-                alt='Image'
-                height='100%'
-                mode='cover'
-                src='https://picsum.photos/500'
-                width='100%'
-              />
-
+              <StyledImageContainer>
+                <Image
+                  alt='Image'
+                  height='100%'
+                  mode='cover'
+                  src='https://picsum.photos/500'
+                  width='100%'
+                />
+              </StyledImageContainer>
               <TitleSectionContainer
                 dividerVisible
                 titleText={MOCK_COCKTAIL_NAME}
               >
-                <StyledReviewListWrapper>
-                  <Text size='md'>{'- 사용자 리뷰- '}</Text>
-                  {MOCK_REVIEW_DATA.map(() => (
-                    <UserReviewItem />
-                  ))}
+                <>
+                  <StyledReviewListWrapper>
+                    <Text size='md'>{'- 사용자 리뷰- '}</Text>
+                    {MOCK_REVIEW_DATA.map(() => (
+                      <UserReviewItem />
+                    ))}
+                  </StyledReviewListWrapper>
                   <TextButton
                     buttonType='LONG_WHITE'
                     dropShadow
                     type='button'
                     onClick={(): void => {
-                      console.log('리뷰작성 클릭');
                       setIsVisible(true);
                     }}
                   >
                     {'리뷰작성'}
                   </TextButton>
-                </StyledReviewListWrapper>
+                </>
               </TitleSectionContainer>
             </SectionDivider>
           </MenuTab>
           <CocktailReviewModal
-            backgroundColor={'BASIC_WHITE'}
             color={'BASIC_WHITE'}
             handleSubmit={handleComplete}
             size={'sm'}
