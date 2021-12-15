@@ -45,7 +45,6 @@ const CarouselItem = ({
               : CAROUSEL_IMAGE_SIZE.withoutTitle.height
           }
           mode='fill'
-          placeholder=''
           src={imageSrc}
           width={
             title
