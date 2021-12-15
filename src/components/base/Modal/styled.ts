@@ -23,7 +23,6 @@ const StyledModalContainer = styled.div<ContainerProps>`
   height: ${({ size }): string => MODAL_SIZE[size].height};
   background-color: ${({ color }): string => COLOR[color]};
   border-radius: 12px;
-  padding: 5px;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;

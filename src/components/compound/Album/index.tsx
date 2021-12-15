@@ -12,10 +12,11 @@ const DEFAULT_IMAGE_SRC = 'https://picsum.photos/200';
 const Album = ({
   type = DEFAULT_TYPE,
   text = DEFAULT_TEXT,
-  imageSrc = DEFAULT_IMAGE_SRC
+  imageSrc = DEFAULT_IMAGE_SRC,
+  onClick
 }: AlbumProps): ReactElement => {
   return (
-    <StyledContainer type={type}>
+    <StyledContainer type={type} onClick={onClick}>
       <Image
         height={ALBUM_ATTRIBUTES[type].imageHeight}
         mode='cover'
