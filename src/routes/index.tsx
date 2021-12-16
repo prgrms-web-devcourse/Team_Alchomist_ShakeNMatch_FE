@@ -11,6 +11,7 @@ import ShoppingPage from '@pages/ShoppingPage';
 import ThemePage from '@pages/ThemePage';
 import type { ReactElement } from 'react';
 import { Route, Routes } from 'react-router';
+import JangoProvider from '@contexts/Jango';
 
 const Router = (): ReactElement => {
   return (
@@ -19,8 +20,10 @@ const Router = (): ReactElement => {
       <Route
         element={
           <>
-            <Header />
-            <JangoPage />
+            <JangoProvider>
+              <Header />
+              <JangoPage />
+            </JangoProvider>
           </>
         }
         path='/jango'
