@@ -20,16 +20,19 @@ import SectionDividerWithTitle from '@domain/SectionDividerWithTitle';
 // ];
 
 import useAxios from '@hooks/useAxios';
-import type { ICocktail } from '@models/types';
+import type { ICocktail, ICocktailSimple } from '@models/types';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 
 const SearchPage = (): ReactElement => {
-  const [results, setResults] = useState<ICocktail[]>([]);
+  const [results, setResults] = useState<ICocktailSimple[]>([]);
   const { keyword } = useParams();
   const navigate = useNavigate();
 
   const request = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
-  const searchCocktailByName = (keyword: string): Promise<ICocktail[]> => {
+  // api 응답 형식 변경해야됨 -> 상순님 울지마세요
+  // 이 페이지에서 ICocktail로 받아서 filteredResult로 바꿔서 내려주는 값을
+  // 내일부터는 그냥 ICocktailSimple[]로 받으니까 바로 내려주면 된다.
+  const searchCocktailByName = (keyword: string): Promise<ICocktail> => {
     return request.get(`/cocktail/name?name=${keyword}`);
   };
 
@@ -40,15 +43,18 @@ const SearchPage = (): ReactElement => {
   useEffect(() => {
     const setSearchResults = async (): Promise<void> => {
       if (keyword) {
-        console.log('call!');
         const searchResult = await searchCocktailByName(keyword);
-        setResults(searchResult);
+
+        const filteredResult = {
+          id: searchResult.id,
+          name: searchResult.name,
+          type: searchResult.type
+        };
+        setResults([filteredResult]);
       }
     };
     setSearchResults();
   }, [keyword]);
-
-  console.log('here', keyword);
 
   return (
     <SectionDividerWithTitle alignItems>

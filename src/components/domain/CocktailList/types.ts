@@ -1,14 +1,8 @@
 import type { HTMLAttributes, ReactChild } from 'react';
-
-// temp
-interface ICocktail {
-  id: string;
-  name: string;
-  type: string;
-}
+import type { ICocktailSimple } from '@models/types';
 
 interface CocktailListProps extends HTMLAttributes<HTMLDivElement> {
-  cocktailList: ICocktail[];
+  cocktailList: ICocktailSimple[];
   noResultMsg?: string;
 }
 
