@@ -1,8 +1,8 @@
 import axios from 'axios';
 import type { AxiosInstance } from 'axios';
+import { useAuthorization } from '@contexts';
 
-// 환경 변수 적용 필요
-const BASE_URL = '';
+const { REACT_APP_BASE_URL } = process.env;
 
 const REQUEST_TYPE = {
   DEFAULT: 'default',
@@ -12,11 +12,11 @@ const REQUEST_TYPE = {
 type RequestTypeKeys = keyof typeof REQUEST_TYPE;
 type IRequestType = typeof REQUEST_TYPE[RequestTypeKeys];
 
-const setInterceptors = (
-  instance: AxiosInstance,
-  type: IRequestType
-): AxiosInstance => {
-  switch (type) {
+const useAxios = (requestType: IRequestType): AxiosInstance => {
+  const instance = axios.create({ baseURL: REACT_APP_BASE_URL });
+  const { oauthToken } = useAuthorization();
+
+  switch (requestType) {
     case REQUEST_TYPE.DEFAULT:
       instance.interceptors.request.use(
         (config) => {
@@ -37,11 +37,9 @@ const setInterceptors = (
     case REQUEST_TYPE.AUTH:
       instance.interceptors.request.use(
         (config) => {
-          // Token 가져오기
-          const TOKEN = '';
           config.headers = {
             'Content-Type': 'application/json',
-            Authorization: `bearer ${TOKEN}`
+            Authorization: `bearer ${oauthToken}`
           };
           return config;
         },
@@ -57,11 +55,9 @@ const setInterceptors = (
     case REQUEST_TYPE.FILE:
       instance.interceptors.request.use(
         (config) => {
-          // Token 가져오기
-          const TOKEN = '';
           config.headers = {
             'Content-Type': 'multipart/form-data',
-            Authorization: `bearer ${TOKEN}`
+            Authorization: `bearer ${oauthToken}`
           };
           return config;
         },
@@ -78,19 +74,4 @@ const setInterceptors = (
   return instance;
 };
 
-const request = setInterceptors(
-  axios.create({ baseURL: BASE_URL }),
-  REQUEST_TYPE.DEFAULT
-);
-
-const authRequest = setInterceptors(
-  axios.create({ baseURL: BASE_URL }),
-  REQUEST_TYPE.AUTH
-);
-
-const fileRequest = setInterceptors(
-  axios.create({ baseURL: BASE_URL }),
-  REQUEST_TYPE.FILE
-);
-
-export { request, authRequest, fileRequest };
+export default useAxios;
