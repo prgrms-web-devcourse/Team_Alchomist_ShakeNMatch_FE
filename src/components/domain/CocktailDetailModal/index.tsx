@@ -15,7 +15,7 @@ import {
   StyledImageContainer
 } from './style';
 import { MOCK_COCKTAIL_RESPONSE, MOCK_USER_INGREDIENT_IDS } from './types';
-        
+
 const CocktailDetailModal = ({
   size,
   backgroundColor,
