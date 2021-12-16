@@ -1,8 +1,9 @@
-import { checkUserNickname } from '@apis/user';
 import { Text, Input, Select } from '@base';
 import type { InputProps } from '@base/Input/types';
 import type { SelectProps } from '@base/Select/types';
 import { USER_FORM_LABEL_TEXT, USER_GENDER, USER_MBTI } from '@constants';
+import { AXIOS_REQUEST_TYPE } from '@constants/axios';
+import useAxios from '@hooks/useAxios';
 import type { ReactElement } from 'react';
 import { useCallback, useState, useEffect } from 'react';
 import {
@@ -36,6 +37,13 @@ const UserInput = ({
       isLoading: false,
       error: null
     });
+  const request = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
+
+  const checkUserNickname = (
+    nickname: string
+  ): Promise<{ data: { can: boolean } }> => {
+    return request.get(`/user/nickname/${nickname}`);
+  };
 
   const getVerifyNickname = async (nickname: string): Promise<void> => {
     try {
