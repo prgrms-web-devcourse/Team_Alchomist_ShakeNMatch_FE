@@ -3,12 +3,10 @@ import type { ReactElement } from 'react';
 import type { Review } from '@domain/CocktailReviewModal/types';
 import type { CocktailDetailModalProps, ICocktailData } from './types';
 import { Image, SectionDivider, Modal, Text } from '@base';
-import MenuTab from '@compound/MenuTab';
 import IngredientItem from './IngredientItem';
 import UserReviewItem from './UserReviewItem';
-import TextButton from '@compound/TextButton';
-import TitleSectionContainer from '@domain/TitleSectionContainer';
-import CocktailReviewModal from '@domain/CocktailReviewModal';
+import { TextButton, MenuTab } from '@compound';
+import { TitleSectionContainer, CocktailReviewModal } from '@domain';
 import {
   StyledIngredientListWrapper,
   StyledReviewListWrapper,

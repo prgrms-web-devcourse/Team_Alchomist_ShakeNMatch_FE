@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
-import Text from '@base/Text';
-import TextButton from '@compound/TextButton';
+import { Text } from '@base';
+import { TextButton } from '@compound';
 // import Image from '@base/Image';
 import type { IngredientItemProps } from './types';
 import { StyledIngredient } from './style';

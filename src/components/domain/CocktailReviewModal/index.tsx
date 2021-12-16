@@ -1,8 +1,7 @@
 import type { ChangeEventHandler, FormEventHandler, ReactElement } from 'react';
 import { useState } from 'react';
 import Button from '@base/Button';
-import Text from '@base/Text';
-import Modal from '@base/Modal';
+import { Text, Modal } from '@base';
 import Upload from '@base/Uploader';
 import RatingStar from '@domain/RatingStar';
 import { StyledReviewForm, StyledTextEditor } from './style';

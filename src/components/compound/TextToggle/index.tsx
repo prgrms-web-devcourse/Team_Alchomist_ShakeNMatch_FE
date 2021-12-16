@@ -3,7 +3,7 @@ import type { ChangeEvent, ReactElement } from 'react';
 import { StyledToggleContainer, StyledToggleInput } from './styled';
 import { TEXT_TOGGLE } from './types';
 import type { TextToggleProps } from './types';
-import Text from '@base/Text';
+import { Text } from '@base';
 
 const TextToggle = ({
   children,
