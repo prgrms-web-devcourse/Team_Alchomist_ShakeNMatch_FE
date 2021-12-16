@@ -1,8 +1,6 @@
 import { request } from '@apis/config';
-import { Text } from '@base';
-import Input from '@base/Input';
+import { Text, Input, Select } from '@base';
 import type { InputProps } from '@base/Input/types';
-import Select from '@base/Select';
 import type { SelectProps } from '@base/Select/types';
 import { USER_FORM_LABEL_TEXT, USER_GENDER, USER_MBTI } from '@constants';
 import type { ReactElement } from 'react';

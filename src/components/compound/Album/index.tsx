@@ -1,8 +1,7 @@
 import type { ReactElement } from 'react';
 import type { AlbumProps } from './types';
 import { ALBUM_ATTRIBUTES } from './types';
-import Text from '@base/Text';
-import Image from '@base/Image';
+import { Text, Image } from '@base';
 import { StyledContainer } from './styled';
 
 const DEFAULT_TYPE = 'alcohol';

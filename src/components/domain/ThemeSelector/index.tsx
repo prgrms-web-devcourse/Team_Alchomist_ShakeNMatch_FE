@@ -1,5 +1,5 @@
 import { SectionDivider } from '@base';
-import Carousel from '@compound/Carousel';
+import { Carousel } from '@compound';
 import { THEMES } from '@constants/themes';
 import type { ITHEME } from '@models';
 import type { ReactElement } from 'react';
