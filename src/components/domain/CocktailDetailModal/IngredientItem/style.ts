@@ -1,8 +1,8 @@
 import { COLOR } from '@constants';
 import styled from '@emotion/styled';
-import type { IngredientObject } from './types';
+import type { IngredientItemProps } from './types';
 
-const StyledIngredient = styled.div<Pick<IngredientObject, 'isUserHas'>>`
+const StyledIngredient = styled.div<Pick<IngredientItemProps, 'isUserHas'>>`
   width: 339px;
   height: 48px;
   background: ${({ isUserHas }): string =>
