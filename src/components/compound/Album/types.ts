@@ -1,6 +1,5 @@
 import type { HTMLAttributes } from 'react';
 import { COLOR } from '@constants';
-import type { HTMLAttributes } from 'react';
 
 const ALBUM_ATTRIBUTES = {
   alcohol: {
