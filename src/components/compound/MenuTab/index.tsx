@@ -71,6 +71,8 @@ const MenuTab = ({
     setChildrenEl(childrenEl);
   }, [displayingChildIdx, children]);
 
+  console.log(firstTabSize);
+
   return (
     <StyledContainer>
       {childrenEl}

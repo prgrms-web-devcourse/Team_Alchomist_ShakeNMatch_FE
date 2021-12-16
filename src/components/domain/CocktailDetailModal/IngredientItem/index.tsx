@@ -21,6 +21,5 @@ const IngredientItem = (ingredient: IngredientItemProps): ReactElement => {
       </TextButton>
     </StyledIngredient>
   );
-};
 
 export default IngredientItem;
