@@ -41,7 +41,7 @@ const SearchPage = (): ReactElement => {
     // const searchResult = searchCocktailByName
     console.log('다음 키워드로 칵테일 검색', keyword);
     // 응답 결과를 setResults
-    setResults(DUMMY);
+    setResults(DUMMY as ICocktail[]);
   }, [keyword]);
 
   return (
