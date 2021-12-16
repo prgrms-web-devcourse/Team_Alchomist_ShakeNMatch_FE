@@ -7,6 +7,8 @@ import searchBartender from '@assets/characters/searchBartender.png';
 import SearchCocktailInput from '@domain/SearchCocktailInput';
 import { StyledContentWrapper } from './styled';
 import SectionDividerWithTitle from '@domain/SectionDividerWithTitle';
+// import { searchCocktailByName } from '@apis/cocktail';
+import type { ICocktail } from '@models/types';
 
 const DUMMY = [
   { id: '123', name: '칵테일', type: 'whiskey' },
@@ -18,8 +20,7 @@ const DUMMY = [
 ];
 
 const SearchPage = (): ReactElement => {
-  // 여기 추후에 그냥 ICocktail로 교체 (하위에서 걸러서 씀)
-  const [results, setResults] = useState<any[]>([]);
+  const [results, setResults] = useState<ICocktail[]>([]);
   const { keyword } = useParams();
   const navigate = useNavigate();
 
@@ -29,6 +30,15 @@ const SearchPage = (): ReactElement => {
 
   useEffect(() => {
     // keyword로 검색 api 호출
+    // const setSearchResults = async (): Promise<void> => {
+    //   if (keyword) {
+    //     const searchResult = await searchCocktailByName(keyword);
+    //     setResults(searchResult);
+    //   }
+    // };
+    // setSearchResults();
+
+    // const searchResult = searchCocktailByName
     console.log('다음 키워드로 칵테일 검색', keyword);
     // 응답 결과를 setResults
     setResults(DUMMY);
