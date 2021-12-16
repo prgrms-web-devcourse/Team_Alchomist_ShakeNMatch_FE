@@ -2,8 +2,9 @@ import { Children } from 'react';
 import type { ReactElement } from 'react';
 import { Text } from '@base';
 import { StyledContainer, StyledMotionWrapper } from './styled';
-import type { CocktailListProps } from './types';
+import type { CocktailListProps, CocktailIconsKeys } from './types';
 import Album from '@compound/Album';
+import { CocktailIcons, TOTAL_COCKTAIL_ICONS } from '@assets/cocktails';
 
 const DEFAULT_MSG = '죄송합니다. 추천 칵테일이 존재하지 않습니다.';
 
@@ -18,7 +19,11 @@ const CocktailList = ({
           cocktailList.map((cocktail, index) => (
             <StyledMotionWrapper resultIndex={index}>
               <Album
-                imageSrc={cocktail.type}
+                imageSrc={
+                  CocktailIcons[
+                    (index % TOTAL_COCKTAIL_ICONS) as CocktailIconsKeys
+                  ]
+                }
                 text={cocktail.name}
                 type='result'
               />

@@ -1,14 +1,9 @@
 import type { HTMLAttributes, ReactChild } from 'react';
-
-// temp
-interface ICocktail {
-  id: string;
-  name: string;
-  type: string;
-}
+import type { ICocktail } from '@models';
+import type { CocktailIcons } from '@assets/cocktails';
 
 interface CocktailListProps extends HTMLAttributes<HTMLDivElement> {
-  cocktailList: ICocktail[];
+  cocktailList: Pick<ICocktail, 'id' | 'name' | 'type'>[];
   noResultMsg?: string;
 }
 
@@ -17,4 +12,6 @@ interface StyledMotionWrapperProps {
   resultIndex: number;
 }
 
-export type { CocktailListProps, StyledMotionWrapperProps };
+type CocktailIconsKeys = keyof typeof CocktailIcons;
+
+export type { CocktailListProps, StyledMotionWrapperProps, CocktailIconsKeys };
