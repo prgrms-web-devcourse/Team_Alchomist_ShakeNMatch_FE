@@ -1,8 +1,7 @@
 import axios from 'axios';
 import type { AxiosInstance } from 'axios';
 
-// 환경 변수 적용 필요
-const BASE_URL = '';
+const { REACT_APP_BASE_URL: BASE_URL } = process.env;
 
 const REQUEST_TYPE = {
   DEFAULT: 'default',
