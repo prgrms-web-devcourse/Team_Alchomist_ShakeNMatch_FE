@@ -28,7 +28,7 @@ const Image = ({
   alt,
   mode = 'cover',
   block = false,
-  placeholder = 'https://via.placeholder.com/300',
+  placeholder,
   threshold = DEFAULT_THRESHOLD,
   ...props
 }: ImageProps): ReactElement => {
