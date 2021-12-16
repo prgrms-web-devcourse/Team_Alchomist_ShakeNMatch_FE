@@ -2,12 +2,7 @@ import { Image, Text } from '@base';
 import RatingStar from '@domain/RatingStar';
 import type { ReactElement } from 'react';
 import { StyledReview } from './style';
-
-interface UserReviewItemProps {
-  userImageUrl?: string;
-  userRating?: number;
-  userComment?: string;
-}
+import type { UserReviewItemProps } from './types';
 
 const UserReviewItem = ({
   userImageUrl,

@@ -1,7 +1,21 @@
 import type { ModalProps } from '@base/Modal/types';
+import type { IngredientObject } from './IngredientItem/types';
 
 interface CocktailDetailModalProps extends ModalProps {
-  clickedCocktailId: number;
+  clickedCocktailId?: number;
+}
+
+interface ICocktailData {
+  data: {
+    id: number;
+    name: string;
+    volumes: IngredientObject[];
+    reviews: string[];
+    recipe: string;
+    imageUrl: string;
+    likes: number;
+    totalRating: number;
+  };
 }
 
 const MOCK_USER_INGREDIENT_IDS = [1, 2];
@@ -55,5 +69,5 @@ const MOCK_COCKTAIL_RESPONSE = {
   }
 };
 
-export type { CocktailDetailModalProps };
+export type { CocktailDetailModalProps, ICocktailData };
 export { MOCK_COCKTAIL_RESPONSE, MOCK_USER_INGREDIENT_IDS };

@@ -4,7 +4,9 @@ interface IngredientObject {
   amount: number;
   measure: string;
   type: string;
-  isUserHas: boolean;
 }
 
-export type { IngredientObject };
+interface IngredientItemProps extends IngredientObject {
+  isUserHas: boolean;
+}
+export type { IngredientObject, IngredientItemProps };

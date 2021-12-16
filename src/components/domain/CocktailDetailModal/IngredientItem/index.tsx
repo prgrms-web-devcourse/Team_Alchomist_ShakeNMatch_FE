@@ -2,10 +2,10 @@ import type { ReactElement } from 'react';
 import Text from '@base/Text';
 import TextButton from '@compound/TextButton';
 // import Image from '@base/Image';
-import type { IngredientObject } from './types';
+import type { IngredientItemProps } from './types';
 import { StyledIngredient } from './style';
 
-const IngredientItem = (ingredient: IngredientObject): ReactElement => {
+const IngredientItem = (ingredient: IngredientItemProps): ReactElement => {
   return (
     <StyledIngredient isUserHas={ingredient.isUserHas}>
       {/* <Image src=`` /> */}
