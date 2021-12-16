@@ -1,4 +1,4 @@
-import { request } from '@apis/config';
+import { registerUser } from '@apis/user';
 import { StyledPageContainerWithBackground } from '@base/PageContainerWithBackground/styled';
 import BackButton from '@domain/BackButton';
 import RegisterModal from '@domain/RegisterModal';
@@ -16,8 +16,8 @@ const RegisterPage = (): ReactElement => {
   const postRegister = async (
     values: IRegisterRequestBody
   ): Promise<IUser | undefined> => {
-    console.log(values);
-    const data = await request.post<IUser, IUser>('/user/join', values);
+    const data = await registerUser(values);
+
     if (data) {
       return data;
     }

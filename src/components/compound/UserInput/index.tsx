@@ -1,4 +1,4 @@
-import { request } from '@apis/config';
+import { checkUserNickname } from '@apis/user';
 import { Text, Input, Select } from '@base';
 import type { InputProps } from '@base/Input/types';
 import type { SelectProps } from '@base/Select/types';
@@ -30,7 +30,6 @@ const UserInput = ({
   ...props
 }: UserInputProps & (InputProps | SelectProps)): ReactElement => {
   let inputEl;
-
   const [checkNicknameAPIState, setCheckNicknameAPIState] =
     useState<IcheckNicknameAPIState>({
       value: null,
@@ -44,9 +43,7 @@ const UserInput = ({
         ...prevState,
         isLoading: true
       }));
-      const { data } = await request.get<any, { data: { can: boolean } }>(
-        `/user/nickname/${nickname}`
-      );
+      const { data } = await checkUserNickname(nickname);
       if (data.can) {
         onNicknameChecked?.(true);
         setCheckNicknameAPIState({
