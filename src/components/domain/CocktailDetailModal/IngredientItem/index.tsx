@@ -7,10 +7,10 @@ import { StyledIngredient } from './style';
 
 const IngredientItem = (ingredient: IngredientObject): ReactElement => {
   return (
-    <StyledIngredient>
+    <StyledIngredient isUserHas={ingredient.isUserHas}>
       {/* <Image src=`` /> */}
       <Text size='xs'>{ingredient.name}</Text>
-      {/* <Text size='xs'>{amount.toString()}</Text> */}
+      <Text size='xs'>{ingredient.amount.toString()}</Text>
       <Text size='xs'>{ingredient.measure}</Text>
       <TextButton
         block={false}

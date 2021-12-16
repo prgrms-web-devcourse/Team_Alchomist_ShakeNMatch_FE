@@ -14,7 +14,7 @@ import {
   StyledReviewListWrapper,
   StyledImageContainer
 } from './style';
-import { MOCK_COCKTAIL_RESPONSE } from './types';
+import { MOCK_COCKTAIL_RESPONSE, MOCK_USER_INGREDIENT_IDS } from './types';
 import type { IngredientObject } from './IngredientItem/types';
 
 const CocktailDetailModal = ({
@@ -30,18 +30,20 @@ const CocktailDetailModal = ({
   const [cocktailId, setCocktailId] = useState<number | null>(null);
   const [cocktailName, setCocktailName] = useState('');
   const [cocktailIngredients, setCocktailIngredients] = useState<
-    IngredientObject[]
-  >([]);
+    IngredientObject[] | null
+  >(null);
   const [cocktailInstruction, setCocktailInstruction] = useState('');
   const [cocktailReviews, setCocktailReviews] = useState<string[]>([]);
   const [cocktailImages, setCocktailImages] = useState('');
 
+  //API 통신을 isVisible 기준으로 하면 간편해질 것 같다.
   useEffect(() => {
     setCocktailId(clickedCocktailId);
   }, [isVisible]);
 
   useEffect(() => {
     //API 통신을 통해 칵테일 ID 로 검색해서 칵테일 상세정보를 받아옴
+
     const { data } = MOCK_COCKTAIL_RESPONSE;
     const { name, volumes, reviews, recipe, imageUrl } = data;
     setCocktailName(name);
@@ -49,8 +51,6 @@ const CocktailDetailModal = ({
     setCocktailInstruction(recipe);
     setCocktailReviews(reviews);
     setCocktailImages(imageUrl);
-    //likes도 있음
-    console.log('API 호출 로직');
   }, [cocktailId]);
 
   const handleComplete = (reviewInfo: Review): void => {
@@ -92,14 +92,24 @@ const CocktailDetailModal = ({
               <TitleSectionContainer dividerVisible titleText={cocktailName}>
                 <StyledIngredientListWrapper>
                   <Text size='md'>{'- 재료 -'}</Text>
-                  {cocktailIngredients?.map((ingredient) => (
-                    <IngredientItem
-                      amount={ingredient.amount}
-                      measure={ingredient.measure}
-                      name={ingredient.name}
-                      type={ingredient.type}
-                    />
-                  ))}
+                  {cocktailIngredients?.map((ingredient) => {
+                    let isExists = false;
+                    if (
+                      MOCK_USER_INGREDIENT_IDS.includes(ingredient.ingredientId)
+                    ) {
+                      isExists = true;
+                    }
+                    return (
+                      <IngredientItem
+                        amount={ingredient.amount}
+                        ingredientId={ingredient.ingredientId}
+                        isUserHas={isExists}
+                        measure={ingredient.measure}
+                        name={ingredient.name}
+                        type={ingredient.type}
+                      />
+                    );
+                  })}
                   <Text size='md'>{'- 조제법- '}</Text>
                   <br />
                   <Text size='sm'>{cocktailInstruction}</Text>

@@ -4,6 +4,8 @@ interface CocktailDetailModalProps extends ModalProps {
   clickedCocktailId: number;
 }
 
+const MOCK_USER_INGREDIENT_IDS = [1, 2];
+
 const MOCK_COCKTAIL_RESPONSE = {
   data: {
     id: 1,
@@ -19,7 +21,7 @@ const MOCK_COCKTAIL_RESPONSE = {
       {
         ingredientId: 2,
         name: '사르트뢰즈 그린',
-        measure: '1',
+        measure: 'ml',
         type: 'liquor',
         amount: 3
       },
@@ -52,13 +54,6 @@ const MOCK_COCKTAIL_RESPONSE = {
     totalRating: 0.0
   }
 };
-// [앙고스투라:비터:45,오르자:시럽:30,레몬:주스:22.5,라이:위스키:15]
-const MOCK_INGREDIENT_DATA = [
-  '진:22.5',
-  '샤르트뢰즈:그린:22.5',
-  '룩사르도:마라스키노:22.5',
-  '라임:주스:22.5'
-];
 
 export type { CocktailDetailModalProps };
-export { MOCK_INGREDIENT_DATA, MOCK_COCKTAIL_RESPONSE };
+export { MOCK_COCKTAIL_RESPONSE, MOCK_USER_INGREDIENT_IDS };
