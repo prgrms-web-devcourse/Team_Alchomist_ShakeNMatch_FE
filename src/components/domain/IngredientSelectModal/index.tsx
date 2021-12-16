@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import { useState, useEffect, useCallback, Children } from 'react';
-import { Modal, Text } from '@base';
+import { Text } from '@base';
 import MenuTab from '@compound/MenuTab';
 import IngredientToggleList from '@domain/IngredientToggleList';
 import type { IngredientSelectModalProps } from './types';
@@ -8,7 +8,8 @@ import {
   StyledTitleSectionContainer,
   StyledTextButton,
   StyledTabContentContainer,
-  StyledTextContainer
+  StyledTextContainer,
+  StyledModal
 } from './styled';
 import type { IIngredient } from '@models/types';
 
@@ -86,9 +87,9 @@ const IngredientSelectModal = ({
   );
 
   return (
-    <Modal
-      backgroundColor='DARK_GRAY'
-      color='IVORY'
+    <StyledModal
+      backgroundColor='BASIC_WHITE_OPACITY'
+      color='BRIGHT_IVORY'
       size='lg'
       visible={visible}
       onClose={handleClose}
@@ -157,7 +158,7 @@ const IngredientSelectModal = ({
           </StyledTextButton>
         </StyledTabContentContainer>
       )}
-    </Modal>
+    </StyledModal>
   );
 };
 
