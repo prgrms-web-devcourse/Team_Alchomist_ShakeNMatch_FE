@@ -14,29 +14,48 @@ import {
   StyledReviewListWrapper,
   StyledImageContainer
 } from './style';
-import {
-  MOCK_INGREDIENT_DATA,
-  MOCK_COCKTAIL_NAME,
-  MOCK_REVIEW_DATA,
-  MOCK_COCKTAIL_INSTRUCTION
-} from './types';
+import { MOCK_COCKTAIL_RESPONSE } from './types';
+import type { IngredientObject } from './IngredientItem/types';
 
 const CocktailDetailModal = ({
   size,
   backgroundColor,
   color,
   visible,
+  clickedCocktailId,
   onClose
 }: CocktailDetailModalProps): ReactElement => {
   const [isVisible, setIsVisible] = useState(false); //칵테일 리뷰 모달을 컨트롤
-  const [userReview, setUserReview] = useState<Review | null>(null); //리뷰 모달에서 리턴받은 값
+  // const [userReview, setUserReview] = useState<Review | null>(null); //리뷰 모달에서 리턴받은 값
+  const [cocktailId, setCocktailId] = useState<number | null>(null);
+  const [cocktailName, setCocktailName] = useState('');
+  const [cocktailIngredients, setCocktailIngredients] = useState<
+    IngredientObject[]
+  >([]);
+  const [cocktailInstruction, setCocktailInstruction] = useState('');
+  const [cocktailReviews, setCocktailReviews] = useState<string[]>([]);
+  const [cocktailImages, setCocktailImages] = useState('');
 
   useEffect(() => {
+    setCocktailId(clickedCocktailId);
+  }, [isVisible]);
+
+  useEffect(() => {
+    //API 통신을 통해 칵테일 ID 로 검색해서 칵테일 상세정보를 받아옴
+    const { data } = MOCK_COCKTAIL_RESPONSE;
+    const { name, volumes, reviews, recipe, imageUrl } = data;
+    setCocktailName(name);
+    setCocktailIngredients(volumes);
+    setCocktailInstruction(recipe);
+    setCocktailReviews(reviews);
+    setCocktailImages(imageUrl);
+    //likes도 있음
     console.log('API 호출 로직');
-  }, [userReview]);
+  }, [cocktailId]);
 
   const handleComplete = (reviewInfo: Review): void => {
-    setUserReview(reviewInfo);
+    cocktailReviews.push(reviewInfo.userComment);
+    setCocktailReviews(() => cocktailReviews);
     setIsVisible(false);
   };
 
@@ -66,22 +85,24 @@ const CocktailDetailModal = ({
                   alt='Image'
                   height='100%'
                   mode='cover'
-                  src='https://picsum.photos/500'
+                  src={cocktailImages}
                   width='100%'
                 />
               </StyledImageContainer>
-              <TitleSectionContainer
-                dividerVisible
-                titleText={MOCK_COCKTAIL_NAME}
-              >
+              <TitleSectionContainer dividerVisible titleText={cocktailName}>
                 <StyledIngredientListWrapper>
                   <Text size='md'>{'- 재료 -'}</Text>
-                  {MOCK_INGREDIENT_DATA.map(() => (
-                    <IngredientItem />
+                  {cocktailIngredients?.map((ingredient) => (
+                    <IngredientItem
+                      amount={ingredient.amount}
+                      measure={ingredient.measure}
+                      name={ingredient.name}
+                      type={ingredient.type}
+                    />
                   ))}
                   <Text size='md'>{'- 조제법- '}</Text>
                   <br />
-                  <Text size='sm'>{MOCK_COCKTAIL_INSTRUCTION}</Text>
+                  <Text size='sm'>{cocktailInstruction}</Text>
                 </StyledIngredientListWrapper>
               </TitleSectionContainer>
             </SectionDivider>
@@ -91,19 +112,20 @@ const CocktailDetailModal = ({
                   alt='Image'
                   height='100%'
                   mode='cover'
-                  src='https://picsum.photos/500'
+                  src={cocktailImages}
                   width='100%'
                 />
               </StyledImageContainer>
-              <TitleSectionContainer
-                dividerVisible
-                titleText={MOCK_COCKTAIL_NAME}
-              >
+              <TitleSectionContainer dividerVisible titleText={cocktailName}>
                 <>
                   <StyledReviewListWrapper>
                     <Text size='md'>{'- 사용자 리뷰- '}</Text>
-                    {MOCK_REVIEW_DATA.map(() => (
-                      <UserReviewItem />
+                    {cocktailReviews?.map((userReview) => (
+                      <UserReviewItem
+                        userComment={userReview}
+                        userImageUrl=''
+                        userRating={5}
+                      />
                     ))}
                   </StyledReviewListWrapper>
                   <TextButton
