@@ -2,6 +2,7 @@ import type { DOMAINS, TEXT_SIZE, TEXT_WEIGHT } from '@constants';
 import type { COLOR } from '@constants/colors';
 import type { THEMES } from '@constants/themes';
 import type { USER_VALIDATE_ERROR_MESSAGES } from '@constants/user';
+import type { AXIOS_REQUEST_TYPE } from '@constants/axios';
 
 type ColorKeys = keyof typeof COLOR;
 type ColorType = typeof COLOR[ColorKeys];
@@ -111,6 +112,9 @@ interface IUserForm {
 
 type IDomain = typeof DOMAINS[keyof typeof DOMAINS];
 
+type RequestTypeKeys = keyof typeof AXIOS_REQUEST_TYPE;
+type IRequestType = typeof AXIOS_REQUEST_TYPE[RequestTypeKeys];
+
 export type {
   ColorKeys,
   ColorType,
@@ -135,5 +139,6 @@ export type {
   IUser,
   IIngredient,
   IReview,
-  IDomain
+  IDomain,
+  IRequestType
 };

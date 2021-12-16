@@ -1,17 +1,12 @@
 import useAxios from '@hooks/useAxios';
 import type { IIngredient } from '@models/types';
-
-const REQUEST_TYPE = {
-  DEFAULT: 'default',
-  AUTH: 'auth',
-  FILE: 'file'
-} as const;
+import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 
 const updateUserIngredients = (
   userId: string,
   selectedIngredients: string[]
 ): Promise<IIngredient[]> => {
-  const request = useAxios(REQUEST_TYPE.AUTH);
+  const request = useAxios(AXIOS_REQUEST_TYPE.AUTH);
   return request.post(`/user/ingredient/${userId}`, selectedIngredients);
 };
 

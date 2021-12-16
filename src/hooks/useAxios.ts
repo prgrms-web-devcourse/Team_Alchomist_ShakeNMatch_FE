@@ -1,23 +1,17 @@
 import axios from 'axios';
 import type { AxiosInstance } from 'axios';
 import { useAuthorization } from '@contexts';
+import type { IRequestType } from '@models/types';
+import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 
 const { REACT_APP_BASE_URL } = process.env;
-
-const REQUEST_TYPE = {
-  DEFAULT: 'default',
-  AUTH: 'auth',
-  FILE: 'file'
-} as const;
-type RequestTypeKeys = keyof typeof REQUEST_TYPE;
-type IRequestType = typeof REQUEST_TYPE[RequestTypeKeys];
 
 const useAxios = (requestType: IRequestType): AxiosInstance => {
   const instance = axios.create({ baseURL: REACT_APP_BASE_URL });
   const { oauthToken } = useAuthorization();
 
   switch (requestType) {
-    case REQUEST_TYPE.DEFAULT:
+    case AXIOS_REQUEST_TYPE.DEFAULT:
       instance.interceptors.request.use(
         (config) => {
           config.headers = {
@@ -34,7 +28,7 @@ const useAxios = (requestType: IRequestType): AxiosInstance => {
       );
 
       break;
-    case REQUEST_TYPE.AUTH:
+    case AXIOS_REQUEST_TYPE.AUTH:
       instance.interceptors.request.use(
         (config) => {
           config.headers = {
@@ -52,7 +46,7 @@ const useAxios = (requestType: IRequestType): AxiosInstance => {
       );
 
       break;
-    case REQUEST_TYPE.FILE:
+    case AXIOS_REQUEST_TYPE.FILE:
       instance.interceptors.request.use(
         (config) => {
           config.headers = {
