@@ -1,6 +1,5 @@
-import { Button } from '@base';
+import { Button, Image } from '@base';
 import { BUTTON_SIZE } from '@base/Button/types';
-import Image from '@base/Image';
 import type { MouseEventHandler, ReactElement } from 'react';
 import { useCallback } from 'react';
 import type { ImageButtonProps } from './types';

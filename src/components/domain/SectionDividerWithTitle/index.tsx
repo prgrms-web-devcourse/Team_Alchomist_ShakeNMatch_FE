@@ -1,6 +1,6 @@
 import { SectionDivider } from '@base';
 import { HEADER_HEIGHT } from '@constants/headerHeight';
-import TitleSectionContainer from '@domain/TitleSectionContainer';
+import { TitleSectionContainer } from '@domain';
 import type { ReactElement } from 'react';
 import { Children } from 'react';
 import { StyledSectionDividerContent } from './styled';

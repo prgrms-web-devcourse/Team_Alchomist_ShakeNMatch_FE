@@ -1,5 +1,5 @@
 import { StyledButton } from './styled';
-import Icon from '@base/Icon';
+import { Icon } from '@base';
 import type { ReactElement } from 'react';
 import type { IconButtonProps } from './types';
 

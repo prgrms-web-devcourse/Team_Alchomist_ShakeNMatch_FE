@@ -1,5 +1,5 @@
 import { Text } from '@base';
-import IconButton from '@compound/IconButton';
+import { IconButton } from '@compound';
 import type { ReactElement } from 'react';
 import { StyledContainer } from './styled';
 import type { BackButtonProps } from './types';

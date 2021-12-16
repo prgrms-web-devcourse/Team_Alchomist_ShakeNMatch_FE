@@ -1,4 +1,4 @@
-import TextButton from '@compound/TextButton';
+import { TextButton } from '@compound';
 import useForm from '@hooks/useForm';
 import type { ReactElement } from 'react';
 import { useEffect, useMemo, useCallback, useState } from 'react';

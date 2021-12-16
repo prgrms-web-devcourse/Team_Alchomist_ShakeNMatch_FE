@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import TextButton from '@compound/TextButton';
+import { TextButton } from '@compound';
 import TitleSectionContainer from '@domain/TitleSectionContainer';
 
 const StyledTitleSectionContainer = styled(TitleSectionContainer)`
