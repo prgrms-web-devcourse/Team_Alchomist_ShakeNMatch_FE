@@ -1,15 +1,10 @@
 import type { HTMLAttributes } from 'react';
 import type { AlbumAttributeKeys } from '@compound/Album/types';
-
-// temp
-interface ICocktail {
-  id: string;
-  name: string;
-  type: string;
-}
+import type { IngredientIcons } from '@assets/ingredients';
+import type { ICocktail } from '@models/types';
 
 interface IngredientCarouselProps {
-  itemList: ICocktail[];
+  itemList: Pick<ICocktail, 'id' | 'name' | 'type'>[];
   row?: RowTypeKeys;
   albumType: AlbumAttributeKeys;
 }
@@ -28,5 +23,11 @@ interface StyledCarouselContainerProps extends HTMLAttributes<HTMLDivElement> {
   row: 'single' | 'double';
 }
 
-export type { IngredientCarouselProps, StyledCarouselContainerProps };
+type IngredientIconsKeys = keyof typeof IngredientIcons;
+
+export type {
+  IngredientCarouselProps,
+  StyledCarouselContainerProps,
+  IngredientIconsKeys
+};
 export { ROW_TYPE };

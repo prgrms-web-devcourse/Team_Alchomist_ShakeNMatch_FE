@@ -14,7 +14,7 @@ const myIngredients = [
   {
     id: '1',
     name: '깔루아',
-    type: 'whiskey',
+    type: 'liquor',
     isAlcohol: true,
     measure: ''
   },
