@@ -15,7 +15,7 @@ const StyledContainer = styled.div`
 const StyledTabWrapper = styled.div`
   position: absolute;
   right: -44px;
-  background-color: ${COLOR.DARK_GRAY_OPACITY};
+  background-color: ${COLOR.LIGHT_GRAY};
   height: 100%;
   border-top-right-radius: ${BORDER_RADIUS};
   border-bottom-right-radius: ${BORDER_RADIUS};
