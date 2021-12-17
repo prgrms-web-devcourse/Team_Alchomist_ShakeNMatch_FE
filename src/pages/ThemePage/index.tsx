@@ -8,7 +8,7 @@ import CocktailList from '@domain/CocktailList';
 import ThemeSelector from '@domain/ThemeSelector';
 import useAxios from '@hooks/useAxios';
 import useDebounce from '@hooks/useDebounce';
-import type { ICocktail, ICocktailSimple, ITHEME } from '@models';
+import type { IApiResponse, ICocktailSimple, ITHEME } from '@models';
 import type { ReactElement } from 'react';
 import { useCallback, useMemo, useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -48,7 +48,7 @@ const ThemePage = (): ReactElement => {
   const showResult = useMemo(() => searchParams.get('result'), [searchParams]);
   // 최초 접근 지점 확인 ( result 로 바로 접근인지 아닌지에 따라 handleBack navigate 지점 변경)
   const [isMountedWithResult, setIsMountedWithResult] = useState(false);
-  const [cocktailList, setCocktailList] = useState<{
+  const [cocktailListAPIState, setCocktailListAPIState] = useState<{
     value: ICocktailSimple[];
     isLoading: boolean;
     error: any;
@@ -61,17 +61,17 @@ const ThemePage = (): ReactElement => {
   const getCocktailList = async (
     main: string,
     detail: string
-  ): Promise<any> => {
+  ): Promise<void> => {
     try {
-      setCocktailList((prevCocktailList) => ({
+      setCocktailListAPIState((prevCocktailList) => ({
         ...prevCocktailList,
         isLoading: true
       }));
-      const { data: cocktailList } = await request.get(
-        `/cocktail/theme?mainCategory=${main}&subCategory=${detail}`
-      );
+      const { data: cocktailList } = await request.get<
+        IApiResponse<ICocktailSimple[]>
+      >(`/cocktail/theme?mainCategory=${main}&subCategory=${detail}`);
       if (cocktailList && Array.isArray(cocktailList)) {
-        setCocktailList({
+        setCocktailListAPIState({
           value: cocktailList,
           isLoading: false,
           error: null
@@ -79,7 +79,7 @@ const ThemePage = (): ReactElement => {
       }
     } catch (e) {
       console.error(e);
-      setCocktailList({
+      setCocktailListAPIState({
         value: [],
         isLoading: false,
         error: e
@@ -151,11 +151,7 @@ const ThemePage = (): ReactElement => {
             <>
               <Text>당신이 선택한 </Text>
               <Text bold color='BLUE' italic>
-                {`'${
-                  Object.keys(THEMES)[
-                    parseInt(selectedThemesIndex.main)
-                  ] as ITHEME
-                }' `}
+                {`'${mainTheme}' `}
               </Text>
               <Text>에 어울리는 칵테일!</Text>
             </>
@@ -174,10 +170,10 @@ const ThemePage = (): ReactElement => {
             onChangeIndex={handleChangeTheme}
           />
           <StyledResultContainer>
-            {cocktailList.isLoading ? (
+            {cocktailListAPIState.isLoading ? (
               <Loader />
             ) : (
-              <CocktailList cocktailList={cocktailList.value} />
+              <CocktailList cocktailList={cocktailListAPIState.value} />
             )}
           </StyledResultContainer>
         </SectionDivider>
