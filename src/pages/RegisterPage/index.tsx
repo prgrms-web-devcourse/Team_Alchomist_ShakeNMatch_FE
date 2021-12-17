@@ -4,7 +4,7 @@ import { useAuthorization } from '@contexts';
 import BackButton from '@domain/BackButton';
 import RegisterModal from '@domain/RegisterModal';
 import useAxios from '@hooks/useAxios';
-import type { IUser, IUserForm } from '@models';
+import type { IApiResponse, IUser, IUserForm } from '@models';
 import type { ReactElement } from 'react';
 import { useNavigate } from 'react-router';
 import type { IRegisterRequestBody } from './types';
@@ -18,14 +18,14 @@ const RegisterPage = (): ReactElement => {
 
   const postRegister = (
     data: IRegisterRequestBody
-  ): Promise<IUser | undefined> => {
+  ): Promise<IApiResponse<IUser>> => {
     return request.post('/user', data);
   };
 
-  const handleRegister = async (value: IUserForm): Promise<any> => {
+  const handleRegister = async (value: IUserForm): Promise<void> => {
     const { nickname, age, gender, mbti } = value;
     if (nickname && age && gender && mbti) {
-      const data = await postRegister({
+      const { data } = await postRegister({
         nickname,
         age,
         mbti,

@@ -20,14 +20,13 @@ const OAuthKaKaoPage = (): ReactElement => {
   const token = searchParams.get('token');
   const needInfo = searchParams.get('needInfo');
 
+  const getUser = (token: string): Promise<IApiResponse<IUser>> => {
+    return request.get('/user', { headers: { token } });
+  };
+
   useEffect(() => {
     const handleLogin = async (token: string): Promise<void> => {
-      const { data } = await request.get<
-        IApiResponse<IUser>,
-        IApiResponse<IUser>
-      >('/user', {
-        headers: { token }
-      });
+      const { data } = await getUser(token);
       login({ oauthToken: token, user: data });
       // 임시 위치 ( 이후 useRedirectURL Context로 위치 기억하여 이동 예정)
       navigate('/jango');
