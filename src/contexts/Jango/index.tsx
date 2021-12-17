@@ -21,8 +21,21 @@ const JangoProvider = ({ children }: { children: ReactNode }): ReactElement => {
   }>({});
   const { user } = useAuthorization();
 
+  const authRequest = useAxios(AXIOS_REQUEST_TYPE.AUTH);
+  const fetchUserIngredients = (
+    userId: number
+  ): Promise<IApiResponse<{ ingredientListResponseList: IIngredient[] }>> => {
+    return authRequest.get(`/user/ingredient/${userId}`);
+  };
+
   useEffect(() => {
-    user?.ingredients && setUserIngredients(user.ingredients);
+    const getUserIngredients = async (): Promise<void> => {
+      if (user?.id) {
+        const result = await fetchUserIngredients(user.id);
+        setUserIngredients(result.data.ingredientListResponseList);
+      }
+    };
+    getUserIngredients();
   }, []);
 
   const request = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);

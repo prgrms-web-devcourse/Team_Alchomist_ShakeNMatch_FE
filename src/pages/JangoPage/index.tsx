@@ -74,10 +74,6 @@ const JangoPage = (): ReactElement => {
 
     setRecommendedCocktailsByIngredients();
   }, [ingredients]);
-  // IngredientSelectModal을 관리하는 상태가 있다. '내 재료 수정하기' 버튼을 통해 모달을 제어한다.
-
-  // 모달에서 재료 업데이트가 일어나면 -> 서버에 반영 -> 성공시 반영된 새로운 배열을 응답받는다 -> 응답받은 배열을 컨텍스트에 추가
-  // -> 컨텍스트의 myIngredient를 통해 술장고 페이지 리렌더
 
   const openModal = (): void => {
     setIsModalVisible(true);
@@ -96,15 +92,15 @@ const JangoPage = (): ReactElement => {
   const handleSelectDone = async (
     selectedIngredients: number[]
   ): Promise<void> => {
-    // 선택된 애들을 서버에 저장
-    user?.id && (await updateUserIngredients(user?.id, selectedIngredients));
-    // 낙관적 업데이트를 위해 장고 컨텍스트에 선택된 재료 전달
+    if (user?.id) {
+      await updateUserIngredients(user?.id, selectedIngredients);
+    }
+
     const recentIngredients = selectedIngredients.map(
       (id) => totalIngredientsList[id]
     );
 
     if (recentIngredients !== userIngredients) {
-      console.log('new', recentIngredients);
       updateJangoContext(recentIngredients);
     }
 
@@ -118,13 +114,13 @@ const JangoPage = (): ReactElement => {
         withHeader
       >
         <StyledIngredientContainer style={{ width: '100%', height: '100%' }}>
-          <Text>알콜</Text>
+          <Text color='BLACK_OPACITY'>알콜</Text>
           <IngredientCarousel
             albumType='alcohol'
             itemList={ingredients.main}
             row='single'
           />
-          <Text>감미료</Text>
+          <Text color='BLACK_OPACITY'>감미료</Text>
           <IngredientCarousel
             albumType='sweetener'
             itemList={ingredients.sub}
