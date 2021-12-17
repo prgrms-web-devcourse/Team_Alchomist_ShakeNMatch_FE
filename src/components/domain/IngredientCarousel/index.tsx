@@ -5,9 +5,8 @@ import type { ReactElement } from 'react';
 import { StyledCarouselContainer } from './styled';
 import type { IngredientCarouselProps, IngredientIconsKeys } from './types';
 import { ROW_TYPE } from './types';
-import IconButton from '@compound/IconButton';
-import Album from '@compound/Album';
 import { IngredientIcons } from '@assets/ingredients';
+import { IconButton, Album } from '@compound';
 
 const CLEAR_THROTTLE_TIME = 500;
 

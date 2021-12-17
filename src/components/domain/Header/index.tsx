@@ -1,4 +1,4 @@
-import Logo from '@domain/Logo';
+import { Logo } from '@domain';
 import type { ReactElement } from 'react';
 import { useCallback, useMemo } from 'react';
 import { StyledHeaderContainer } from './styled';
@@ -11,7 +11,7 @@ import { useAuthorization } from '@contexts';
 import { useLocation, useNavigate } from 'react-router';
 import { getDomain } from '@utils/lib/getDomain';
 import { DOMAINS } from '@constants';
-import Tooltip from '@base/Tooltip';
+import { Tooltip } from '@base';
 
 const Header = (): ReactElement => {
   const { oauthToken, user } = useAuthorization();
