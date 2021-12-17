@@ -6,7 +6,7 @@ import moodSrc from '@assets/carouselTheme/big/mood.png';
 import musicSrc from '@assets/carouselTheme/big/music.png';
 import trendingSrc from '@assets/carouselTheme/big/trending.png';
 import weatherSrc from '@assets/carouselTheme/big/weather.png';
-import enfjSrc from '@assets/carouselTheme/mbti/enfj.svg';
+import enfjSrc from '@assets/carouselTheme/mbtiIcons/enfj.png';
 import Carousel from '@components/compound/Carousel';
 import type { CarouselItemProps } from '@components/compound/Carousel/CarouselItem/types';
 import styled from '@emotion/styled';

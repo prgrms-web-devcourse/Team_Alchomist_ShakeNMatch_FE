@@ -5,12 +5,14 @@ import JangoPage from '@pages/JangoPage';
 import LoginPage from '@pages/LoginPage';
 import MainPage from '@pages/MainPage';
 import MyPage from '@pages/MyPage';
+import OAuthKaKaoPage from '@pages/OAuthKaKaoPage';
 import RegisterPage from '@pages/RegisterPage';
 import SearchPage from '@pages/SearchPage';
 import ShoppingPage from '@pages/ShoppingPage';
 import ThemePage from '@pages/ThemePage';
 import type { ReactElement } from 'react';
 import { Route, Routes } from 'react-router';
+import JangoProvider from '@contexts/Jango';
 
 const Router = (): ReactElement => {
   return (
@@ -19,8 +21,10 @@ const Router = (): ReactElement => {
       <Route
         element={
           <>
-            <Header />
-            <JangoPage />
+            <JangoProvider>
+              <Header />
+              <JangoPage />
+            </JangoProvider>
           </>
         }
         path='/jango'
@@ -58,6 +62,7 @@ const Router = (): ReactElement => {
         }
         path={`/${DOMAINS.theme}`}
       ></Route>
+      <Route element={<OAuthKaKaoPage />} path={`/${DOMAINS.oauthKaKao}`} />
       <Route
         element={
           <>

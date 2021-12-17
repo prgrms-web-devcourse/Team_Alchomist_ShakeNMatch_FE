@@ -16,7 +16,7 @@ import {
 import { Text } from '@base';
 import defaultUploader from '../../../assets/defaultUploader.svg';
 
-const Upload = ({
+const Uploader = ({
   droppable = true,
   name = 'FileUploadInput',
   accept = 'image',
@@ -121,4 +121,4 @@ const Upload = ({
   );
 };
 
-export default Upload;
+export default Uploader;

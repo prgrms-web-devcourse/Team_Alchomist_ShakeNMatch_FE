@@ -2,6 +2,7 @@ import type { DOMAINS, TEXT_SIZE, TEXT_WEIGHT } from '@constants';
 import type { COLOR } from '@constants/colors';
 import type { THEMES } from '@constants/themes';
 import type { USER_VALIDATE_ERROR_MESSAGES } from '@constants/user';
+import type { AXIOS_REQUEST_TYPE } from '@constants/axios';
 
 type ColorKeys = keyof typeof COLOR;
 type ColorType = typeof COLOR[ColorKeys];
@@ -64,8 +65,14 @@ interface IReview {
   cocktails: ICocktail;
 }
 
+interface ICocktailSimple {
+  id: number;
+  name: string;
+  type: string;
+}
+
 interface ICocktail {
-  id: string;
+  id: number;
   name: string;
   themes: ITheme[];
   reviews: IReview[];
@@ -78,24 +85,39 @@ interface ICocktail {
 }
 
 interface IIngredient {
-  id: string;
+  id: number;
   name: string;
   type: string;
-  isAlcohol: boolean;
   measure: string;
+  cocktails?: ICocktail[];
+  alcohol: boolean;
 }
 
 interface IUser {
-  id: string;
-  nickName: string;
-  isMan: boolean;
+  id: number;
+  nickname: string;
+  man: boolean;
   age: number;
   mbti: IUserMbti;
-  myIngredients?: IIngredient[];
+  ingredients?: IIngredient[];
   favorites?: Pick<ICocktail, 'id'>[];
 }
 
+interface IUserForm {
+  nickname: string | null;
+  gender: IUserGender | null;
+  age: number | null;
+  mbti: IUserMbti | null;
+}
+
 type IDomain = typeof DOMAINS[keyof typeof DOMAINS];
+
+type RequestTypeKeys = keyof typeof AXIOS_REQUEST_TYPE;
+type IRequestType = typeof AXIOS_REQUEST_TYPE[RequestTypeKeys];
+
+interface IApiResponse<T> {
+  data: T;
+}
 
 export type {
   ColorKeys,
@@ -108,6 +130,7 @@ export type {
   ITHEME,
   IUserInputType,
   IUserFormType,
+  IUserForm,
   IUserGender,
   IUserMbti,
   ValidateFnType,
@@ -115,9 +138,12 @@ export type {
   IUserValidateError,
   ValidateUserArgsType,
   ITheme,
+  ICocktailSimple,
   ICocktail,
   IUser,
   IIngredient,
   IReview,
-  IDomain
+  IDomain,
+  IRequestType,
+  IApiResponse
 };

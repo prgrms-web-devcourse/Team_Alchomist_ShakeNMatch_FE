@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import Text from '@base/Text';
+import { Text } from '@base';
 import { StyledContainer, StyledLine } from './styled';
 import type { TitleSectionContainerProps } from './types';
 

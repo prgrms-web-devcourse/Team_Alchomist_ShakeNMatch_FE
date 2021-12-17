@@ -1,6 +1,6 @@
 import { SectionDivider } from '@base';
 import { HEADER_HEIGHT } from '@constants/headerHeight';
-import TitleSectionContainer from '@domain/TitleSectionContainer';
+import { TitleSectionContainer } from '@domain';
 import type { ReactElement } from 'react';
 import { Children } from 'react';
 import { StyledSectionDividerContent } from './styled';
@@ -22,11 +22,13 @@ const SectionDividerWithTitle = ({
   withHeader = false,
   ...props
 }: SectionDividerWithTitleProps): ReactElement => {
-  const wrappedChildren = Children.toArray(children).map((element) => (
-    <StyledSectionDividerContent alignItems={alignItems}>
-      {element}
-    </StyledSectionDividerContent>
-  ));
+  const wrappedChildren = Children.toArray(
+    children.map((element) => (
+      <StyledSectionDividerContent alignItems={alignItems}>
+        {element}
+      </StyledSectionDividerContent>
+    ))
+  );
 
   return (
     <TitleSectionContainer

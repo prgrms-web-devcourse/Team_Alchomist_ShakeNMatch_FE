@@ -4,6 +4,13 @@ interface UserInputProps {
   inputType: IUserInputType;
   formType: IUserFormType;
   errorMessage?: string;
+  onNicknameChecked?(value: boolean): void;
 }
 
-export type { UserInputProps };
+interface IcheckNicknameAPIState {
+  value: boolean | null;
+  isLoading: boolean;
+  error: string | null;
+}
+
+export type { UserInputProps, IcheckNicknameAPIState };

@@ -1,7 +1,6 @@
 import type { ReactElement } from 'react';
 import type { ShoppingItemProps } from './types';
-import Text from '@base/Text';
-import Image from '@base/Image';
+import { Text, Image } from '@base';
 import {
   StyledContainer,
   StyledImage,
