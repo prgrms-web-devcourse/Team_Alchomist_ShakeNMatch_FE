@@ -33,7 +33,7 @@ const useAxios = (requestType: IRequestType): AxiosInstance => {
         (config) => {
           config.headers = {
             'Content-Type': 'application/json',
-            Authorization: `bearer ${oauthToken}`
+            token: `${oauthToken}`
           };
           return config;
         },
