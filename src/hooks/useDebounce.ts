@@ -17,7 +17,6 @@ const useDebounce = <T extends any[]>(
   const clearDebounce = (): void => {
     if (timerRef.current) {
       clearTimeout(timerRef.current);
-      console.log('debounce cancel');
     }
   };
 

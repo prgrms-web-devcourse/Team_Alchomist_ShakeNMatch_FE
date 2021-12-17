@@ -25,7 +25,7 @@ const CocktailDetailModal = ({
   clickedCocktailId = 1,
   onClose
 }: CocktailDetailModalProps): ReactElement => {
-  const [isVisible, setIsVisible] = useState(false); //칵테일 리뷰 모달을 컨트롤
+  const [isReviewModalVisible, setIsReviewModalVisible] = useState(false); //칵테일 리뷰 모달을 컨트롤
   // const [userReview, setUserReview] = useState<Review | null>(null); //리뷰 모달에서 리턴받은 값
   const [cocktailId, setCocktailId] = useState<number | null>(null);
   const [cocktailData, setCocktailData] = useState<ICocktail | null>(null);
@@ -43,14 +43,11 @@ const CocktailDetailModal = ({
   useEffect(() => {
     if (visible) {
       setCocktailId(clickedCocktailId);
-      //API 통신을 통해 칵테일 ID 로 검색해서 칵테일 상세정보를 받아옴
       const getCocktailInfo = async (): Promise<void> => {
         if (cocktailId) {
           const searchResult = await getCocktailDetailInfoById(
             clickedCocktailId.toString()
           );
-
-          console.log('cocktailDetailInfo', searchResult.data);
           setCocktailData(searchResult.data);
         }
       };
@@ -60,16 +57,16 @@ const CocktailDetailModal = ({
     }
     setCocktailId(null);
     setCocktailData(null);
-  }, [visible, cocktailId]); //visible 을 기준으로 할 지, cocktailId 로 할 지
+  }, [visible]); //visible 을 기준으로 할 지, cocktailId 로 할 지
 
   const handleComplete = (reviewInfo: Review): void => {
     cocktailReviews?.push(reviewInfo.userComment);
     setCocktailReviews(() => cocktailReviews);
-    setIsVisible(false);
+    setIsReviewModalVisible(false);
   };
 
   const handleClose = (): void => {
-    if (!isVisible) {
+    if (!isReviewModalVisible) {
       onClose?.();
     }
   };
@@ -105,8 +102,8 @@ const CocktailDetailModal = ({
                 <StyledIngredientListWrapper>
                   <Text size='md'>{'- 재료 -'}</Text>
                   {cocktailData?.volumes?.map((ingredient) => {
-                    console.log(ingredient);
                     let isExists = false;
+                    //현재 유저의 재료는 목데이터로 들어가 있는 상태입니다
                     if (MOCK_USER_INGREDIENT_IDS.includes(ingredient.id)) {
                       isExists = true;
                     }
@@ -157,7 +154,7 @@ const CocktailDetailModal = ({
                     dropShadow
                     type='button'
                     onClick={(): void => {
-                      setIsVisible(true);
+                      setIsReviewModalVisible(true);
                     }}
                   >
                     {'리뷰작성'}
@@ -170,9 +167,9 @@ const CocktailDetailModal = ({
             color={'BASIC_WHITE'}
             handleSubmit={handleComplete}
             size={'sm'}
-            visible={isVisible}
+            visible={isReviewModalVisible}
             onCancel={(): void => {
-              setIsVisible(false);
+              setIsReviewModalVisible(false);
             }}
           />
         </>

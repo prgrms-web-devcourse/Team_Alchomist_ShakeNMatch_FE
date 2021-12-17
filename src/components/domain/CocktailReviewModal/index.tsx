@@ -12,7 +12,6 @@ const CocktailReviewModal = (
 ): ReactElement => {
   const [userFile, setUserFile] = useState<File | null>(null);
   const handleChangeFile = (file: File): void => {
-    console.log('file changed', file.name);
     setUserFile(file);
   };
 

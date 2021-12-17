@@ -71,7 +71,6 @@ const SearchPage = (): ReactElement => {
           size='lg'
           visible={isCocktailDetailModalVisible}
           onClose={(): void => {
-            console.log('CocktailDetailModal Closed');
             setIsCocktailDetailModalVisible(false);
           }}
         />
