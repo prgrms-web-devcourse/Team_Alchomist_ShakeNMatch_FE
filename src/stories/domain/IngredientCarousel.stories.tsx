@@ -17,42 +17,58 @@ const DUMMY = [
   {
     id: 1,
     name: '재료1',
-    type: 'juice'
+    type: 'juice',
+    measure: 'ml',
+    alcohol: false
   },
   {
     id: 2,
     name: '재료2',
-    type: 'juice'
+    type: 'juice',
+    measure: 'ml',
+    alcohol: false
   },
   {
     id: 3,
     name: '재료3',
-    type: 'juice'
+    type: 'juice',
+    measure: 'ml',
+    alcohol: false
   },
   {
     id: 4,
     name: '재료4',
-    type: 'juice'
+    type: 'juice',
+    measure: 'ml',
+    alcohol: false
   },
   {
     id: 5,
     name: '재료5',
-    type: 'juice'
+    type: 'juice',
+    measure: 'ml',
+    alcohol: false
   },
   {
     id: 6,
     name: '재료6',
-    type: 'juice'
+    type: 'juice',
+    measure: 'ml',
+    alcohol: false
   },
   {
     id: 7,
     name: '재료7',
-    type: 'juice'
+    type: 'juice',
+    measure: 'ml',
+    alcohol: false
   },
   {
     id: 8,
     name: '재료8',
-    type: 'juice'
+    type: 'juice',
+    measure: 'ml',
+    alcohol: false
   }
 ];
 
