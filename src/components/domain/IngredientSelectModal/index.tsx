@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react';
 import { useState, useEffect, useCallback, Children } from 'react';
-import { Modal, Text } from '@base';
+import { Text } from '@base';
 import { MenuTab } from '@compound';
 import IngredientToggleList from '@domain/IngredientToggleList';
 import type { IngredientSelectModalProps } from './types';
