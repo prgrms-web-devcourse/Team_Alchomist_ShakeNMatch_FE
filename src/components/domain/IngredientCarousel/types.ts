@@ -1,9 +1,9 @@
 import type { HTMLAttributes } from 'react';
 import type { AlbumAttributeKeys } from '@compound/Album/types';
-import type { ICocktailSimple } from '@models';
+import type { IIngredient } from '@models';
 
 interface IngredientCarouselProps {
-  itemList: ICocktailSimple[];
+  itemList: IIngredient[];
   row?: RowTypeKeys;
   albumType: AlbumAttributeKeys;
 }
