@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { ReactElement } from 'react';
 import type { Review } from '@domain/CocktailReviewModal/types';
-import type { CocktailDetailModalProps, ICocktailData } from './types';
+import type { CocktailDetailModalProps } from './types';
 import { Image, SectionDivider, Modal, Text } from '@base';
 import IngredientItem from './IngredientItem';
 import UserReviewItem from './UserReviewItem';
@@ -12,7 +12,10 @@ import {
   StyledReviewListWrapper,
   StyledImageContainer
 } from './style';
-import { MOCK_COCKTAIL_RESPONSE, MOCK_USER_INGREDIENT_IDS } from './types';
+import { MOCK_USER_INGREDIENT_IDS } from './types';
+import useAxios from '@hooks/useAxios';
+import { AXIOS_REQUEST_TYPE } from '@constants/axios';
+import type { IApiResponse, ICocktail } from '@models';
 
 const CocktailDetailModal = ({
   size,
@@ -25,23 +28,39 @@ const CocktailDetailModal = ({
   const [isVisible, setIsVisible] = useState(false); //칵테일 리뷰 모달을 컨트롤
   // const [userReview, setUserReview] = useState<Review | null>(null); //리뷰 모달에서 리턴받은 값
   const [cocktailId, setCocktailId] = useState<number | null>(null);
-  const [cocktailData, setCocktailData] = useState<ICocktailData | null>(null);
+  const [cocktailData, setCocktailData] = useState<ICocktail | null>(null);
   const [cocktailReviews, setCocktailReviews] = useState<string[] | undefined>(
     []
   );
+  const request = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
+
+  const getCocktailDetailInfoById = (
+    cocktailId: string
+  ): Promise<IApiResponse<ICocktail>> => {
+    return request.get(`/cocktail/id?id=${cocktailId}`);
+  };
 
   useEffect(() => {
     if (visible) {
-      //API 통신을 통해 칵테일 ID 로 검색해서 칵테일 상세정보를 받아옴
       setCocktailId(clickedCocktailId);
-      console.log(cocktailId);
-      setCocktailData(MOCK_COCKTAIL_RESPONSE);
-      setCocktailReviews(MOCK_COCKTAIL_RESPONSE.data.reviews);
+      //API 통신을 통해 칵테일 ID 로 검색해서 칵테일 상세정보를 받아옴
+      const getCocktailInfo = async (): Promise<void> => {
+        if (cocktailId) {
+          const searchResult = await getCocktailDetailInfoById(
+            clickedCocktailId.toString()
+          );
+
+          console.log('cocktailDetailInfo', searchResult.data);
+          setCocktailData(searchResult.data);
+        }
+      };
+      getCocktailInfo();
+      // setCocktailReviews(MOCK_COCKTAIL_RESPONSE.data.reviews);
       return;
     }
     setCocktailId(null);
     setCocktailData(null);
-  }, [visible]);
+  }, [visible, cocktailId]); //visible 을 기준으로 할 지, cocktailId 로 할 지
 
   const handleComplete = (reviewInfo: Review): void => {
     cocktailReviews?.push(reviewInfo.userComment);
@@ -75,27 +94,26 @@ const CocktailDetailModal = ({
                   alt='Image'
                   height='100%'
                   mode='cover'
-                  src={cocktailData?.data.imageUrl}
+                  src={cocktailData?.type}
                   width='100%'
                 />
               </StyledImageContainer>
               <TitleSectionContainer
                 dividerVisible
-                titleText={cocktailData?.data.name}
+                titleText={cocktailData?.name}
               >
                 <StyledIngredientListWrapper>
                   <Text size='md'>{'- 재료 -'}</Text>
-                  {cocktailData?.data.volumes?.map((ingredient) => {
+                  {cocktailData?.volumes?.map((ingredient) => {
+                    console.log(ingredient);
                     let isExists = false;
-                    if (
-                      MOCK_USER_INGREDIENT_IDS.includes(ingredient.ingredientId)
-                    ) {
+                    if (MOCK_USER_INGREDIENT_IDS.includes(ingredient.id)) {
                       isExists = true;
                     }
                     return (
                       <IngredientItem
-                        amount={ingredient.amount}
-                        ingredientId={ingredient.ingredientId}
+                        amount={3}
+                        ingredientId={ingredient.id}
                         isUserHas={isExists}
                         measure={ingredient.measure}
                         name={ingredient.name}
@@ -105,7 +123,7 @@ const CocktailDetailModal = ({
                   })}
                   <Text size='md'>{'- 조제법- '}</Text>
                   <br />
-                  <Text size='sm'>{cocktailData?.data.recipe}</Text>
+                  <Text size='sm'>{cocktailData?.recipe}</Text>
                 </StyledIngredientListWrapper>
               </TitleSectionContainer>
             </SectionDivider>
@@ -115,13 +133,13 @@ const CocktailDetailModal = ({
                   alt='Image'
                   height='100%'
                   mode='cover'
-                  src={cocktailData?.data.imageUrl}
+                  src={cocktailData?.type}
                   width='100%'
                 />
               </StyledImageContainer>
               <TitleSectionContainer
                 dividerVisible
-                titleText={cocktailData?.data.name}
+                titleText={cocktailData?.name}
               >
                 <>
                   <StyledReviewListWrapper>

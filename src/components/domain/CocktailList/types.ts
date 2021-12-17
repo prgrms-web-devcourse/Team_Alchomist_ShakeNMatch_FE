@@ -4,6 +4,7 @@ import type { ICocktailSimple } from '@models/types';
 interface CocktailListProps extends HTMLAttributes<HTMLDivElement> {
   cocktailList: ICocktailSimple[];
   noResultMsg?: string;
+  handleAlbumClick?(id: number): void;
 }
 
 interface StyledMotionWrapperProps {

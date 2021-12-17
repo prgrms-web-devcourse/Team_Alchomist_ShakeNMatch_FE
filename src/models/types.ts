@@ -80,8 +80,8 @@ interface ICocktail {
   type: string;
   likes: number;
   totalRating: number;
-  ingredients: IIngredient[];
-  volume: string[];
+  ingredients: string[];
+  volumes: IIngredient[];
 }
 
 interface IIngredient {
