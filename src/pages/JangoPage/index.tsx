@@ -8,6 +8,7 @@ import { Text } from '@base';
 import TextButton from '@compound/TextButton';
 import type { IIngredient } from '@models/types';
 import IngredientSelectModal from '@domain/IngredientSelectModal';
+import SearchBot from '@domain/SearchBot';
 import { useJangoContext } from '@contexts/Jango';
 
 // 컨텍스트 : 유저의 myIngredients 배열 필요
@@ -196,6 +197,7 @@ const JangoPage = (): ReactElement => {
         onClose={closeModal}
         onSelectDone={handleSelectDone}
       />
+      <SearchBot />
     </>
   );
 };
