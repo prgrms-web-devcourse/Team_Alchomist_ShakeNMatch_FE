@@ -10,26 +10,25 @@ const DEFAULT_MSG = '죄송합니다. 추천 칵테일이 존재하지 않습니
 
 const CocktailList = ({
   cocktailList = [],
-  noResultMsg = DEFAULT_MSG,
-  handleAlbumClick
+  noResultMsg = DEFAULT_MSG
 }: CocktailListProps): ReactElement => {
   return (
     <StyledContainer>
       {cocktailList.length ? (
         Children.toArray(
-          cocktailList.map((cocktail, index) => {
-            return (
-              <StyledMotionWrapper resultIndex={index}>
-                <Album
-                  cocktailId={cocktail.id}
-                  handleAlbumClick={handleAlbumClick}
-                  imageSrc={cocktail.type}
-                  text={cocktail.name}
-                  type='result'
-                />
-              </StyledMotionWrapper>
-            );
-          })
+          cocktailList.map((cocktail, index) => (
+            <StyledMotionWrapper resultIndex={index}>
+              <Album
+                imageSrc={
+                  CocktailIcons[
+                    (index % TOTAL_COCKTAIL_ICONS) as CocktailIconsKeys
+                  ]
+                }
+                text={cocktail.name}
+                type='result'
+              />
+            </StyledMotionWrapper>
+          ))
         )
       ) : (
         <Text block color='DARK_GRAY' size='md'>
