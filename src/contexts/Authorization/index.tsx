@@ -22,28 +22,32 @@ const AuthorizationProvider = ({
   const [state, setState] = useSessionStorage<IAuthState>('auth', {
     oauthToken: null,
     user: null,
-    isMaster: false
+    isAuthorized: false
   });
 
   const setAuthState = ({
     oauthToken,
     user
-  }: Omit<IAuthState, 'isMaster'>): void => {
-    let isMaster = false;
+  }: Omit<IAuthState, 'isAuthorized'>): void => {
+    let isAuthorized = false;
     if (user?.id === MASTER_ID) {
-      isMaster = true;
+      isAuthorized = true;
     }
 
-    setState({ oauthToken, user, isMaster });
+    setState({ oauthToken, user, isAuthorized });
   };
 
   const clearAuthState = (): void => {
-    setState({ oauthToken: null, user: null, isMaster: false });
+    setState({ oauthToken: null, user: null, isAuthorized: false });
+  };
+
+  const setOAuthToken = (oauthToken: string): void => {
+    setState({ ...state, oauthToken });
   };
 
   return (
     <AuthorizationContext.Provider
-      value={{ ...state, setAuthState, clearAuthState }}
+      value={{ ...state, setAuthState, clearAuthState, setOAuthToken }}
     >
       {children}
     </AuthorizationContext.Provider>
