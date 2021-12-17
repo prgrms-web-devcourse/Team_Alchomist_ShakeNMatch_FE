@@ -5,7 +5,7 @@ import type { CocktailDetailModalProps } from './types';
 import { Image, SectionDivider, Modal, Text } from '@base';
 import IngredientItem from './IngredientItem';
 import UserReviewItem from './UserReviewItem';
-import { TextButton, MenuTab } from '@compound';
+import { TextButton, MenuTab, IconToggle } from '@compound';
 import { TitleSectionContainer, CocktailReviewModal } from '@domain';
 import {
   StyledIngredientListWrapper,
@@ -25,19 +25,30 @@ const CocktailDetailModal = ({
   clickedCocktailId = 1,
   onClose
 }: CocktailDetailModalProps): ReactElement => {
-  const [isReviewModalVisible, setIsReviewModalVisible] = useState(false); //칵테일 리뷰 모달을 컨트롤
-  // const [userReview, setUserReview] = useState<Review | null>(null); //리뷰 모달에서 리턴받은 값
   const [cocktailId, setCocktailId] = useState<number | null>(null);
   const [cocktailData, setCocktailData] = useState<ICocktail | null>(null);
   const [cocktailReviews, setCocktailReviews] = useState<string[] | undefined>(
     []
   );
-  const request = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
+  const [isReviewModalVisible, setIsReviewModalVisible] = useState(false);
+  const [returnedReviewModalData, setreturnedReviewModalData] =
+    useState<Review | null>(null); //낙관적 업데이트를 하기 위함인데, 지울 때는 그러면 어떻게 하는건가
+  const defaultRequest = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
 
   const getCocktailDetailInfoById = (
-    cocktailId: string
+    cocktailId: number
   ): Promise<IApiResponse<ICocktail>> => {
-    return request.get(`/cocktail/id?id=${cocktailId}`);
+    return defaultRequest.get(`/cocktail/id?id=${cocktailId}`);
+  };
+
+  interface DeleteResponse {
+    data: string;
+    serverDateTime: string;
+  }
+  const deleteMyCocktailReview = (
+    reviewId: number
+  ): Promise<DeleteResponse> => {
+    return defaultRequest.delete(`/review/${reviewId}`);
   };
 
   useEffect(() => {
@@ -45,22 +56,22 @@ const CocktailDetailModal = ({
       setCocktailId(clickedCocktailId);
       const getCocktailInfo = async (): Promise<void> => {
         if (cocktailId) {
-          const searchResult = await getCocktailDetailInfoById(
-            clickedCocktailId.toString()
-          );
+          const searchResult = await getCocktailDetailInfoById(cocktailId);
           setCocktailData(searchResult.data);
+          console.log(searchResult.data);
         }
       };
       getCocktailInfo();
-      // setCocktailReviews(MOCK_COCKTAIL_RESPONSE.data.reviews);
       return;
     }
     setCocktailId(null);
     setCocktailData(null);
-  }, [visible]); //visible 을 기준으로 할 지, cocktailId 로 할 지
+  }, [visible, cocktailId]); //둘 다 deps로 넣어주어야 다른 카드를 눌러도 잘 동작한다.
 
   const handleComplete = (reviewInfo: Review): void => {
-    cocktailReviews?.push(reviewInfo.userComment);
+    console.log(reviewInfo);
+    console.log(returnedReviewModalData);
+    setreturnedReviewModalData(reviewInfo);
     setCocktailReviews(() => cocktailReviews);
     setIsReviewModalVisible(false);
   };
@@ -100,6 +111,7 @@ const CocktailDetailModal = ({
                 titleText={cocktailData?.name}
               >
                 <StyledIngredientListWrapper>
+                  <IconToggle name='flag' />
                   <Text size='md'>{'- 재료 -'}</Text>
                   {cocktailData?.volumes?.map((ingredient) => {
                     let isExists = false;
@@ -142,10 +154,13 @@ const CocktailDetailModal = ({
                   <StyledReviewListWrapper>
                     <Text size='md'>{'- 사용자 리뷰- '}</Text>
                     {cocktailReviews?.map((userReview) => (
+                      //여기에 리뷰 아이디 같이 넣어줘야 삭제 가능하다. ??? 칵테일 상세 정보에 reviews 가 있으니까. 그 기준으로
                       <UserReviewItem
+                        reviewId={1}
                         userComment={userReview}
                         userImageUrl=''
                         userRating={5}
+                        onDelete={deleteMyCocktailReview}
                       />
                     ))}
                   </StyledReviewListWrapper>
@@ -163,15 +178,18 @@ const CocktailDetailModal = ({
               </TitleSectionContainer>
             </SectionDivider>
           </MenuTab>
-          <CocktailReviewModal
-            color={'BASIC_WHITE'}
-            handleSubmit={handleComplete}
-            size={'sm'}
-            visible={isReviewModalVisible}
-            onCancel={(): void => {
-              setIsReviewModalVisible(false);
-            }}
-          />
+          {cocktailId && (
+            <CocktailReviewModal
+              cocktailId={cocktailId}
+              color={'BASIC_WHITE'}
+              handleSubmit={handleComplete}
+              size={'sm'}
+              visible={isReviewModalVisible}
+              onCancel={(): void => {
+                setIsReviewModalVisible(false);
+              }}
+            />
+          )}
         </>
       )}
     </Modal>

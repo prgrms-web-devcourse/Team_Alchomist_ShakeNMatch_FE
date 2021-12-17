@@ -6,6 +6,8 @@ import Upload from '@base/Uploader';
 import RatingStar from '@domain/RatingStar';
 import { StyledReviewForm, StyledTextEditor } from './style';
 import type { CocktailReviewModalProps } from './types';
+// import useAxios from '@hooks/useAxios';
+// import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 
 const CocktailReviewModal = (
   props: Omit<CocktailReviewModalProps, 'backgroundColor'>
@@ -26,6 +28,10 @@ const CocktailReviewModal = (
   ): void => {
     setUserComment(e.target.value);
   };
+  // const postRequest = useAxios(AXIOS_REQUEST_TYPE.FILE);
+  // const postCocktailReviewModalInfo = (formdata: FormData, bodyJson: JSON) => {
+  //   return postRequest.post(`/review`, body);
+  // };
 
   const onSubmit: FormEventHandler = (): void => {
     if (!userFile || userComment.length < 2) {
@@ -35,6 +41,17 @@ const CocktailReviewModal = (
       return;
     }
     //API 로직이 들어올 곳 FormData로 묶어서 보내야 한다.
+    // const formData = new FormData();
+    // formData.set('file', new File(userFile, 'userFile.name', ));
+    // const postUserReviewInfo = async (): Promise<void> => {
+    //   const requestData = JSON.stringify({
+    //     userId: 1,
+    //     cocktailId: props.cocktailId,
+    //     description: userComment,
+    //     rating: handleUserRate
+    //   });
+    //   const postResult = await postCocktailReviewModalInfo();
+    // };
     props.handleSubmit({
       userFile: userFile,
       userRate: userRate,
