@@ -1,9 +1,7 @@
 import useSessionStorage from '@hooks/useSessionStorage';
 import type { ReactElement, ReactNode } from 'react';
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useEffect } from 'react';
 import type { IAuthContext, IAuthState } from './types';
-
-const MASTER_ID = 'mooho';
 
 const AuthorizationContext = createContext<IAuthContext | null>(null);
 
@@ -25,19 +23,14 @@ const AuthorizationProvider = ({
     isAuthorized: false
   });
 
-  const setAuthState = ({
+  const login = ({
     oauthToken,
     user
   }: Omit<IAuthState, 'isAuthorized'>): void => {
-    let isAuthorized = false;
-    if (user?.id === MASTER_ID) {
-      isAuthorized = true;
-    }
-
-    setState({ oauthToken, user, isAuthorized });
+    setState({ oauthToken, user, isAuthorized: true });
   };
 
-  const clearAuthState = (): void => {
+  const logout = (): void => {
     setState({ oauthToken: null, user: null, isAuthorized: false });
   };
 
@@ -45,9 +38,15 @@ const AuthorizationProvider = ({
     setState({ ...state, oauthToken });
   };
 
+  useEffect(() => {
+    if (!state.isAuthorized && state.oauthToken) {
+      logout();
+    }
+  }, []);
+
   return (
     <AuthorizationContext.Provider
-      value={{ ...state, setAuthState, clearAuthState, setOAuthToken }}
+      value={{ ...state, login, logout, setOAuthToken }}
     >
       {children}
     </AuthorizationContext.Provider>
