@@ -15,7 +15,8 @@ const useAxios = (requestType: IRequestType): AxiosInstance => {
       instance.interceptors.request.use(
         (config) => {
           config.headers = {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            ...config.headers
           };
           return config;
         },
@@ -33,7 +34,9 @@ const useAxios = (requestType: IRequestType): AxiosInstance => {
         (config) => {
           config.headers = {
             'Content-Type': 'application/json',
-            Authorization: `bearer ${oauthToken}`
+            // token 필드에서 oauthToken을 담도록 되어있어 수정
+            token: `${oauthToken}`,
+            ...config.headers
           };
           return config;
         },
@@ -51,7 +54,8 @@ const useAxios = (requestType: IRequestType): AxiosInstance => {
         (config) => {
           config.headers = {
             'Content-Type': 'multipart/form-data',
-            Authorization: `bearer ${oauthToken}`
+            token: `${oauthToken}`,
+            ...config.headers
           };
           return config;
         },

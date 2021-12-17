@@ -66,14 +66,14 @@ const AuthorizationProvider = ({
     isAuthorized: false
   });
 
-  const setAuthState = ({
+  const login = ({
     oauthToken,
     user
   }: Omit<IAuthState, 'isAuthorized'>): void => {
     setState({ oauthToken, user, isAuthorized: true });
   };
 
-  const clearAuthState = (): void => {
+  const logout = (): void => {
     setState({ oauthToken: null, user: null, isAuthorized: false });
   };
 
@@ -81,9 +81,14 @@ const AuthorizationProvider = ({
     setState({ ...state, oauthToken });
   };
 
+  useEffect(() => {
+    if (!state.isAuthorized && state.oauthToken) {
+      logout();
+    }
+  }, []);
   // 임시 effect
   useEffect(() => {
-    setAuthState({
+    login({
       oauthToken: '1234',
       user: {
         id: 1,
@@ -98,7 +103,7 @@ const AuthorizationProvider = ({
 
   return (
     <AuthorizationContext.Provider
-      value={{ ...state, setAuthState, clearAuthState, setOAuthToken }}
+      value={{ ...state, login, logout, setOAuthToken }}
     >
       {children}
     </AuthorizationContext.Provider>
