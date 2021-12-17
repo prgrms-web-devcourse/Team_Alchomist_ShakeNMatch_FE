@@ -35,7 +35,9 @@ const SectionDividerWithTitle = ({
       alignItems={alignItems}
       bold={bold}
       gap={gap}
-      style={withHeader ? { paddingTop: HEADER_HEIGHT } : undefined}
+      style={
+        withHeader ? { paddingTop: `calc(${HEADER_HEIGHT} + 20px)` } : undefined
+      }
       titleColor={titleColor}
       titleSize={titleSize}
       titleText={titleText}
