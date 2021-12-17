@@ -31,9 +31,11 @@ const ALBUM_ATTRIBUTES = {
 type AlbumAttributeKeys = keyof typeof ALBUM_ATTRIBUTES;
 
 interface AlbumProps extends HTMLAttributes<HTMLDivElement> {
+  cocktailId?: number;
   type?: AlbumAttributeKeys;
   text?: string;
   imageSrc?: string;
+  handleAlbumClick?(id: number): void;
 }
 
 export type { AlbumProps, AlbumAttributeKeys };

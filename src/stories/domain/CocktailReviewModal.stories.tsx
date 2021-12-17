@@ -8,6 +8,8 @@ export default {
   component: CocktailReviewModal
 };
 
+const MOCK_COCKTAIL_ID = 3;
+
 export const Default = (): ReactElement => {
   const [isVisible, setIsVisible] = useState(false);
   const [userReview, setUserReview] = useState<Review | null>(null);
@@ -37,6 +39,7 @@ export const Default = (): ReactElement => {
         <div>{userReview ? userReview.userComment : '없음'}</div>
       </p>
       <CocktailReviewModal
+        cocktailId={MOCK_COCKTAIL_ID}
         color={'BASIC_WHITE'}
         handleSubmit={handleComplete}
         size={'sm'}

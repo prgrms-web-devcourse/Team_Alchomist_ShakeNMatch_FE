@@ -32,8 +32,10 @@ ReactDOM.render(
               'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
           }
           #root {
+            margin: 0 100px;
             position: relative;
             height: 100vh;
+            background-color: ${COLOR.IVORY};
           }
         `}
       />

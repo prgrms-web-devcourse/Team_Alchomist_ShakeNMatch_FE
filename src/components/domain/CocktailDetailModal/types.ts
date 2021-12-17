@@ -18,7 +18,8 @@ interface ICocktailData {
   };
 }
 
-const MOCK_USER_INGREDIENT_IDS = [1, 2];
+// eslint-disable-next-line @typescript-eslint/no-magic-numbers
+const MOCK_USER_INGREDIENT_IDS = [47, 25, 16];
 
 const MOCK_COCKTAIL_RESPONSE = {
   data: {

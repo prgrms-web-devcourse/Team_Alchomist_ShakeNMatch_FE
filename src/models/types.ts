@@ -80,11 +80,12 @@ interface ICocktail {
   type: string;
   likes: number;
   totalRating: number;
-  ingredients: IIngredient[];
-  volume: string[];
+  ingredients: string[];
+  volumes: IIngredient[];
 }
 
 interface IIngredient {
+  [x: string]: any;
   id: number;
   name: string;
   type: string;
@@ -113,6 +114,9 @@ type IDomain = typeof DOMAINS[keyof typeof DOMAINS];
 
 type RequestTypeKeys = keyof typeof AXIOS_REQUEST_TYPE;
 type IRequestType = typeof AXIOS_REQUEST_TYPE[RequestTypeKeys];
+interface IApiResponse<T> {
+  data: T;
+}
 
 interface IApiResponse<T> {
   data: T;

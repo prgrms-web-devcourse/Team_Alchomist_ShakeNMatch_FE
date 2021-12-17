@@ -1,3 +1,4 @@
+import { Text } from '@base';
 import type { ReactElement } from 'react';
 import {
   useMemo,
@@ -71,8 +72,6 @@ const MenuTab = ({
     setChildrenEl(childrenEl);
   }, [displayingChildIdx, children]);
 
-  console.log(firstTabSize);
-
   return (
     <StyledContainer>
       {childrenEl}
@@ -85,7 +84,16 @@ const MenuTab = ({
               isSelected={index === parseInt(displayingChildIdx, 10)}
               onClick={handleContent}
             >
-              {text}
+              <Text
+                color={
+                  index === parseInt(displayingChildIdx, 10)
+                    ? 'DEEP_BROWN'
+                    : 'BASIC_WHITE'
+                }
+                size='sm'
+              >
+                {text}
+              </Text>
             </StyledTab>
           ))
         )}
