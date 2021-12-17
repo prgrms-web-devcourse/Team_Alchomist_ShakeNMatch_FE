@@ -1,7 +1,8 @@
-import { registerUser } from '@apis/user';
 import { StyledPageContainerWithBackground } from '@base/PageContainerWithBackground/styled';
+import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 import BackButton from '@domain/BackButton';
 import RegisterModal from '@domain/RegisterModal';
+import useAxios from '@hooks/useAxios';
 import type { IUser, IUserForm } from '@models';
 import type { ReactElement } from 'react';
 import { useNavigate } from 'react-router';
@@ -12,15 +13,12 @@ const TEST_EMAIL = 'rlaangh77@naver.com';
 
 const RegisterPage = (): ReactElement => {
   const navigate = useNavigate();
+  const request = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
 
-  const postRegister = async (
-    values: IRegisterRequestBody
+  const postRegister = (
+    data: IRegisterRequestBody
   ): Promise<IUser | undefined> => {
-    const data = await registerUser(values);
-
-    if (data) {
-      return data;
-    }
+    return request.post('/user/join', data);
   };
 
   const handleRegister = async (value: IUserForm): Promise<any> => {

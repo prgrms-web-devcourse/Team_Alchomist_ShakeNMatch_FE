@@ -115,6 +115,10 @@ type IDomain = typeof DOMAINS[keyof typeof DOMAINS];
 type RequestTypeKeys = keyof typeof AXIOS_REQUEST_TYPE;
 type IRequestType = typeof AXIOS_REQUEST_TYPE[RequestTypeKeys];
 
+interface IApiResponse<T> {
+  data: T;
+}
+
 export type {
   ColorKeys,
   ColorType,
@@ -140,5 +144,6 @@ export type {
   IIngredient,
   IReview,
   IDomain,
-  IRequestType
+  IRequestType,
+  IApiResponse
 };
