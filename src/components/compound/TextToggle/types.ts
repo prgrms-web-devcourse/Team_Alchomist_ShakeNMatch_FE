@@ -11,10 +11,10 @@ type TextToggleKeys = keyof typeof TEXT_TOGGLE;
 interface TextToggleProps {
   children: string;
   block?: boolean;
-  id: string;
+  id: string | number;
   initialState?: boolean;
   toggleType?: TextToggleKeys;
-  onChange?(toggledIngredient: { id: string; toggled: boolean }): void;
+  onChange?(toggledIngredient: { id: number; toggled: boolean }): void;
 }
 
 interface StyledToggleContainerProps {

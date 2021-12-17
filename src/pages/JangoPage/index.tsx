@@ -13,32 +13,35 @@ import { useJangoContext } from '@contexts/Jango';
 // 컨텍스트 : 유저의 myIngredients 배열 필요
 const myIngredients = [
   {
-    id: '1',
+    id: 1,
     name: '깔루아',
     type: 'whiskey',
-    isAlcohol: true,
-    measure: ''
+    alcohol: true,
+    measure: '',
+    cocktails: []
   },
   {
-    id: '2',
+    id: 2,
     name: '극상 설탕',
     type: 'sugar',
-    isAlcohol: false,
-    measure: ''
+    alcohol: false,
+    measure: '',
+    cocktails: []
   },
   {
-    id: '3',
+    id: 3,
     name: '레몬 주스',
     type: 'syrup',
-    isAlcohol: false,
-    measure: ''
+    alcohol: false,
+    measure: '',
+    cocktails: []
   }
 ];
 
 // 추천 결과 응답 데이터
 const recommended = [
   {
-    id: '1',
+    id: 1,
     name: '마티니',
     themes: [],
     reviews: [],
@@ -50,7 +53,7 @@ const recommended = [
     volume: []
   },
   {
-    id: '2',
+    id: 2,
     name: '블러디 매리',
     themes: [],
     reviews: [],
@@ -62,7 +65,7 @@ const recommended = [
     volume: []
   },
   {
-    id: '3',
+    id: 3,
     name: '아메리카노',
     themes: [],
     reviews: [],
@@ -95,10 +98,10 @@ const JangoPage = (): ReactElement => {
 
     const initialMainIngredients: IIngredient[] = [];
     const initialSubIngredients: IIngredient[] = [];
-    const initialSelectedIngredients: string[] = [];
+    const initialSelectedIngredients: number[] = [];
 
     DUMMY_INGREDIENT.forEach((ingredient) => {
-      if (ingredient.isAlcohol) {
+      if (ingredient.alcohol) {
         initialMainIngredients.push(ingredient);
       } else {
         initialSubIngredients.push(ingredient);
@@ -134,7 +137,7 @@ const JangoPage = (): ReactElement => {
   };
 
   const handleSelectDone = async (
-    selectedIngredients: string[]
+    selectedIngredients: number[]
   ): Promise<void> => {
     // 선택된 애들을 서버에 저장
     // context 에서 유저 id 받아온다.

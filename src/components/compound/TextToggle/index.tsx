@@ -17,14 +17,14 @@ const TextToggle = ({
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     toggle();
-    onChange?.({ id: e.target.id, toggled: !isToggled });
+    onChange?.({ id: parseInt(e.target.id, 10), toggled: !isToggled });
   };
 
   return (
     <StyledToggleContainer block={block} toggled={isToggled}>
       <StyledToggleInput
         checked={isToggled}
-        id={id}
+        id={id.toString()}
         type='checkbox'
         onChange={handleChange}
       />
