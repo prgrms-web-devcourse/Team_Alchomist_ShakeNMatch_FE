@@ -89,18 +89,17 @@ interface IIngredient {
   name: string;
   type: string;
   measure: string;
-  cocktails: ICocktail[];
+  cocktails?: ICocktail[];
   alcohol: boolean;
 }
 
 interface IUser {
-  id: string;
-  email: string;
+  id: number;
   nickname: string;
-  isMan: boolean;
+  man: boolean;
   age: number;
   mbti: IUserMbti;
-  myIngredients?: IIngredient[];
+  ingredients?: IIngredient[];
   favorites?: Pick<ICocktail, 'id'>[];
 }
 

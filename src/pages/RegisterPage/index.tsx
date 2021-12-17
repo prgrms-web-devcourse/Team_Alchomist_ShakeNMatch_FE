@@ -9,21 +9,19 @@ import { useNavigate } from 'react-router';
 import type { IRegisterRequestBody } from './types';
 
 // test email
-const TEST_EMAIL = 'rlaangh77@naver.com';
 
 const RegisterPage = (): ReactElement => {
   const navigate = useNavigate();
-  const request = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
+  const request = useAxios(AXIOS_REQUEST_TYPE.AUTH);
 
   const postRegister = (
     data: IRegisterRequestBody
   ): Promise<IUser | undefined> => {
-    return request.post('/user/join', data);
+    return request.post('/user', data);
   };
 
   const handleRegister = async (value: IUserForm): Promise<any> => {
     console.log(value);
-    console.log(TEST_EMAIL);
     console.log('posting!');
     const { nickname, age, gender, mbti } = value;
     if (nickname && age && gender && mbti) {
@@ -31,8 +29,7 @@ const RegisterPage = (): ReactElement => {
         nickname,
         age,
         mbti,
-        isMan: gender === '남자' ? true : false,
-        email: TEST_EMAIL
+        isMan: gender === '남자' ? true : false
       });
       console.log(data);
     }

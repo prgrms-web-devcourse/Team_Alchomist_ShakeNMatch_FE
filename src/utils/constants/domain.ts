@@ -6,7 +6,8 @@ const DOMAINS = {
   register: 'register',
   search: 'search',
   shopping: 'shop',
-  theme: 'theme'
+  theme: 'theme',
+  oauthKaKao: 'oauth/kakao'
 } as const;
 
 export { DOMAINS };
