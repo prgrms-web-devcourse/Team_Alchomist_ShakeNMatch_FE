@@ -1,7 +1,7 @@
 import type { ReactElement, ReactNode } from 'react';
 import { createContext, useContext, useState, useEffect } from 'react';
 import type { IJangoContext } from './types';
-import type { IIngredient } from '@models/types';
+import type { IIngredient, IApiResponse } from '@models/types';
 import { useAuthorization } from '@contexts';
 import useAxios from '@hooks/useAxios';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
@@ -19,7 +19,6 @@ const JangoProvider = ({ children }: { children: ReactNode }): ReactElement => {
   const [totalIngredientsList, setTotalIngredientsList] = useState<{
     [key: string]: IIngredient;
   }>({});
-  console.log('hs', totalIngredientsList);
   const { user } = useAuthorization();
 
   useEffect(() => {
@@ -27,7 +26,7 @@ const JangoProvider = ({ children }: { children: ReactNode }): ReactElement => {
   }, []);
 
   const request = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
-  const getTotalIngredients = (): Promise<IIngredient[]> => {
+  const getTotalIngredients = (): Promise<IApiResponse<IIngredient[]>> => {
     return request.get('/ingredient');
   };
 
@@ -38,7 +37,7 @@ const JangoProvider = ({ children }: { children: ReactNode }): ReactElement => {
         [key: number]: IIngredient;
       } = {};
 
-      totalIngredients.forEach((ingredient) => {
+      totalIngredients.data.forEach((ingredient) => {
         totalIngredientList[ingredient.id] = ingredient;
       });
 
