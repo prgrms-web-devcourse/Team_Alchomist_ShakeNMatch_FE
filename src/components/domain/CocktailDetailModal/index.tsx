@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import type { ReactElement } from 'react';
 import type { Review } from '@domain/CocktailReviewModal/types';
 import type { CocktailDetailModalProps } from './types';
-import { Image, SectionDivider, Modal, Text } from '@base';
+import { Image, SectionDivider, Text } from '@base';
 import IngredientItem from './IngredientItem';
 import UserReviewItem from './UserReviewItem';
 import { TextButton, MenuTab, IconToggle } from '@compound';
@@ -10,7 +10,8 @@ import { TitleSectionContainer, CocktailReviewModal } from '@domain';
 import {
   StyledIngredientListWrapper,
   StyledReviewListWrapper,
-  StyledImageContainer
+  StyledImageContainer,
+  StyledModal
 } from './style';
 import { MOCK_USER_INGREDIENT_IDS } from './types';
 import useAxios from '@hooks/useAxios';
@@ -82,7 +83,7 @@ const CocktailDetailModal = ({
   };
 
   return (
-    <Modal
+    <StyledModal
       backgroundColor={backgroundColor}
       color={color}
       size={size}
@@ -191,7 +192,7 @@ const CocktailDetailModal = ({
           )}
         </>
       )}
-    </Modal>
+    </StyledModal>
   );
 };
 
