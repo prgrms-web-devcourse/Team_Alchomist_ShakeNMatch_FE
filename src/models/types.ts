@@ -66,13 +66,13 @@ interface IReview {
 }
 
 interface ICocktailSimple {
-  id: string;
+  id: number;
   name: string;
   type: string;
 }
 
 interface ICocktail {
-  id: string;
+  id: number;
   name: string;
   themes: ITheme[];
   reviews: IReview[];
@@ -85,11 +85,12 @@ interface ICocktail {
 }
 
 interface IIngredient {
-  id: string;
+  id: number;
   name: string;
   type: string;
-  isAlcohol: boolean;
   measure: string;
+  cocktails: ICocktail[];
+  alcohol: boolean;
 }
 
 interface IUser {

@@ -15,32 +15,36 @@ import type { IIngredient } from '@models/types';
 // 임시 컨텍스트 재료
 const DUMMY = [
   {
-    id: '1234',
+    id: 1,
     name: '보드카',
     type: 'liquor',
-    isAlcohol: true,
-    measure: 'ml'
+    alcohol: true,
+    measure: 'ml',
+    cocktails: []
   },
   {
-    id: '2345',
+    id: 2,
     name: '위스키',
     type: 'whiskey',
-    isAlcohol: true,
-    measure: 'ml'
+    alcohol: true,
+    measure: 'ml',
+    cocktails: []
   },
   {
-    id: '3456',
+    id: 3,
     name: '극상 설탕',
     type: 'sugar',
-    isAlcohol: false,
-    measure: 'ml'
+    alcohol: false,
+    measure: 'ml',
+    cocktails: []
   },
   {
-    id: '5678',
+    id: 4,
     name: '우스터 소스',
     type: 'syrup',
-    isAlcohol: false,
-    measure: 'ml'
+    alcohol: false,
+    measure: 'ml',
+    cocktails: []
   }
 ];
 
@@ -73,13 +77,13 @@ const IngredientSelectModal = ({
 
   // 컨텍스트에 데이터 해쉬맵 만들게 되면, 아래 두 함수를 하나로 통합할 수 있을 듯
   const handleSelectMainItem = useCallback(
-    (nextSelectedItems: string[]): void => {
+    (nextSelectedItems: number[]): void => {
       setSelectedMainItems(nextSelectedItems);
     },
     []
   );
   const handleSelectSubItem = useCallback(
-    (nextSelectedItems: string[]): void => {
+    (nextSelectedItems: number[]): void => {
       setSelectedSubItems(nextSelectedItems);
     },
     []
@@ -101,7 +105,7 @@ const IngredientSelectModal = ({
                 <IngredientToggleList
                   // 모든 재료 배열 (술)
                   ingredients={ingredientList.filter(
-                    ({ id, name, isAlcohol }) => isAlcohol && { id, name }
+                    ({ id, name, alcohol }) => alcohol && { id, name }
                   )}
                   // 유저가 보유 중인 최초 재료 배열 (술)
                   // 컨텍스트 User.myIngredients 에서 isAlcohol이 true인 것들의 배열
@@ -126,7 +130,7 @@ const IngredientSelectModal = ({
                 <IngredientToggleList
                   // 모든 재료 배열 (술 이외)
                   ingredients={ingredientList.filter(
-                    ({ id, name, isAlcohol }) => !isAlcohol && { id, name }
+                    ({ id, name, alcohol }) => !alcohol && { id, name }
                   )}
                   // 유저가 보유 중인 최초 재료 배열 (술 이외)
                   // 컨텍스트 User.myIngredients 에서 isAlcohol이 false 것들의 배열

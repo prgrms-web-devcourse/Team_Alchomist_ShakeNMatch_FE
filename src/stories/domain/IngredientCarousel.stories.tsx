@@ -15,42 +15,42 @@ export default {
 
 const DUMMY = [
   {
-    id: '1',
+    id: 1,
     name: '재료1',
     type: 'juice'
   },
   {
-    id: '2',
+    id: 2,
     name: '재료2',
     type: 'juice'
   },
   {
-    id: '3',
+    id: 3,
     name: '재료3',
     type: 'juice'
   },
   {
-    id: '4',
+    id: 4,
     name: '재료4',
     type: 'juice'
   },
   {
-    id: '5',
+    id: 5,
     name: '재료5',
     type: 'juice'
   },
   {
-    id: '6',
+    id: 6,
     name: '재료6',
     type: 'juice'
   },
   {
-    id: '7',
+    id: 7,
     name: '재료7',
     type: 'juice'
   },
   {
-    id: '8',
+    id: 8,
     name: '재료8',
     type: 'juice'
   }
