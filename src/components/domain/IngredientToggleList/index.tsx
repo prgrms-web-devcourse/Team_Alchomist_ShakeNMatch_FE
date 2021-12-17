@@ -19,7 +19,7 @@ const IngredientToggleList = ({
   }, [selectedIngredients]);
 
   const handleToggle = (toggledIngredient: {
-    id: string;
+    id: number;
     toggled: boolean;
   }): void => {
     if (toggledIngredient.toggled) {
