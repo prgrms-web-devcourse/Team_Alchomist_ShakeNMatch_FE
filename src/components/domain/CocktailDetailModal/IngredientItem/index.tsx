@@ -1,12 +1,20 @@
 import type { ReactElement } from 'react';
-import { Text } from '@base';
-// import Image from '@base/Image';
-import type { IngredientItemProps } from './types';
-import { StyledIngredient } from './style';
 import { useNavigate } from 'react-router-dom';
+import { IngredientIcons } from '@assets/ingredients';
+import { Text, Image } from '@base';
+import type { IngredientIconsKeys } from '@domain/IngredientCarousel/types';
+import { INGREDIENT_ICON_SIZE } from './types';
+import type { IngredientItemProps } from './types';
+import {
+  StyledIngredient,
+  StyledIngredientInnerWrapper,
+  StyledNameAmoutMeasureWrapper,
+  StyledHasWrapper
+} from './style';
 
 const IngredientItem = (ingredient: IngredientItemProps): ReactElement => {
   const navigate = useNavigate();
+  const innerTextColor = ingredient.isUserHas ? 'BLACK' : 'BASIC_WHITE';
   return (
     <StyledIngredient
       isUserHas={ingredient.isUserHas}
@@ -21,24 +29,44 @@ const IngredientItem = (ingredient: IngredientItemProps): ReactElement => {
             }
       }
     >
-      {/* <Image src=`` /> */}
-      <Text size='xs'>{ingredient.name}</Text>
-      <Text size='xs'>{ingredient.amount.toString()}</Text>
-      <Text size='xs'>{ingredient.measure}</Text>
-      {ingredient.isUserHas ? (
-        <Text block={false} size='xxs' style={{ float: 'right' }}>
-          {'보유중'}
-        </Text>
-      ) : (
-        <Text
-          block={false}
-          color='BASIC_WHITE'
-          size='xxs'
-          style={{ float: 'right' }}
-        >
-          {'구매하기'}
-        </Text>
-      )}
+      <StyledIngredientInnerWrapper>
+        <Image
+          height={INGREDIENT_ICON_SIZE.height}
+          mode='cover'
+          src={IngredientIcons[ingredient.type as IngredientIconsKeys]}
+          width={INGREDIENT_ICON_SIZE.width}
+        />
+        <StyledNameAmoutMeasureWrapper>
+          <Text color={innerTextColor} size='xs'>
+            {ingredient.name +
+              ' ' +
+              ingredient.amount.toString() +
+              ' ' +
+              ingredient.measure}
+          </Text>
+        </StyledNameAmoutMeasureWrapper>
+        <StyledHasWrapper>
+          {ingredient.isUserHas ? (
+            <Text
+              block={false}
+              color={innerTextColor}
+              size='xxs'
+              style={{ float: 'right' }}
+            >
+              {'보유중'}
+            </Text>
+          ) : (
+            <Text
+              block={false}
+              color={innerTextColor}
+              size='xxs'
+              style={{ float: 'right' }}
+            >
+              {'구매하기'}
+            </Text>
+          )}
+        </StyledHasWrapper>
+      </StyledIngredientInnerWrapper>
     </StyledIngredient>
   );
 };

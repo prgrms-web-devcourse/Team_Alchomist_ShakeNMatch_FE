@@ -3,6 +3,9 @@ import styled from '@emotion/styled';
 import type { IngredientItemProps } from './types';
 
 const StyledIngredient = styled.div<Pick<IngredientItemProps, 'isUserHas'>>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 339px;
   height: 48px;
   background: ${({ isUserHas }): string =>
@@ -12,5 +15,19 @@ const StyledIngredient = styled.div<Pick<IngredientItemProps, 'isUserHas'>>`
   margin: 9px;
   padding: 5px;
 `;
+const StyledIngredientInnerWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 317.49px;
+  height: 32px;
+`;
+const StyledNameAmoutMeasureWrapper = styled.div``;
+const StyledHasWrapper = styled.div``;
 
-export { StyledIngredient };
+export {
+  StyledIngredient,
+  StyledIngredientInnerWrapper,
+  StyledNameAmoutMeasureWrapper,
+  StyledHasWrapper
+};
