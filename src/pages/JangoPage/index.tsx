@@ -97,13 +97,13 @@ const JangoPage = (): ReactElement => {
   ): Promise<void> => {
     // 선택된 애들을 서버에 저장
     user?.id && (await updateUserIngredients(user?.id, selectedIngredients));
-
     // 낙관적 업데이트를 위해 장고 컨텍스트에 선택된 재료 전달
     const recentIngredients = selectedIngredients.map(
       (id) => totalIngredientsList[id]
     );
 
     if (recentIngredients !== userIngredients) {
+      console.log('new', recentIngredients);
       updateJangoContext(recentIngredients);
     }
 
