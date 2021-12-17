@@ -8,7 +8,7 @@ import type { IngredientItemProps } from './types';
 import {
   StyledIngredient,
   StyledIngredientInnerWrapper,
-  StyledAmoutMeasureWrapper,
+  StyledNameAmoutMeasureWrapper,
   StyledHasWrapper
 } from './style';
 
@@ -36,17 +36,15 @@ const IngredientItem = (ingredient: IngredientItemProps): ReactElement => {
           src={IngredientIcons[ingredient.type as IngredientIconsKeys]}
           width={INGREDIENT_ICON_SIZE.width}
         />
-        <Text color={innerTextColor} size='xs'>
-          {ingredient.name}
-        </Text>
-        <StyledAmoutMeasureWrapper>
+        <StyledNameAmoutMeasureWrapper>
           <Text color={innerTextColor} size='xs'>
-            {ingredient.amount.toString()}
+            {ingredient.name +
+              ' ' +
+              ingredient.amount.toString() +
+              ' ' +
+              ingredient.measure}
           </Text>
-          <Text color={innerTextColor} size='xs'>
-            {ingredient.measure}
-          </Text>
-        </StyledAmoutMeasureWrapper>
+        </StyledNameAmoutMeasureWrapper>
         <StyledHasWrapper>
           {ingredient.isUserHas ? (
             <Text

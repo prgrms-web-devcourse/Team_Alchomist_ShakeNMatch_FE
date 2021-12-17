@@ -21,12 +21,12 @@ const StyledIngredientInnerWrapper = styled.div`
   width: 317.49px;
   height: 32px;
 `;
-const StyledAmoutMeasureWrapper = styled.div``;
+const StyledNameAmoutMeasureWrapper = styled.div``;
 const StyledHasWrapper = styled.div``;
 
 export {
   StyledIngredient,
   StyledIngredientInnerWrapper,
-  StyledAmoutMeasureWrapper,
+  StyledNameAmoutMeasureWrapper,
   StyledHasWrapper
 };
