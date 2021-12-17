@@ -1,4 +1,5 @@
 import type { HTMLAttributes, ReactChild } from 'react';
+import type { CocktailIcons } from '@assets/cocktails';
 import type { ICocktailSimple } from '@models/types';
 
 interface CocktailListProps extends HTMLAttributes<HTMLDivElement> {
@@ -12,4 +13,6 @@ interface StyledMotionWrapperProps {
   resultIndex: number;
 }
 
-export type { CocktailListProps, StyledMotionWrapperProps };
+type CocktailIconsKeys = keyof typeof CocktailIcons;
+
+export type { CocktailListProps, StyledMotionWrapperProps, CocktailIconsKeys };

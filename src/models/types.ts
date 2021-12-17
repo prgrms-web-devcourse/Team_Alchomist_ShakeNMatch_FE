@@ -90,19 +90,17 @@ interface IIngredient {
   name: string;
   type: string;
   measure: string;
-  cocktails: ICocktail[];
+  cocktails?: ICocktail[];
   alcohol: boolean;
 }
 
 interface IUser {
-  id: string;
-  email: string;
+  id: number;
   nickname: string;
-  isMan: boolean;
+  man: boolean;
   age: number;
   mbti: IUserMbti;
-  myIngredients?: IIngredient[];
-  favorites?: Pick<ICocktail, 'id'>[];
+  ingredients?: IIngredient[];
 }
 
 interface IUserForm {
@@ -116,6 +114,9 @@ type IDomain = typeof DOMAINS[keyof typeof DOMAINS];
 
 type RequestTypeKeys = keyof typeof AXIOS_REQUEST_TYPE;
 type IRequestType = typeof AXIOS_REQUEST_TYPE[RequestTypeKeys];
+interface IApiResponse<T> {
+  data: T;
+}
 
 interface IApiResponse<T> {
   data: T;
