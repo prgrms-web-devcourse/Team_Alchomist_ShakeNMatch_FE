@@ -1,9 +1,11 @@
 import type { ReactElement } from 'react';
-import { Text } from '@base';
-// import Image from '@base/Image';
+import { useNavigate } from 'react-router-dom';
+import { IngredientIcons } from '@assets/ingredients';
+import { Text, Image } from '@base';
+import type { IngredientIconsKeys } from '@domain/IngredientCarousel/types';
+import { INGREDIENT_ICON_SIZE } from './types';
 import type { IngredientItemProps } from './types';
 import { StyledIngredient } from './style';
-import { useNavigate } from 'react-router-dom';
 
 const IngredientItem = (ingredient: IngredientItemProps): ReactElement => {
   const navigate = useNavigate();
@@ -21,7 +23,12 @@ const IngredientItem = (ingredient: IngredientItemProps): ReactElement => {
             }
       }
     >
-      {/* <Image src=`` /> */}
+      <Image
+        height={INGREDIENT_ICON_SIZE.height}
+        mode='cover'
+        src={IngredientIcons[ingredient.type as IngredientIconsKeys]}
+        width={INGREDIENT_ICON_SIZE.width}
+      />
       <Text size='xs'>{ingredient.name}</Text>
       <Text size='xs'>{ingredient.amount.toString()}</Text>
       <Text size='xs'>{ingredient.measure}</Text>
