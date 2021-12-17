@@ -6,10 +6,12 @@ import { COLOR } from '@constants';
 const StyledContainer = styled.div`
   width: 630px;
   height: 80%;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  grid-auto-rows: min-content;
   padding: 22px 22px;
-  gap: 22px;
+  gap: 5px;
   overflow-y: scroll;
   border-radius: 10px;
   box-shadow: inset 0 -2px 5px -4px ${COLOR.BLACK};

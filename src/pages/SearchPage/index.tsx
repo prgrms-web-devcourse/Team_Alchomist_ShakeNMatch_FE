@@ -46,7 +46,7 @@ const SearchPage = (): ReactElement => {
   }, [keyword]);
 
   return (
-    <SectionDividerWithTitle alignItems>
+    <SectionDividerWithTitle alignItems withHeader>
       <StyledContentWrapper>
         <Text block>찾아 보고 싶은 칵테일이 있나요?</Text>
         <Image mode='contain' src={searchBartender} />
