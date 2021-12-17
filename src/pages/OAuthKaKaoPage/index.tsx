@@ -1,27 +1,26 @@
-import { request } from '@apis/config';
+// import { request } from '@apis/config';
 import { StyledPageContainerWithBackground } from '@base/PageContainerWithBackground/styled';
+import { useAuthorization } from '@contexts';
 import type { ReactElement } from 'react';
 import { useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
-const POST_AUTHORIZED_CODE_URL = '';
+// const POST_AUTHORIZED_CODE_URL = '';
 
 const OAuthKaKaoPage = (): ReactElement => {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
+  const { setOAuthToken } = useAuthorization();
 
-  const code = searchParams.get('code');
-
-  const handlePostCode = async (): Promise<void> => {
-    const data = await request.post(POST_AUTHORIZED_CODE_URL, code);
-
-    console.log(data);
-  };
+  const token = searchParams.get('token');
+  const needInfo = searchParams.get('needInfo');
 
   useEffect(() => {
-    if (code) {
+    if (token) {
+      setOAuthToken(token);
       setSearchParams({}, { replace: true });
-      handlePostCode();
+      needInfo === 'true' ? navigate('/register') : navigate('/'); // 로그인시에는 별도
+      // handlePostCode();
     } else {
       navigate('/');
     }
