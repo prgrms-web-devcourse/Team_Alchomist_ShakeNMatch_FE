@@ -5,10 +5,16 @@ import { Text, Image } from '@base';
 import type { IngredientIconsKeys } from '@domain/IngredientCarousel/types';
 import { INGREDIENT_ICON_SIZE } from './types';
 import type { IngredientItemProps } from './types';
-import { StyledIngredient } from './style';
+import {
+  StyledIngredient,
+  StyledIngredientInnerWrapper,
+  StyledAmoutMeasureWrapper,
+  StyledHasWrapper
+} from './style';
 
 const IngredientItem = (ingredient: IngredientItemProps): ReactElement => {
   const navigate = useNavigate();
+  const innerTextColor = ingredient.isUserHas ? 'BLACK' : 'BASIC_WHITE';
   return (
     <StyledIngredient
       isUserHas={ingredient.isUserHas}
@@ -23,29 +29,46 @@ const IngredientItem = (ingredient: IngredientItemProps): ReactElement => {
             }
       }
     >
-      <Image
-        height={INGREDIENT_ICON_SIZE.height}
-        mode='cover'
-        src={IngredientIcons[ingredient.type as IngredientIconsKeys]}
-        width={INGREDIENT_ICON_SIZE.width}
-      />
-      <Text size='xs'>{ingredient.name}</Text>
-      <Text size='xs'>{ingredient.amount.toString()}</Text>
-      <Text size='xs'>{ingredient.measure}</Text>
-      {ingredient.isUserHas ? (
-        <Text block={false} size='xxs' style={{ float: 'right' }}>
-          {'보유중'}
+      <StyledIngredientInnerWrapper>
+        <Image
+          height={INGREDIENT_ICON_SIZE.height}
+          mode='cover'
+          src={IngredientIcons[ingredient.type as IngredientIconsKeys]}
+          width={INGREDIENT_ICON_SIZE.width}
+        />
+        <Text color={innerTextColor} size='xs'>
+          {ingredient.name}
         </Text>
-      ) : (
-        <Text
-          block={false}
-          color='BASIC_WHITE'
-          size='xxs'
-          style={{ float: 'right' }}
-        >
-          {'구매하기'}
-        </Text>
-      )}
+        <StyledAmoutMeasureWrapper>
+          <Text color={innerTextColor} size='xs'>
+            {ingredient.amount.toString()}
+          </Text>
+          <Text color={innerTextColor} size='xs'>
+            {ingredient.measure}
+          </Text>
+        </StyledAmoutMeasureWrapper>
+        <StyledHasWrapper>
+          {ingredient.isUserHas ? (
+            <Text
+              block={false}
+              color={innerTextColor}
+              size='xxs'
+              style={{ float: 'right' }}
+            >
+              {'보유중'}
+            </Text>
+          ) : (
+            <Text
+              block={false}
+              color={innerTextColor}
+              size='xxs'
+              style={{ float: 'right' }}
+            >
+              {'구매하기'}
+            </Text>
+          )}
+        </StyledHasWrapper>
+      </StyledIngredientInnerWrapper>
     </StyledIngredient>
   );
 };
