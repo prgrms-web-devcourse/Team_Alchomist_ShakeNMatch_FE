@@ -1,6 +1,6 @@
 import { useState, Children, useEffect } from 'react';
 import type { ReactElement } from 'react';
-import TextToggle from '@compound/TextToggle';
+import { TextToggle } from '@compound';
 import { StyledContainer } from './styled';
 import type { IngredientToggleListProps } from './types';
 

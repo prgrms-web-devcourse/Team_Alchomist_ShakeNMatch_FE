@@ -2,6 +2,7 @@ import type { DOMAINS, TEXT_SIZE, TEXT_WEIGHT } from '@constants';
 import type { COLOR } from '@constants/colors';
 import type { THEMES } from '@constants/themes';
 import type { USER_VALIDATE_ERROR_MESSAGES } from '@constants/user';
+import type { AXIOS_REQUEST_TYPE } from '@constants/axios';
 
 type ColorKeys = keyof typeof COLOR;
 type ColorType = typeof COLOR[ColorKeys];
@@ -64,6 +65,12 @@ interface IReview {
   cocktails: ICocktail;
 }
 
+interface ICocktailSimple {
+  id: string;
+  name: string;
+  type: string;
+}
+
 interface ICocktail {
   id: string;
   name: string;
@@ -87,7 +94,8 @@ interface IIngredient {
 
 interface IUser {
   id: string;
-  nickName: string;
+  email: string;
+  nickname: string;
   isMan: boolean;
   age: number;
   mbti: IUserMbti;
@@ -95,7 +103,17 @@ interface IUser {
   favorites?: Pick<ICocktail, 'id'>[];
 }
 
+interface IUserForm {
+  nickname: string | null;
+  gender: IUserGender | null;
+  age: number | null;
+  mbti: IUserMbti | null;
+}
+
 type IDomain = typeof DOMAINS[keyof typeof DOMAINS];
+
+type RequestTypeKeys = keyof typeof AXIOS_REQUEST_TYPE;
+type IRequestType = typeof AXIOS_REQUEST_TYPE[RequestTypeKeys];
 
 export type {
   ColorKeys,
@@ -108,6 +126,7 @@ export type {
   ITHEME,
   IUserInputType,
   IUserFormType,
+  IUserForm,
   IUserGender,
   IUserMbti,
   ValidateFnType,
@@ -115,9 +134,11 @@ export type {
   IUserValidateError,
   ValidateUserArgsType,
   ITheme,
+  ICocktailSimple,
   ICocktail,
   IUser,
   IIngredient,
   IReview,
-  IDomain
+  IDomain,
+  IRequestType
 };

@@ -1,7 +1,9 @@
 import { Modal } from '@base';
-import FormValidateIdentifier from '@domain/FormValidateIdentifier';
-import SectionDividerWithTitle from '@domain/SectionDividerWithTitle';
-import UserForm from '@domain/UserForm';
+import {
+  FormValidateIdentifier,
+  SectionDividerWithTitle,
+  UserForm
+} from '@domain';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
 import { IdentifierContainer } from './styled';
@@ -28,12 +30,6 @@ const RegisterModal = ({
           />
         </IdentifierContainer>
         <UserForm
-          initialValues={{
-            nickname: null,
-            gender: null,
-            age: null,
-            mbti: null
-          }}
           type='Register'
           onSubmit={onSubmit}
           onValidatedValuesChanged={(value): void => {

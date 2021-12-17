@@ -1,14 +1,15 @@
 import type { ChangeEventHandler, FormEventHandler, ReactElement } from 'react';
 import { useState } from 'react';
 import Button from '@base/Button';
-import Text from '@base/Text';
-import Modal from '@base/Modal';
+import { Text, Modal } from '@base';
 import Upload from '@base/Uploader';
 import RatingStar from '@domain/RatingStar';
 import { StyledReviewForm, StyledTextEditor } from './style';
 import type { CocktailReviewModalProps } from './types';
 
-const CocktailReviewModal = (props: CocktailReviewModalProps): ReactElement => {
+const CocktailReviewModal = (
+  props: Omit<CocktailReviewModalProps, 'backgroundColor'>
+): ReactElement => {
   const [userFile, setUserFile] = useState<File | null>(null);
   const handleChangeFile = (file: File): void => {
     console.log('file changed', file.name);
@@ -43,7 +44,7 @@ const CocktailReviewModal = (props: CocktailReviewModalProps): ReactElement => {
   };
 
   return (
-    <Modal {...props}>
+    <Modal backgroundColor='TRANSPARENT' {...props}>
       <StyledReviewForm>
         <Text size='sm'>{'칵테일 리뷰 모달'}</Text>
         <Upload

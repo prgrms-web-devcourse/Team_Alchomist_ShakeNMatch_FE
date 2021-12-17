@@ -60,8 +60,7 @@ const MenuTab = ({
       children.map((child, index) =>
         cloneElement(child, {
           style: {
-            display:
-              index === parseInt(displayingChildIdx, 10) ? 'grid' : 'none',
+            display: index !== parseInt(displayingChildIdx, 10) && 'none',
             ...child.props.style
           },
           ...child.props
@@ -71,6 +70,8 @@ const MenuTab = ({
 
     setChildrenEl(childrenEl);
   }, [displayingChildIdx, children]);
+
+  console.log(firstTabSize);
 
   return (
     <StyledContainer>

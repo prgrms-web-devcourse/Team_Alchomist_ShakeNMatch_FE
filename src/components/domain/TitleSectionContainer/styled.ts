@@ -10,6 +10,7 @@ const StyledContainer = styled.div<
   grid-template-columns: 1fr;
   grid-template-rows: repeat(2, minmax(min-content, auto)) 1fr;
   justify-items: center;
+  width: 100%;
   height: 100%;
   ${({ alignItems }): CSSObject | boolean =>
     alignItems && { alignItems: 'center' }};

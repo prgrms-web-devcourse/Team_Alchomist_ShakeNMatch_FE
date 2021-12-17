@@ -21,6 +21,10 @@ const BUTTON_SIZE = {
   headerIcon: {
     width: '50px',
     height: '50px'
+  },
+  xShort: {
+    width: '50px',
+    height: '20px'
   }
 } as const;
 type ButtonSizeKeys = keyof typeof BUTTON_SIZE;

@@ -1,6 +1,6 @@
 import type { MouseEventHandler, ReactElement } from 'react';
 import { useState, Children } from 'react';
-import IconButton from '@compound/IconButton';
+import { IconButton } from '@compound';
 import type { RatingStarProps } from './types';
 
 const RatingStar = ({

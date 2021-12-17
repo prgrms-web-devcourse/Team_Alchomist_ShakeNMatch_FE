@@ -52,6 +52,19 @@ const TEXT_BUTTON = {
       size: 'xs',
       color: 'BASIC_WHITE'
     }
+  },
+  X_SHORT_WHITE: {
+    buttonProps: {
+      type: 'button',
+      size: 'xShort',
+      basicColor: 'BASIC_WHITE',
+      hoverColor: 'LIGHT_PINK',
+      clickedColor: 'BASIC_PINK'
+    },
+    textProps: {
+      size: 'xxxs',
+      color: 'BLACK'
+    }
   }
 } as const;
 

@@ -1,6 +1,5 @@
-import Image from '@base/Image';
-import Text from '@base/Text';
-import IconButton from '@compound/IconButton';
+import { Image, Text } from '@base';
+import { IconButton } from '@compound';
 import type { ReactElement } from 'react';
 import { useCallback } from 'react';
 import { StyledContainer, StyledWrapper } from './styled';
@@ -44,8 +43,7 @@ const CarouselItem = ({
               ? CAROUSEL_IMAGE_SIZE.withTitle.height
               : CAROUSEL_IMAGE_SIZE.withoutTitle.height
           }
-          mode='fill'
-          placeholder=''
+          mode='contain'
           src={imageSrc}
           width={
             title

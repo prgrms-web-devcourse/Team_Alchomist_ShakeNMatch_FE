@@ -1,11 +1,13 @@
 import { SectionDivider } from '@base';
-import Carousel from '@compound/Carousel';
+import { Carousel } from '@compound';
 import { THEMES } from '@constants/themes';
 import type { ITHEME } from '@models';
 import type { ReactElement } from 'react';
 import { useMemo, useState, useEffect } from 'react';
 import { SectionDividerContent } from './styled';
 import type { ThemeSelectorProps } from './types';
+import mainImageSrcs from '@assets/carouselTheme/big';
+import detailImageSrcs from '@assets/carouselTheme';
 
 const ThemeSelector = ({
   initialMainIndex = 0,
@@ -20,6 +22,11 @@ const ThemeSelector = ({
     () => (Object.keys(THEMES) as ITHEME[])[selectedMainIndex],
     [selectedMainIndex]
   );
+  const selectedDetailNames = useMemo(
+    () => THEMES[selectedThemeName],
+    [selectedThemeName]
+  );
+
   const handleChangeMain = (value: number): void => {
     setSelectedMainIndex(value);
     setSelectedDetailIndex(0);
@@ -41,21 +48,17 @@ const ThemeSelector = ({
   }, []);
 
   return (
-    <SectionDivider
-      dividerOptions={{ gap: 100, color: 'TRANSPARENT' }}
-      ratio={[1, 1]}
-      showDivider
-      {...props}
-    >
+    <SectionDivider ratio={[1, 1]} {...props}>
       <SectionDividerContent className='mainCarousel'>
         <Carousel.Container
           selectedIndex={selectedMainIndex}
           onChangeItem={handleChangeMain}
         >
-          {Object.keys(THEMES).map((theme) => (
+          {(Object.keys(THEMES) as ITHEME[]).map((theme) => (
             <Carousel.Item
               key={theme}
-              imageSrc='https://via.placeholder.com/150'
+              backgroundColor='ORANGE'
+              imageSrc={mainImageSrcs[theme]}
               title={theme}
             />
           ))}
@@ -66,12 +69,19 @@ const ThemeSelector = ({
           selectedIndex={selectedDetailIndex}
           onChangeItem={handleChangeDetail}
         >
-          {THEMES[selectedThemeName].map((detailTheme) => (
+          {selectedDetailNames.map((detailTheme) => (
             <Carousel.Item
               key={detailTheme}
-              backgroundColor='LIGHT_PINK'
-              imageSrc='https://via.placeholder.com/150'
-              title={detailTheme}
+              backgroundColor='BROWN'
+              // 여기서 조금 더 정확한 타입명시를 하는 방법은 없을까
+              imageSrc={
+                (
+                  detailImageSrcs[selectedThemeName] as {
+                    [key: string]: string;
+                  }
+                )[detailTheme]
+              }
+              title={selectedThemeName !== 'MBTI' ? detailTheme : undefined}
             />
           ))}
         </Carousel.Container>
