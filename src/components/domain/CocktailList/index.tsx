@@ -1,7 +1,7 @@
 import { Children } from 'react';
 import type { ReactElement } from 'react';
-import { Text } from '@base';
-import { StyledContainer, StyledMotionWrapper } from './styled';
+// import { Text } from '@base';
+import { StyledContainer, StyledMotionWrapper, StyledText } from './styled';
 import type { CocktailListProps, CocktailIconsKeys } from './types';
 import { CocktailIcons, TOTAL_COCKTAIL_ICONS } from '@assets/cocktails';
 import { Album } from '@compound';
@@ -34,9 +34,9 @@ const CocktailList = ({
           ))
         )
       ) : (
-        <Text block color='DARK_GRAY' size='md'>
+        <StyledText block color='DARK_GRAY' size='sm'>
           {noResultMsg}
-        </Text>
+        </StyledText>
       )}
     </StyledContainer>
   );
