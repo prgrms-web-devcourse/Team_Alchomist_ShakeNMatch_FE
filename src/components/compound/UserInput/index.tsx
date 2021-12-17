@@ -4,6 +4,7 @@ import type { SelectProps } from '@base/Select/types';
 import { USER_FORM_LABEL_TEXT, USER_GENDER, USER_MBTI } from '@constants';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 import useAxios from '@hooks/useAxios';
+import type { IApiResponse } from '@models';
 import type { ReactElement } from 'react';
 import { useCallback, useState, useEffect } from 'react';
 import {
@@ -12,13 +13,7 @@ import {
   StyledLabel,
   StyledNicknameInputContainer
 } from './styled';
-import type { UserInputProps } from './types';
-
-interface IcheckNicknameAPIState {
-  value: boolean | null;
-  isLoading: boolean;
-  error: string | null;
-}
+import type { IcheckNicknameAPIState, UserInputProps } from './types';
 
 const RADIX_TEN = 10;
 
@@ -41,7 +36,7 @@ const UserInput = ({
 
   const checkUserNickname = (
     nickname: string
-  ): Promise<{ data: { can: boolean } }> => {
+  ): Promise<IApiResponse<{ can: boolean }>> => {
     return request.get(`/user/nickname/${nickname}`);
   };
 
