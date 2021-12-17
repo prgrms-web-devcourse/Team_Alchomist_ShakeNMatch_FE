@@ -6,10 +6,10 @@ import TextButton from '@compound/TextButton';
 import notFoundPage from '@assets/notFoundPage.png';
 
 const ErrorPage = (): ReactElement => {
-  const navigator = useNavigate();
+  const navigate = useNavigate();
 
   const handleClick = (): void => {
-    navigator('/');
+    navigate('/');
   };
 
   return (

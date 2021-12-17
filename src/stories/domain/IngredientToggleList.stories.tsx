@@ -7,10 +7,10 @@ export default {
   component: IngredientToggleList
 };
 
-const userIngredients = ['보드카1', '깔루아1', '룩사르도 마라스키노1'];
+const userIngredients = [1, 2, 3];
 
 export const Default = (): ReactElement => {
-  const submitSelectedIngredients = (selectedIngredients: string[]): void => {
+  const submitSelectedIngredients = (selectedIngredients: number[]): void => {
     console.log(selectedIngredients, '저장!');
   };
 
@@ -25,28 +25,28 @@ export const Default = (): ReactElement => {
 
 const DUMMY = [
   {
-    id: '1234',
+    id: 1,
     name: '보드카',
     type: 'liquor',
     isAlcohol: true,
     measure: 'ml'
   },
   {
-    id: '2345',
+    id: 2,
     name: '위스키',
     type: 'whiskey',
     isAlcohol: true,
     measure: 'ml'
   },
   {
-    id: '3456',
+    id: 3,
     name: '극상 설탕',
     type: 'sugar',
     isAlcohol: false,
     measure: 'ml'
   },
   {
-    id: '5678',
+    id: 4,
     name: '우스터 소스',
     type: 'syrup',
     isAlcohol: false,

@@ -22,14 +22,14 @@ export const Default = (): ReactElement => {
         모달 확인하기
       </button>
       <IngredientSelectModal
-        initialMainIngredient={['1234']}
-        initialSubIngredient={['5678']}
+        initialMainIngredient={[1]}
+        initialSubIngredient={[2]}
         visible={isVisible}
         onClose={(): void => {
           setIsVisible(false);
         }}
         // 서버에 새로운 재료를 저장
-        onSelectDone={(ingredient: string[]): void => {
+        onSelectDone={(ingredient: number[]): void => {
           console.log(`${ingredient}를 서버에 저장!`);
           setIsVisible(false);
         }}
