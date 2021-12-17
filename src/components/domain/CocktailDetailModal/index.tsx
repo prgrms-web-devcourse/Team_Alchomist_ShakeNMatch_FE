@@ -58,7 +58,6 @@ const CocktailDetailModal = ({
         if (cocktailId) {
           const searchResult = await getCocktailDetailInfoById(cocktailId);
           setCocktailData(searchResult.data);
-          console.log(searchResult.data);
         }
       };
       getCocktailInfo();
@@ -114,6 +113,7 @@ const CocktailDetailModal = ({
                   <IconToggle name='flag' />
                   <Text size='md'>{'- 재료 -'}</Text>
                   {cocktailData?.volumes?.map((ingredient) => {
+                    console.log('ingredient', ingredient);
                     let isExists = false;
                     //현재 유저의 재료는 목데이터로 들어가 있는 상태입니다
                     if (MOCK_USER_INGREDIENT_IDS.includes(ingredient.id)) {
@@ -121,8 +121,8 @@ const CocktailDetailModal = ({
                     }
                     return (
                       <IngredientItem
-                        amount={3}
-                        ingredientId={ingredient.id}
+                        amount={ingredient.amount}
+                        id={ingredient.id}
                         isUserHas={isExists}
                         measure={ingredient.measure}
                         name={ingredient.name}

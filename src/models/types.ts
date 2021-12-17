@@ -85,6 +85,7 @@ interface ICocktail {
 }
 
 interface IIngredient {
+  [x: string]: any;
   id: number;
   name: string;
   type: string;

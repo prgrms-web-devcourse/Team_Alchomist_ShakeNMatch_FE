@@ -1,5 +1,5 @@
 interface IngredientObject {
-  ingredientId: number;
+  id: number;
   name: string;
   amount: number;
   measure: string;
