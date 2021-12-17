@@ -23,7 +23,7 @@ const useAxios = (requestType: IRequestType): AxiosInstance => {
       );
 
       instance.interceptors.response.use(
-        (response) => response.data.data,
+        (response) => response.data,
         (error) => Promise.reject(error.response)
       );
 
