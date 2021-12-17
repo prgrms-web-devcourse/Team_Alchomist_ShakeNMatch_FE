@@ -7,4 +7,10 @@ interface UserInputProps {
   onNicknameChecked?(value: boolean): void;
 }
 
-export type { UserInputProps };
+interface IcheckNicknameAPIState {
+  value: boolean | null;
+  isLoading: boolean;
+  error: string | null;
+}
+
+export type { UserInputProps, IcheckNicknameAPIState };

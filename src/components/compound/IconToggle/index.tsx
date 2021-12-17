@@ -1,4 +1,4 @@
-import Icon from '@base/Icon';
+import { Icon } from '@base';
 import useToggle from '@hooks/useToggle';
 import type { ReactElement, ChangeEventHandler } from 'react';
 import { useMemo, useCallback } from 'react';

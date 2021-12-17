@@ -1,9 +1,9 @@
 import type { HTMLAttributes, ReactChild } from 'react';
-import type { ICocktail } from '@models';
 import type { CocktailIcons } from '@assets/cocktails';
+import type { ICocktailSimple } from '@models/types';
 
 interface CocktailListProps extends HTMLAttributes<HTMLDivElement> {
-  cocktailList: Pick<ICocktail, 'id' | 'name' | 'type'>[];
+  cocktailList: ICocktailSimple[];
   noResultMsg?: string;
 }
 

@@ -13,7 +13,7 @@ const THEME_COLOR = [
 const THEME_MUSIC = [
   'JAZZ',
   'ROCK',
-  'BALAD',
+  'BALLAD',
   'HIPHOP',
   'CLASSIC',
   'INDIE'
@@ -36,15 +36,15 @@ const THEME_MBTI = [
   'ESTP',
   'ESFP'
 ] as const;
-const THEME_TRENDING = ['MAN', 'FEMALE'] as const;
+// const THEME_TRENDING = ['MAN', 'FEMALE'] as const;
 
 const THEMES = {
   MOOD: THEME_MOOD,
   WEATHER: THEME_WEATHER,
   COLOR: THEME_COLOR,
   MUSIC: THEME_MUSIC,
-  MBTI: THEME_MBTI,
-  TRENDING: THEME_TRENDING
+  MBTI: THEME_MBTI
+  // TRENDING: THEME_TRENDING
 } as const;
 
 export { THEMES };

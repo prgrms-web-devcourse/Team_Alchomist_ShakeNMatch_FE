@@ -8,36 +8,40 @@ import { Text } from '@base';
 import TextButton from '@compound/TextButton';
 import type { IIngredient } from '@models/types';
 import IngredientSelectModal from '@domain/IngredientSelectModal';
+import { useJangoContext } from '@contexts/Jango';
 
 // 컨텍스트 : 유저의 myIngredients 배열 필요
 const myIngredients = [
   {
-    id: '1',
+    id: 1,
     name: '깔루아',
-    type: 'liquor',
-    isAlcohol: true,
-    measure: ''
+    type: 'whiskey',
+    alcohol: true,
+    measure: '',
+    cocktails: []
   },
   {
-    id: '2',
+    id: 2,
     name: '극상 설탕',
     type: 'sugar',
-    isAlcohol: false,
-    measure: ''
+    alcohol: false,
+    measure: '',
+    cocktails: []
   },
   {
-    id: '3',
+    id: 3,
     name: '레몬 주스',
     type: 'syrup',
-    isAlcohol: false,
-    measure: ''
+    alcohol: false,
+    measure: '',
+    cocktails: []
   }
 ];
 
 // 추천 결과 응답 데이터
 const recommended = [
   {
-    id: '1',
+    id: 1,
     name: '마티니',
     themes: [],
     reviews: [],
@@ -49,7 +53,7 @@ const recommended = [
     volume: []
   },
   {
-    id: '2',
+    id: 2,
     name: '블러디 매리',
     themes: [],
     reviews: [],
@@ -61,7 +65,7 @@ const recommended = [
     volume: []
   },
   {
-    id: '3',
+    id: 3,
     name: '아메리카노',
     themes: [],
     reviews: [],
@@ -81,18 +85,23 @@ const JangoPage = (): ReactElement => {
   const [recommendedCocktails, setRecommendedCocktails] = useState<any[]>([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
+  const { userIngredients, updateJangoContext } = useJangoContext();
+  // 에러 방지
+  console.log(userIngredients, updateJangoContext);
+
   // console.log(recommendedCocktails);
   console.log(mainIngredients, subIngredients);
   useEffect(() => {
     // 컨텍스트에서 유저의 myIngredients를 받아온다.
+    // userIngredients
     const DUMMY_INGREDIENT = myIngredients;
 
     const initialMainIngredients: IIngredient[] = [];
     const initialSubIngredients: IIngredient[] = [];
-    const initialSelectedIngredients: string[] = [];
+    const initialSelectedIngredients: number[] = [];
 
     DUMMY_INGREDIENT.forEach((ingredient) => {
-      if (ingredient.isAlcohol) {
+      if (ingredient.alcohol) {
         initialMainIngredients.push(ingredient);
       } else {
         initialSubIngredients.push(ingredient);
@@ -127,9 +136,23 @@ const JangoPage = (): ReactElement => {
     setIsModalVisible(false);
   };
 
-  const handleSelectDone = (selectedIngredients: string[]): void => {
+  const handleSelectDone = async (
+    selectedIngredients: number[]
+  ): Promise<void> => {
     // 선택된 애들을 서버에 저장
+    // context 에서 유저 id 받아온다.
+    // const userId = '';
+    // const recentUpdatedIngredient = await updateUserIngredients(userId, selectedIngredients);
+    // 서버에 정상 등록되면, 등록된 칵테일 배열이 응답된다.
+    // 이걸 컨텍스트에 저장해놓고 이 페이지에 접근할 때마다 존재하는지 확인해서 렌더링 시키자.
+    // 이때 기존 컨텍스트의 배열과 비교하여 다른 경우에만 업데이트 시켜주자
+    //
+    // if (recentUpdatedIngredient !== userIngredients) {
+    //   updateJangoContext(recentUpdatedIngredient);
+    // }
+
     console.log(selectedIngredients, '선택된 애들을 서버에 저장');
+
     closeModal();
   };
 

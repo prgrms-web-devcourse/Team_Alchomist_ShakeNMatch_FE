@@ -1,9 +1,9 @@
 interface IngredientSelectModalProps {
   visible: boolean;
-  initialMainIngredient: string[];
-  initialSubIngredient: string[];
+  initialMainIngredient: number[];
+  initialSubIngredient: number[];
   onClose(): void;
-  onSelectDone(selectedItems: string[]): void;
+  onSelectDone(selectedItems: number[]): void;
 }
 
 export type { IngredientSelectModalProps };
