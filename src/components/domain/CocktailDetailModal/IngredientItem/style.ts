@@ -4,6 +4,7 @@ import type { IngredientItemProps } from './types';
 
 const StyledIngredient = styled.div<Pick<IngredientItemProps, 'isUserHas'>>`
   display: flex;
+  justify-content: center;
   align-items: center;
   width: 339px;
   height: 48px;
