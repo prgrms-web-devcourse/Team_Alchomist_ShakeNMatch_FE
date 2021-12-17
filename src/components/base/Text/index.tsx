@@ -17,7 +17,7 @@ const Text = ({
         block={block}
         bold={bold}
         color={color}
-        dangerouslySetInnerHTML={{ __html: children }}
+        dangerouslySetInnerHTML={{ __html: `${children}` }}
         size={size}
         {...props}
       ></StyledText>

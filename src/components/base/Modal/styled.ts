@@ -12,6 +12,16 @@ const StyledModalBackground = styled.div<BackgroundProps>`
   height: 100vh;
   z-index: 1000;
   background-color: ${({ backgroundColor }): string => COLOR[backgroundColor]};
+  animation: show 0.2s ease-in forwards;
+
+  @keyframes show {
+    from {
+      transform: scale(0);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
 `;
 
 const StyledModalContainer = styled.div<ContainerProps>`

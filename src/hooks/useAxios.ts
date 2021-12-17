@@ -1,47 +1,22 @@
 import axios from 'axios';
 import type { AxiosInstance } from 'axios';
+import { useAuthorization } from '@contexts';
+import type { IRequestType } from '@models/types';
+import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 
-// 환경 변수 적용 필요
-const BASE_URL = '';
+const { REACT_APP_BASE_URL } = process.env;
 
-const REQUEST_TYPE = {
-  DEFAULT: 'default',
-  AUTH: 'auth',
-  FILE: 'file'
-} as const;
-type RequestTypeKeys = keyof typeof REQUEST_TYPE;
-type IRequestType = typeof REQUEST_TYPE[RequestTypeKeys];
+const useAxios = (requestType: IRequestType): AxiosInstance => {
+  const instance = axios.create({ baseURL: REACT_APP_BASE_URL });
+  const { oauthToken } = useAuthorization();
 
-const setInterceptors = (
-  instance: AxiosInstance,
-  type: IRequestType
-): AxiosInstance => {
-  switch (type) {
-    case REQUEST_TYPE.DEFAULT:
+  switch (requestType) {
+    case AXIOS_REQUEST_TYPE.DEFAULT:
       instance.interceptors.request.use(
         (config) => {
-          config.headers = {
-            'Content-Type': 'application/json'
-          };
-          return config;
-        },
-        (error) => Promise.reject(error.response)
-      );
-
-      instance.interceptors.response.use(
-        (response) => response.data,
-        (error) => Promise.reject(error.response)
-      );
-
-      break;
-    case REQUEST_TYPE.AUTH:
-      instance.interceptors.request.use(
-        (config) => {
-          // Token 가져오기
-          const TOKEN = '';
           config.headers = {
             'Content-Type': 'application/json',
-            Authorization: `bearer ${TOKEN}`
+            ...config.headers
           };
           return config;
         },
@@ -54,14 +29,33 @@ const setInterceptors = (
       );
 
       break;
-    case REQUEST_TYPE.FILE:
+    case AXIOS_REQUEST_TYPE.AUTH:
       instance.interceptors.request.use(
         (config) => {
-          // Token 가져오기
-          const TOKEN = '';
+          config.headers = {
+            'Content-Type': 'application/json',
+            // token 필드에서 oauthToken을 담도록 되어있어 수정
+            token: `${oauthToken}`,
+            ...config.headers
+          };
+          return config;
+        },
+        (error) => Promise.reject(error.response)
+      );
+
+      instance.interceptors.response.use(
+        (response) => response.data,
+        (error) => Promise.reject(error.response)
+      );
+
+      break;
+    case AXIOS_REQUEST_TYPE.FILE:
+      instance.interceptors.request.use(
+        (config) => {
           config.headers = {
             'Content-Type': 'multipart/form-data',
-            Authorization: `bearer ${TOKEN}`
+            token: `${oauthToken}`,
+            ...config.headers
           };
           return config;
         },
@@ -78,19 +72,4 @@ const setInterceptors = (
   return instance;
 };
 
-const request = setInterceptors(
-  axios.create({ baseURL: BASE_URL }),
-  REQUEST_TYPE.DEFAULT
-);
-
-const authRequest = setInterceptors(
-  axios.create({ baseURL: BASE_URL }),
-  REQUEST_TYPE.AUTH
-);
-
-const fileRequest = setInterceptors(
-  axios.create({ baseURL: BASE_URL }),
-  REQUEST_TYPE.FILE
-);
-
-export { request, authRequest, fileRequest };
+export default useAxios;

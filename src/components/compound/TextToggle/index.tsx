@@ -3,7 +3,7 @@ import type { ChangeEvent, ReactElement } from 'react';
 import { StyledToggleContainer, StyledToggleInput } from './styled';
 import { TEXT_TOGGLE } from './types';
 import type { TextToggleProps } from './types';
-import Text from '@base/Text';
+import { Text } from '@base';
 
 const TextToggle = ({
   children,
@@ -17,14 +17,14 @@ const TextToggle = ({
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     toggle();
-    onChange?.({ id: e.target.id, toggled: !isToggled });
+    onChange?.({ id: parseInt(e.target.id, 10), toggled: !isToggled });
   };
 
   return (
     <StyledToggleContainer block={block} toggled={isToggled}>
       <StyledToggleInput
         checked={isToggled}
-        id={id}
+        id={id.toString()}
         type='checkbox'
         onChange={handleChange}
       />

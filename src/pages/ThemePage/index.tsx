@@ -1,4 +1,4 @@
-import { request } from '@apis/config';
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Divider, SectionDivider, Text } from '@base';
 import { THEMES } from '@constants/themes';
 import BackButton from '@domain/BackButton';
@@ -14,10 +14,10 @@ import {
   StyledResultContainer,
   StyledThemePageContainer
 } from './styled';
+import SearchBot from '@domain/SearchBot';
 
 const RADIX_TEN = 10;
 // 임시 상수
-const SLICE_COUNT = 50;
 const DEBOUNCE_DELAY = 700;
 
 const ThemePage = (): ReactElement => {
@@ -32,6 +32,7 @@ const ThemePage = (): ReactElement => {
   );
   const showResult = useMemo(() => searchParams.get('result'), [searchParams]);
   const [isMountedWithResult, setIsMountedWithResult] = useState(false); // 최초 접근 지점 확인 ( result 로 바로 접근인지 아닌지에 따라 handleBack navigate 지점 변경)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cocktailList, setCocktailList] = useState<{
     value: ICocktail[];
     isLoading: boolean;
@@ -43,85 +44,85 @@ const ThemePage = (): ReactElement => {
   });
 
   // 임시 cocktail get api 함수
-  const getCocktailList = (main: string, detail: string): void => {
-    console.log(main, detail);
-    setCocktailList((prevCocktailList) => ({
-      ...prevCocktailList,
-      isLoading: true
-    }));
-    request
-      .get('https://jsonplaceholder.typicode.com/photos')
-      .then((data) => {
-        if (data && Array.isArray(data)) {
-          const newCocktailList = data
-            .slice(0, SLICE_COUNT)
-            .map(({ title, url }) => ({
-              name: title,
-              imageUrl: [url]
-            }));
-          console.log(newCocktailList);
-          setCocktailList({
-            value: newCocktailList as any[],
-            isLoading: false,
-            error: null
-          });
-        }
-      })
-      .catch((e) => {
-        console.error(e);
-        setCocktailList({
-          value: [],
-          isLoading: false,
-          error: 'error!'
-        });
-      });
-  };
+  // const getCocktailList = (main: string, detail: string): void => {
+  //   console.log(main, detail);
+  //   setCocktailList((prevCocktailList) => ({
+  //     ...prevCocktailList,
+  //     isLoading: true
+  //   }));
+  //   request
+  //     .get('https://jsonplaceholder.typicode.com/photos')
+  //     .then((data) => {
+  //       if (data && Array.isArray(data)) {
+  //         const newCocktailList = data
+  //           .slice(0, SLICE_COUNT)
+  //           .map(({ title, url }) => ({
+  //             name: title,
+  //             imageUrl: [url]
+  //           }));
+  //         console.log(newCocktailList);
+  //         setCocktailList({
+  //           value: newCocktailList as any[],
+  //           isLoading: false,
+  //           error: null
+  //         });
+  //       }
+  //     })
+  //     .catch((e) => {
+  //       console.error(e);
+  //       setCocktailList({
+  //         value: [],
+  //         isLoading: false,
+  //         error: 'error!'
+  //       });
+  //     });
+  // };
 
-  const [debounceGetCocktailList] = useDebounce<[string, string]>(
-    (main, detail) => {
-      getCocktailList(main, detail);
-    },
-    DEBOUNCE_DELAY
-  );
+  // const [debounceGetCocktailList] = useDebounce<[string, string]>(
+  //   (main, detail) => {
+  //     getCocktailList(main, detail);
+  //   },
+  //   DEBOUNCE_DELAY
+  // );
 
-  const handleChangeTheme = useCallback(
-    ({ main, detail }: { main: number; detail: number }) => {
-      const newSearchParams: {
-        main: string;
-        detail: string;
-        result?: string;
-      } = {
-        main: main.toString(RADIX_TEN),
-        detail: detail.toString(RADIX_TEN)
-      };
-      const result = searchParams.get('result');
-      if (result === 'true') {
-        debounceGetCocktailList(
-          main.toString(RADIX_TEN),
-          detail.toString(RADIX_TEN)
-        );
-        newSearchParams.result = 'true';
-      }
-      setTimeout(() => {
-        // 동기 처리시 useEffect 내 첫렌더링에서 set이 진행되지 않음
-        setSearchParams(newSearchParams, { replace: true });
-      }, 0);
-    },
-    [searchParams]
-  );
+  // const handleChangeTheme = useCallback(
+  //   ({ main, detail }: { main: number; detail: number }) => {
+  //     const newSearchParams: {
+  //       main: string;
+  //       detail: string;
+  //       result?: string;
+  //     } = {
+  //       main: main.toString(RADIX_TEN),
+  //       detail: detail.toString(RADIX_TEN)
+  //     };
+  //     const result = searchParams.get('result');
+  //     if (result === 'true') {
+  //       debounceGetCocktailList(
+  //         main.toString(RADIX_TEN),
+  //         detail.toString(RADIX_TEN)
+  //       );
+  //       newSearchParams.result = 'true';
+  //     }
+  //     setTimeout(() => {
+  //       // 동기 처리시 useEffect 내 첫렌더링에서 set이 진행되지 않음
+  //       setSearchParams(newSearchParams, { replace: true });
+  //     }, 0);
+  //   },
+  //   [searchParams]
+  // );
 
-  const handleResult = useCallback(() => {
-    const { main, detail } = selectedThemes;
-    console.log(main, detail);
-    if (main !== null && detail !== null) {
-      setSearchParams({
-        main,
-        detail,
-        result: 'true'
-      });
-    }
-    getCocktailList(main, detail);
-  }, [selectedThemes, setSearchParams]);
+  // const handleResult = useCallback(() => {
+  //   const { main, detail } = selectedThemes;
+  //   console.log(main, detail);
+  //   if (main !== null && detail !== null) {
+  //     setSearchParams({
+  //       main,
+  //       detail,
+  //       result: 'true'
+  //     });
+  //   }
+  //   getCocktailList(main, detail);
+  // }, [selectedThemes, setSearchParams]);
 
   const handleBack = useCallback(() => {
     if (isMountedWithResult) {
@@ -134,8 +135,8 @@ const ThemePage = (): ReactElement => {
 
   useEffect(() => {
     if (showResult) {
-      const { main, detail } = selectedThemes;
-      getCocktailList(main, detail);
+      // const { main, detail } = selectedThemes;
+      // getCocktailList(main, detail);
       setIsMountedWithResult(true);
     }
   }, []);
@@ -166,7 +167,7 @@ const ThemePage = (): ReactElement => {
           <ThemeSelector
             initialDetailIndex={parseInt(selectedThemes.detail || '0', 10)}
             initialMainIndex={parseInt(selectedThemes.main || '0', 10)}
-            onChangeIndex={handleChangeTheme}
+            // onChangeIndex={handleChangeTheme}
           />
           <StyledResultContainer>
             {cocktailList.isLoading ? (
@@ -177,13 +178,17 @@ const ThemePage = (): ReactElement => {
           </StyledResultContainer>
         </SectionDivider>
         {!showResult ? (
-          <StyledResultButton buttonType='LONG_WHITE' onClick={handleResult}>
+          <StyledResultButton
+            buttonType='LONG_WHITE'
+            // onClick={handleResult}
+          >
             결과 보기
           </StyledResultButton>
         ) : (
           <BackButton color='NAVY' onClick={handleBack} />
         )}
       </StyledThemePageContainer>
+      <SearchBot />
     </>
   );
 };

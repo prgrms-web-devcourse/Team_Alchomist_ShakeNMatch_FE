@@ -3,10 +3,10 @@ import useWheel from '@hooks/useWheel';
 import useThrottle from '@hooks/useThrottle';
 import type { ReactElement } from 'react';
 import { StyledCarouselContainer } from './styled';
-import type { IngredientCarouselProps } from './types';
+import type { IngredientCarouselProps, IngredientIconsKeys } from './types';
 import { ROW_TYPE } from './types';
-import IconButton from '@compound/IconButton';
-import Album from '@compound/Album';
+import { IngredientIcons } from '@assets/ingredients';
+import { IconButton, Album } from '@compound';
 
 const CLEAR_THROTTLE_TIME = 500;
 
@@ -69,7 +69,13 @@ const IngredientCarousel = ({
         onClick={handlePrev}
       />
       {Children.toArray(
-        displayItems.map((item) => <Album text={item.name} type={albumType} />)
+        displayItems.map((item) => (
+          <Album
+            imageSrc={IngredientIcons[item.type as IngredientIconsKeys]}
+            text={item.name}
+            type={albumType}
+          />
+        ))
       )}
       <IconButton
         disabled={itemIdx.tail >= itemList.length - 1}
