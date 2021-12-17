@@ -12,6 +12,7 @@ export { default as Logo } from '@domain/Logo';
 export { default as MainMenuSelector } from '@domain/MainMenuSelector';
 export { default as RatingStar } from '@domain/RatingStar';
 export { default as RegisterModal } from '@domain/RegisterModal';
+export { default as SearchBot } from '@domain/SearchBot';
 export { default as SearchCocktailInput } from '@domain/SearchCocktailInput';
 export { default as SectionDividerWithTitle } from '@domain/SectionDividerWithTitle';
 export { default as ShoppingItem } from '@domain/ShoppingItem';

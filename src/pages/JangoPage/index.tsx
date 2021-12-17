@@ -4,7 +4,8 @@ import {
   SectionDividerWithTitle,
   CocktailList,
   IngredientCarousel,
-  IngredientSelectModal
+  IngredientSelectModal,
+  SearchBot
 } from '@domain';
 import { StyledIngredientContainer } from './styled';
 import { Text } from '@base';
@@ -152,6 +153,7 @@ const JangoPage = (): ReactElement => {
         onClose={closeModal}
         onSelectDone={handleSelectDone}
       />
+      <SearchBot />
     </>
   );
 };

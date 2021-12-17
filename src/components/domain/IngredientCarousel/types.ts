@@ -1,6 +1,7 @@
 import type { HTMLAttributes } from 'react';
 import type { AlbumAttributeKeys } from '@compound/Album/types';
 import type { IIngredient } from '@models';
+import type { IngredientIcons } from '@assets/ingredients';
 
 interface IngredientCarouselProps {
   itemList: IIngredient[];
@@ -22,5 +23,11 @@ interface StyledCarouselContainerProps extends HTMLAttributes<HTMLDivElement> {
   row: 'single' | 'double';
 }
 
-export type { IngredientCarouselProps, StyledCarouselContainerProps };
+type IngredientIconsKeys = keyof typeof IngredientIcons;
+
+export type {
+  IngredientCarouselProps,
+  StyledCarouselContainerProps,
+  IngredientIconsKeys
+};
 export { ROW_TYPE };

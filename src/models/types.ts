@@ -100,7 +100,6 @@ interface IUser {
   age: number;
   mbti: IUserMbti;
   ingredients?: IIngredient[];
-  favorites?: Pick<ICocktail, 'id'>[];
 }
 
 interface IUserForm {
