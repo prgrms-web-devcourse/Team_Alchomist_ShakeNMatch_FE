@@ -94,13 +94,11 @@ interface IIngredient {
 
 interface IUser {
   id: string;
-  email: string;
   nickname: string;
   isMan: boolean;
   age: number;
   mbti: IUserMbti;
-  myIngredients?: IIngredient[];
-  favorites?: Pick<ICocktail, 'id'>[];
+  ingredients?: IIngredient[];
 }
 
 interface IUserForm {
