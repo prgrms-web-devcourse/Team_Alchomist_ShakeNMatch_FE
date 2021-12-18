@@ -33,7 +33,11 @@ const CustomNavigateProvider = ({
     setRedirectPath(pathname);
   };
 
-  const redirectToSavedPath = ({ replace }: { replace?: boolean }): void => {
+  const redirectToSavedPath = ({
+    replace = false
+  }: {
+    replace?: boolean;
+  }): void => {
     redirectPath && navigate(redirectPath, { replace });
     clearRedirectPath();
   };
