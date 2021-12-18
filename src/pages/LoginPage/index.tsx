@@ -3,12 +3,22 @@ import BackButton from '@domain/BackButton';
 import KaKaoButton from '@domain/KaKaoButton';
 import TitleSectionContainer from '@domain/TitleSectionContainer';
 import type { ReactElement } from 'react';
+import { useCallback } from 'react';
 import BartenderSrc from '@assets/characters/searchBartender.png';
-import { useNavigate } from 'react-router';
 import { StyledPageContainerWithBackground } from '@base/PageContainerWithBackground/styled';
+import { useCustomNavigate } from '@contexts/CustomNavigate';
+import { DOMAINS } from '@constants';
 
 const LoginPage = (): ReactElement => {
-  const navigate = useNavigate();
+  const { navigate, redirectPath, redirectToSavedPath } = useCustomNavigate();
+
+  const handleBack = useCallback(() => {
+    if (redirectPath) {
+      redirectToSavedPath();
+    } else {
+      navigate(`/${DOMAINS.main}`);
+    }
+  }, [redirectPath, redirectToSavedPath]);
 
   return (
     <StyledPageContainerWithBackground>
@@ -39,12 +49,7 @@ const LoginPage = (): ReactElement => {
           </TitleSectionContainer>
         </div>
       </Modal>
-      <BackButton
-        color='NAVY'
-        onClick={(): void => {
-          navigate(-1);
-        }}
-      />
+      <BackButton color='NAVY' onClick={handleBack} />
     </StyledPageContainerWithBackground>
   );
 };
