@@ -77,7 +77,7 @@ const MainPage = (): ReactElement => {
             추천받으러 가기
           </TextButton>
         ) : (
-          <KaKaoButton />
+          <KaKaoButton redirectUrl={`/${DOMAINS.jango}`} />
         )}
       </StyledDescriptionContainer>
     </StyledPageContainer>
