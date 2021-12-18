@@ -6,8 +6,9 @@ import Upload from '@base/Uploader';
 import RatingStar from '@domain/RatingStar';
 import { StyledReviewForm, StyledTextEditor } from './style';
 import type { CocktailReviewModalProps } from './types';
-// import useAxios from '@hooks/useAxios';
-// import { AXIOS_REQUEST_TYPE } from '@constants/axios';
+import useAxios from '@hooks/useAxios';
+import { AXIOS_REQUEST_TYPE } from '@constants/axios';
+import type { IReviewPostResponse } from '@models';
 
 const CocktailReviewModal = (
   props: Omit<CocktailReviewModalProps, 'backgroundColor'>
@@ -28,35 +29,47 @@ const CocktailReviewModal = (
   ): void => {
     setUserComment(e.target.value);
   };
-  // const postRequest = useAxios(AXIOS_REQUEST_TYPE.FILE);
-  // const postCocktailReviewModalInfo = (formdata: FormData, bodyJson: JSON) => {
-  //   return postRequest.post(`/review`, body);
-  // };
 
-  const onSubmit: FormEventHandler = (): void => {
+  const postRequest = useAxios(AXIOS_REQUEST_TYPE.FILE);
+
+  const onSubmit: FormEventHandler = async (): Promise<void> => {
     if (!userFile || userComment.length < 2) {
       alert(
         '파일이 선택되지 않았거나, 코멘트 길이가 부족합니다. 성의를 보여주세요'
       );
       return;
     }
-    //API 로직이 들어올 곳 FormData로 묶어서 보내야 한다.
-    // const formData = new FormData();
-    // formData.set('file', new File(userFile, 'userFile.name', ));
-    // const postUserReviewInfo = async (): Promise<void> => {
-    //   const requestData = JSON.stringify({
-    //     userId: 1,
-    //     cocktailId: props.cocktailId,
-    //     description: userComment,
-    //     rating: handleUserRate
-    //   });
-    //   const postResult = await postCocktailReviewModalInfo();
-    // };
-    props.handleSubmit({
-      userFile: userFile,
-      userRate: userRate,
-      userComment: userComment
-    });
+
+    const formData = new FormData();
+
+    const requestData = new Blob(
+      [
+        JSON.stringify({
+          userId: props.loginedUserId,
+          url: userFile.name,
+          cocktailId: props.cocktailId,
+          description: userComment,
+          rating: userRate
+        })
+      ],
+      { type: 'application/json' }
+    );
+
+    formData.set('file', userFile);
+    formData.set('request', requestData);
+    const result = await postRequest.post<IReviewPostResponse>(
+      `/review`,
+      formData
+    );
+    if (result.data) {
+      props.handleSubmit({
+        userFile: userFile,
+        userRate: userRate,
+        userComment: userComment
+      });
+      return;
+    }
+    alert('리뷰 업로드에 실패하였습니다');
   };
 
   return (

@@ -67,6 +67,17 @@ interface IReview {
   cocktailName: string;
 }
 
+interface IReviewPostResponse {
+  reviweId: number;
+  rating: number;
+  description: string;
+  url: string;
+  userId: number;
+  nickname: string;
+  cocktailId: 1;
+  cocktailName: string;
+}
+
 interface ICocktailSimple {
   id: number;
   name: string;
@@ -148,6 +159,7 @@ export type {
   IUser,
   IIngredient,
   IReview,
+  IReviewPostResponse,
   IDomain,
   IRequestType,
   IApiResponse
