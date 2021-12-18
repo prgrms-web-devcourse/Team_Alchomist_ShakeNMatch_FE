@@ -16,12 +16,13 @@ import { useCustomNavigate } from '@contexts/CustomNavigate';
 
 const Header = (): ReactElement => {
   const { user, isAuthorized } = useAuthorization();
-  const { navigate, saveCurrentPath } = useCustomNavigate();
+  const { navigate, saveCurrentPath, savePath } = useCustomNavigate();
   const location = useLocation();
 
   const domain = useMemo(() => getDomain(location.pathname), [location]);
   const handleLink = useCallback(
     (to: string): void => {
+      savePath(to);
       navigate(to);
     },
     [navigate]
@@ -29,7 +30,7 @@ const Header = (): ReactElement => {
 
   return (
     <StyledHeaderContainer>
-      <Logo link size='sm' />
+      <Logo className='logo' link size='sm' />
       {domain !== DOMAINS.jango && (
         <Tooltip
           direction='bottom'
