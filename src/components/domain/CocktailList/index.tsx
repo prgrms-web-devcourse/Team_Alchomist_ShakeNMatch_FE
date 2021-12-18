@@ -16,12 +16,9 @@ const CocktailList = ({
   const [clickedCocktailId, setClickedCocktailId] = useState<number | null>(
     null
   );
-  const [isCocktailDetailModalVisible, setIsCocktailDetailModalVisible] =
-    useState<boolean>(false);
 
   const handleAlbumClick = (cocktailId: number): void => {
     setClickedCocktailId(cocktailId);
-    setIsCocktailDetailModalVisible(true);
   };
 
   return (
@@ -51,18 +48,16 @@ const CocktailList = ({
           </Text>
         )}
       </StyledContainer>
-      {clickedCocktailId && (
-        <CocktailDetailModal
-          backgroundColor='DARK_GRAY_OPACITY'
-          clickedCocktailId={clickedCocktailId}
-          color='IVORY'
-          size='lg'
-          visible={isCocktailDetailModalVisible}
-          onClose={(): void => {
-            setIsCocktailDetailModalVisible(false);
-          }}
-        />
-      )}
+      <CocktailDetailModal
+        backgroundColor='DARK_GRAY_OPACITY'
+        clickedCocktailId={clickedCocktailId}
+        color='IVORY'
+        size='lg'
+        visible={!!clickedCocktailId}
+        onClose={(): void => {
+          setClickedCocktailId(null);
+        }}
+      />
     </>
   );
 };

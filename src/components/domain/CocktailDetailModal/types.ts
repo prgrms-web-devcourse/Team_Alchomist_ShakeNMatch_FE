@@ -2,7 +2,7 @@ import type { ModalProps } from '@base/Modal/types';
 import type { IngredientObject } from './IngredientItem/types';
 
 interface CocktailDetailModalProps extends ModalProps {
-  clickedCocktailId?: number;
+  clickedCocktailId?: number | null;
 }
 
 interface ICocktailData {

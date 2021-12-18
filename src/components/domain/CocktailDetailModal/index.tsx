@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Children, useEffect, useState } from 'react';
 import type { ReactElement } from 'react';
 import type { Review } from '@domain/CocktailReviewModal/types';
 import type { CocktailDetailModalProps } from './types';
@@ -17,6 +17,11 @@ import { MOCK_USER_INGREDIENT_IDS } from './types';
 import useAxios from '@hooks/useAxios';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 import type { IApiResponse, ICocktail } from '@models';
+
+interface DeleteResponse {
+  data: string;
+  serverDateTime: string;
+}
 
 const CocktailDetailModal = ({
   size,
@@ -42,10 +47,6 @@ const CocktailDetailModal = ({
     return defaultRequest.get(`/cocktail/id?id=${cocktailId}`);
   };
 
-  interface DeleteResponse {
-    data: string;
-    serverDateTime: string;
-  }
   const deleteMyCocktailReview = (
     reviewId: number
   ): Promise<DeleteResponse> => {
@@ -91,29 +92,26 @@ const CocktailDetailModal = ({
       onClose={handleClose}
     >
       {visible && (
-        <>
-          <MenuTab
-            initialOnChild='0'
-            tabText={['Ingredients & Method', 'Reviews']}
-          >
-            <SectionDivider>
-              <StyledImageContainer>
-                <Image
-                  alt='Image'
-                  height='100%'
-                  mode='cover'
-                  src={cocktailData?.type}
-                  width='100%'
-                />
-              </StyledImageContainer>
-              <TitleSectionContainer
-                dividerVisible
-                titleText={cocktailData?.name}
-              >
-                <StyledIngredientListWrapper>
-                  <IconToggle name='flag' />
-                  <Text size='md'>{'- 재료 -'}</Text>
-                  {cocktailData?.volumes?.map((ingredient) => {
+        <MenuTab tabText={['Ingredients & Method', 'Reviews']}>
+          <SectionDivider>
+            <StyledImageContainer>
+              <Image
+                alt='Image'
+                height='100%'
+                mode='cover'
+                src={cocktailData?.type}
+                width='100%'
+              />
+            </StyledImageContainer>
+            <TitleSectionContainer
+              dividerVisible
+              titleText={cocktailData?.name}
+            >
+              <StyledIngredientListWrapper>
+                <IconToggle name='flag' />
+                <Text size='md'>{'- 재료 -'}</Text>
+                {Children.toArray(
+                  cocktailData?.volumes?.map((ingredient) => {
                     let isExists = false;
                     //현재 유저의 재료는 목데이터로 들어가 있는 상태입니다
                     if (MOCK_USER_INGREDIENT_IDS.includes(ingredient.id)) {
@@ -129,31 +127,33 @@ const CocktailDetailModal = ({
                         type={ingredient.type}
                       />
                     );
-                  })}
-                  <Text size='md'>{'- 조제법- '}</Text>
-                  <br />
-                  <Text size='sm'>{cocktailData?.recipe}</Text>
-                </StyledIngredientListWrapper>
-              </TitleSectionContainer>
-            </SectionDivider>
-            <SectionDivider>
-              <StyledImageContainer>
-                <Image
-                  alt='Image'
-                  height='100%'
-                  mode='cover'
-                  src={cocktailData?.type}
-                  width='100%'
-                />
-              </StyledImageContainer>
-              <TitleSectionContainer
-                dividerVisible
-                titleText={cocktailData?.name}
-              >
-                <>
-                  <StyledReviewListWrapper>
-                    <Text size='md'>{'- 사용자 리뷰- '}</Text>
-                    {cocktailReviews?.map((userReview) => (
+                  })
+                )}
+                <Text size='md'>{'- 조제법- '}</Text>
+                <br />
+                <Text size='sm'>{cocktailData?.recipe}</Text>
+              </StyledIngredientListWrapper>
+            </TitleSectionContainer>
+          </SectionDivider>
+          <SectionDivider>
+            <StyledImageContainer>
+              <Image
+                alt='Image'
+                height='100%'
+                mode='cover'
+                src={cocktailData?.type}
+                width='100%'
+              />
+            </StyledImageContainer>
+            <TitleSectionContainer
+              dividerVisible
+              titleText={cocktailData?.name}
+            >
+              <>
+                <StyledReviewListWrapper>
+                  <Text size='md'>{'- 사용자 리뷰- '}</Text>
+                  {Children.toArray(
+                    cocktailReviews?.map((userReview) => (
                       //여기에 리뷰 아이디 같이 넣어줘야 삭제 가능하다. ??? 칵테일 상세 정보에 reviews 가 있으니까. 그 기준으로
                       <UserReviewItem
                         reviewId={1}
@@ -162,35 +162,35 @@ const CocktailDetailModal = ({
                         userRating={5}
                         onDelete={deleteMyCocktailReview}
                       />
-                    ))}
-                  </StyledReviewListWrapper>
-                  <TextButton
-                    buttonType='LONG_WHITE'
-                    dropShadow
-                    type='button'
-                    onClick={(): void => {
-                      setIsReviewModalVisible(true);
-                    }}
-                  >
-                    {'리뷰작성'}
-                  </TextButton>
-                </>
-              </TitleSectionContainer>
-            </SectionDivider>
-          </MenuTab>
-          {cocktailId && (
-            <CocktailReviewModal
-              cocktailId={cocktailId}
-              color={'BASIC_WHITE'}
-              handleSubmit={handleComplete}
-              size={'sm'}
-              visible={isReviewModalVisible}
-              onCancel={(): void => {
-                setIsReviewModalVisible(false);
-              }}
-            />
-          )}
-        </>
+                    ))
+                  )}
+                </StyledReviewListWrapper>
+                <TextButton
+                  buttonType='LONG_WHITE'
+                  dropShadow
+                  type='button'
+                  onClick={(): void => {
+                    setIsReviewModalVisible(true);
+                  }}
+                >
+                  {'리뷰작성'}
+                </TextButton>
+              </>
+            </TitleSectionContainer>
+          </SectionDivider>
+        </MenuTab>
+      )}
+      {cocktailId && (
+        <CocktailReviewModal
+          cocktailId={cocktailId}
+          color={'BASIC_WHITE'}
+          handleSubmit={handleComplete}
+          size={'sm'}
+          visible={isReviewModalVisible}
+          onCancel={(): void => {
+            setIsReviewModalVisible(false);
+          }}
+        />
       )}
     </StyledModal>
   );
