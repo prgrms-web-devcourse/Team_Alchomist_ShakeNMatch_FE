@@ -15,6 +15,7 @@ import { useAuthorization } from '@contexts';
 import { Loader } from '@compound';
 import { Text } from '@base';
 import { getUserReducer, postUserReducer } from './reducer';
+import { StyledLogoutButton } from './styled';
 
 const TEN_RADIX = 10;
 
@@ -25,7 +26,7 @@ const MyPage = (): ReactElement => {
     () => parseInt(searchParams.get('index') || '0', TEN_RADIX),
     [searchParams]
   );
-  const { user } = useAuthorization();
+  const { user, logout } = useAuthorization();
   const request = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
   const [getUserAPIState, dispatchGetUserAPIState] = useReducer(
     getUserReducer,
@@ -140,6 +141,15 @@ const MyPage = (): ReactElement => {
         {postUserAPIState.value ? <Text>회원정보가 수정되었습니다!</Text> : ''}
       </SectionDividerWithTitle>
       <SearchBot />
+      <StyledLogoutButton
+        buttonType='SHORT_PINK'
+        onClick={(): void => {
+          logout();
+          navigate('/');
+        }}
+      >
+        로그 아웃
+      </StyledLogoutButton>
     </>
   );
 };

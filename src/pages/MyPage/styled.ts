@@ -1,3 +1,5 @@
+import { TextButton } from '@compound';
+import { HEADER_HEIGHT } from '@constants/headerHeight';
 import styled from '@emotion/styled';
 
 const StyledSectionDividerContent = styled.div`
@@ -6,4 +8,10 @@ const StyledSectionDividerContent = styled.div`
   align-items: center;
 `;
 
-export { StyledSectionDividerContent };
+const StyledLogoutButton = styled(TextButton)`
+  position: absolute;
+  top: calc(${HEADER_HEIGHT} + 10px);
+  right: 10px;
+`;
+
+export { StyledSectionDividerContent, StyledLogoutButton };
