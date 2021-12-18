@@ -31,9 +31,12 @@ const UserForm = ({
   const [nicknameChecked, setNicknameChecked] = useState(false);
   const validatedValues = useMemo(
     () =>
-      Object.values(values).filter((value) => value).length -
-      Object.keys(errors).length,
-    [values, errors]
+      Object.values(values).filter((value, index) => {
+        if (Object.keys(values)[index] === 'nickname' && !nicknameChecked)
+          return;
+        return value;
+      }).length - Object.keys(errors).length,
+    [values, errors, nicknameChecked]
   );
   const isValuesAllValidated = useMemo(
     () =>
