@@ -2,8 +2,10 @@ import styled from '@emotion/styled';
 import type { CSSObject } from '@emotion/styled';
 import type { StyledMotionWrapperProps } from './types';
 import { COLOR } from '@constants';
+import { Text } from '@base';
 
 const StyledContainer = styled.div`
+  position: relative;
   width: 630px;
   height: 80%;
   display: grid;
@@ -49,4 +51,15 @@ const StyledMotionWrapper = styled.div<StyledMotionWrapperProps>`
   })};
 `;
 
-export { StyledContainer, StyledMotionWrapper };
+const StyledText = styled(Text)`
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  height: 20%;
+  width: 70%;
+`;
+
+export { StyledContainer, StyledMotionWrapper, StyledText };
