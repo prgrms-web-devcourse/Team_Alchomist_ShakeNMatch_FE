@@ -22,7 +22,7 @@ const MainPage = (): ReactElement => {
   const [selectedMenu, setSelectedMenu] = useState<'theme' | 'jango' | null>(
     null
   );
-  const { user } = useAuthorization();
+  const { isAuthorized } = useAuthorization();
   const [isShowButton, setIsShowButton] = useState(false);
   const navigate = useNavigate();
 
@@ -72,7 +72,7 @@ const MainPage = (): ReactElement => {
             ? '테마별로 칵테일을 <br> 추천받으세요!'
             : '내 술장고 재료들로 <br> 칵테일을 추천받으세요!'}
         </Text>
-        {user || selectedMenu === 'theme' ? (
+        {isAuthorized || selectedMenu === 'theme' ? (
           <TextButton buttonType='LONG_PINK' onClick={handleLink}>
             추천받으러 가기
           </TextButton>
