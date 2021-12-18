@@ -1,20 +1,20 @@
 import { StyledPageContainerWithBackground } from '@base/PageContainerWithBackground/styled';
+import { DOMAINS } from '@constants';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 import { useAuthorization } from '@contexts';
-import BackButton from '@domain/BackButton';
-import RegisterModal from '@domain/RegisterModal';
+import { BackButton, RegisterModal } from '@domain';
+import { useCustomNavigate } from '@contexts/CustomNavigate';
 import useAxios from '@hooks/useAxios';
 import type { IApiResponse, IUser, IUserForm } from '@models';
 import type { ReactElement } from 'react';
-import { useNavigate } from 'react-router';
 import type { IRegisterRequestBody } from './types';
 
 // test email
 
 const RegisterPage = (): ReactElement => {
-  const navigate = useNavigate();
   const request = useAxios(AXIOS_REQUEST_TYPE.AUTH);
   const { oauthToken, login, logout } = useAuthorization();
+  const { navigate, redirectToSavedPath, redirectPath } = useCustomNavigate();
 
   const postRegister = (
     data: IRegisterRequestBody
@@ -33,12 +33,12 @@ const RegisterPage = (): ReactElement => {
       });
       if (data) {
         login({ oauthToken, user: data });
-        // 임시 위치 ( 이후 useRedirectURL Context로 지정된 위치로 이동 예정)
-        navigate('/');
+
+        redirectPath ? redirectToSavedPath() : navigate(`/${DOMAINS.main}`);
       } else {
         alert('회원가입에 실패하였습니다. 이후에 다시한번 시도해주세요.');
         logout();
-        navigate('/');
+        navigate(`/${DOMAINS.main}`);
       }
     }
   };

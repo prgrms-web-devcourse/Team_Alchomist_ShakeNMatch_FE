@@ -4,6 +4,7 @@ export { default as CocktailList } from '@domain/CocktailList';
 export { default as CocktailReviewModal } from '@domain/CocktailReviewModal';
 export { default as FormValidateIdentifier } from '@domain/FormValidateIdentifier';
 export { default as Header } from '@domain/Header';
+export { default as HeaderPageTemplate } from '@domain/HeaderPageTemplate';
 export { default as IngredientCarousel } from '@domain/IngredientCarousel';
 export { default as IngredientSelectModal } from '@domain/IngredientSelectModal';
 export { default as IngredientToggleList } from '@domain/IngredientToggleList';
