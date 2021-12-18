@@ -16,12 +16,7 @@ import {
 import { useAuthorization } from '@contexts/Authorization';
 import useAxios from '@hooks/useAxios';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
-import type { IApiResponse, ICocktail } from '@models';
-
-interface DeleteResponse {
-  data: string;
-  serverDateTime: string;
-}
+import type { IApiResponse, ICocktail, IReview } from '@models';
 
 const CocktailDetailModal = ({
   size,
@@ -48,12 +43,6 @@ const CocktailDetailModal = ({
     return defaultRequest.get(`/cocktail/id?id=${cocktailId}`);
   };
 
-  const deleteMyCocktailReview = (
-    reviewId: number
-  ): Promise<DeleteResponse> => {
-    return defaultRequest.delete(`/review/${reviewId}`);
-  };
-
   useEffect(() => {
     if (visible) {
       setCocktailId(clickedCocktailId);
@@ -74,7 +63,7 @@ const CocktailDetailModal = ({
     console.log(reviewInfo);
     console.log(returnedReviewModalData);
     setreturnedReviewModalData(reviewInfo);
-    setCocktailReviews(() => cocktailReviews);
+    setCocktailReviews(cocktailReviews);
     setIsReviewModalVisible(false);
   };
 
@@ -157,28 +146,31 @@ const CocktailDetailModal = ({
                 <StyledReviewListWrapper>
                   <Text size='md'>{'- 사용자 리뷰- '}</Text>
                   {Children.toArray(
-                    cocktailReviews?.map((userReview) => (
-                      //여기에 리뷰 아이디 같이 넣어줘야 삭제 가능하다. ??? 칵테일 상세 정보에 reviews 가 있으니까. 그 기준으로
+                    cocktailData?.reviews?.map((userReview: IReview) => (
+                      //여기에 리뷰 아이디 같이 넣어줘야 삭제 가능하다. 현재 Cocktail id 검색결과에서는 reviewId가 없음
                       <UserReviewItem
-                        reviewId={1}
-                        userComment={userReview}
-                        userImageUrl=''
-                        userRating={5}
-                        onDelete={deleteMyCocktailReview}
+                        loginedUserId={user?.id}
+                        reviewId={userReview.id}
+                        reviewOwnerId={userReview.userId}
+                        userComment={userReview.description}
+                        userImageUrl={userReview.url}
+                        userRating={userReview.rating}
                       />
                     ))
                   )}
                 </StyledReviewListWrapper>
-                <TextButton
-                  buttonType='LONG_WHITE'
-                  dropShadow
-                  type='button'
-                  onClick={(): void => {
-                    setIsReviewModalVisible(true);
-                  }}
-                >
-                  {'리뷰작성'}
-                </TextButton>
+                {user && (
+                  <TextButton
+                    buttonType='LONG_WHITE'
+                    dropShadow
+                    type='button'
+                    onClick={(): void => {
+                      setIsReviewModalVisible(true);
+                    }}
+                  >
+                    {'리뷰작성'}
+                  </TextButton>
+                )}
               </>
             </TitleSectionContainer>
           </SectionDivider>
@@ -186,9 +178,10 @@ const CocktailDetailModal = ({
       )}
       {cocktailId && (
         <CocktailReviewModal
-          cocktailId={cocktailId}
+          cocktailId={cocktailId} //어떤 칵테일에 대한 리뷰인지
           color={'BASIC_WHITE'}
           handleSubmit={handleComplete}
+          loginedUserId={user?.id}
           size={'sm'}
           visible={isReviewModalVisible}
           onCancel={(): void => {

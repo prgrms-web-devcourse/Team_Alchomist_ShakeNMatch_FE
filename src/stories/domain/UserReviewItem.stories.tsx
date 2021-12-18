@@ -13,12 +13,12 @@ export const Default = (): ReactElement => {
   return (
     <>
       {MOCK_COCKTAIL_RESPONSE.data.reviews.map(
-        ({ reviewId, userId, cocktailId, url, description, rating }) => (
+        ({ reviewId, cocktailId, url, description, rating }) => (
           <UserReviewItem
             cocktailId={cocktailId}
             loginedUserId={MOOCK_USER_ID}
-            reviewId={reviewId}
-            reviewOwnerId={userId}
+            reviewId={MOOCK_USER_ID}
+            reviewOwnerId={reviewId}
             userComment={description}
             userImageUrl={url}
             userRating={rating}
