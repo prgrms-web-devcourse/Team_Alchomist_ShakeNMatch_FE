@@ -24,7 +24,7 @@ const StyledPageContainer = styled.div<StyledPageContainerProps>`
   }
 `;
 
-const StyledLogoContainer = styled.div`
+const StyledDescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,6 +34,9 @@ const StyledLogoContainer = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   transition: height 0.3 ease-in-out;
+  height: 200px;
+  width: 400px;
+  text-align: center;
 `;
 
 const StyledKaKaoButton = styled(ImageButton)`
@@ -52,7 +55,7 @@ const StyledLogo = styled(Logo)`
 
 export {
   StyledPageContainer,
-  StyledLogoContainer,
+  StyledDescriptionContainer,
   StyledKaKaoButton,
   StyledLogo
 };
