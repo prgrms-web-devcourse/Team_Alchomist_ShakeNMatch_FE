@@ -1,5 +1,4 @@
 import type { ReactElement } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { IngredientIcons } from '@assets/ingredients';
 import { Text, Image } from '@base';
 import type { IngredientIconsKeys } from '@domain/IngredientCarousel/types';
@@ -13,22 +12,15 @@ import {
 } from './style';
 
 const IngredientItem = (ingredient: IngredientItemProps): ReactElement => {
-  const navigate = useNavigate();
   const innerTextColor = ingredient.isUserHas ? 'BLACK' : 'BASIC_WHITE';
+
+  const handleClick = (): void => {
+    if (!ingredient.isUserHas) {
+      window.open(`/shop/${ingredient.name}`, '_blank');
+    }
+  };
   return (
-    <StyledIngredient
-      isUserHas={ingredient.isUserHas}
-      onClick={
-        !ingredient.isUserHas
-          ? (): void => {
-              navigate(`/shop/${ingredient.name}`);
-              console.log('clicked');
-            }
-          : (): void => {
-              alert('이미 술장고에 보유 중인 재료입니다!');
-            }
-      }
-    >
+    <StyledIngredient isUserHas={ingredient.isUserHas} onClick={handleClick}>
       <StyledIngredientInnerWrapper>
         <Image
           height={INGREDIENT_ICON_SIZE.height}
@@ -40,9 +32,13 @@ const IngredientItem = (ingredient: IngredientItemProps): ReactElement => {
           <Text color={innerTextColor} size='xs'>
             {ingredient.name +
               ' ' +
-              ingredient.amount.toString() +
+              (ingredient.amount ? ingredient.amount.toString() : '') +
               ' ' +
-              ingredient.measure}
+              (ingredient.measure.split(' ').length > 1
+                ? ingredient.amount
+                  ? ingredient.measure.split(' ')[0]
+                  : ingredient.measure.split(' ')[1]
+                : ingredient.measure)}
           </Text>
         </StyledNameAmoutMeasureWrapper>
         <StyledHasWrapper>

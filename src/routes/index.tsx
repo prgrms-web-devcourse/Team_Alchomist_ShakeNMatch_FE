@@ -21,10 +21,8 @@ const Router = (): ReactElement => {
       <Route
         element={
           <>
-            <JangoProvider>
-              <Header />
-              <JangoPage />
-            </JangoProvider>
+            <Header />
+            <JangoPage />
           </>
         }
         path='/jango'
@@ -33,8 +31,10 @@ const Router = (): ReactElement => {
       <Route
         element={
           <>
-            <Header />
-            <MyPage />
+            <JangoProvider>
+              <Header />
+              <MyPage />
+            </JangoProvider>
           </>
         }
         path='/user/:id'
@@ -56,8 +56,10 @@ const Router = (): ReactElement => {
       <Route
         element={
           <>
-            <Header />
-            <ThemePage />
+            <JangoProvider>
+              <Header />
+              <ThemePage />
+            </JangoProvider>
           </>
         }
         path={`/${DOMAINS.theme}`}
