@@ -3,9 +3,12 @@ import { Divider, SectionDivider, Text } from '@base';
 import { Loader } from '@compound';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 import { THEMES } from '@constants/themes';
-import BackButton from '@domain/BackButton';
-import CocktailList from '@domain/CocktailList';
-import ThemeSelector from '@domain/ThemeSelector';
+import {
+  BackButton,
+  CocktailList,
+  ThemeSelector,
+  HeaderPageTemplate
+} from '@domain';
 import useAxios from '@hooks/useAxios';
 import useDebounce from '@hooks/useDebounce';
 import type { IApiResponse, ICocktailSimple, ITHEME } from '@models';
@@ -145,7 +148,7 @@ const ThemePage = (): ReactElement => {
   }, [mainTheme, detailTheme, showResult]);
 
   return (
-    <>
+    <HeaderPageTemplate>
       <StyledThemePageContainer>
         <h2>
           {showResult ? (
@@ -187,7 +190,7 @@ const ThemePage = (): ReactElement => {
         )}
       </StyledThemePageContainer>
       <SearchBot />
-    </>
+    </HeaderPageTemplate>
   );
 };
 

@@ -5,7 +5,8 @@ import {
   CocktailList,
   IngredientCarousel,
   IngredientSelectModal,
-  SearchBot
+  SearchBot,
+  HeaderPageTemplate
 } from '@domain';
 import { StyledIngredientContainer } from './styled';
 import { Text } from '@base';
@@ -93,7 +94,7 @@ const JangoPage = (): ReactElement => {
     selectedIngredients: number[]
   ): Promise<void> => {
     if (user?.id) {
-      await updateUserIngredients(user?.id, selectedIngredients);
+      await updateUserIngredients(user.id, selectedIngredients);
     }
 
     const recentIngredients = selectedIngredients.map(
@@ -108,7 +109,7 @@ const JangoPage = (): ReactElement => {
   };
 
   return (
-    <>
+    <HeaderPageTemplate>
       <SectionDividerWithTitle
         titleText='가지고 계신 재료로 레시피를 추천 받아 보세요!'
         withHeader
@@ -150,7 +151,7 @@ const JangoPage = (): ReactElement => {
         onSelectDone={handleSelectDone}
       />
       <SearchBot />
-    </>
+    </HeaderPageTemplate>
   );
 };
 
