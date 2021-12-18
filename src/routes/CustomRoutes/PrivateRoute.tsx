@@ -2,7 +2,7 @@ import type { CustomRouteProps } from './types';
 import { Header } from '@domain';
 import type { ReactElement } from 'react';
 import { useAuthorization } from '@contexts';
-import { LoginPage } from '@pages';
+import { Navigate } from 'react-router';
 
 const PublicRoute = ({
   children,
@@ -12,11 +12,16 @@ const PublicRoute = ({
 
   return isAuthorized ? (
     <>
-      {header && <Header />}
-      {children}
+      {header ? (
+        <div style={{ margin: '0 100px' }}>
+          <Header /> {children}
+        </div>
+      ) : (
+        children
+      )}
     </>
   ) : (
-    <LoginPage />
+    <Navigate to={'/login'} />
   );
 };
 

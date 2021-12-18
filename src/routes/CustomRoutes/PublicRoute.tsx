@@ -8,8 +8,13 @@ const PublicRoute = ({
 }: CustomRouteProps): ReactElement => {
   return (
     <>
-      {header && <Header />}
-      {children}
+      {header ? (
+        <div style={{ margin: '0 100px' }}>
+          <Header /> {children}
+        </div>
+      ) : (
+        children
+      )}
     </>
   );
 };
