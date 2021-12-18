@@ -35,16 +35,16 @@ const ShoppingItem = ({
         />
       </StyledImage>
       <StyledTitle>
-        <Text bold={true} color='BLACK' size='md'>
+        <Text bold={true} color='BLACK' dangerously={true} size='xs'>
           {title}
         </Text>
       </StyledTitle>
       <StyledVerticalLine />
       <StyledInfo>
-        <Text bold={true} color='BLACK' size='sm'>
+        <Text bold={true} color='BLACK' size='xs'>
           {vendor}
         </Text>
-        <Text bold={true} color='RED' size='sm'>
+        <Text bold={true} color='RED' size='xs'>
           {`${price}원`}
         </Text>
       </StyledInfo>
