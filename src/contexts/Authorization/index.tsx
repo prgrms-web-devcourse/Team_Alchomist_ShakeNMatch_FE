@@ -60,7 +60,7 @@ const AuthorizationProvider = ({
 }: {
   children: ReactNode;
 }): ReactElement => {
-  const [state, setState] = useSessionStorage<IAuthState>('auth', {
+  const [state, setState, clearState] = useSessionStorage<IAuthState>('auth', {
     oauthToken: null,
     user: null,
     isAuthorized: false
@@ -74,7 +74,7 @@ const AuthorizationProvider = ({
   };
 
   const logout = (): void => {
-    setState({ oauthToken: null, user: null, isAuthorized: false });
+    clearState();
   };
 
   const setOAuthToken = (oauthToken: string): void => {
