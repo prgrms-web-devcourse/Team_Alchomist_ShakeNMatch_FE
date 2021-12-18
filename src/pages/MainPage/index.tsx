@@ -1,9 +1,4 @@
-import {
-  MainMenuSelector,
-  BackButton,
-  KaKaoButton,
-  ThemeSelector
-} from '@domain';
+import { MainMenuSelector, BackButton, KaKaoButton } from '@domain';
 import type { ReactElement } from 'react';
 import { useEffect, useState, useCallback } from 'react';
 import { TextButton } from '@compound';
@@ -68,7 +63,6 @@ const MainPage = (): ReactElement => {
       <StyledDescriptionContainer
         style={{ display: isShowButton ? 'flex' : 'none' }}
       >
-        <ThemeSelector />
         <Text color='BASIC_WHITE' dangerously>
           {selectedMenu === 'theme'
             ? '테마별로 칵테일을 <br> 추천받으세요!'
