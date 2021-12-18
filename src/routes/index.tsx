@@ -1,5 +1,4 @@
 import { DOMAINS } from '@constants';
-import Header from '@domain/Header';
 import ErrorPage from '@pages/ErrorPage';
 import JangoPage from '@pages/JangoPage';
 import LoginPage from '@pages/LoginPage';
@@ -13,62 +12,91 @@ import ThemePage from '@pages/ThemePage';
 import type { ReactElement } from 'react';
 import { Route, Routes } from 'react-router';
 import JangoProvider from '@contexts/Jango';
+import PrivateRoute from './CustomRoutes/PrivateRoute';
+import PublicRoute from './CustomRoutes/PublicRoute';
 
 const Router = (): ReactElement => {
   return (
     <Routes>
-      <Route element={<MainPage />} path={`/${DOMAINS.main}`}></Route>
       <Route
         element={
-          <>
+          <PublicRoute>
+            <MainPage />
+          </PublicRoute>
+        }
+        path={`/${DOMAINS.main}`}
+      ></Route>
+      <Route
+        element={
+          <PrivateRoute header>
             <JangoProvider>
-              <Header />
               <JangoPage />
             </JangoProvider>
-          </>
+          </PrivateRoute>
         }
         path='/jango'
       ></Route>
-      <Route element={<LoginPage />} path={`/${DOMAINS.login}`}></Route>
       <Route
         element={
-          <>
-            <Header />
+          <PublicRoute>
+            <LoginPage />
+          </PublicRoute>
+        }
+        path={`/${DOMAINS.login}`}
+      ></Route>
+      <Route
+        element={
+          <PrivateRoute header>
             <MyPage />
-          </>
+          </PrivateRoute>
         }
         path='/user/:id'
       ></Route>
-      <Route element={<RegisterPage />} path={`/${DOMAINS.register}`}></Route>
       <Route
         element={
-          <>
-            <Header />
+          <PublicRoute>
+            <RegisterPage />
+          </PublicRoute>
+        }
+        path={`/${DOMAINS.register}`}
+      ></Route>
+      <Route
+        element={
+          <PublicRoute header>
             <SearchPage />
-          </>
+          </PublicRoute>
         }
         path='/search/:keyword'
       ></Route>
       <Route
-        element={<ShoppingPage />}
+        element={
+          <PrivateRoute>
+            <ShoppingPage />
+          </PrivateRoute>
+        }
         path={`/${DOMAINS.shopping}/:keyword`}
       ></Route>
       <Route
         element={
-          <>
-            <Header />
+          <PublicRoute header>
             <ThemePage />
-          </>
+          </PublicRoute>
         }
         path={`/${DOMAINS.theme}`}
       ></Route>
-      <Route element={<OAuthKaKaoPage />} path={`/${DOMAINS.oauthKaKao}`} />
       <Route
         element={
-          <>
-            <Header />
+          <PublicRoute>
+            <OAuthKaKaoPage />
+          </PublicRoute>
+        }
+        path={`/${DOMAINS.oauthKaKao}`}
+      />
+      <Route
+        element={
+          <PublicRoute>
             <ErrorPage />
-          </>
+          </PublicRoute>
         }
         path='*'
       ></Route>
