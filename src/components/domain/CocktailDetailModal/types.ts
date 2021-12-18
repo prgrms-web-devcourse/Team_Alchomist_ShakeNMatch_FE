@@ -55,7 +55,24 @@ const MOCK_COCKTAIL_RESPONSE = {
         measure: 'cup'
       }
     ],
-    reviews: ['맛있네요', '사랑해요'],
+    reviews: [
+      {
+        reviewId: 2,
+        userId: 1,
+        cocktailId: 2,
+        url: '수정된 사진 url',
+        description: '수정되었습니다',
+        rating: 4
+      },
+      {
+        reviewId: 3,
+        userId: 2,
+        cocktailId: 1,
+        url: 'https://team15-image-bucket.s3.ap-northeast-2.amazonaws.com/Alexander.jpg',
+        description: '이번 칵테일은 먹을만 하네요',
+        rating: 2
+      }
+    ],
     recipe: `만드는 방법 1 믹싱 글라스에 얼음을 가득 채우고 진과 베르무트를 넣어 넣어주세요. 
     2 30초 정도 잘 저어주세요. 
     3 얼음이 걸러지게 스트레이너를 사용하여 준비된 마티니 잔에 부어주세요.
