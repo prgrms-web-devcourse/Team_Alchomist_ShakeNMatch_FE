@@ -16,6 +16,7 @@ import { Loader } from '@compound';
 import { Text } from '@base';
 import { getBookmarkReducer, getUserReducer, postUserReducer } from './reducer';
 import { StyledLogoutButton } from './styled';
+import { DOMAINS } from '@constants';
 
 const TEN_RADIX = 10;
 
@@ -181,7 +182,7 @@ const MyPage = (): ReactElement => {
         buttonType='SHORT_PINK'
         onClick={(): void => {
           logout();
-          navigate('/');
+          navigate(`/${DOMAINS.main}`);
         }}
       >
         로그 아웃
