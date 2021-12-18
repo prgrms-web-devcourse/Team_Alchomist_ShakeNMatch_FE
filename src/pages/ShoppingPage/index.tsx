@@ -1,53 +1,69 @@
 import ShoppingItem from '@domain/ShoppingItem';
 import TitleSectionContainer from '@domain/TitleSectionContainer';
-import { Children } from 'react';
+import { Children, useState, useEffect } from 'react';
 import type { ReactElement } from 'react';
 import { StyledContainer } from './styled';
-
-const DUMMY_DATA = [
-  {
-    id: 1,
-    imageSrc: 'http://via.placeholder.com/100x100',
-    title: '보드카',
-    price: 2000,
-    vendor: 'NAVER'
-  },
-  {
-    id: 2,
-    imageSrc: 'http://via.placeholder.com/90x90',
-    title: '앙고스투라 비터',
-    price: 8400,
-    vendor: 'AUCTION'
-  },
-  {
-    id: 3,
-    imageSrc: 'http://via.placeholder.com/80x80',
-    title: '트리플 섹',
-    price: 11500,
-    vendor: 'SSG 닷컴'
-  },
-  {
-    id: 4,
-    imageSrc: 'http://via.placeholder.com/100x100',
-    title: '보드카',
-    price: 9000,
-    vendor: 'YAHOO'
-  }
-];
-const shoppingItemList = Children.toArray(
-  DUMMY_DATA.map((shoppingItem) => (
-    <ShoppingItem
-      imageSrc={shoppingItem.imageSrc}
-      price={shoppingItem.price}
-      title={shoppingItem.title}
-      vendor={shoppingItem.vendor}
-    ></ShoppingItem>
-  ))
-);
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const ShoppingPage = (): ReactElement => {
+  const params = useParams();
+  console.log('keyword: ', params, params.keyword);
+
+  const [data, setData] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  // 네이버 쇼핑 API 가져오기.
+  const fetchData = async (): Promise<void> => {
+    try {
+      setError(null);
+      setData([]);
+      setLoading(true);
+      const response = await axios.get('/v1/search/shop.json?', {
+        params: {
+          query: params.keyword,
+          display: 5
+        },
+        headers: {
+          'X-Naver-Client-Id': 'CRC7XaD__8BI4e9pZ87T',
+          'X-Naver-Client-Secret': 'bqPZbC4akN'
+        }
+      });
+      setData(response.data.items);
+      console.log(data);
+    } catch (e: unknown) {
+      console.error(e);
+    }
+    setLoading(false);
+  };
+
+  // 실행 시점에서 렌더링하기.
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (loading) return <div>로딩중</div>;
+  if (error) return <div>에러가 발생했습니다.</div>;
+  if (!data) return <div>데이터를 불러오지 못했습니다.</div>;
+
+  // API 연동한 후에 리스트로 뿌려주기.
+  const shoppingItemList = Children.toArray(
+    data.map((shoppingItem) => (
+      <ShoppingItem
+        imageSrc={shoppingItem.image}
+        price={shoppingItem.lprice}
+        title={shoppingItem.title}
+        vendor={shoppingItem.mallName}
+      ></ShoppingItem>
+    ))
+  );
+
   return (
     <>
+      <button type='button' onClick={fetchData}>
+        네이버 검색 API 불러오기
+      </button>
       <StyledContainer>
         <TitleSectionContainer
           alignItems={true}
