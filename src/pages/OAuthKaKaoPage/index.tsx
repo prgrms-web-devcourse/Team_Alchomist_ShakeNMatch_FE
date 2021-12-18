@@ -34,7 +34,9 @@ const OAuthKaKaoPage = (): ReactElement => {
       const { data } = await getUser(token);
       if (data) {
         login({ oauthToken: token, user: data });
-        redirectPath ? redirectToSavedPath() : navigate(`/${DOMAINS.main}`);
+        redirectPath
+          ? redirectToSavedPath({ replace: true })
+          : navigate(`/${DOMAINS.main}`, { replace: true });
       }
     } catch (e) {
       console.error(e);
