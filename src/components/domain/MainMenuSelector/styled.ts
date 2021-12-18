@@ -24,13 +24,11 @@ const StyledThemeContainer = styled.div<StyledMenuContainerProps>`
   ${({ selected }): string =>
     selected
       ? `& .textWrapper {
-      transform: translate(0,0);
-      transition: transform 0.5s 600ms ease-in-out
+      transform: translate(100vw,0);
     }`
       : `&:hover {
       & .textWrapper {
         transform: translate(-80%, 0);
-        transition: transform 3s 600ms ease-in-out;
       }
     }`}
 `;
@@ -43,13 +41,11 @@ const StyledJangoContainer = styled.div<StyledMenuContainerProps>`
   ${({ selected }): string =>
     selected
       ? `& .textWrapper {
-      transform: translate(0,0);
-      transition: transform 0.5s 600ms ease-in-out
+      transform: translate(100vw,0);
     }`
       : `&:hover {
       & .textWrapper {
         transform: translate(70%, 0);
-        transition: transform 3s 600ms ease-in-out;
       }
     }`}
 `;
@@ -59,6 +55,7 @@ const StyledThemeTextWrapper = styled.div`
   left: 50%;
   bottom: 20px;
   transform: translate(-100%, 0);
+  transition: transform 0.5s 600ms ease-out;
 `;
 
 const StyledJangoTextWrapper = styled.div`
@@ -66,6 +63,7 @@ const StyledJangoTextWrapper = styled.div`
   top: 20px;
   right: 50%;
   transform: translate(90%, 0);
+  transition: transform 0.5s 600ms ease-out;
 `;
 
 export {

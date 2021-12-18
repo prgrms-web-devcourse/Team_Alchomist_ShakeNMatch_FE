@@ -1,20 +1,33 @@
 /* eslint-disable @typescript-eslint/no-magic-numbers */
-import type { CSSObject } from '@emotion/styled';
 import styled from '@emotion/styled';
 import { COLOR } from '@constants';
 import type { StyledContainerProps } from './types';
 
 const StyledContainer = styled.div<StyledContainerProps>`
+  visibility: ${({ visible }): string => (visible ? 'visible' : 'hidden')};
   position: absolute;
   top: 10px;
   left: -300px;
   right: 0;
   margin: 0 auto;
   width: 200px;
-  opacity: ${({ visible }): string => (visible ? '1' : '0')};
-  ${({ transitionDelay }): CSSObject => ({
-    transition: `opacity ${transitionDelay / 1000}s`
-  })};
+  animation: showSpeech ${({ displayTime }): number => displayTime / 1000}s
+    ease-in-out infinite;
+
+  @keyframes showSpeech {
+    0% {
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 `;
 
 const StyledSpeechBubble = styled.div`

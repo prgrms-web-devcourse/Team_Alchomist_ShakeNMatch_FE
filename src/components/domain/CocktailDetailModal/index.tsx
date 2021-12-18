@@ -13,7 +13,7 @@ import {
   StyledImageContainer,
   StyledModal
 } from './style';
-import { MOCK_USER_INGREDIENT_IDS } from './types';
+import { useJangoContext } from '@contexts/Jango';
 import useAxios from '@hooks/useAxios';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 import type { IApiResponse, ICocktail } from '@models';
@@ -39,6 +39,7 @@ const CocktailDetailModal = ({
   const [isReviewModalVisible, setIsReviewModalVisible] = useState(false);
   const [returnedReviewModalData, setreturnedReviewModalData] =
     useState<Review | null>(null); //낙관적 업데이트를 하기 위함인데, 지울 때는 그러면 어떻게 하는건가
+  const { userIngredients } = useJangoContext();
   const defaultRequest = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
 
   const getCocktailDetailInfoById = (
@@ -113,8 +114,11 @@ const CocktailDetailModal = ({
                 {Children.toArray(
                   cocktailData?.volumes?.map((ingredient) => {
                     let isExists = false;
-                    //현재 유저의 재료는 목데이터로 들어가 있는 상태입니다
-                    if (MOCK_USER_INGREDIENT_IDS.includes(ingredient.id)) {
+                    if (
+                      userIngredients
+                        .map((userIngredient) => userIngredient.id)
+                        .includes(ingredient.id)
+                    ) {
                       isExists = true;
                     }
                     return (

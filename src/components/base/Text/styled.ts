@@ -12,6 +12,7 @@ const StyledText = styled.span<TextProps>`
   font-weight: ${({ bold }): string =>
     bold ? TEXT_WEIGHT.bold : TEXT_WEIGHT.normal};
   display: ${({ block }): string => (block ? 'block' : 'inline')};
+  line-height: 1.6;
 `;
 
 export { StyledText };
