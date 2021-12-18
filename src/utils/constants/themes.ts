@@ -1,4 +1,4 @@
-const THEME_MOOD = ['HAPPY', 'ANGRY', 'SAD'] as const;
+const THEME_MOOD = ['HAPPY', 'ANGRY', 'SAD', 'ROMANTIC', 'LONELY'] as const;
 const THEME_WEATHER = ['SUNNY', 'RAINY', 'CLOUDY', 'SNOWY'] as const;
 const THEME_COLOR = [
   'RED',
