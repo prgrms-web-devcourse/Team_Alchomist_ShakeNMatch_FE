@@ -33,7 +33,7 @@ const StyledTab = styled.div<StyledTabProps>`
   line-height: 1.8;
   background-color: transparent;
   z-index: 100;
-  &:first-child {
+  &:first-of-type {
     margin-top: 20px;
   }
 `;
