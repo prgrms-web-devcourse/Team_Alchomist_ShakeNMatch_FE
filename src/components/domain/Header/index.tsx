@@ -15,7 +15,7 @@ import { Tooltip } from '@base';
 import { useCustomNavigate } from '@contexts/CustomNavigate';
 
 const Header = (): ReactElement => {
-  const { oauthToken, user } = useAuthorization();
+  const { user, isAuthorized } = useAuthorization();
   const { navigate, saveCurrentPath } = useCustomNavigate();
   const location = useLocation();
 
@@ -64,7 +64,7 @@ const Header = (): ReactElement => {
           />
         </Tooltip>
       )}
-      {oauthToken ? (
+      {isAuthorized ? (
         <ImageButton
           mode='contain'
           size='headerIcon'

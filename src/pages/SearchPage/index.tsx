@@ -1,12 +1,15 @@
 import type { ReactElement } from 'react';
 import { useState, useCallback, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import CocktailList from '@domain/CocktailList';
 import { Image, Text } from '@base';
 import searchBartender from '@assets/characters/searchBartender.png';
-import SearchCocktailInput from '@domain/SearchCocktailInput';
+import {
+  SearchCocktailInput,
+  SectionDividerWithTitle,
+  HeaderPageTemplate,
+  CocktailList
+} from '@domain';
 import { StyledContentWrapper } from './styled';
-import SectionDividerWithTitle from '@domain/SectionDividerWithTitle';
 
 import useAxios from '@hooks/useAxios';
 import type { ICocktailSimple, IApiResponse } from '@models/types';
@@ -40,14 +43,16 @@ const SearchPage = (): ReactElement => {
   }, [keyword]);
 
   return (
-    <SectionDividerWithTitle alignItems withHeader>
-      <StyledContentWrapper>
-        <Text block>찾아 보고 싶은 칵테일이 있나요?</Text>
-        <Image mode='contain' src={searchBartender} />
-        <SearchCocktailInput onSearch={handleSearch} />
-      </StyledContentWrapper>
-      <CocktailList cocktailList={results} />
-    </SectionDividerWithTitle>
+    <HeaderPageTemplate>
+      <SectionDividerWithTitle alignItems withHeader>
+        <StyledContentWrapper>
+          <Text block>찾아 보고 싶은 칵테일이 있나요?</Text>
+          <Image mode='contain' src={searchBartender} />
+          <SearchCocktailInput onSearch={handleSearch} />
+        </StyledContentWrapper>
+        <CocktailList cocktailList={results} />
+      </SectionDividerWithTitle>
+    </HeaderPageTemplate>
   );
 };
 

@@ -1,18 +1,20 @@
-import Carousel from '@compound/Carousel';
+import { Carousel, Loader } from '@compound';
 import type { ReactElement } from 'react';
 import { useMemo, useEffect, useReducer } from 'react';
 import favoriteImageSrc from '@assets/carouselTheme/big/favorites.png';
 import editProfileImageSrc from '@assets/carouselTheme/big/editProfile.png';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import UserForm from '@domain/UserForm';
-import CocktailList from '@domain/CocktailList';
-import SectionDividerWithTitle from '@domain/SectionDividerWithTitle';
-import SearchBot from '@domain/SearchBot';
+import {
+  HeaderPageTemplate,
+  UserForm,
+  CocktailList,
+  SectionDividerWithTitle,
+  SearchBot
+} from '@domain';
 import type { IApiResponse, ICocktailSimple, IUser, IUserForm } from '@models';
 import useAxios from '@hooks/useAxios';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 import { useAuthorization } from '@contexts';
-import { Loader } from '@compound';
 import { Text } from '@base';
 import { getBookmarkReducer, getUserReducer, postUserReducer } from './reducer';
 import { StyledLogoutButton } from './styled';
@@ -131,7 +133,7 @@ const MyPage = (): ReactElement => {
   }, []);
 
   return (
-    <>
+    <HeaderPageTemplate>
       <SectionDividerWithTitle
         dividerOptions={{ size: 1, color: 'LIGHT_GRAY' }}
         showContentsDivider
@@ -187,14 +189,8 @@ const MyPage = (): ReactElement => {
       >
         로그 아웃
       </StyledLogoutButton>
-    </>
+    </HeaderPageTemplate>
   );
 };
 
 export default MyPage;
-
-/* 필요 컴포넌트
-1. Carousel
-2. UserForm
-3. CockTailList
-*/

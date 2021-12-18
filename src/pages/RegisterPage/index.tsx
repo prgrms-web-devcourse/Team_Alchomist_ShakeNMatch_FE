@@ -2,9 +2,8 @@ import { StyledPageContainerWithBackground } from '@base/PageContainerWithBackgr
 import { DOMAINS } from '@constants';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 import { useAuthorization } from '@contexts';
+import { BackButton, RegisterModal } from '@domain';
 import { useCustomNavigate } from '@contexts/CustomNavigate';
-import BackButton from '@domain/BackButton';
-import RegisterModal from '@domain/RegisterModal';
 import useAxios from '@hooks/useAxios';
 import type { IApiResponse, IUser, IUserForm } from '@models';
 import type { ReactElement } from 'react';

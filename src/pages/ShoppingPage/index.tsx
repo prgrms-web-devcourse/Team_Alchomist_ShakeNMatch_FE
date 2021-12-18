@@ -1,5 +1,4 @@
-import ShoppingItem from '@domain/ShoppingItem';
-import TitleSectionContainer from '@domain/TitleSectionContainer';
+import { ShoppingItem, TitleSectionContainer } from '@domain';
 import { Children } from 'react';
 import type { ReactElement } from 'react';
 import { StyledContainer } from './styled';
