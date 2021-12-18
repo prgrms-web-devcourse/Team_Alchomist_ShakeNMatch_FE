@@ -5,7 +5,6 @@ import type { ChaningTextProps } from './types';
 import { StyledContainer, StyledSpeechBubble } from './styled';
 
 const DEFAULT_TIME = 3000;
-const TRANSITION_DELAY = 300;
 
 const ChangingText = ({
   textList,
@@ -31,10 +30,7 @@ const ChangingText = ({
     const visibleInterval = setInterval(changeVisible, intervalTime);
 
     changeText();
-    const textInterval = setInterval(
-      changeText,
-      intervalTime * 2 + TRANSITION_DELAY
-    );
+    const textInterval = setInterval(changeText, intervalTime * 2);
 
     return (): void => {
       clearInterval(visibleInterval);
@@ -43,7 +39,7 @@ const ChangingText = ({
   }, []);
 
   return (
-    <StyledContainer transitionDelay={TRANSITION_DELAY} visible={visible}>
+    <StyledContainer displayTime={DEFAULT_TIME} visible={visible}>
       <StyledSpeechBubble>
         <Text color={textColor} size={textSize}>
           {textContent}
