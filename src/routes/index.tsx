@@ -1,14 +1,16 @@
 import { DOMAINS } from '@constants';
-import ErrorPage from '@pages/ErrorPage';
-import JangoPage from '@pages/JangoPage';
-import LoginPage from '@pages/LoginPage';
-import MainPage from '@pages/MainPage';
-import MyPage from '@pages/MyPage';
-import OAuthKaKaoPage from '@pages/OAuthKaKaoPage';
-import RegisterPage from '@pages/RegisterPage';
-import SearchPage from '@pages/SearchPage';
-import ShoppingPage from '@pages/ShoppingPage';
-import ThemePage from '@pages/ThemePage';
+import {
+  ErrorPage,
+  JangoPage,
+  LoginPage,
+  MainPage,
+  MyPage,
+  OAuthKaKaoPage,
+  RegisterPage,
+  SearchPage,
+  ShoppingPage,
+  ThemePage
+} from '@pages';
 import type { ReactElement } from 'react';
 import { Route, Routes } from 'react-router';
 import JangoProvider from '@contexts/Jango';

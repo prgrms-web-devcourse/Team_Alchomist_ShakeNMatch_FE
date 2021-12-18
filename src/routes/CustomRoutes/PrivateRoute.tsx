@@ -2,7 +2,7 @@ import type { CustomRouteProps } from './types';
 import { Header } from '@domain';
 import type { ReactElement } from 'react';
 import { useAuthorization } from '@contexts';
-import LoginPage from '@pages/LoginPage';
+import { LoginPage } from '@pages';
 
 const PublicRoute = ({
   children,
