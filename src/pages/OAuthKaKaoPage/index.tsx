@@ -1,4 +1,5 @@
 // import { request } from '@apis/config';
+import { Text } from '@base';
 import { StyledPageContainerWithBackground } from '@base/PageContainerWithBackground/styled';
 import { Loader } from '@compound';
 import { DOMAINS } from '@constants';
@@ -13,44 +14,89 @@ import { useSearchParams } from 'react-router-dom';
 import { StyledLoaderContainer } from './styled';
 
 // const POST_AUTHORIZED_CODE_URL = '';
+const LOCAL_STORAGE_KEY = 'temp';
+const INTERVAL_DELAY = 1000;
 
 const OAuthKaKaoPage = (): ReactElement => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { setOAuthToken, login } = useAuthorization();
   const { navigate, redirectToSavedPath, redirectPath } = useCustomNavigate();
   const request = useAxios(AXIOS_REQUEST_TYPE.AUTH);
-  const token = searchParams.get('token');
-  const needInfo = searchParams.get('needInfo');
-
+  const tokenParams = searchParams.get('token');
+  const needInfoParams = searchParams.get('needInfo');
+  const loadingParams = searchParams.get('loading');
   const getUser = (token: string): Promise<IApiResponse<IUser>> => {
     return request.get('/user', { headers: { token } });
   };
 
-  useEffect(() => {
-    const handleLogin = async (token: string): Promise<void> => {
+  const handleLogin = async (token: string): Promise<void> => {
+    try {
       const { data } = await getUser(token);
-      login({ oauthToken: token, user: data });
-      if (redirectPath) {
-        redirectToSavedPath();
-      } else {
-        navigate(`/${DOMAINS.main}`);
+      if (data) {
+        login({ oauthToken: token, user: data });
+        redirectPath ? redirectToSavedPath() : navigate(`/${DOMAINS.main}`);
+      }
+    } catch (e) {
+      console.error(e);
+      alert('로그인에 실패하였습니다! 다시 시도해주세요');
+      navigate(`/${DOMAINS.main}`);
+    }
+  };
+
+  const parseStorage = (
+    temp: string
+  ): { token: string; needInfo: string } | void => {
+    try {
+      const data = JSON.parse(temp);
+      if (data) {
+        return data;
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  //
+  useEffect(() => {
+    if (tokenParams && needInfoParams) {
+      const temp = { token: tokenParams, needInfo: needInfoParams };
+      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(temp));
+      setSearchParams({});
+      window.close();
+    }
+  }, []);
+
+  useEffect(() => {
+    const checkStorage = (): void => {
+      const temp = localStorage.getItem(LOCAL_STORAGE_KEY) || '';
+      if (temp) {
+        const data = parseStorage(temp);
+        if (data) {
+          localStorage.removeItem(LOCAL_STORAGE_KEY);
+          const { token, needInfo } = data;
+          if (needInfo === 'true') {
+            setOAuthToken(token);
+            navigate(`/${DOMAINS.register}`);
+          } else if (token) {
+            handleLogin(token);
+          }
+        }
       }
     };
 
-    if (token) {
-      setOAuthToken(token);
-      setSearchParams({}, { replace: true });
-      needInfo === 'true'
-        ? navigate(`/${DOMAINS.register}`)
-        : handleLogin(token); // 로그인시에는 별도
-    } else {
-      navigate(`/${DOMAINS.main}`);
+    if (loadingParams) {
+      const timerId = setInterval(checkStorage, INTERVAL_DELAY);
+
+      return (): void => {
+        clearInterval(timerId);
+      };
     }
   }, []);
 
   return (
     <StyledPageContainerWithBackground>
       <StyledLoaderContainer>
+        <Text>로그인 중입니다. 잠시만 기다려주세요...</Text>
         <Loader />
       </StyledLoaderContainer>
     </StyledPageContainerWithBackground>
