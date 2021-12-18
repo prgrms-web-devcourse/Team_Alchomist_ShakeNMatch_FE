@@ -1,18 +1,20 @@
-import Carousel from '@compound/Carousel';
+import { Carousel, Loader } from '@compound';
 import type { ReactElement } from 'react';
 import { useMemo, useEffect, useReducer } from 'react';
 import favoriteImageSrc from '@assets/carouselTheme/big/favorites.png';
 import editProfileImageSrc from '@assets/carouselTheme/big/editProfile.png';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import UserForm from '@domain/UserForm';
-import CocktailList from '@domain/CocktailList';
-import SectionDividerWithTitle from '@domain/SectionDividerWithTitle';
-import SearchBot from '@domain/SearchBot';
+import {
+  HeaderPageTemplate,
+  UserForm,
+  CocktailList,
+  SectionDividerWithTitle,
+  SearchBot
+} from '@domain';
 import type { IApiResponse, IUser, IUserForm } from '@models';
 import useAxios from '@hooks/useAxios';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 import { useAuthorization } from '@contexts';
-import { Loader } from '@compound';
 import { Text } from '@base';
 import { getUserReducer, postUserReducer } from './reducer';
 
@@ -103,7 +105,7 @@ const MyPage = (): ReactElement => {
   const cocktails: any[] = [];
 
   return (
-    <>
+    <HeaderPageTemplate>
       <SectionDividerWithTitle
         dividerOptions={{ size: 1, color: 'LIGHT_GRAY' }}
         showContentsDivider
@@ -140,7 +142,7 @@ const MyPage = (): ReactElement => {
         {postUserAPIState.value ? <Text>회원정보가 수정되었습니다!</Text> : ''}
       </SectionDividerWithTitle>
       <SearchBot />
-    </>
+    </HeaderPageTemplate>
   );
 };
 

@@ -1,8 +1,7 @@
 import { StyledPageContainerWithBackground } from '@base/PageContainerWithBackground/styled';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 import { useAuthorization } from '@contexts';
-import BackButton from '@domain/BackButton';
-import RegisterModal from '@domain/RegisterModal';
+import { BackButton, RegisterModal } from '@domain';
 import useAxios from '@hooks/useAxios';
 import type { IApiResponse, IUser, IUserForm } from '@models';
 import type { ReactElement } from 'react';

@@ -1,13 +1,11 @@
-import MainMenuSelector from '@domain/MainMenuSelector';
+import { MainMenuSelector, BackButton, KaKaoButton } from '@domain';
 import type { ReactElement } from 'react';
 import { useEffect, useState, useCallback } from 'react';
 import { StyledLogo, StyledLogoContainer, StyledPageContainer } from './styled';
-import TextButton from '@compound/TextButton';
+import { TextButton } from '@compound';
 import { useAuthorization } from '@contexts';
 import { useNavigate } from 'react-router';
 import { DOMAINS } from '@constants';
-import BackButton from '@domain/BackButton';
-import KaKaoButton from '@domain/KaKaoButton';
 
 const LOGIN_MODAL_DELAY_MS = 1000;
 let timerId: null | NodeJS.Timeout = null;

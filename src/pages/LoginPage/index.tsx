@@ -1,7 +1,5 @@
 import { Image, Modal } from '@base';
-import BackButton from '@domain/BackButton';
-import KaKaoButton from '@domain/KaKaoButton';
-import TitleSectionContainer from '@domain/TitleSectionContainer';
+import { BackButton, KaKaoButton, TitleSectionContainer } from '@domain';
 import type { ReactElement } from 'react';
 import BartenderSrc from '@assets/characters/searchBartender.png';
 import { useNavigate } from 'react-router';
