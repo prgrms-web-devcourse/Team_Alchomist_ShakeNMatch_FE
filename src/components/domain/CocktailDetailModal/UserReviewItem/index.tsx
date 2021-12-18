@@ -12,6 +12,7 @@ import {
 import type { UserReviewItemProps, DeleteResponse } from './types';
 
 const UserReviewItem = ({
+  nickname,
   reviewId,
   loginedUserId,
   reviewOwnerId,
@@ -37,6 +38,7 @@ const UserReviewItem = ({
       <StyledImageWrapper>
         <Image height='80px' mode='fill' src={userImageUrl} width='80px' />
       </StyledImageWrapper>
+      <Text size='xs'>{nickname}</Text>
       <StyledRatingCommentWrapper>
         <RatingStar mode='show' rateTobeDisplayed={userRating} />
         <Text size='xs'>{userComment}</Text>

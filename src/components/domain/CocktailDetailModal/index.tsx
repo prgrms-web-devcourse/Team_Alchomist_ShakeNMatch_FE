@@ -150,6 +150,7 @@ const CocktailDetailModal = ({
                       //여기에 리뷰 아이디 같이 넣어줘야 삭제 가능하다. 현재 Cocktail id 검색결과에서는 reviewId가 없음
                       <UserReviewItem
                         loginedUserId={user?.id}
+                        nickname={userReview.nickname}
                         reviewId={userReview.id}
                         reviewOwnerId={userReview.userId}
                         userComment={userReview.description}
