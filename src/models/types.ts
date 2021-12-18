@@ -100,7 +100,7 @@ interface IUser {
   isMan: boolean;
   age: number;
   mbti: IUserMbti;
-  ingredients?: IIngredient[];
+  ingredients: IIngredient[];
 }
 
 interface IUserForm {

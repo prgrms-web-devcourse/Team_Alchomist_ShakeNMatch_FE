@@ -13,7 +13,7 @@ import {
   StyledImageContainer,
   StyledModal
 } from './style';
-import { useJangoContext } from '@contexts/Jango';
+import { useAuthorization } from '@contexts/Authorization';
 import useAxios from '@hooks/useAxios';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 import type { IApiResponse, ICocktail } from '@models';
@@ -39,7 +39,7 @@ const CocktailDetailModal = ({
   const [isReviewModalVisible, setIsReviewModalVisible] = useState(false);
   const [returnedReviewModalData, setreturnedReviewModalData] =
     useState<Review | null>(null); //낙관적 업데이트를 하기 위함인데, 지울 때는 그러면 어떻게 하는건가
-  const { userIngredients } = useJangoContext();
+  const { user } = useAuthorization();
   const defaultRequest = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
 
   const getCocktailDetailInfoById = (
@@ -115,7 +115,7 @@ const CocktailDetailModal = ({
                   cocktailData?.volumes?.map((ingredient) => {
                     let isExists = false;
                     if (
-                      userIngredients
+                      user?.ingredients
                         .map((userIngredient) => userIngredient.id)
                         .includes(ingredient.id)
                     ) {

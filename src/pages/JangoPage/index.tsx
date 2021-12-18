@@ -94,7 +94,7 @@ const JangoPage = (): ReactElement => {
     selectedIngredients: number[]
   ): Promise<void> => {
     if (user?.id) {
-      await updateUserIngredients(user?.id, selectedIngredients);
+      await updateUserIngredients(user.id, selectedIngredients);
     }
 
     const recentIngredients = selectedIngredients.map(
