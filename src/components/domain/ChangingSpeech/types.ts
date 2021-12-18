@@ -9,7 +9,7 @@ interface ChaningTextProps {
 
 interface StyledContainerProps {
   visible: boolean;
-  transitionDelay: number;
+  displayTime: number;
 }
 
 export type { ChaningTextProps, StyledContainerProps };
