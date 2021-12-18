@@ -1,3 +1,4 @@
+import { Modal } from '@base';
 import { COLOR } from '@constants';
 import styled from '@emotion/styled';
 
@@ -9,6 +10,11 @@ const StyledLeftSection = styled.div`
 const StyledRightSection = styled.div`
   background-color: ${COLOR.IVORY};
   overflow: hidden;
+`;
+
+const StyledModal = styled(Modal)`
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 `;
 
 const StyledIngredientListWrapper = styled.div`
@@ -56,6 +62,7 @@ const StyledImageContainer = styled.div`
 `;
 
 export {
+  StyledModal,
   StyledLeftSection,
   StyledRightSection,
   StyledIngredientListWrapper,

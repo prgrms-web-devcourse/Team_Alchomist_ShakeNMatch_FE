@@ -11,17 +11,11 @@ import SectionDividerWithTitle from '@domain/SectionDividerWithTitle';
 import useAxios from '@hooks/useAxios';
 import type { ICocktailSimple, IApiResponse } from '@models/types';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
-import { CocktailDetailModal } from '@domain';
 
 const SearchPage = (): ReactElement => {
   const [results, setResults] = useState<ICocktailSimple[]>([]);
   const { keyword } = useParams();
   const navigate = useNavigate();
-  const [clickedCocktailId, setClickedCocktailId] = useState<number | null>(
-    null
-  );
-  const [isCocktailDetailModalVisible, setIsCocktailDetailModalVisible] =
-    useState<boolean>(false);
 
   const request = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
 
@@ -35,11 +29,6 @@ const SearchPage = (): ReactElement => {
     navigate(`/search/${inputKeyword}`);
   }, []);
 
-  const handleAlbumClick = (cocktailId: number): void => {
-    setClickedCocktailId(cocktailId);
-    setIsCocktailDetailModalVisible(true);
-  };
-
   useEffect(() => {
     const setSearchResults = async (): Promise<void> => {
       if (keyword) {
@@ -51,31 +40,14 @@ const SearchPage = (): ReactElement => {
   }, [keyword]);
 
   return (
-    <>
-      <SectionDividerWithTitle alignItems>
-        <StyledContentWrapper>
-          <Text block>찾아 보고 싶은 칵테일이 있나요?</Text>
-          <Image mode='contain' src={searchBartender} />
-          <SearchCocktailInput onSearch={handleSearch} />
-        </StyledContentWrapper>
-        <CocktailList
-          cocktailList={results}
-          handleAlbumClick={handleAlbumClick}
-        />
-      </SectionDividerWithTitle>
-      {clickedCocktailId && (
-        <CocktailDetailModal
-          backgroundColor='DARK_GRAY'
-          clickedCocktailId={clickedCocktailId}
-          color='IVORY'
-          size='lg'
-          visible={isCocktailDetailModalVisible}
-          onClose={(): void => {
-            setIsCocktailDetailModalVisible(false);
-          }}
-        />
-      )}
-    </>
+    <SectionDividerWithTitle alignItems withHeader>
+      <StyledContentWrapper>
+        <Text block>찾아 보고 싶은 칵테일이 있나요?</Text>
+        <Image mode='contain' src={searchBartender} />
+        <SearchCocktailInput onSearch={handleSearch} />
+      </StyledContentWrapper>
+      <CocktailList cocktailList={results} />
+    </SectionDividerWithTitle>
   );
 };
 
