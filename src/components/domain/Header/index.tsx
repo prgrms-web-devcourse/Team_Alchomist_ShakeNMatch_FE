@@ -14,7 +14,7 @@ import { DOMAINS } from '@constants';
 import { Tooltip } from '@base';
 
 const Header = (): ReactElement => {
-  const { oauthToken, user } = useAuthorization();
+  const { user, isAuthorized } = useAuthorization();
   const location = useLocation();
   const domain = useMemo(() => getDomain(location.pathname), [location]);
   const navigate = useNavigate();
@@ -62,7 +62,7 @@ const Header = (): ReactElement => {
           />
         </Tooltip>
       )}
-      {oauthToken ? (
+      {isAuthorized ? (
         <ImageButton
           mode='contain'
           size='headerIcon'
