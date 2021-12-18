@@ -15,6 +15,9 @@ const DEFAULT_IMAGE_SRC = 'http://via.placeholder.com/100x100';
 const DEFAULT_TITLE = '재료가 비어있습니다.';
 const DEFAULT_PRICE = 0;
 const DEFAULT_VENDOR = '구매처가 비어있습니다';
+// const clickHandler = (link): void => {
+//   window.open(link, '_blank');
+// };
 
 const ShoppingItem = ({
   imageWidth = DEFAULT_IMAGE_WIDTH,
@@ -22,10 +25,11 @@ const ShoppingItem = ({
   imageSrc = DEFAULT_IMAGE_SRC,
   title = DEFAULT_TITLE,
   price = DEFAULT_PRICE,
-  vendor = DEFAULT_VENDOR
+  vendor = DEFAULT_VENDOR,
+  onClick
 }: ShoppingItemProps): ReactElement => {
   return (
-    <StyledContainer>
+    <StyledContainer onClick={onClick}>
       <StyledImage>
         <Image
           height={imageHeight}

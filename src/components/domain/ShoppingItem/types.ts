@@ -1,4 +1,6 @@
-interface ShoppingItemProps {
+import type { HTMLAttributes } from 'react';
+
+interface ShoppingItemProps extends HTMLAttributes<HTMLDivElement> {
   imageWidth?: string;
   imageHeight?: string;
   imageSrc?: string;

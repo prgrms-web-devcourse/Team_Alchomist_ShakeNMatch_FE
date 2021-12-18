@@ -55,15 +55,19 @@ const ShoppingPage = (): ReactElement => {
         price={shoppingItem.lprice}
         title={shoppingItem.title}
         vendor={shoppingItem.mallName}
+        // 리펙토링 할 것.
+        onClick={(): void => {
+          window.open(shoppingItem.link, '_blank');
+        }}
       ></ShoppingItem>
     ))
   );
 
   return (
     <>
-      <button type='button' onClick={fetchData}>
+      {/* <button type='button' onClick={fetchData}>
         네이버 검색 API 불러오기
-      </button>
+      </button> */}
       <StyledContainer>
         <TitleSectionContainer
           alignItems={true}
@@ -73,6 +77,7 @@ const ShoppingPage = (): ReactElement => {
           dividerVisible={true}
           dividerWidth='200px'
           gap='20px'
+          style={{ marginTop: 50 }}
           titleSize='lg'
           titleText='부족한 재료를 채워보세요!'
         >
