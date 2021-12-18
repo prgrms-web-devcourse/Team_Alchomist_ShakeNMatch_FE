@@ -97,7 +97,7 @@ interface IIngredient {
 interface IUser {
   id: number;
   nickname: string;
-  man: boolean;
+  isMan: boolean;
   age: number;
   mbti: IUserMbti;
   ingredients?: IIngredient[];
