@@ -1,12 +1,17 @@
 interface UserReviewItemProps {
   loginedUserId?: number;
   cocktailId?: number;
-  reviewOwnerId?: number;
   reviewId: number;
+  reviewOwnerId: number;
+  userComment?: string;
   userImageUrl?: string;
   userRating?: number;
-  userComment?: string;
   onDelete?(reviewId: number): void;
 }
 
-export type { UserReviewItemProps };
+interface DeleteResponse {
+  data: string;
+  serverDateTime: string;
+}
+
+export type { UserReviewItemProps, DeleteResponse };

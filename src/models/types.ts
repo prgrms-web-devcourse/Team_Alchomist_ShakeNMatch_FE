@@ -57,12 +57,14 @@ interface ITheme {
 }
 
 interface IReview {
-  id: string;
+  id: number;
   rating: number;
   description: string;
-  imageUrl: string;
-  reviewer: IUser;
-  cocktails: ICocktail;
+  url: string;
+  userId: number;
+  nickname: string;
+  cocktailId: 1;
+  cocktailName: string;
 }
 
 interface ICocktailSimple {
