@@ -8,10 +8,6 @@ import { DOMAINS } from '@constants';
 // import { DOMAINS } from '@constants';
 const { REACT_APP_BASE_URL: BASE_URL } = process.env;
 
-// CLIENT_ID NOTION 참고
-// const REDIRECT_URI = `${BASE_URL}/login/oauth2/code/kakao`;
-// const REDIRECT_URI = `${BASE_URL}/login`;
-
 const KaKaoButton = ({ redirectUrl }: KaKaoButtonProps): ReactElement => {
   const { savePath, navigate } = useCustomNavigate();
   const handleLogin = (): void => {
@@ -22,7 +18,7 @@ const KaKaoButton = ({ redirectUrl }: KaKaoButtonProps): ReactElement => {
     window.open(
       `${BASE_URL}/login`,
       '__blank',
-      'fullscreen=no, width=500, height=600, resizable=no'
+      'fullscreen=no, menubar=no, location=no, left=50, top=50, width=500, height=600, resizable=no'
     );
     navigate(`/${DOMAINS.oauthKaKao}?loading=true`);
     // window.location.assign(`${BASE_URL}/login`);

@@ -6,7 +6,7 @@ interface INavigateContext {
   saveCurrentPath(): void;
   savePath(pathname: string): void;
   clearRedirectPath(): void;
-  redirectToSavedPath(): void;
+  redirectToSavedPath(options?: { replace?: boolean }): void;
 }
 
 export type { INavigateContext };

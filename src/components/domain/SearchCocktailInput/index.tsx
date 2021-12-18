@@ -7,9 +7,10 @@ import type { SearchCocktailInputProps } from './types';
 const SEARCH_DEBOUNCE_TIME = 600;
 
 const SearchCocktailInput = ({
-  onSearch
+  onSearch,
+  initialValue = ''
 }: SearchCocktailInputProps): ReactElement => {
-  const [keyword, setKeyword] = useState('');
+  const [keyword, setKeyword] = useState(initialValue);
 
   const handleChange = useCallback((e: ChangeEvent<HTMLInputElement>): void => {
     setKeyword(e.currentTarget.value);
@@ -41,7 +42,7 @@ const SearchCocktailInput = ({
 
   return (
     <form onSubmit={handleSubmit}>
-      <Input inputType='text' onChange={handleChange} />
+      <Input inputType='text' value={keyword} onChange={handleChange} />
     </form>
   );
 };

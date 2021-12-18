@@ -6,6 +6,7 @@ import { DOMAINS } from '@constants';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 import { useAuthorization } from '@contexts';
 import { useCustomNavigate } from '@contexts/CustomNavigate';
+import { BackButton } from '@domain';
 import useAxios from '@hooks/useAxios';
 import type { IApiResponse, IUser } from '@models';
 import type { ReactElement } from 'react';
@@ -34,7 +35,9 @@ const OAuthKaKaoPage = (): ReactElement => {
       const { data } = await getUser(token);
       if (data) {
         login({ oauthToken: token, user: data });
-        redirectPath ? redirectToSavedPath() : navigate(`/${DOMAINS.main}`);
+        redirectPath
+          ? redirectToSavedPath({ replace: true })
+          : navigate(`/${DOMAINS.main}`, { replace: true });
       }
     } catch (e) {
       console.error(e);
@@ -96,8 +99,16 @@ const OAuthKaKaoPage = (): ReactElement => {
   return (
     <StyledPageContainerWithBackground>
       <StyledLoaderContainer>
-        <Text>로그인 중입니다. 잠시만 기다려주세요...</Text>
+        <Text bold color='NAVY' dangerously>
+          {'로그인 중입니다. <br> 잠시만 기다려주세요...'}
+        </Text>
         <Loader />
+        <BackButton
+          color='NAVY'
+          onClick={(): void => {
+            navigate(`/${DOMAINS.main}`);
+          }}
+        />
       </StyledLoaderContainer>
     </StyledPageContainerWithBackground>
   );

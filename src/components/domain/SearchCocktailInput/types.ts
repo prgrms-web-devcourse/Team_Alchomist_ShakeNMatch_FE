@@ -1,4 +1,5 @@
 interface SearchCocktailInputProps {
+  initialValue?: string;
   onSearch(keyword: string): void;
 }
 

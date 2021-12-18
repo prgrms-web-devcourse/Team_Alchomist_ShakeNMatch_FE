@@ -48,7 +48,7 @@ const SearchPage = (): ReactElement => {
         <StyledContentWrapper>
           <Text block>찾아 보고 싶은 칵테일이 있나요?</Text>
           <Image mode='contain' src={searchBartender} />
-          <SearchCocktailInput onSearch={handleSearch} />
+          <SearchCocktailInput initialValue={keyword} onSearch={handleSearch} />
         </StyledContentWrapper>
         <CocktailList cocktailList={results} />
       </SectionDividerWithTitle>

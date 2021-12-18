@@ -15,7 +15,7 @@ const StyledHeaderContainer = styled.header`
   column-gap: 10px;
   box-shadow: 0 1px 2px -2px ${COLOR.BLACK};
 
-  & > *:first-child {
+  & > .logo {
     margin-right: auto;
   }
 `;

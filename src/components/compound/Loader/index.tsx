@@ -4,7 +4,7 @@ import imageSrc from '@assets/loader/shaker.png';
 
 const Loader = (): ReactElement => {
   return (
-    <StyledImage height='50px' mode='contain' src={imageSrc} width='50px' />
+    <StyledImage height='80px' mode='contain' src={imageSrc} width='80px' />
   );
 };
 
