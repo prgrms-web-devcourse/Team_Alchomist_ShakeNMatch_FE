@@ -41,7 +41,7 @@ const UserReviewItem = ({
         <RatingStar mode='show' rateTobeDisplayed={userRating} />
         <Text size='xs'>{userComment}</Text>
       </StyledRatingCommentWrapper>
-      {loginedUserId && (
+      {loginedUserId === reviewOwnerId && (
         <TextButton buttonType='X_SHORT_WHITE' onClick={handleDelete}>
           {'삭제'}
         </TextButton>
