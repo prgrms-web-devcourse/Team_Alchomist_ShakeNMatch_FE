@@ -10,12 +10,15 @@ import {
   StyledNameAmoutMeasureWrapper,
   StyledHasWrapper
 } from './style';
+import { useCustomNavigate } from '@contexts/CustomNavigate';
 
 const IngredientItem = (ingredient: IngredientItemProps): ReactElement => {
   const innerTextColor = ingredient.isUserHas ? 'BLACK' : 'BASIC_WHITE';
+  const { savePath } = useCustomNavigate();
 
   const handleClick = (): void => {
     if (!ingredient.isUserHas) {
+      savePath(`/shop/${ingredient.name}`);
       window.open(`/shop/${ingredient.name}`, '_blank');
     }
   };
