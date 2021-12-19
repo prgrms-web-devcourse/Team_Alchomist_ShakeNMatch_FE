@@ -81,7 +81,6 @@ interface IReviewPostResponse {
 interface ICocktailSimple {
   id: number;
   name: string;
-  type: string;
 }
 
 interface ICocktail {

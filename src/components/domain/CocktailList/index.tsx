@@ -28,8 +28,7 @@ const CocktailList = ({
             cocktailList.map((cocktail, index) => (
               <StyledMotionWrapper resultIndex={index}>
                 <Album
-                  cocktailId={cocktail.id}
-                  handleAlbumClick={handleAlbumClick}
+                  albumId={cocktail.id}
                   imageSrc={
                     CocktailIcons[
                       (index % TOTAL_COCKTAIL_ICONS) as CocktailIconsKeys
@@ -37,6 +36,7 @@ const CocktailList = ({
                   }
                   text={cocktail.name}
                   type='result'
+                  onAlbumClick={handleAlbumClick}
                 />
               </StyledMotionWrapper>
             ))
