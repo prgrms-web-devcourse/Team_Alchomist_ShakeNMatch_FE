@@ -11,12 +11,12 @@ import {
   SectionDividerWithTitle,
   SearchBot
 } from '@domain';
-import type { IApiResponse, ICocktailSimple, IUser, IUserForm } from '@models';
+import type { IApiResponse, IUser, IUserForm } from '@models';
 import useAxios from '@hooks/useAxios';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 import { useAuthorization } from '@contexts';
 import { Text } from '@base';
-import { getBookmarkReducer, getUserReducer, postUserReducer } from './reducer';
+import { getUserReducer, postUserReducer } from './reducer';
 import { StyledLogoutButton } from './styled';
 import { DOMAINS } from '@constants';
 
@@ -39,11 +39,7 @@ const MyPage = (): ReactElement => {
     postUserReducer,
     { value: null, isLoading: false, error: null }
   );
-  const [getBookmarkAPIState, dispatchGetBookmarkAPIState] = useReducer(
-    getBookmarkReducer,
-    { value: null, isLoading: false, error: null }
-  );
-  // api
+
   const getUserProfile = (userId: number): Promise<IApiResponse<IUser>> =>
     request.get(`/user/${userId}`);
   const postUserProfile = (form: IUserForm): Promise<IApiResponse<string>> => {
@@ -55,10 +51,6 @@ const MyPage = (): ReactElement => {
       mbti
     });
   };
-  const getUserBookmarks = (
-    userId: number
-  ): Promise<IApiResponse<ICocktailSimple[]>> =>
-    request.get(`user/bookmark/${userId}`);
 
   const getUser = async (userId: number): Promise<void> => {
     try {
@@ -93,26 +85,6 @@ const MyPage = (): ReactElement => {
       dispatchPostUserAPIState({ type: 'API_END' });
     }
   };
-  const getBookmarkByUserId = async (userId: number): Promise<void> => {
-    try {
-      dispatchGetBookmarkAPIState({ type: 'API_START' });
-      const { data } = await getUserBookmarks(userId);
-      if (data) {
-        dispatchGetBookmarkAPIState({
-          type: 'API_SUCCESS',
-          payload: data
-        });
-      }
-    } catch (e) {
-      dispatchGetBookmarkAPIState({
-        type: 'API_FAILED'
-      });
-    } finally {
-      dispatchGetBookmarkAPIState({
-        type: 'API_END'
-      });
-    }
-  };
 
   const handleEditUserSubmit = (userForm: IUserForm): void => {
     postUser(userForm);
@@ -125,7 +97,6 @@ const MyPage = (): ReactElement => {
   useEffect(() => {
     if (user) {
       getUser(user.id);
-      getBookmarkByUserId(user.id);
     } else {
       console.error('유저 정보가 없습니다!');
       navigate(-1);
@@ -155,10 +126,8 @@ const MyPage = (): ReactElement => {
           />
         </Carousel.Container>
         {selectedIndex === 0 ? (
-          getBookmarkAPIState.isLoading ? (
-            <Loader />
-          ) : getBookmarkAPIState.value ? (
-            <CocktailList cocktailList={getBookmarkAPIState.value} />
+          user?.bookmarks.length ? (
+            <CocktailList cocktailList={user.bookmarks} />
           ) : (
             <Text color='LIGHT_GRAY' size='sm'>
               Cocktail 정보를 받아올수 없습니다

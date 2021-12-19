@@ -1,4 +1,4 @@
-import type { IUser } from '@models';
+import type { ICocktailSimple, IUser } from '@models';
 
 interface IAuthState {
   oauthToken: string | null;
@@ -11,6 +11,7 @@ interface IAuthContext extends IAuthState {
   logout(): void;
   setUserIngredients(ingredients: any): void;
   setOAuthToken(value: string): void;
+  updateContextBookmark(value: ICocktailSimple): void;
 }
 
 export type { IAuthState, IAuthContext };

@@ -22,25 +22,42 @@ const CocktailDetailModal = ({
   backgroundColor,
   color,
   visible,
-  clickedCocktailId = 1,
+  cocktailId,
   onClose
 }: CocktailDetailModalProps): ReactElement => {
-  const [cocktailId, setCocktailId] = useState<number | null>(null);
   const [cocktailData, setCocktailData] = useState<ICocktail | null>(null);
   const [cocktailReviews, setCocktailReviews] = useState<IReview[]>([]);
   const [isReviewModalVisible, setIsReviewModalVisible] = useState(false);
-  const { user } = useAuthorization();
-  const defaultRequest = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
+  // const [returnedReviewModalData, setreturnedReviewModalData] =
+  //   useState<Review | null>(null); //낙관적 업데이트를 하기 위함인데, 지울 때는 그러면 어떻게 하는건가
+  const { user, updateContextBookmark } = useAuthorization();
+  const request = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
+  const authRequest = useAxios(AXIOS_REQUEST_TYPE.AUTH);
 
+  console.log('bm', updateContextBookmark);
+
+  // Api
   const getCocktailDetailInfoById = (
     cocktailId: number
   ): Promise<IApiResponse<ICocktail>> => {
-    return defaultRequest.get(`/cocktail/id?id=${cocktailId}`);
+    return request.get(`/cocktail/id?id=${cocktailId}`);
+  };
+
+  // const deleteMyCocktailReview = (
+  //   reviewId: number
+  // ): Promise<DeleteResponse> => {
+  //   return request.delete(`/review/${reviewId}`);
+  // };
+
+  const toggleBookmark = (
+    userId: number,
+    cocktailId: number
+  ): Promise<IApiResponse<string>> => {
+    return authRequest.post('/user/bookmark', { userId, cocktailId });
   };
 
   useEffect(() => {
     if (visible) {
-      setCocktailId(clickedCocktailId);
       const getCocktailInfo = async (): Promise<void> => {
         if (cocktailId) {
           const searchResult = await getCocktailDetailInfoById(cocktailId);
@@ -51,9 +68,8 @@ const CocktailDetailModal = ({
       getCocktailInfo();
       return;
     }
-    setCocktailId(null);
     setCocktailData(null);
-  }, [visible, cocktailId]); //둘 다 deps로 넣어주어야 다른 카드를 눌러도 잘 동작한다.
+  }, [visible]);
 
   const onDelete = (reviewId: number): void => {
     const newCocktailReview = [...cocktailReviews].filter(
@@ -72,6 +88,19 @@ const CocktailDetailModal = ({
   const handleClose = (): void => {
     if (!isReviewModalVisible) {
       onClose?.();
+    }
+  };
+
+  const handleBookmark = async (): Promise<void> => {
+    if (user?.id) {
+      await toggleBookmark(user.id, cocktailId);
+    }
+    // 낙관적 업데이트
+    if (cocktailData) {
+      updateContextBookmark({
+        id: cocktailData.id,
+        name: cocktailData.name
+      });
     }
   };
 
@@ -100,7 +129,13 @@ const CocktailDetailModal = ({
               titleText={cocktailData?.name}
             >
               <StyledIngredientListWrapper>
-                <IconToggle name='flag' />
+                <IconToggle
+                  initialState={user?.bookmarks.some(
+                    (cocktail) => cocktail.id === cocktailId
+                  )}
+                  name='flag'
+                  onChange={handleBookmark}
+                />
                 <Text size='md'>{'- 재료 -'}</Text>
                 {Children.toArray(
                   cocktailData?.volumes?.map((ingredient) => {
