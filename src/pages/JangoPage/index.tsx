@@ -131,7 +131,7 @@ const JangoPage = (): ReactElement => {
 
     setSelectedIngredientIdList((prevState) => ({
       ...prevState,
-      sub: newSelectedIngredientIdList
+      [type]: newSelectedIngredientIdList
     }));
   };
 
