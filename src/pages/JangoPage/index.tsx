@@ -1,5 +1,5 @@
 import type { ReactElement } from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import {
   SectionDividerWithTitle,
   CocktailList,
@@ -62,7 +62,6 @@ const JangoPage = (): ReactElement => {
       (ingredient) => ingredient.id
     );
     const subIngredientsId = ingredients.sub.map((ingredient) => ingredient.id);
-
     const userIngredientsId = [...mainIngredientsId, ...subIngredientsId];
 
     const setRecommendedCocktailsByIngredients = async (): Promise<void> => {
@@ -108,6 +107,46 @@ const JangoPage = (): ReactElement => {
     closeModal();
   };
 
+  const [selectedIngredientIdList, setSelectedIngredientIdList] = useState({
+    main: ingredients.main.map((ingredient) => ingredient.id),
+    sub: ingredients.sub.map((ingredient) => ingredient.id)
+  });
+
+  console.log(selectedIngredientIdList);
+
+  const handleIngredientClick = (
+    type: 'main' | 'sub',
+    toggleId: number
+  ): void => {
+    const deleteIdIndex = selectedIngredientIdList[type].findIndex(
+      (ingredientId) => ingredientId === toggleId
+    );
+
+    const newSelectedIngredientIdList =
+      deleteIdIndex !== -1
+        ? selectedIngredientIdList[type].filter(
+            (_, index) => index !== deleteIdIndex
+          )
+        : [...selectedIngredientIdList[type], toggleId];
+
+    setSelectedIngredientIdList((prevState) => ({
+      ...prevState,
+      sub: newSelectedIngredientIdList
+    }));
+  };
+
+  const filteredCocktailList = useMemo(
+    () =>
+      recommendedCocktails
+        .filter(
+          (cocktail) =>
+            selectedIngredientIdList.main.includes(cocktail.id) ||
+            selectedIngredientIdList.sub.includes(cocktail.id)
+        )
+        .map(({ id, name }) => ({ id, name })),
+    [recommendedCocktails, selectedIngredientIdList]
+  );
+
   return (
     <HeaderPageTemplate>
       <SectionDividerWithTitle
@@ -120,24 +159,26 @@ const JangoPage = (): ReactElement => {
             albumType='alcohol'
             itemList={ingredients.main}
             row='single'
+            selectedItemIdList={selectedIngredientIdList.main}
+            onIngredientClick={(ingredientId: number): void => {
+              handleIngredientClick('main', ingredientId);
+            }}
           />
           <Text color='BLACK_OPACITY'>감미료</Text>
           <IngredientCarousel
             albumType='sweetener'
             itemList={ingredients.sub}
             row='double'
+            selectedItemIdList={selectedIngredientIdList.sub}
+            onIngredientClick={(ingredientId: number): void => {
+              handleIngredientClick('sub', ingredientId);
+            }}
           />
           <TextButton buttonType='LONG_PINK' onClick={openModal}>
             내 재료 수정하기
           </TextButton>
         </StyledIngredientContainer>
-        <CocktailList
-          cocktailList={recommendedCocktails.map((cocktail) => ({
-            id: cocktail.id,
-            name: cocktail.name,
-            type: 'whiskey'
-          }))}
-        />
+        <CocktailList cocktailList={filteredCocktailList} />
       </SectionDividerWithTitle>
       <IngredientSelectModal
         initialMainIngredient={ingredients.main.map(
