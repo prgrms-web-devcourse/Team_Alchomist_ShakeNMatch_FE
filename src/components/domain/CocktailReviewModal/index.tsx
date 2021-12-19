@@ -11,6 +11,7 @@ import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 import type { IReviewPostResponse } from '@models';
 
 const CocktailReviewModal = ({
+  nickname,
   cocktailId,
   loginedUserId,
   handleOnSubmitted,
@@ -51,6 +52,7 @@ const CocktailReviewModal = ({
         JSON.stringify({
           userId: loginedUserId,
           url: userFile.name,
+          nickname: nickname,
           cocktailId: cocktailId,
           description: userComment,
           rating: userRate
@@ -66,6 +68,7 @@ const CocktailReviewModal = ({
       formData
     );
     if (result.data) {
+      console.log(result.data);
       handleOnSubmitted({
         id: result.data.reviewId,
         rating: result.data.rating,
