@@ -16,6 +16,9 @@ const StyledThemePageContainer = styled.div`
 
 const StyledResultContainer = styled.div`
   overflow-y: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const StyledResultButton = styled(TextButton)`
