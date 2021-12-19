@@ -28,13 +28,9 @@ const CocktailDetailModal = ({
   const [cocktailData, setCocktailData] = useState<ICocktail | null>(null);
   const [cocktailReviews, setCocktailReviews] = useState<IReview[]>([]);
   const [isReviewModalVisible, setIsReviewModalVisible] = useState(false);
-  // const [returnedReviewModalData, setreturnedReviewModalData] =
-  //   useState<Review | null>(null); //낙관적 업데이트를 하기 위함인데, 지울 때는 그러면 어떻게 하는건가
   const { user, updateContextBookmark } = useAuthorization();
   const request = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
   const authRequest = useAxios(AXIOS_REQUEST_TYPE.AUTH);
-
-  console.log('bm', updateContextBookmark);
 
   // Api
   const getCocktailDetailInfoById = (
@@ -42,12 +38,6 @@ const CocktailDetailModal = ({
   ): Promise<IApiResponse<ICocktail>> => {
     return request.get(`/cocktail/id?id=${cocktailId}`);
   };
-
-  // const deleteMyCocktailReview = (
-  //   reviewId: number
-  // ): Promise<DeleteResponse> => {
-  //   return request.delete(`/review/${reviewId}`);
-  // };
 
   const toggleBookmark = (
     userId: number,
@@ -92,7 +82,7 @@ const CocktailDetailModal = ({
   };
 
   const handleBookmark = async (): Promise<void> => {
-    if (user?.id) {
+    if (user?.id && cocktailId) {
       await toggleBookmark(user.id, cocktailId);
     }
     // 낙관적 업데이트
