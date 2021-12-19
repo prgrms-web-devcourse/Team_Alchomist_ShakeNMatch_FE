@@ -46,10 +46,12 @@ const UserReviewItem = ({
       <StyledImageWrapper>
         <Image height='80px' mode='fill' src={userImageUrl} width='80px' />
       </StyledImageWrapper>
-      <Text size='xs'>{nickname}</Text>
       <StyledRatingCommentWrapper>
         <RatingStar mode='show' rateTobeDisplayed={userRating} />
-        <Text size='xs'>{userComment}</Text>
+        <Text bold color='BLUE' dangerously={true} size='xxs'>
+          {'from. ' + nickname}
+        </Text>
+        <Text size='xxs'>{userComment}</Text>
       </StyledRatingCommentWrapper>
       {loginedUserId === reviewOwnerId && (
         <TextButton buttonType='X_SHORT_WHITE' onClick={onHandleDelete}>

@@ -97,7 +97,7 @@ const CocktailReviewModal = ({
         <RatingStar mode='edit' onRateChange={handleUserRate} />
         <StyledTextEditor
           autoFocus
-          maxLength={50}
+          maxLength={30}
           placeholder='칵테일에 대한 간단한 코멘트를 적어주세요(최대 50자)'
           onChange={handleUserComment}
         />
