@@ -31,14 +31,13 @@ const JangoPage = (): ReactElement => {
   );
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { user, setUserIngredients } = useAuthorization();
-  const { userIngredients, totalIngredientsList, updateJangoContext } =
-    useJangoContext();
+  const { totalIngredientsList } = useJangoContext();
 
   useEffect(() => {
     const mainIngredients: IIngredient[] = [];
     const subIngredients: IIngredient[] = [];
 
-    userIngredients.forEach((ingredient) => {
+    user?.ingredients.forEach((ingredient) => {
       ingredient.alcohol
         ? mainIngredients.push(ingredient)
         : subIngredients.push(ingredient);
@@ -48,7 +47,7 @@ const JangoPage = (): ReactElement => {
       main: mainIngredients,
       sub: subIngredients
     });
-  }, [userIngredients]);
+  }, [user?.ingredients]);
 
   const request = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
   const getCocktailByIngredients = (
@@ -101,8 +100,7 @@ const JangoPage = (): ReactElement => {
       (id) => totalIngredientsList[id]
     );
 
-    if (recentIngredients !== userIngredients) {
-      updateJangoContext(recentIngredients);
+    if (recentIngredients !== user?.ingredients) {
       setUserIngredients(recentIngredients);
     }
 

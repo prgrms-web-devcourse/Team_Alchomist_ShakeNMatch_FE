@@ -53,7 +53,8 @@ const AuthorizationProvider = ({
         nextBookmarks = [...prevBookmarks, toggledCocktail];
       }
     }
-    if (state.user) {
+
+    state.user &&
       setState({
         ...state,
         user: {
@@ -61,7 +62,6 @@ const AuthorizationProvider = ({
           bookmarks: nextBookmarks
         }
       });
-    }
   };
 
   useEffect(() => {
