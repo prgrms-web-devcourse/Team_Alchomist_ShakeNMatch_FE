@@ -3,14 +3,15 @@ import type { AlbumProps } from './types';
 import { ALBUM_ATTRIBUTES } from './types';
 import { COLOR } from '@utils/constants/colors';
 
-const StyledContainer = styled.div<Required<Pick<AlbumProps, 'type'>>>`
+const StyledContainer = styled.div<
+  Required<Pick<AlbumProps, 'type' | 'backgroundColor'>>
+>`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: minmax(fit-content, auto) 15px;
   justify-items: center;
   align-items: center;
-  background-color: ${({ type }): string =>
-    ALBUM_ATTRIBUTES[type].backgroundColor};
+  background-color: ${({ backgroundColor }): string => COLOR[backgroundColor]};
   box-shadow: 0 0px 5px -3px ${COLOR.NAVY},
     inset 0px 0px 4px ${COLOR.BASIC_WHITE};
   width: ${({ type }): string => ALBUM_ATTRIBUTES[type].width};

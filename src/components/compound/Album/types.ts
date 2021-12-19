@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import { COLOR } from '@constants';
+import type { ColorKeys } from '@models';
 
 const ALBUM_ATTRIBUTES = {
   alcohol: {
@@ -7,35 +7,34 @@ const ALBUM_ATTRIBUTES = {
     height: '130px',
     shape: 'circle',
     imageWidth: '70px',
-    imageHeight: '70px',
-    backgroundColor: COLOR.BASIC_WHITE
+    imageHeight: '70px'
   },
   sweetener: {
     width: '130px',
     height: '130px',
     shape: 'round',
     imageWidth: '80px',
-    imageHeight: '80px',
-    backgroundColor: COLOR.BASIC_WHITE
+    imageHeight: '80px'
   },
   result: {
     width: '130px',
     height: '155px',
     shape: 'round',
     imageWidth: '90px',
-    imageHeight: '90px',
-    backgroundColor: COLOR.BASIC_WHITE
+    imageHeight: '90px'
   }
 } as const;
 
 type AlbumAttributeKeys = keyof typeof ALBUM_ATTRIBUTES;
 
 interface AlbumProps extends HTMLAttributes<HTMLDivElement> {
-  cocktailId?: number;
+  albumId?: number;
   type?: AlbumAttributeKeys;
   text?: string;
   imageSrc?: string;
-  handleAlbumClick?(id: number): void;
+  backgroundColor?: ColorKeys;
+  textColor?: ColorKeys;
+  onAlbumClick?(id: number): void;
 }
 
 export type { AlbumProps, AlbumAttributeKeys };
