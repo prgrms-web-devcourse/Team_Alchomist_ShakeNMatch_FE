@@ -14,6 +14,19 @@ const StyledContainer = styled.div`
   border: 2px solid ${COLOR.BASIC_WHITE};
   border-radius: 20px;
   margin: 20px 0px;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(3px);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1),
+      0 3px 10px 0 rgba(0, 0, 0, 0.095);
+  }
+
+  &:active {
+    transform: translateY(6px);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1),
+      0 1.5px 5px 0 rgba(0, 0, 0, 0.095);
+  }
 `;
 
 const StyledImage = styled.div`

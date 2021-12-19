@@ -22,6 +22,7 @@ export const Default = (): ReactElement => {
       />
       <CocktailDetailModal
         backgroundColor='DARK_GRAY'
+        cocktailId={1}
         color='IVORY'
         size='lg'
         visible={isCocktailDetailModalVisible}

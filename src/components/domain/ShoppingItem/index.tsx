@@ -13,7 +13,7 @@ const DEFAULT_IMAGE_WIDTH = '100px';
 const DEFAULT_IMAGE_HEIGHT = '100px';
 const DEFAULT_IMAGE_SRC = 'http://via.placeholder.com/100x100';
 const DEFAULT_TITLE = '재료가 비어있습니다.';
-const DEFAULT_PRICE = 0;
+const DEFAULT_PRICE = '0';
 const DEFAULT_VENDOR = '구매처가 비어있습니다';
 
 const ShoppingItem = ({
@@ -22,10 +22,12 @@ const ShoppingItem = ({
   imageSrc = DEFAULT_IMAGE_SRC,
   title = DEFAULT_TITLE,
   price = DEFAULT_PRICE,
-  vendor = DEFAULT_VENDOR
+  vendor = DEFAULT_VENDOR,
+  onClick
 }: ShoppingItemProps): ReactElement => {
+  const fommattedPrice = price.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   return (
-    <StyledContainer>
+    <StyledContainer onClick={onClick}>
       <StyledImage>
         <Image
           height={imageHeight}
@@ -35,17 +37,17 @@ const ShoppingItem = ({
         />
       </StyledImage>
       <StyledTitle>
-        <Text bold={true} color='BLACK' size='md'>
+        <Text bold={true} color='BLACK' dangerously={true} size='xs'>
           {title}
         </Text>
       </StyledTitle>
       <StyledVerticalLine />
       <StyledInfo>
-        <Text bold={true} color='BLACK' size='sm'>
+        <Text bold={true} color='BLACK' size='xs'>
           {vendor}
         </Text>
-        <Text bold={true} color='RED' size='sm'>
-          {`${price}원`}
+        <Text bold={true} color='RED' size='xs'>
+          {`${fommattedPrice}원`}
         </Text>
       </StyledInfo>
     </StyledContainer>

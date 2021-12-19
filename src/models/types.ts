@@ -81,7 +81,6 @@ interface IReviewPostResponse {
 interface ICocktailSimple {
   id: number;
   name: string;
-  type: string;
 }
 
 interface ICocktail {
@@ -107,6 +106,12 @@ interface IIngredient {
   alcohol: boolean;
 }
 
+interface IBookmark {
+  id: number;
+  name: string;
+  imageUrl: string;
+}
+
 interface IUser {
   id: number;
   nickname: string;
@@ -114,6 +119,7 @@ interface IUser {
   age: number;
   mbti: IUserMbti;
   ingredients: IIngredient[];
+  bookmarks: IBookmark[];
 }
 
 interface IUserForm {
@@ -156,6 +162,7 @@ export type {
   ITheme,
   ICocktailSimple,
   ICocktail,
+  IBookmark,
   IUser,
   IIngredient,
   IReview,
