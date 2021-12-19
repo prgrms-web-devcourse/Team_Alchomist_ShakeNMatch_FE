@@ -1,13 +1,13 @@
 import type { ChangeEvent, KeyboardEvent, ReactElement } from 'react';
 import { useState } from 'react';
-import { Image } from '@base';
+import { Input, Text } from '@base';
 import { useNavigate } from 'react-router';
 import searchBot from '@assets/characters/searchBot.png';
 import {
   StyledContainer,
   StyledBot,
   StyledInputBackground,
-  StyledInput
+  StyledImage
 } from './styled';
 import useClickAway from '@hooks/useClickAway';
 import ChangingSpeech from '@domain/ChangingSpeech';
@@ -40,10 +40,17 @@ const SearchBot = (): ReactElement => {
   return (
     <StyledContainer>
       <StyledBot ref={clickAwayRef} onClick={handleClick}>
-        <Image height='150px' mode='contain' src={searchBot} width='150px' />
-        <StyledInputBackground>
-          <StyledInput
-            isVisible={showInput}
+        <StyledImage
+          height='150px'
+          mode='contain'
+          src={searchBot}
+          width='150px'
+        />
+        <StyledInputBackground isVisible={showInput}>
+          <Text bold size='xs'>
+            찾으시는 칵테일이 있나요?
+          </Text>
+          <Input
             placeholder='칵테일 이름을 검색해보세요'
             onChange={handleChange}
             onKeyDown={handleKeydown}
