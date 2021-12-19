@@ -3,7 +3,9 @@ import type { InputProps } from './types';
 
 import { COLOR, TEXT_SIZE, TEXT_WEIGHT } from '@utils/constants';
 
-const StyledInput = styled.input<Required<Pick<InputProps, 'fontSize'>>>`
+const StyledInput = styled.input<
+  Required<Pick<InputProps, 'fontSize' | 'alignCenter'>>
+>`
   font-size: ${({ fontSize }): string => TEXT_SIZE[fontSize]};
   width: 200px;
   height: 30px;
@@ -14,6 +16,8 @@ const StyledInput = styled.input<Required<Pick<InputProps, 'fontSize'>>>`
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   font-weight: ${TEXT_WEIGHT.bold};
+  text-align: ${({ alignCenter }): string =>
+    alignCenter ? 'center' : 'start'};
 
   &:focus,
   :hover {
