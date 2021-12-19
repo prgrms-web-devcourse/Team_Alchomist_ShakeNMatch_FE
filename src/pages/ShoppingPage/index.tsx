@@ -1,6 +1,4 @@
-
-import ShoppingItem from '@domain/ShoppingItem';
-import TitleSectionContainer from '@domain/TitleSectionContainer';
+import { ShoppingItem, TitleSectionContainer } from '@domain';
 import { Children, useState, useEffect } from 'react';
 import type { ReactElement } from 'react';
 import { StyledContainer } from './styled';
@@ -24,7 +22,7 @@ const ShoppingPage = (): ReactElement => {
       const response = await axios.get('/v1/search/shop.json?', {
         params: {
           query: params.keyword,
-          display: 5
+          display: 100
         },
         headers: {
           'X-Naver-Client-Id': 'CRC7XaD__8BI4e9pZ87T',
@@ -58,11 +56,33 @@ const ShoppingPage = (): ReactElement => {
         vendor={shoppingItem.mallName}
         // 리펙토링 할 것.
         onClick={(): void => {
-          window.open(shoppingItem.link, '_blank');
+          window.open(
+            shoppingItem.link,
+            '_blank',
+            'fullscreen=no, width=1000, height=500, centerscreen=yes, left=100, top=100'
+          );
         }}
       ></ShoppingItem>
     ))
   );
+
+  // 팝업을 띄워주는 함수.
+  // const openPopup = (
+  //   popupWidth: number,
+  //   popupHeight: number,
+  //   popupUrl: string
+  // ): void => {
+  //   const width = popupWidth;
+  //   const height = popupHeight;
+  //   const top = (window.innerHeight - height) / 2 + screenY;
+  //   const left = (window.innerWidth - width) / 2 + screenX;
+
+  //   let spec = 'status=no, menubar=no, toolbar=no, resizable=no';
+  //   spec += ', width=' + width + ', height=' + height;
+  //   spec += ', top=' + top + ', left' + left;
+
+  //   window.open(popupUrl, 'popup', spec);
+  // };
 
   return (
     <>
