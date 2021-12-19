@@ -7,7 +7,6 @@ interface IAuthState {
 }
 
 interface IAuthContext extends IAuthState {
-  bookmarkList: ICocktailSimple[];
   login(value: Omit<IAuthState, 'isMaster'>): void;
   logout(): void;
   setOAuthToken(value: string): void;

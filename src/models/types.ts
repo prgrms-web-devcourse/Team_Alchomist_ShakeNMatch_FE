@@ -109,7 +109,7 @@ interface IIngredient {
 interface IBookmark {
   id: number;
   name: string;
-  imageUrl: string;
+  imageUrl?: string;
 }
 
 interface IUser {
@@ -119,7 +119,7 @@ interface IUser {
   age: number;
   mbti: IUserMbti;
   ingredients: IIngredient[];
-  bookmarks: IBookmark[];
+  bookmarks: ICocktailSimple[];
 }
 
 interface IUserForm {

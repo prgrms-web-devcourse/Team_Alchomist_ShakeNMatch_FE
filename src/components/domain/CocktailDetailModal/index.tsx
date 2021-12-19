@@ -30,7 +30,7 @@ const CocktailDetailModal = ({
   const [isReviewModalVisible, setIsReviewModalVisible] = useState(false);
   // const [returnedReviewModalData, setreturnedReviewModalData] =
   //   useState<Review | null>(null); //낙관적 업데이트를 하기 위함인데, 지울 때는 그러면 어떻게 하는건가
-  const { user, bookmarkList, updateContextBookmark } = useAuthorization();
+  const { user, updateContextBookmark } = useAuthorization();
   const request = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
   const authRequest = useAxios(AXIOS_REQUEST_TYPE.AUTH);
 
@@ -95,11 +95,7 @@ const CocktailDetailModal = ({
     if (user?.id) {
       await toggleBookmark(user.id, cocktailId);
     }
-    console.log('낙관적 업데이트!');
-
-    // 만약 방금 요청한 칵테일이 컨텍스트에 있었으면 삭제
-    // 없었으면 추가
-
+    // 낙관적 업데이트
     if (cocktailData) {
       updateContextBookmark({
         id: cocktailData.id,
@@ -107,14 +103,6 @@ const CocktailDetailModal = ({
       });
     }
   };
-
-  // console.log(
-  //   'check',
-  //   bookmarkList.has({
-  //     id: cocktailData?.id as number,
-  //     name: cocktailData?.name as string
-  //   })
-  // );
 
   return (
     <StyledModal
@@ -142,7 +130,7 @@ const CocktailDetailModal = ({
             >
               <StyledIngredientListWrapper>
                 <IconToggle
-                  initialState={bookmarkList.some(
+                  initialState={user?.bookmarks.some(
                     (cocktail) => cocktail.id === cocktailId
                   )}
                   name='flag'
