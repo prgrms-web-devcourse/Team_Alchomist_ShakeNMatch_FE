@@ -28,7 +28,6 @@ const JangoProvider = ({ children }: { children: ReactNode }): ReactElement => {
   useEffect(() => {
     if (!Object.keys(totalIngredientsList).length) {
       const setTotalIngredientList = async (): Promise<void> => {
-        console.log('api call');
         const totalIngredients = await getTotalIngredients();
         const totalIngredientList: {
           [key: number]: IIngredient;
