@@ -70,6 +70,14 @@ const AuthorizationProvider = ({
     }
   }, []);
 
+  const setUserIngredients = (ingredientsList: any): void => {
+    state.user &&
+      setState({
+        ...state,
+        user: { ...state.user, ingredients: ingredientsList }
+      });
+  };
+
   return (
     <AuthorizationContext.Provider
       value={{
@@ -77,7 +85,8 @@ const AuthorizationProvider = ({
         login,
         logout,
         setOAuthToken,
-        updateContextBookmark
+        updateContextBookmark,
+        setUserIngredients
       }}
     >
       {children}

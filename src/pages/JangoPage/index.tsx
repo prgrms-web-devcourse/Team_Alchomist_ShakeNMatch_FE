@@ -30,7 +30,7 @@ const JangoPage = (): ReactElement => {
     []
   );
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const { user } = useAuthorization();
+  const { user, setUserIngredients } = useAuthorization();
   const { userIngredients, totalIngredientsList, updateJangoContext } =
     useJangoContext();
 
@@ -103,6 +103,7 @@ const JangoPage = (): ReactElement => {
 
     if (recentIngredients !== userIngredients) {
       updateJangoContext(recentIngredients);
+      setUserIngredients(recentIngredients);
     }
 
     closeModal();

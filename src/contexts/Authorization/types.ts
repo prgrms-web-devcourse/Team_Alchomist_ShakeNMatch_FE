@@ -9,6 +9,7 @@ interface IAuthState {
 interface IAuthContext extends IAuthState {
   login(value: Omit<IAuthState, 'isMaster'>): void;
   logout(): void;
+  setUserIngredients(ingredients: any): void;
   setOAuthToken(value: string): void;
   updateContextBookmark(value: ICocktailSimple): void;
 }
