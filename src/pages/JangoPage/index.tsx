@@ -72,7 +72,9 @@ const JangoPage = (): ReactElement => {
       setRecommendedCocktails(recommendedCocktails.data.cocktails);
     };
 
-    setRecommendedCocktailsByIngredients();
+    if (ingredients.main.length || ingredients.sub.length) {
+      setRecommendedCocktailsByIngredients();
+    }
   }, [ingredients]);
 
   const openModal = (): void => {
