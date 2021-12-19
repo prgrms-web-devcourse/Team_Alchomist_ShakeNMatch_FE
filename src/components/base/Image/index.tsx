@@ -34,6 +34,7 @@ const Image = ({
 }: ImageProps): ReactElement => {
   const [loaded, setLoaded] = useState(false);
   const imgRef = useRef<HTMLImageElement | null>(null);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     if (!lazy) {
@@ -74,7 +75,11 @@ const Image = ({
       height={height}
       mode={mode}
       src={loaded ? src : placeholder}
+      style={{ visibility: show ? 'visible' : 'hidden' }}
       width={width}
+      onLoad={(): void => {
+        setShow(true);
+      }}
       {...props}
     />
   );
