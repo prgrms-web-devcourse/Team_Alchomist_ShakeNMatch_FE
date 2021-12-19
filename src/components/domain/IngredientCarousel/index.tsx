@@ -12,8 +12,10 @@ const CLEAR_THROTTLE_TIME = 500;
 
 const IngredientCarousel = ({
   itemList = [],
+  selectedItemIdList = [],
   row = 'single',
-  albumType = 'alcohol'
+  albumType = 'alcohol',
+  onIngredientClick
 }: IngredientCarouselProps): ReactElement => {
   const [itemIdx, setItemIdx] = useState({
     head: 0,
@@ -54,7 +56,6 @@ const IngredientCarousel = ({
     (_, index) =>
       index >= itemIdx.head && index < itemIdx.head + ROW_TYPE[row].length
   );
-
   return (
     <StyledCarouselContainer ref={wheelRef} row={row}>
       <IconButton
@@ -71,9 +72,17 @@ const IngredientCarousel = ({
       {Children.toArray(
         displayItems.map((item) => (
           <Album
+            albumId={item.id}
+            backgroundColor={
+              selectedItemIdList.includes(item.id) ? 'NAVY' : 'BASIC_WHITE'
+            }
             imageSrc={IngredientIcons[item.type as IngredientIconsKeys]}
             text={item.name}
+            textColor={
+              selectedItemIdList.includes(item.id) ? 'BASIC_WHITE' : 'BLACK'
+            }
             type={albumType}
+            onAlbumClick={onIngredientClick}
           />
         ))
       )}

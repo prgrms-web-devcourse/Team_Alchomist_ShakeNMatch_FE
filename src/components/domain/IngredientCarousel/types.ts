@@ -4,9 +4,11 @@ import type { IIngredient } from '@models';
 import type { IngredientIcons } from '@assets/ingredients';
 
 interface IngredientCarouselProps {
-  itemList: IIngredient[];
+  itemList?: IIngredient[];
+  selectedItemIdList?: number[];
   row?: RowTypeKeys;
   albumType: AlbumAttributeKeys;
+  onIngredientClick?(id: number): void;
 }
 
 const ROW_TYPE = {
