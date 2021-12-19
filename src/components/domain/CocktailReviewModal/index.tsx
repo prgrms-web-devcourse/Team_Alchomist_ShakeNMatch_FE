@@ -68,7 +68,6 @@ const CocktailReviewModal = ({
       formData
     );
     if (result.data) {
-      console.log(result.data);
       handleOnSubmitted({
         id: result.data.reviewId,
         rating: result.data.rating,

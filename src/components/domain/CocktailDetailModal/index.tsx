@@ -64,7 +64,6 @@ const CocktailDetailModal = ({
 
   //제출한 리뷰 정보를 칵테일 상세 모달로 넘겨 주어 리뷰 리스트 낙관적 업데이트 진행!
   const handleOnSubmitted = (reviewInfo: IReview): void => {
-    console.log(reviewInfo.nickname);
     const newCocktailReview = [...cocktailReviews, reviewInfo];
     setCocktailReviews(newCocktailReview);
     setIsReviewModalVisible(false);
