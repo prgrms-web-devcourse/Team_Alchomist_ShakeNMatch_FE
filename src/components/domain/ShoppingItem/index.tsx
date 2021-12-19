@@ -13,12 +13,8 @@ const DEFAULT_IMAGE_WIDTH = '100px';
 const DEFAULT_IMAGE_HEIGHT = '100px';
 const DEFAULT_IMAGE_SRC = 'http://via.placeholder.com/100x100';
 const DEFAULT_TITLE = '재료가 비어있습니다.';
-const DEFAULT_PRICE = 0;
+const DEFAULT_PRICE = '0';
 const DEFAULT_VENDOR = '구매처가 비어있습니다';
-// 리팩토링 할 것.
-// const clickHandler = (link): void => {
-//   window.open(link, '_blank');
-// };
 
 const ShoppingItem = ({
   imageWidth = DEFAULT_IMAGE_WIDTH,
@@ -29,6 +25,7 @@ const ShoppingItem = ({
   vendor = DEFAULT_VENDOR,
   onClick
 }: ShoppingItemProps): ReactElement => {
+  const fommattedPrice = price.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   return (
     <StyledContainer onClick={onClick}>
       <StyledImage>
@@ -50,7 +47,7 @@ const ShoppingItem = ({
           {vendor}
         </Text>
         <Text bold={true} color='RED' size='xs'>
-          {`${price}원`}
+          {`${fommattedPrice}원`}
         </Text>
       </StyledInfo>
     </StyledContainer>

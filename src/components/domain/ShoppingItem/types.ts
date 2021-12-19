@@ -5,7 +5,7 @@ interface ShoppingItemProps extends HTMLAttributes<HTMLDivElement> {
   imageHeight?: string;
   imageSrc?: string;
   title?: string;
-  price?: number;
+  price?: string;
   vendor?: string;
 }
 
