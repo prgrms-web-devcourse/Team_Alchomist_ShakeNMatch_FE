@@ -63,12 +63,12 @@ interface IReview {
   url: string;
   userId: number;
   nickname: string;
-  cocktailId: 1;
+  cocktailId: number;
   cocktailName: string;
 }
 
 interface IReviewPostResponse {
-  reviweId: number;
+  reviewId: number;
   rating: number;
   description: string;
   url: string;

@@ -1,15 +1,12 @@
 import type { ModalProps } from '@base/Modal/types';
+import type { IReview } from '@models';
 
 interface CocktailReviewModalProps extends ModalProps {
+  nickname: string;
   loginedUserId?: number;
   cocktailId: number;
-  handleSubmit(userInfo: Review): void;
+  handleOnSubmitted(userInfo: IReview): void;
   onCancel(): void;
 }
-interface Review {
-  userFile: File | null;
-  userRate: number;
-  userComment: string;
-}
 
-export type { CocktailReviewModalProps, Review };
+export type { CocktailReviewModalProps, IReview };

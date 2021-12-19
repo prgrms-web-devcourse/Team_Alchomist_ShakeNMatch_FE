@@ -1,6 +1,5 @@
 import { Children, useEffect, useState } from 'react';
 import type { ReactElement } from 'react';
-import type { Review } from '@domain/CocktailReviewModal/types';
 import type { CocktailDetailModalProps } from './types';
 import { Image, SectionDivider, Text } from '@base';
 import IngredientItem from './IngredientItem';
@@ -28,12 +27,8 @@ const CocktailDetailModal = ({
 }: CocktailDetailModalProps): ReactElement => {
   const [cocktailId, setCocktailId] = useState<number | null>(null);
   const [cocktailData, setCocktailData] = useState<ICocktail | null>(null);
-  const [cocktailReviews, setCocktailReviews] = useState<string[] | undefined>(
-    []
-  );
+  const [cocktailReviews, setCocktailReviews] = useState<IReview[]>([]);
   const [isReviewModalVisible, setIsReviewModalVisible] = useState(false);
-  const [returnedReviewModalData, setreturnedReviewModalData] =
-    useState<Review | null>(null); //낙관적 업데이트를 하기 위함인데, 지울 때는 그러면 어떻게 하는건가
   const { user } = useAuthorization();
   const defaultRequest = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
 
@@ -50,6 +45,7 @@ const CocktailDetailModal = ({
         if (cocktailId) {
           const searchResult = await getCocktailDetailInfoById(cocktailId);
           setCocktailData(searchResult.data);
+          setCocktailReviews(searchResult.data.reviews);
         }
       };
       getCocktailInfo();
@@ -59,11 +55,17 @@ const CocktailDetailModal = ({
     setCocktailData(null);
   }, [visible, cocktailId]); //둘 다 deps로 넣어주어야 다른 카드를 눌러도 잘 동작한다.
 
-  const handleComplete = (reviewInfo: Review): void => {
-    console.log(reviewInfo);
-    console.log(returnedReviewModalData);
-    setreturnedReviewModalData(reviewInfo);
-    setCocktailReviews(cocktailReviews);
+  const onDelete = (reviewId: number): void => {
+    const newCocktailReview = [...cocktailReviews].filter(
+      (review) => review.id !== reviewId
+    );
+    setCocktailReviews(newCocktailReview);
+  };
+
+  //제출한 리뷰 정보를 칵테일 상세 모달로 넘겨 주어 리뷰 리스트 낙관적 업데이트 진행!
+  const handleOnSubmitted = (reviewInfo: IReview): void => {
+    const newCocktailReview = [...cocktailReviews, reviewInfo];
+    setCocktailReviews(newCocktailReview);
     setIsReviewModalVisible(false);
   };
 
@@ -146,7 +148,7 @@ const CocktailDetailModal = ({
                 <StyledReviewListWrapper>
                   <Text size='md'>{'- 사용자 리뷰- '}</Text>
                   {Children.toArray(
-                    cocktailData?.reviews?.map((userReview: IReview) => (
+                    cocktailReviews.map((userReview: IReview) => (
                       //여기에 리뷰 아이디 같이 넣어줘야 삭제 가능하다. 현재 Cocktail id 검색결과에서는 reviewId가 없음
                       <UserReviewItem
                         loginedUserId={user?.id}
@@ -156,6 +158,7 @@ const CocktailDetailModal = ({
                         userComment={userReview.description}
                         userImageUrl={userReview.url}
                         userRating={userReview.rating}
+                        onDelete={onDelete}
                       />
                     ))
                   )}
@@ -177,12 +180,13 @@ const CocktailDetailModal = ({
           </SectionDivider>
         </MenuTab>
       )}
-      {cocktailId && (
+      {cocktailId && user && (
         <CocktailReviewModal
-          cocktailId={cocktailId} //어떤 칵테일에 대한 리뷰인지
+          cocktailId={cocktailId}
           color={'BASIC_WHITE'}
-          handleSubmit={handleComplete}
-          loginedUserId={user?.id}
+          handleOnSubmitted={handleOnSubmitted}
+          loginedUserId={user.id}
+          nickname={user.nickname}
           size={'sm'}
           visible={isReviewModalVisible}
           onCancel={(): void => {

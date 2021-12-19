@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import { useState } from 'react';
 import CocktailReviewModal from '@domain/CocktailReviewModal';
-import type { Review } from '@domain/CocktailReviewModal/types';
+import type { IReview } from '@domain/CocktailReviewModal/types';
 
 export default {
   title: 'Component/Domain/CocktailReviewModal',
@@ -12,9 +12,9 @@ const MOCK_COCKTAIL_ID = 3;
 
 export const Default = (): ReactElement => {
   const [isVisible, setIsVisible] = useState(false);
-  const [userReview, setUserReview] = useState<Review | null>(null);
+  const [userReview, setUserReview] = useState<IReview | null>(null);
 
-  const handleComplete = (reviewInfo: Review): void => {
+  const handleComplete = (reviewInfo: IReview): void => {
     console.log(reviewInfo);
     setUserReview(reviewInfo);
     setIsVisible(false);
@@ -32,16 +32,17 @@ export const Default = (): ReactElement => {
       </button>
       <p>
         <label>{'파일이름'}</label>
-        <div>{userReview ? userReview.userFile?.name : '-'}</div>
+        <div>{userReview ? userReview.nickname : '-'}</div>
         <label>{'평점'}</label>
-        <div>{userReview ? userReview.userRate.toString() : '0'}</div>
+        <div>{userReview ? userReview.rating.toString() : '0'}</div>
         <label>{'한줄 평'}</label>
-        <div>{userReview ? userReview.userComment : '없음'}</div>
+        <div>{userReview ? userReview.description : '없음'}</div>
       </p>
       <CocktailReviewModal
         cocktailId={MOCK_COCKTAIL_ID}
         color={'BASIC_WHITE'}
-        handleSubmit={handleComplete}
+        handleOnSubmitted={handleComplete}
+        nickname='승록'
         size={'sm'}
         visible={isVisible}
         onCancel={(): void => {

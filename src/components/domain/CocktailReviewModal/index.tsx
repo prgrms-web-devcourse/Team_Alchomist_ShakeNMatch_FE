@@ -10,9 +10,13 @@ import useAxios from '@hooks/useAxios';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 import type { IReviewPostResponse } from '@models';
 
-const CocktailReviewModal = (
-  props: Omit<CocktailReviewModalProps, 'backgroundColor'>
-): ReactElement => {
+const CocktailReviewModal = ({
+  cocktailId,
+  loginedUserId,
+  handleOnSubmitted,
+  onCancel,
+  ...props
+}: Omit<CocktailReviewModalProps, 'backgroundColor'>): ReactElement => {
   const [userFile, setUserFile] = useState<File | null>(null);
   const handleChangeFile = (file: File): void => {
     setUserFile(file);
@@ -45,9 +49,9 @@ const CocktailReviewModal = (
     const requestData = new Blob(
       [
         JSON.stringify({
-          userId: props.loginedUserId,
+          userId: loginedUserId,
           url: userFile.name,
-          cocktailId: props.cocktailId,
+          cocktailId: cocktailId,
           description: userComment,
           rating: userRate
         })
@@ -62,10 +66,15 @@ const CocktailReviewModal = (
       formData
     );
     if (result.data) {
-      props.handleSubmit({
-        userFile: userFile,
-        userRate: userRate,
-        userComment: userComment
+      handleOnSubmitted({
+        id: result.data.reviewId,
+        rating: result.data.rating,
+        description: result.data.description,
+        url: result.data.url,
+        userId: result.data.userId,
+        nickname: result.data.nickname,
+        cocktailId: result.data.cocktailId,
+        cocktailName: result.data.cocktailName
       });
       return;
     }
@@ -94,7 +103,7 @@ const CocktailReviewModal = (
           <Button type='button' onClick={onSubmit}>
             {'작성완료'}
           </Button>
-          <Button type='button' onClick={props.onCancel}>
+          <Button type='button' onClick={onCancel}>
             {'취소'}
           </Button>
         </div>

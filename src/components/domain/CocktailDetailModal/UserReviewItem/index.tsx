@@ -18,19 +18,27 @@ const UserReviewItem = ({
   reviewOwnerId,
   userComment,
   userImageUrl,
-  userRating
+  userRating,
+  onDelete
 }: UserReviewItemProps): ReactElement => {
   const defaultRequest = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
-  const deleteMyCocktailReview = (
-    reviewId: number
-  ): Promise<DeleteResponse> => {
-    return defaultRequest.delete(`/review/${reviewId}`);
-  };
 
-  const handleDelete = (): void => {
-    if (loginedUserId === reviewOwnerId) {
-      deleteMyCocktailReview?.(reviewId);
-    }
+  const onHandleDelete = (): void => {
+    const deleteMyCocktailReview = (
+      reviewId: number
+    ): Promise<DeleteResponse> => {
+      return defaultRequest.delete(`/review/${reviewId}`);
+    };
+
+    const handleDelete = async (reviewId: number): Promise<void> => {
+      if (loginedUserId === reviewOwnerId) {
+        const result = await deleteMyCocktailReview?.(reviewId);
+        if (result.data) {
+          onDelete?.(reviewId);
+        }
+      }
+    };
+    handleDelete(reviewId);
   };
 
   return (
@@ -44,7 +52,7 @@ const UserReviewItem = ({
         <Text size='xs'>{userComment}</Text>
       </StyledRatingCommentWrapper>
       {loginedUserId === reviewOwnerId && (
-        <TextButton buttonType='X_SHORT_WHITE' onClick={handleDelete}>
+        <TextButton buttonType='X_SHORT_WHITE' onClick={onHandleDelete}>
           {'삭제'}
         </TextButton>
       )}
