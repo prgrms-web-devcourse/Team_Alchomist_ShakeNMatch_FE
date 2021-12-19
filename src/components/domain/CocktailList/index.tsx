@@ -32,7 +32,8 @@ const CocktailList = ({
                   handleAlbumClick={handleAlbumClick}
                   imageSrc={
                     CocktailIcons[
-                      (index % TOTAL_COCKTAIL_ICONS) as CocktailIconsKeys
+                      ((index + cocktail.id) %
+                        TOTAL_COCKTAIL_ICONS) as CocktailIconsKeys
                     ]
                   }
                   text={cocktail.name}
