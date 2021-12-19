@@ -10,9 +10,14 @@ import useAxios from '@hooks/useAxios';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 import type { IReviewPostResponse } from '@models';
 
-const CocktailReviewModal = (
-  props: Omit<CocktailReviewModalProps, 'backgroundColor'>
-): ReactElement => {
+const CocktailReviewModal = ({
+  nickname,
+  cocktailId,
+  loginedUserId,
+  handleOnSubmitted,
+  onCancel,
+  ...props
+}: Omit<CocktailReviewModalProps, 'backgroundColor'>): ReactElement => {
   const [userFile, setUserFile] = useState<File | null>(null);
   const handleChangeFile = (file: File): void => {
     setUserFile(file);
@@ -45,9 +50,10 @@ const CocktailReviewModal = (
     const requestData = new Blob(
       [
         JSON.stringify({
-          userId: props.loginedUserId,
+          userId: loginedUserId,
           url: userFile.name,
-          cocktailId: props.cocktailId,
+          nickname: nickname,
+          cocktailId: cocktailId,
           description: userComment,
           rating: userRate
         })
@@ -62,10 +68,15 @@ const CocktailReviewModal = (
       formData
     );
     if (result.data) {
-      props.handleSubmit({
-        userFile: userFile,
-        userRate: userRate,
-        userComment: userComment
+      handleOnSubmitted({
+        id: result.data.reviewId,
+        rating: result.data.rating,
+        description: result.data.description,
+        url: result.data.url,
+        userId: result.data.userId,
+        nickname: result.data.nickname,
+        cocktailId: result.data.cocktailId,
+        cocktailName: result.data.cocktailName
       });
       return;
     }
@@ -85,7 +96,7 @@ const CocktailReviewModal = (
         <RatingStar mode='edit' onRateChange={handleUserRate} />
         <StyledTextEditor
           autoFocus
-          maxLength={50}
+          maxLength={30}
           placeholder='칵테일에 대한 간단한 코멘트를 적어주세요(최대 50자)'
           onChange={handleUserComment}
         />
@@ -94,7 +105,7 @@ const CocktailReviewModal = (
           <Button type='button' onClick={onSubmit}>
             {'작성완료'}
           </Button>
-          <Button type='button' onClick={props.onCancel}>
+          <Button type='button' onClick={onCancel}>
             {'취소'}
           </Button>
         </div>

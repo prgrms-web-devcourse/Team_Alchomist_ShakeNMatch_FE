@@ -1,4 +1,5 @@
 interface UserReviewItemProps {
+  nickname?: string;
   loginedUserId?: number;
   cocktailId?: number;
   reviewId: number;

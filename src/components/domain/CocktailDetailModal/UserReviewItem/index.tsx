@@ -12,24 +12,33 @@ import {
 import type { UserReviewItemProps, DeleteResponse } from './types';
 
 const UserReviewItem = ({
+  nickname,
   reviewId,
   loginedUserId,
   reviewOwnerId,
   userComment,
   userImageUrl,
-  userRating
+  userRating,
+  onDelete
 }: UserReviewItemProps): ReactElement => {
   const defaultRequest = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
-  const deleteMyCocktailReview = (
-    reviewId: number
-  ): Promise<DeleteResponse> => {
-    return defaultRequest.delete(`/review/${reviewId}`);
-  };
 
-  const handleDelete = (): void => {
-    if (loginedUserId === reviewOwnerId) {
-      deleteMyCocktailReview?.(reviewId);
-    }
+  const onHandleDelete = (): void => {
+    const deleteMyCocktailReview = (
+      reviewId: number
+    ): Promise<DeleteResponse> => {
+      return defaultRequest.delete(`/review/${reviewId}`);
+    };
+
+    const handleDelete = async (reviewId: number): Promise<void> => {
+      if (loginedUserId === reviewOwnerId) {
+        const result = await deleteMyCocktailReview?.(reviewId);
+        if (result.data) {
+          onDelete?.(reviewId);
+        }
+      }
+    };
+    handleDelete(reviewId);
   };
 
   return (
@@ -39,10 +48,13 @@ const UserReviewItem = ({
       </StyledImageWrapper>
       <StyledRatingCommentWrapper>
         <RatingStar mode='show' rateTobeDisplayed={userRating} />
-        <Text size='xs'>{userComment}</Text>
+        <Text bold color='BLUE' dangerously={true} size='xxs'>
+          {'from. ' + nickname}
+        </Text>
+        <Text size='xxs'>{userComment}</Text>
       </StyledRatingCommentWrapper>
       {loginedUserId === reviewOwnerId && (
-        <TextButton buttonType='X_SHORT_WHITE' onClick={handleDelete}>
+        <TextButton buttonType='X_SHORT_WHITE' onClick={onHandleDelete}>
           {'삭제'}
         </TextButton>
       )}
