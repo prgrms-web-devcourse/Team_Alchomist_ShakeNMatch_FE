@@ -1,7 +1,7 @@
 import type { InputProps } from '@base/Input/types';
 
-interface StyledInputProps extends InputProps {
+interface StyledInputBackgroundProps extends InputProps {
   isVisible: boolean;
 }
 
-export type { StyledInputProps };
+export type { StyledInputBackgroundProps };

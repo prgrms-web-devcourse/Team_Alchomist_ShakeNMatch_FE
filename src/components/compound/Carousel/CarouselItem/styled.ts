@@ -25,7 +25,7 @@ const StyledContainer = styled.div<
   height: ${CAROUSEL_SIZE.height};
   background-color: ${({ backgroundColor }): string => COLOR[backgroundColor]};
   border-radius: 70px;
-  box-shadow: inset -10px -10px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: inset -3px -3px 4px rgba(0, 0, 0, 0.25);
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 3fr 1fr;
   justify-items: center;

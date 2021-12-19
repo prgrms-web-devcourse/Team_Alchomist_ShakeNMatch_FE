@@ -155,7 +155,7 @@ const ThemePage = (): ReactElement => {
             <>
               <Text>당신이 선택한 </Text>
               <Text bold color='BLUE' italic>
-                {`'${mainTheme}' `}
+                {`'${mainTheme}:${detailTheme}' `}
               </Text>
               <Text>에 어울리는 칵테일!</Text>
             </>
@@ -173,13 +173,15 @@ const ThemePage = (): ReactElement => {
             initialMainIndex={parseInt(selectedThemesIndex.main || '0', 10)}
             onChangeIndex={handleChangeTheme}
           />
-          <StyledResultContainer>
-            {cocktailListAPIState.isLoading ? (
-              <Loader />
-            ) : (
-              <CocktailList cocktailList={cocktailListAPIState.value} />
-            )}
-          </StyledResultContainer>
+          <SectionDivider>
+            <StyledResultContainer>
+              {cocktailListAPIState.isLoading ? (
+                <Loader />
+              ) : (
+                <CocktailList cocktailList={cocktailListAPIState.value} />
+              )}
+            </StyledResultContainer>
+          </SectionDivider>
         </SectionDivider>
         {!showResult ? (
           <StyledResultButton buttonType='LONG_WHITE' onClick={handleResult}>
