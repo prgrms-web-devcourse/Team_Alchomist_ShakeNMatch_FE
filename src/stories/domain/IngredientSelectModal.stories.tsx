@@ -24,6 +24,7 @@ export const Default = (): ReactElement => {
       <IngredientSelectModal
         initialMainIngredient={[1]}
         initialSubIngredient={[2]}
+        totalIngredientsList={{}}
         visible={isVisible}
         onClose={(): void => {
           setIsVisible(false);

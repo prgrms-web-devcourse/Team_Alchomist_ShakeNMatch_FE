@@ -13,7 +13,7 @@ import { Text } from '@base';
 import { TextButton } from '@compound';
 import type { ICocktail, IIngredient, IApiResponse } from '@models/types';
 import { useAuthorization } from '@contexts';
-import { useJangoContext } from '@contexts/Jango';
+import useSessionStorage from '@hooks/useSessionStorage';
 import useAxios from '@hooks/useAxios';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 
@@ -25,13 +25,45 @@ const JangoPage = (): ReactElement => {
     main: [],
     sub: []
   });
-
   const [recommendedCocktails, setRecommendedCocktails] = useState<ICocktail[]>(
     []
   );
   const [isModalVisible, setIsModalVisible] = useState(false);
   const { user, setUserIngredients } = useAuthorization();
-  const { totalIngredientsList } = useJangoContext();
+  const [totalIngredientsList, setTotalIngredientsList] = useSessionStorage<{
+    [key: string]: IIngredient;
+  }>('totalIngredientsList', {});
+
+  const request = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
+
+  const getCocktailByIngredients = (
+    ingredients: number[]
+  ): Promise<IApiResponse<{ cocktails: ICocktail[] }>> => {
+    return request.post('/user/ingredient', ingredients);
+  };
+
+  const getTotalIngredients = (): Promise<IApiResponse<IIngredient[]>> => {
+    return request.get('/ingredient');
+  };
+
+  useEffect(() => {
+    if (!Object.keys(totalIngredientsList).length) {
+      const initializeTotalIngredientList = async (): Promise<void> => {
+        const totalIngredients = await getTotalIngredients();
+        const totalIngredientList: {
+          [key: number]: IIngredient;
+        } = {};
+
+        totalIngredients.data.forEach((ingredient) => {
+          totalIngredientList[ingredient.id] = ingredient;
+        });
+
+        setTotalIngredientsList(totalIngredientList);
+      };
+
+      initializeTotalIngredientList();
+    }
+  }, []);
 
   useEffect(() => {
     const mainIngredients: IIngredient[] = [];
@@ -48,13 +80,6 @@ const JangoPage = (): ReactElement => {
       sub: subIngredients
     });
   }, [user?.ingredients]);
-
-  const request = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
-  const getCocktailByIngredients = (
-    ingredients: number[]
-  ): Promise<IApiResponse<{ cocktails: ICocktail[] }>> => {
-    return request.post('/user/ingredient', ingredients);
-  };
 
   useEffect(() => {
     const mainIngredientsId = ingredients.main.map(
@@ -140,17 +165,20 @@ const JangoPage = (): ReactElement => {
           }))}
         />
       </SectionDividerWithTitle>
-      <IngredientSelectModal
-        initialMainIngredient={ingredients.main.map(
-          (ingredient) => ingredient.id
-        )}
-        initialSubIngredient={ingredients.sub.map(
-          (ingredient) => ingredient.id
-        )}
-        visible={isModalVisible}
-        onClose={closeModal}
-        onSelectDone={handleSelectDone}
-      />
+      {Object.keys(totalIngredientsList).length && (
+        <IngredientSelectModal
+          initialMainIngredient={ingredients.main.map(
+            (ingredient) => ingredient.id
+          )}
+          initialSubIngredient={ingredients.sub.map(
+            (ingredient) => ingredient.id
+          )}
+          totalIngredientsList={totalIngredientsList}
+          visible={isModalVisible}
+          onClose={closeModal}
+          onSelectDone={handleSelectDone}
+        />
+      )}
       <SearchBot />
     </HeaderPageTemplate>
   );
