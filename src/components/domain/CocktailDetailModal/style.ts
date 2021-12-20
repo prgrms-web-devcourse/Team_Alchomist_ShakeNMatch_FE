@@ -2,6 +2,13 @@ import { Modal } from '@base';
 import { COLOR } from '@constants';
 import styled from '@emotion/styled';
 
+const StyledFavoriteContainer = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 3;
+`;
+
 const StyledLeftSection = styled.div`
   background-color: ${COLOR.IVORY};
   overflow: hidden;
@@ -62,6 +69,7 @@ const StyledImageContainer = styled.div`
 `;
 
 export {
+  StyledFavoriteContainer,
   StyledModal,
   StyledLeftSection,
   StyledRightSection,
