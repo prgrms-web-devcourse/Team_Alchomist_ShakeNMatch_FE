@@ -1,15 +1,10 @@
 import styled from '@emotion/styled';
 import { TextButton } from '@compound';
-import TitleSectionContainer from '@domain/TitleSectionContainer';
 import { Modal } from '@base';
 
 const StyledModal = styled(Modal)`
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
-`;
-
-const StyledTitleSectionContainer = styled(TitleSectionContainer)`
-  padding-top: 20px;
 `;
 
 const StyledTextButton = styled(TextButton)`
@@ -18,6 +13,14 @@ const StyledTextButton = styled(TextButton)`
   left: 0;
   right: 0;
   margin: 0 auto;
+`;
+
+const StyledSection = styled.section`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr 1fr;
+  justify-items: center;
+  gap: 10px;
 `;
 
 const StyledTabContentContainer = styled.div`
@@ -35,7 +38,7 @@ const StyledTextContainer = styled.div`
 
 export {
   StyledModal,
-  StyledTitleSectionContainer,
+  StyledSection,
   StyledTextButton,
   StyledTabContentContainer,
   StyledTextContainer
