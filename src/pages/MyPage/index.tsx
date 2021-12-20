@@ -146,8 +146,8 @@ const MyPage = (): ReactElement => {
             User 정보를 받아올수 없습니다
           </Text>
         )}
-        {postUserAPIState.value ? <Text>회원정보가 수정되었습니다!</Text> : ''}
       </SectionDividerWithTitle>
+      {postUserAPIState.value ? <Text>회원정보가 수정되었습니다!</Text> : ''}
       <SearchBot />
       <StyledLogoutButton
         buttonType='SHORT_PINK'

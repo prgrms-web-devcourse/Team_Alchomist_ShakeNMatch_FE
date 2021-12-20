@@ -21,6 +21,7 @@ import {
   StyledThemePageContainer
 } from './styled';
 import SearchBot from '@domain/SearchBot';
+import { HEADER_TEMPLATE_MARGIN } from '@constants/margin';
 
 const RADIX_TEN = 10;
 const DEBOUNCE_DELAY = 700;
@@ -166,7 +167,7 @@ const ThemePage = (): ReactElement => {
         <Divider color='TRANSPARENT' gap={5} />
         <SectionDivider
           {...(showResult && { className: 'result' })}
-          width='200vw'
+          width={`calc(200vw - ${HEADER_TEMPLATE_MARGIN}px)`}
         >
           <ThemeSelector
             initialDetailIndex={parseInt(selectedThemesIndex.detail || '0', 10)}
