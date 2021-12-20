@@ -12,10 +12,10 @@ import {
   StyledModal
 } from './styled';
 import type { IIngredient } from '@models/types';
-import { useJangoContext } from '@contexts/Jango';
 
 const IngredientSelectModal = ({
   visible,
+  totalIngredientsList,
   initialMainIngredient,
   initialSubIngredient,
   onClose,
@@ -27,11 +27,8 @@ const IngredientSelectModal = ({
     sub: number[];
   }>({ main: [], sub: [] });
 
-  const { totalIngredientsList } = useJangoContext();
-
   useEffect(() => {
     const ingredientsList = Object.values(totalIngredientsList);
-
     setIngredientList(ingredientsList);
   }, [totalIngredientsList]);
 
@@ -66,7 +63,7 @@ const IngredientSelectModal = ({
       visible={visible}
       onClose={handleClose}
     >
-      {visible && (
+      {visible && Object.keys(totalIngredientsList).length && (
         <StyledTabContentContainer>
           <MenuTab initialOnChild='0' tabText={['Alcohol', 'Others']}>
             <section>
@@ -86,7 +83,9 @@ const IngredientSelectModal = ({
                 <StyledTextContainer>
                   {Children.toArray(
                     selectedItems.main.map((id) => (
-                      <Text size='xs'>{totalIngredientsList[id].name}</Text>
+                      <Text size='xs'>
+                        {totalIngredientsList[String(id)].name}
+                      </Text>
                     ))
                   )}
                 </StyledTextContainer>
@@ -109,7 +108,9 @@ const IngredientSelectModal = ({
                 <StyledTextContainer>
                   {Children.toArray(
                     selectedItems.sub.map((id) => (
-                      <Text size='xs'>{totalIngredientsList[id].name}</Text>
+                      <Text size='xs'>
+                        {totalIngredientsList[String(id)].name}
+                      </Text>
                     ))
                   )}
                 </StyledTextContainer>

@@ -34,8 +34,6 @@ const CocktailDetailModal = ({
   const request = useAxios(AXIOS_REQUEST_TYPE.DEFAULT);
   const authRequest = useAxios(AXIOS_REQUEST_TYPE.AUTH);
 
-  console.log('bm', updateContextBookmark);
-
   // Api
   const getCocktailDetailInfoById = (
     cocktailId: number
