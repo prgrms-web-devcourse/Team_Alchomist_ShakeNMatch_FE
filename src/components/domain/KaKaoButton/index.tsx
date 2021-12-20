@@ -8,6 +8,9 @@ import { DOMAINS } from '@constants';
 // import { DOMAINS } from '@constants';
 const { REACT_APP_BASE_URL: BASE_URL } = process.env;
 
+const OPEN_WINDOW_WIDTH = 500;
+const OPEN_WINDOW_HEIGHT = 600;
+
 const KaKaoButton = ({ redirectUrl }: KaKaoButtonProps): ReactElement => {
   const { savePath, navigate } = useCustomNavigate();
   const handleLogin = (): void => {
@@ -17,8 +20,11 @@ const KaKaoButton = ({ redirectUrl }: KaKaoButtonProps): ReactElement => {
     redirectUrl && savePath(redirectUrl);
     window.open(
       `${BASE_URL}/login`,
-      '__blank',
-      'fullscreen=no, menubar=no, location=no, left=50, top=50, width=500, height=600, resizable=no'
+      '_blank',
+      `fullscreen=no, width=${OPEN_WINDOW_WIDTH}, height=${OPEN_WINDOW_HEIGHT},
+      top=${(window.innerHeight - OPEN_WINDOW_HEIGHT) / 2 + screenY}px,
+      left=${(window.innerWidth - OPEN_WINDOW_WIDTH) / 2 + screenX}px
+      `
     );
     navigate(`/${DOMAINS.oauthKaKao}?loading=true`);
     // window.location.assign(`${BASE_URL}/login`);
