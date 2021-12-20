@@ -39,6 +39,17 @@
 | ![스크린샷 2021-12-21 오전 2 06](https://user-images.githubusercontent.com/48900550/146813228-f277e15f-dad7-4415-b5f2-3c0898a2f40d.png) | ![스크린샷 2021-12-21 오전 2 04](https://user-images.githubusercontent.com/48900550/146813260-b46ca9bd-37c0-44d8-833f-6cef91ef3695.png) | ![스크린샷 2021-12-21 오전 2 08](https://user-images.githubusercontent.com/48900550/146813379-4befd47b-eb1f-4bd1-b2f0-be0f613853ce.png) | ![스크린샷 2021-12-21 오전 2 10](https://user-images.githubusercontent.com/48900550/146813410-8c7578b8-8565-47a4-88f8-869213597814.png) |
 | [SeungrokYoon](https://github.com/SeungrokYoon) | [42KIM](https://github.com/42KIM) | [alanggy](https://github.com/AlangGY) | [sshyukk](https://github.com/sshyukk) |
 
+
+## 📌 개발 일정
+|  단위  | 주요 일정 |  링크  |
+| :---: |  :---:  | :---: |
+|0주차| 스크럼을 통해 진행 사항 공유 |[미팅 및 회의록](https://www.notion.so/backend-devcourse/aa681a659f4d43c4be8177171c5846cc?v=9ba6c94e7ce446958aad344540fd2c8b) |
+|1주차|디자인 마크업 완성, 베이스 컴포넌트 개발|[진행 현황](https://www.notion.so/backend-devcourse/15-1-7ab524962d6e462ebbc3ee42f326f50e)|
+|2주차|컴파운드, 도메인 컴포넌트 개발, 페이지 완성|[진행 현황](https://www.notion.so/backend-devcourse/15-2-14-d1c5d69af20d4cae801874542d223194)|
+|3주차|라우터 처리 및 API 연동|[진행 현황](https://www.notion.so/backend-devcourse/15-3-19-0f4b9cd8c05c4454b7b1d1534fbf6bb9)|
+
+
+
 ## 📌 프로젝트 문서
 + [팀 Notion](https://www.notion.so/backend-devcourse/15-ShakeNMatch-928321ccc30f45aa828a57c1a6ac0671)
 + [프로젝트 WIKI](https://github.com/prgrms-web-devcourse/Team_Alchomist_ShakeNMatch_FE/wiki)
