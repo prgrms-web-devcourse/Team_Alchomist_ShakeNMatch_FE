@@ -2,7 +2,7 @@
 import { Divider, SectionDivider, Text } from '@base';
 import { Loader } from '@compound';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
-import { THEMES } from '@constants/themes';
+import { THEMES, THEMES_COLOR } from '@constants/themes';
 import {
   BackButton,
   CocktailList,
@@ -154,8 +154,8 @@ const ThemePage = (): ReactElement => {
           {showResult ? (
             <>
               <Text>당신이 선택한 </Text>
-              <Text bold color='BLUE' italic>
-                {`'${mainTheme}:${detailTheme}' `}
+              <Text bold color={THEMES_COLOR[mainTheme].detail[detailTheme]}>
+                {`${detailTheme}`}
               </Text>
               <Text>에 어울리는 칵테일!</Text>
             </>

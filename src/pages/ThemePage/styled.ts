@@ -23,7 +23,7 @@ const StyledResultContainer = styled.div`
 
 const StyledResultButton = styled(TextButton)`
   position: absolute;
-  bottom: 130px;
+  bottom: 100px;
   left: calc(50% - 110px);
 `;
 
