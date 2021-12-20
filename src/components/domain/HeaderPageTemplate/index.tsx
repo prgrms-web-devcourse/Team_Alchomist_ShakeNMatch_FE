@@ -1,6 +1,7 @@
 import type { ReactElement } from 'react';
 import { Header } from '@domain';
 import type { HeaderPageTemplateProps } from './types';
+import { StyledContainer } from './styled';
 
 const HeaderPageTemplate = ({
   children
@@ -8,7 +9,7 @@ const HeaderPageTemplate = ({
   return (
     <>
       <Header />
-      {children}
+      <StyledContainer>{children}</StyledContainer>
     </>
   );
 };
