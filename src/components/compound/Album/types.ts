@@ -6,24 +6,24 @@ const ALBUM_ATTRIBUTES = {
     width: '130px',
     height: '130px',
     shape: 'circle',
-    imageWidth: '70px',
-    imageHeight: '70px',
+    imageWidth: '40px',
+    imageHeight: '40px',
     backgroundColor: COLOR.BASIC_WHITE
   },
   sweetener: {
     width: '130px',
     height: '130px',
     shape: 'round',
-    imageWidth: '80px',
-    imageHeight: '80px',
+    imageWidth: '40px',
+    imageHeight: '40px',
     backgroundColor: COLOR.BASIC_WHITE
   },
   result: {
     width: '130px',
     height: '155px',
     shape: 'round',
-    imageWidth: '90px',
-    imageHeight: '90px',
+    imageWidth: '80px',
+    imageHeight: '80px',
     backgroundColor: COLOR.BASIC_WHITE
   }
 } as const;
