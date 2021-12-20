@@ -18,14 +18,10 @@ const ShoppingPage = (): ReactElement => {
       setData([]);
       setLoading(true);
       // 무한 스크롤 리펙토링 해보기.
-      const response = await axios.get('/v1/search/shop.json?', {
+      const response = await axios.get('/api/naverShop', {
         params: {
           query: params.keyword,
           display: 100
-        },
-        headers: {
-          'X-Naver-Client-Id': 'CRC7XaD__8BI4e9pZ87T',
-          'X-Naver-Client-Secret': 'bqPZbC4akN'
         }
       });
       setData(response.data.items);
