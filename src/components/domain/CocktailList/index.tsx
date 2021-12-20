@@ -48,18 +48,16 @@ const CocktailList = ({
           </StyledText>
         )}
       </StyledContainer>
-      {clickedCocktailId && (
-        <CocktailDetailModal
-          backgroundColor='DARK_GRAY_OPACITY'
-          cocktailId={clickedCocktailId}
-          color='IVORY'
-          size='lg'
-          visible={!!clickedCocktailId}
-          onClose={(): void => {
-            setClickedCocktailId(null);
-          }}
-        />
-      )}
+      <CocktailDetailModal
+        backgroundColor='DARK_GRAY_OPACITY'
+        cocktailId={clickedCocktailId}
+        color='IVORY'
+        size='lg'
+        visible={!!clickedCocktailId}
+        onClose={(): void => {
+          setClickedCocktailId(null);
+        }}
+      />
     </>
   );
 };
