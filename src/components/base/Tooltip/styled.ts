@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import type { TooltipProps } from './types';
 import { TOOLTIP_SIZE } from './types';
 
-const MARGIN = 20;
+const MARGIN = 5;
 const MINUS = -1;
 
 const StyledTooltipWrapper = styled.div`
@@ -61,10 +61,10 @@ const StyledTooltipContent = styled.div<
       case 'bottom':
         position = '0px';
         break;
-      case 'right':
+      case 'left':
         position = '-105%';
         break;
-      case 'left':
+      case 'right':
         position =
           tooltipSize &&
           ((TOOLTIP_SIZE[tooltipSize].width + MARGIN) * MINUS).toString() +
