@@ -36,7 +36,41 @@
 ## 📌 프로젝트 문서
 + [팀 Notion](https://www.notion.so/backend-devcourse/15-ShakeNMatch-928321ccc30f45aa828a57c1a6ac0671)
 + [프로젝트 WIKI](https://github.com/prgrms-web-devcourse/Team_Alchomist_ShakeNMatch_FE/wiki)
-  
+
+## 📌 폴더 구조
+```
+.
+├── .github
+├── .storybook
+├── node_modules
+├── api
+├── public
+└── src
+    ├── assets
+    │   └── ...
+    ├── components
+    │   ├── base 
+    │   │   └── ...
+    │   ├── compound
+    │   │   └── ...
+    │   └── domain
+    │       └── ...
+    ├── contexts
+    │   └── ...
+    ├── hooks
+    ├── models
+    ├── pages
+    │   └── ...
+    ├── routes
+    │   └── ...
+    ├── stories
+    └── utils
+        ├── apis
+        ├── constants
+        └── lib
+
+``` 
+
 ## 📌 주요 기능 및 페이지 소개
 |메인 페이지|
 |------|
