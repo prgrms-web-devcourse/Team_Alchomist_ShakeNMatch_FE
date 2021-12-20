@@ -18,7 +18,7 @@ const ShoppingPage = (): ReactElement => {
       setData([]);
       setLoading(true);
       // 무한 스크롤 리펙토링 해보기.
-      const response = await axios.get('/naverShop', {
+      const response = await axios.get('/api/naverShop', {
         params: {
           query: params.keyword,
           display: 100
