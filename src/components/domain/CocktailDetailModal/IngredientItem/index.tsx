@@ -12,6 +12,9 @@ import {
 } from './style';
 import { useCustomNavigate } from '@contexts/CustomNavigate';
 
+const OPEN_WINDOW_HEIGHT = 1000;
+const OPEN_WINDOW_WIDTH = 1000;
+
 const IngredientItem = (ingredient: IngredientItemProps): ReactElement => {
   const innerTextColor = ingredient.isUserHas ? 'BLACK' : 'BASIC_WHITE';
   const { savePath } = useCustomNavigate();
@@ -19,7 +22,14 @@ const IngredientItem = (ingredient: IngredientItemProps): ReactElement => {
   const handleClick = (): void => {
     if (!ingredient.isUserHas) {
       savePath(`/shop/${ingredient.name}`);
-      window.open(`/shop/${ingredient.name}`, '_blank');
+      window.open(
+        `/shop/${ingredient.name}`,
+        '_blank',
+        `fullscreen=no, width=${OPEN_WINDOW_WIDTH}, height=${OPEN_WINDOW_HEIGHT},
+        top=${(window.innerHeight - OPEN_WINDOW_HEIGHT) / 2 + screenY}px,
+        left=${(window.innerWidth - OPEN_WINDOW_WIDTH) / 2 + screenX}px
+        `
+      );
     }
   };
   return (
