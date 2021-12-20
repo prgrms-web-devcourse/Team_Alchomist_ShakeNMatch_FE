@@ -2,8 +2,16 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    node: true,
+    node: true
   },
+  overrides: [
+    {
+      files: ['*.ts', '*.tsx'],
+      parserOptions: {
+        project: ['./tsconfig.json']
+      }
+    }
+  ],
   parser: '@typescript-eslint/parser',
   plugins: ['react', '@typescript-eslint'],
   extends: [
@@ -11,26 +19,29 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'plugin:prettier/recommended',
-    'plugin:react/jsx-runtime',
+    'plugin:react/jsx-runtime'
   ],
   rules: {
+    'react/jsx-key': 'off',
     'no-use-before-define': 'off',
     'no-redeclare': 'off',
     'react/button-has-type': ['error'],
+
     'react/jsx-sort-props': [
       'error',
       {
         callbacksLast: true,
-        reservedFirst: true,
-      },
+        reservedFirst: true
+      }
     ],
     '@typescript-eslint/array-type': ['error', { default: 'array' }],
     '@typescript-eslint/ban-tslint-comment': 'error',
     '@typescript-eslint/consistent-indexed-object-style': [
       'error',
-      'index-signature',
+      'index-signature'
     ],
     'react/jsx-pascal-case': ['error'],
+    'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
     '@typescript-eslint/consistent-type-imports': 'error',
     '@typescript-eslint/explicit-function-return-type': 'error',
@@ -44,8 +55,18 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['error'],
     '@typescript-eslint/no-use-before-define': ['error'],
     '@typescript-eslint/no-redeclare': 'error',
-    '@typescript-eslint/no-magic-numbers': 'error',
-    '@typescript-eslint/no-unused-expressions': 'error',
+    '@typescript-eslint/no-magic-numbers': [
+      'error',
+      {
+        ignore: [
+          -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+        ],
+        ignoreArrayIndexes: true,
+        ignoreEnums: true
+      }
+    ],
+    '@typescript-eslint/no-unused-expressions': 'off',
     '@typescript-eslint/no-duplicate-imports': 'error',
-  },
+    '@typescript-eslint/jsx-key': 'off'
+  }
 };
