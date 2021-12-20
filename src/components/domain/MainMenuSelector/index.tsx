@@ -12,13 +12,13 @@ import {
 import type { MainMenuSelectorProps } from './types';
 
 const ONE_POINT_TWO = 1.2;
-const INITIAL_GAP = 300;
-const CHANGE_GAP = 50;
+const INITIAL_GAP = '25vw';
+const CHANGE_GAP = '1vw';
 const INITIAL_RATIO = [1, 1];
 const THEME_HOVERED_RATIO = [ONE_POINT_TWO, 1];
 const JANGO_HOVERED_RATIO = [1, ONE_POINT_TWO];
-const THEME_CLICKED_RATIO = [3, 1];
-const JANGO_CLICKED_RATIO = [1, 3];
+const THEME_CLICKED_RATIO = [9, 1];
+const JANGO_CLICKED_RATIO = [1, 9];
 
 const MainMenuSelector = ({
   onMenuSelected,
@@ -75,33 +75,37 @@ const MainMenuSelector = ({
         className='menuContainer'
         direction='vertical'
         dividerOptions={{ color: 'TRANSPARENT', gap }}
-        height='2000px'
+        height='200vw'
         ratio={ratio}
         rotate='-45deg'
         showDivider
-        width='150%'
+        width='200vh'
       >
         <StyledThemeContainer
           ref={themeRef}
           selected={clickedElement.current === 'theme'}
           onClick={handleThemeClick}
         >
-          <StyledThemeTextWrapper className='textWrapper'>
-            <Text color='BASIC_WHITE' size='sm'>
-              당신에게 가장 어울리는 첫 칵테일을 찾아 볼까요?
-            </Text>
-          </StyledThemeTextWrapper>
+          {!selectedMenu && (
+            <StyledThemeTextWrapper className='textWrapper'>
+              <Text color='BASIC_WHITE' size='sm'>
+                당신에게 가장 어울리는 첫 칵테일을 찾아 볼까요?
+              </Text>
+            </StyledThemeTextWrapper>
+          )}
         </StyledThemeContainer>
         <StyledJangoContainer
           ref={jangoRef}
           selected={clickedElement.current === 'jango'}
           onClick={handleJangoClick}
         >
-          <StyledJangoTextWrapper className='textWrapper'>
-            <Text color='BASIC_WHITE' size='sm'>
-              집에서도 칵테일을 만들어 보고 싶나요?
-            </Text>
-          </StyledJangoTextWrapper>
+          {!selectedMenu && (
+            <StyledJangoTextWrapper className='textWrapper'>
+              <Text color='BASIC_WHITE' size='sm'>
+                집에서도 칵테일을 만들어 보고 싶나요?
+              </Text>
+            </StyledJangoTextWrapper>
+          )}
         </StyledJangoContainer>
       </SectionDivider>
     </StyledMainMenuWrapper>
