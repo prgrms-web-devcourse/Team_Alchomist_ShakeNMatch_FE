@@ -25,7 +25,6 @@ const ShoppingPage = (): ReactElement => {
         }
       });
       setData(response.data.items);
-      console.log(data);
     } catch (e: unknown) {
       console.error(e);
     }
