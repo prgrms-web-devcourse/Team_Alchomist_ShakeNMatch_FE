@@ -32,7 +32,7 @@ const CarouselItem = ({
     >
       <IconButton
         disabled={!selected}
-        name='arrowUpWhite'
+        name='arrowUpNavy'
         type='button'
         onClick={handlePrev}
       />
@@ -59,7 +59,7 @@ const CarouselItem = ({
       </StyledWrapper>
       <IconButton
         disabled={!selected}
-        name='arrowDownWhite'
+        name='arrowDownNavy'
         type='button'
         onClick={handleNext}
       />
