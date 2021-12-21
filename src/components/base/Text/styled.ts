@@ -22,7 +22,7 @@ const StyledText = styled.span<TextProps>`
 
   ${({ stroke }): CSSObject | false | undefined =>
     stroke && {
-      '-webkit-text-stroke': `0.05px #00000066`
+      WebkitTextStroke: `0.05px #00000066`
     }}
 `;
 
