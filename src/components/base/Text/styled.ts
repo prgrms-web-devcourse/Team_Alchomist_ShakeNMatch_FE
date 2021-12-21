@@ -1,4 +1,5 @@
 import { COLOR } from '@constants';
+import type { CSSObject } from '@emotion/styled';
 import styled from '@emotion/styled';
 import type { ColorType } from '@models';
 import type { TextProps } from './types';
@@ -18,6 +19,11 @@ const StyledText = styled.span<TextProps>`
   transition: color 0.1s ease-in-out;
   border-radius: 5px;
   letter-spacing: 0.05rem;
+
+  ${({ stroke }): CSSObject | false | undefined =>
+    stroke && {
+      '-webkit-text-stroke': `0.05px #00000066`
+    }}
 `;
 
 export { StyledText };

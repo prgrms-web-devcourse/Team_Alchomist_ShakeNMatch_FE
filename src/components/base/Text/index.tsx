@@ -9,6 +9,7 @@ const Text = ({
   backgroundColor,
   bold,
   block,
+  stroke,
   dangerously = false,
   ...props
 }: TextProps): ReactElement => {
@@ -32,6 +33,7 @@ const Text = ({
       bold={bold}
       color={color}
       size={size}
+      stroke={stroke}
       {...props}
     >
       {children}

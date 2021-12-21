@@ -18,6 +18,10 @@ const StyledButton = styled.button<ButtonProps>`
   background-color: ${({ basicColor }): string =>
     basicColor ? COLOR[basicColor] : COLOR.BASIC_WHITE};
 
+  & span {
+    vertical-align: text-top;
+  }
+
   &:hover:not(:disabled) {
     ${({ hoverColor }): string | CSSObject =>
       hoverColor
