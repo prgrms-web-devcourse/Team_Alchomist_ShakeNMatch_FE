@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import type { PreviewProps } from './types';
+import { COLOR } from '@constants';
 
 const StyledUploadContainer = styled.div`
   display: inline-block;
@@ -15,14 +16,10 @@ const StyledUploadPreview = styled.div<PreviewProps>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 300px;
-  height: 180px;
-  border: 2px solid;
-  border-color: ${({ dragging }): string => (!dragging ? 'black' : 'cyan')};
-  background-image: ${({ fileSrcUrl }): string =>
-    fileSrcUrl ? `url(${fileSrcUrl})` : ''};
-  background-size: cover;
-  background-position: center;
+  width: 280px;
+  height: 150px;
+  background-color: ${COLOR.BASIC_WHITE};
+  border: 1px dashed ${COLOR.DARK_GRAY};
 `;
 
 export { StyledInput, StyledUploadContainer, StyledUploadPreview };
