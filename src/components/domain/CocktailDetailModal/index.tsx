@@ -116,7 +116,7 @@ const CocktailDetailModal = ({
                 tooltipSize='xs'
               >
                 <IconToggle
-                  initialState={user?.bookmarks.some(
+                  initialState={user?.bookmarks?.some(
                     (cocktail) => cocktail.id === cocktailId
                   )}
                   name='flag'

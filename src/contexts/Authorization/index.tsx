@@ -28,7 +28,16 @@ const AuthorizationProvider = ({
     oauthToken,
     user
   }: Omit<IAuthState, 'isAuthorized'>): void => {
-    setState({ oauthToken, user, isAuthorized: true });
+    if (oauthToken && user) {
+      setState({
+        oauthToken,
+        user: {
+          ...user,
+          bookmarks: user?.bookmarks || []
+        },
+        isAuthorized: true
+      });
+    }
   };
 
   const logout = (): void => {
