@@ -16,6 +16,10 @@ const StyledUploadPreview = styled.div<PreviewProps>`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: ${({ fileSrcUrl }): string =>
+    fileSrcUrl ? `url(${fileSrcUrl})` : ''};
+  background-size: cover;
+  background-position: center;
   width: 280px;
   height: 150px;
   background-color: ${COLOR.BASIC_WHITE};
