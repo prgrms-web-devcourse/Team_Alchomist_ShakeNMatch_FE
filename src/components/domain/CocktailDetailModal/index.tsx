@@ -105,22 +105,24 @@ const CocktailDetailModal = ({
       visible={visible}
       onClose={handleClose}
     >
-      <StyledFavoriteContainer>
-        <Tooltip
-          direction='top'
-          tooltipMessage='즐겨찾기'
-          tooltipMessageSize='xxs'
-          tooltipSize='xs'
-        >
-          <IconToggle
-            initialState={user?.bookmarks.some(
-              (cocktail) => cocktail.id === cocktailId
-            )}
-            name='flag'
-            onChange={handleBookmark}
-          />
-        </Tooltip>
-      </StyledFavoriteContainer>
+      {user && (
+        <StyledFavoriteContainer>
+          <Tooltip
+            direction='top'
+            tooltipMessage='즐겨찾기'
+            tooltipMessageSize='xxs'
+            tooltipSize='xs'
+          >
+            <IconToggle
+              initialState={user?.bookmarks.some(
+                (cocktail) => cocktail.id === cocktailId
+              )}
+              name='flag'
+              onChange={handleBookmark}
+            />
+          </Tooltip>
+        </StyledFavoriteContainer>
+      )}
       {visible && (
         <MenuTab tabText={['Ingredients & Method', 'Reviews']}>
           <SectionDivider>
