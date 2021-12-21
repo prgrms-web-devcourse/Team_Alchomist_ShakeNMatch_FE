@@ -81,23 +81,27 @@ const JangoPage = (): ReactElement => {
   }, [user?.ingredients]);
 
   useEffect(() => {
-    const mainIngredientsId = ingredients.main.map(
-      (ingredient) => ingredient.id
-    );
-    const subIngredientsId = ingredients.sub.map((ingredient) => ingredient.id);
-
-    const userIngredientsId = [...mainIngredientsId, ...subIngredientsId];
-
-    const setRecommendedCocktailsByIngredients = async (): Promise<void> => {
-      const recommendedCocktails = await getCocktailByIngredients(
-        userIngredientsId
+    if (ingredients.main.length || ingredients.sub.length) {
+      const mainIngredientsId = ingredients.main.map(
+        (ingredient) => ingredient.id
+      );
+      const subIngredientsId = ingredients.sub.map(
+        (ingredient) => ingredient.id
       );
 
-      setRecommendedCocktails(recommendedCocktails.data.cocktails);
-    };
+      const userIngredientsId = [...mainIngredientsId, ...subIngredientsId];
 
-    if (ingredients.main.length || ingredients.sub.length) {
+      const setRecommendedCocktailsByIngredients = async (): Promise<void> => {
+        const recommendedCocktails = await getCocktailByIngredients(
+          userIngredientsId
+        );
+
+        setRecommendedCocktails(recommendedCocktails.data.cocktails);
+      };
+
       setRecommendedCocktailsByIngredients();
+    } else {
+      setRecommendedCocktails([]);
     }
   }, [ingredients]);
 
