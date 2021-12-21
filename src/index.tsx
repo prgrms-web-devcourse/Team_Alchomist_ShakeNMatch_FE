@@ -27,7 +27,8 @@ ReactDOM.render(
             background: ${COLOR.IVORY};
             min-height: 100vh;
             width: 100%;
-            font-family: 'Sunflower', sans-serif;
+            font-family: 'Do Hyeon', sans-serif;
+            /* font-family: 'Sunflower', sans-serif; */
             word-break: keep-all;
           }
           #root {
