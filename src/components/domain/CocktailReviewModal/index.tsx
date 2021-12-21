@@ -1,9 +1,8 @@
 import type { ChangeEventHandler, FormEventHandler, ReactElement } from 'react';
 import { useState } from 'react';
-import Button from '@base/Button';
-import { Text, Modal } from '@base';
-import Upload from '@base/Uploader';
-import RatingStar from '@domain/RatingStar';
+import { Text, Modal, Button } from '@base';
+import { Uploader } from '@compound';
+import { RatingStar } from '@domain';
 import { StyledReviewForm, StyledTextEditor } from './style';
 import type { CocktailReviewModalProps } from './types';
 import useAxios from '@hooks/useAxios';
@@ -87,7 +86,7 @@ const CocktailReviewModal = ({
     <Modal backgroundColor='TRANSPARENT' {...props}>
       <StyledReviewForm>
         <Text size='sm'>{'칵테일 리뷰 모달'}</Text>
-        <Upload
+        <Uploader
           accept='image'
           droppable={true}
           value={null}

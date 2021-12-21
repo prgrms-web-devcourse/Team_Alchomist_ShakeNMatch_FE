@@ -9,4 +9,3 @@ export { default as SectionDivider } from '@base/SectionDivider';
 export { default as Select } from '@base/Select';
 export { default as Text } from '@base/Text';
 export { default as Tooltip } from '@base/Tooltip';
-export { default as Uploader } from '@base/Uploader';
