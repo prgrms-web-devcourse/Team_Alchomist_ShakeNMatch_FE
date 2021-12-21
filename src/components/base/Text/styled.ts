@@ -17,7 +17,7 @@ const StyledText = styled.span<TextProps>`
   line-height: 1.6;
   transition: color 0.1s ease-in-out;
   border-radius: 5px;
-  letter-spacing: 0.1rem;
+  letter-spacing: 0.05rem;
 `;
 
 export { StyledText };
