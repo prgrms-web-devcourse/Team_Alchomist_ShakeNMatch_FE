@@ -16,7 +16,6 @@ const StyledContainer = styled.div`
   gap: 5px;
   overflow-y: scroll;
   border-radius: 10px;
-  box-shadow: inset 0 -2px 5px -4px ${COLOR.BLACK};
   border-bottom: 1px solid ${COLOR.IVORY};
   z-index: 3;
 `;

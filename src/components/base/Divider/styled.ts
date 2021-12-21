@@ -12,14 +12,16 @@ const StyledLine = styled.hr<
     display: block;
     width: 100%;
     height: ${({ size }): string => `${size}px`};
-    margin: ${({ gap }): string => `${gap}px 0 ${gap}px 0`};
+    margin: ${({ gap }): string =>
+      typeof gap === 'number' ? `${gap}px 0 ${gap}px 0` : `${gap} 0 ${gap} 0`};
   }
 
   &.vertical {
     display: inline-block;
     height: 100%;
     width: ${({ size }): string => `${size}px`};
-    margin: ${({ gap }): string => `0 ${gap}px 0 ${gap}px`};
+    margin: ${({ gap }): string =>
+      typeof gap === 'number' ? `${gap}px 0 ${gap}px 0` : `${gap} 0 ${gap} 0`};
     vertical-align: middle;
   }
 `;

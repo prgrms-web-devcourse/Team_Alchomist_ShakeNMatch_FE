@@ -11,14 +11,19 @@ const StyledIngredient = styled.div<Pick<IngredientItemProps, 'isUserHas'>>`
   height: 48px;
   background: ${({ isUserHas }): string =>
     isUserHas ? COLOR.BASIC_WHITE : COLOR.BASIC_PINK};
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
   border-radius: 7px;
   margin: 9px;
   padding: 5px;
   ${({ isUserHas }): CSSObject =>
     isUserHas ? { userSelect: 'none' } : { cursor: 'pointer' }}
   ${({ isUserHas }): CSSObject | boolean =>
-    !isUserHas && { ':active': { transform: 'translateY(3px)' } }}
+    !isUserHas && {
+      ':active': { transform: 'translateY(3px)' },
+      ':hover': {
+        filter: 'brightness(0.95)'
+      }
+    }};
 `;
 const StyledIngredientInnerWrapper = styled.div`
   display: flex;

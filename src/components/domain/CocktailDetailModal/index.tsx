@@ -1,18 +1,21 @@
 import { Children, useEffect, useState } from 'react';
 import type { ReactElement } from 'react';
 import type { CocktailDetailModalProps } from './types';
-import { Image, SectionDivider, Text } from '@base';
+import { Divider, Image, SectionDivider, Text, Tooltip } from '@base';
 import IngredientItem from './IngredientItem';
 import UserReviewItem from './UserReviewItem';
 import { TextButton, MenuTab, IconToggle } from '@compound';
 import { TitleSectionContainer, CocktailReviewModal } from '@domain';
 import {
-  StyledIngredientListWrapper,
+  StyledContentWrapper,
   StyledReviewListWrapper,
+  StyledIngredientListWrapper,
   StyledImageContainer,
-  StyledModal
+  StyledModal,
+  StyledFavoriteContainer,
+  StyledTextWrapper
 } from './style';
-import { useAuthorization } from '@contexts/Authorization';
+import { useAuthorization } from '@contexts';
 import useAxios from '@hooks/useAxios';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
 import type { IApiResponse, ICocktail, IReview } from '@models';
@@ -103,22 +106,15 @@ const CocktailDetailModal = ({
       onClose={handleClose}
     >
       {visible && (
-        <MenuTab tabText={['Ingredients & Method', 'Reviews']}>
-          <SectionDivider>
-            <StyledImageContainer>
-              <Image
-                alt='Image'
-                height='100%'
-                mode='cover'
-                src={cocktailData?.type}
-                width='100%'
-              />
-            </StyledImageContainer>
-            <TitleSectionContainer
-              dividerVisible
-              titleText={cocktailData?.name}
-            >
-              <StyledIngredientListWrapper>
+        <>
+          {user && (
+            <StyledFavoriteContainer>
+              <Tooltip
+                direction='top'
+                tooltipMessage='즐겨찾기'
+                tooltipMessageSize='xxs'
+                tooltipSize='xs'
+              >
                 <IconToggle
                   initialState={user?.bookmarks.some(
                     (cocktail) => cocktail.id === cocktailId
@@ -126,84 +122,119 @@ const CocktailDetailModal = ({
                   name='flag'
                   onChange={handleBookmark}
                 />
-                <Text size='md'>{'- 재료 -'}</Text>
-                {Children.toArray(
-                  cocktailData?.volumes?.map((ingredient) => {
-                    let isExists = false;
-                    if (
-                      user?.ingredients
-                        .map((userIngredient) => userIngredient.id)
-                        .includes(ingredient.id)
-                    ) {
-                      isExists = true;
-                    }
-                    return (
-                      <IngredientItem
-                        amount={ingredient.amount}
-                        id={ingredient.id}
-                        isUserHas={isExists}
-                        measure={ingredient.measure}
-                        name={ingredient.name}
-                        type={ingredient.type}
-                      />
-                    );
-                  })
-                )}
-                <Text size='md'>{'- 조제법- '}</Text>
-                <br />
-                <Text size='sm'>{cocktailData?.recipe}</Text>
-              </StyledIngredientListWrapper>
-            </TitleSectionContainer>
-          </SectionDivider>
-          <SectionDivider>
-            <StyledImageContainer>
-              <Image
-                alt='Image'
-                height='100%'
-                mode='cover'
-                src={cocktailData?.type}
-                width='100%'
-              />
-            </StyledImageContainer>
-            <TitleSectionContainer
-              dividerVisible
-              titleText={cocktailData?.name}
-            >
-              <>
+              </Tooltip>
+            </StyledFavoriteContainer>
+          )}
+          <MenuTab tabText={['Ingredients & Method', 'Reviews']}>
+            <SectionDivider>
+              <StyledImageContainer>
+                <Image
+                  alt='Image'
+                  height='100%'
+                  mode='cover'
+                  src={cocktailData?.type}
+                  width='100%'
+                />
+              </StyledImageContainer>
+              <TitleSectionContainer
+                dividerVisible
+                titleText={cocktailData?.name}
+              >
+                <StyledContentWrapper>
+                  <Text color='NAVY' size='sm'>
+                    {'- 재료 -'}
+                  </Text>
+                  <StyledIngredientListWrapper>
+                    {Children.toArray(
+                      cocktailData?.volumes?.map((ingredient) => {
+                        let isExists = false;
+                        if (
+                          user?.ingredients
+                            .map((userIngredient) => userIngredient.id)
+                            .includes(ingredient.id)
+                        ) {
+                          isExists = true;
+                        }
+                        return (
+                          <IngredientItem
+                            amount={ingredient.amount}
+                            id={ingredient.id}
+                            isUserHas={isExists}
+                            measure={ingredient.measure}
+                            name={ingredient.name}
+                            type={ingredient.type}
+                          />
+                        );
+                      })
+                    )}
+                  </StyledIngredientListWrapper>
+                  <Divider color='LIGHT_GREEN_OPACITY' gap={5} />
+                  <Text color='NAVY' size='sm'>
+                    {'- 조제법- '}
+                  </Text>
+                  <br />
+                  <StyledTextWrapper>
+                    <Text size='xs'>{cocktailData?.recipe}</Text>
+                  </StyledTextWrapper>
+                </StyledContentWrapper>
+              </TitleSectionContainer>
+            </SectionDivider>
+            <SectionDivider>
+              <StyledImageContainer>
+                <Image
+                  alt='Image'
+                  height='100%'
+                  mode='cover'
+                  src={cocktailData?.type}
+                  width='100%'
+                />
+              </StyledImageContainer>
+              <TitleSectionContainer
+                dividerVisible
+                titleText={cocktailData?.name}
+              >
                 <StyledReviewListWrapper>
-                  <Text size='md'>{'- 사용자 리뷰- '}</Text>
-                  {Children.toArray(
-                    cocktailReviews.map((userReview: IReview) => (
-                      //여기에 리뷰 아이디 같이 넣어줘야 삭제 가능하다. 현재 Cocktail id 검색결과에서는 reviewId가 없음
-                      <UserReviewItem
-                        loginedUserId={user?.id}
-                        nickname={userReview.nickname}
-                        reviewId={userReview.id}
-                        reviewOwnerId={userReview.userId}
-                        userComment={userReview.description}
-                        userImageUrl={userReview.url}
-                        userRating={userReview.rating}
-                        onDelete={onDelete}
-                      />
-                    ))
+                  <Text color='NAVY' size='sm'>
+                    {'- 사용자 리뷰- '}
+                  </Text>
+                  {user && (
+                    <TextButton
+                      buttonType='LONG_WHITE'
+                      dropShadow
+                      type='button'
+                      onClick={(): void => {
+                        setIsReviewModalVisible(true);
+                      }}
+                    >
+                      {'리뷰작성'}
+                    </TextButton>
+                  )}
+                  {cocktailReviews.length ? (
+                    Children.toArray(
+                      cocktailReviews.map((userReview: IReview) => (
+                        //여기에 리뷰 아이디 같이 넣어줘야 삭제 가능하다. 현재 Cocktail id 검색결과에서는 reviewId가 없음
+                        <UserReviewItem
+                          loginedUserId={user?.id}
+                          nickname={userReview.nickname}
+                          reviewId={userReview.id}
+                          reviewOwnerId={userReview.userId}
+                          userComment={userReview.description}
+                          userImageUrl={userReview.url}
+                          userRating={userReview.rating}
+                          onDelete={onDelete}
+                        />
+                      ))
+                    )
+                  ) : (
+                    <Text color='DARK_GRAY'>
+                      아직 작성된 리뷰가 없습니다..!
+                    </Text>
                   )}
                 </StyledReviewListWrapper>
-                {user && (
-                  <TextButton
-                    buttonType='LONG_WHITE'
-                    dropShadow
-                    type='button'
-                    onClick={(): void => {
-                      setIsReviewModalVisible(true);
-                    }}
-                  >
-                    {'리뷰작성'}
-                  </TextButton>
-                )}
-              </>
-            </TitleSectionContainer>
-          </SectionDivider>
-        </MenuTab>
+              </TitleSectionContainer>
+            </SectionDivider>
+          </MenuTab>
+        </>
       )}
       {cocktailId && user && (
         <CocktailReviewModal

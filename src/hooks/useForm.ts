@@ -1,9 +1,10 @@
 import type { ChangeEventHandler, FormEventHandler } from 'react';
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 
 interface UseFormProps<T extends { [key: string]: any }> {
   initialValues: Partial<T>;
   validateOnChange?: boolean;
+  validateOnInitial?: boolean;
   onSubmit?(value: Partial<T>): any;
   validateFn?(args: any): any;
 }
@@ -19,6 +20,7 @@ interface UseFormReturnType<T extends { [key: string]: any }> {
 const useForm = <T>({
   initialValues, // 초기값
   validateOnChange = false, // onChange event시 validate 진행 여부
+  validateOnInitial = false,
   onSubmit, // Submit 이벤트
   validateFn // validate 함수
 }: UseFormProps<T>): UseFormReturnType<T> => {
@@ -56,6 +58,13 @@ const useForm = <T>({
     setErrors(newErrors);
     setIsLoading(false);
   };
+
+  useEffect(() => {
+    if (validateOnInitial) {
+      const newErrors = validateFn ? validateFn(values) : {};
+      setErrors(newErrors);
+    }
+  }, []);
 
   return { values, errors, isLoading, handleChange, handleSubmit };
 };

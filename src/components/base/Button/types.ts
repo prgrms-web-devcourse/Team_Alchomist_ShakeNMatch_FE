@@ -8,7 +8,7 @@ const BUTTON_SIZE = {
   },
   long: {
     width: '220px',
-    height: '30px'
+    height: '40px'
   },
   kakao: {
     width: '300px',

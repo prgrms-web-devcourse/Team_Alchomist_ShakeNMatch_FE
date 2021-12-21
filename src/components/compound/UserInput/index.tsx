@@ -3,6 +3,7 @@ import type { InputProps } from '@base/Input/types';
 import type { SelectProps } from '@base/Select/types';
 import { USER_FORM_LABEL_TEXT, USER_GENDER, USER_MBTI } from '@constants';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
+import { useAuthorization } from '@contexts';
 import useAxios from '@hooks/useAxios';
 import type { IApiResponse } from '@models';
 import type { ReactElement } from 'react';
@@ -22,13 +23,15 @@ const UserInput = ({
   formType,
   errorMessage,
   value,
+  initialNicknameValidated,
   onNicknameChecked,
   ...props
 }: UserInputProps & (InputProps | SelectProps)): ReactElement => {
   let inputEl;
+  const { user } = useAuthorization();
   const [checkNicknameAPIState, setCheckNicknameAPIState] =
     useState<IcheckNicknameAPIState>({
-      value: null,
+      value: initialNicknameValidated || null,
       isLoading: false,
       error: null
     });
@@ -74,13 +77,25 @@ const UserInput = ({
 
   // value 바뀔시 중복검사 상태 초기화
   useEffect(() => {
+    if (inputType !== 'nickname') return;
+    // 기존의 유저명이라면
+    if (value === user?.nickname) {
+      onNicknameChecked?.(true);
+      setCheckNicknameAPIState({
+        value: true,
+        isLoading: false,
+        error: null
+      });
+      return;
+    }
+
     onNicknameChecked?.(false);
     setCheckNicknameAPIState({
       value: null,
       isLoading: false,
       error: null
     });
-  }, [value]);
+  }, [value, user]);
 
   const handleCheckNickname = useCallback(() => {
     value && getVerifyNickname(value.toString(RADIX_TEN));

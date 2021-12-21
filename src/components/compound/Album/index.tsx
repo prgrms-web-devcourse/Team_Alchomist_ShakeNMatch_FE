@@ -24,7 +24,7 @@ const Album = ({
     <StyledContainer type={type} onClick={onhandleClick}>
       <Image
         height={ALBUM_ATTRIBUTES[type].imageHeight}
-        mode='cover'
+        mode='contain'
         src={imageSrc}
         width={ALBUM_ATTRIBUTES[type].imageWidth}
       />
