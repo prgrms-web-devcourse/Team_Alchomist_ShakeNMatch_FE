@@ -239,11 +239,11 @@ const CocktailDetailModal = ({
       {cocktailId && user && (
         <CocktailReviewModal
           cocktailId={cocktailId}
-          color={'BASIC_WHITE'}
+          color='LIGHT_WHITE'
           handleOnSubmitted={handleOnSubmitted}
           loginedUserId={user.id}
           nickname={user.nickname}
-          size={'sm'}
+          size='sm'
           visible={isReviewModalVisible}
           onCancel={(): void => {
             setIsReviewModalVisible(false);
