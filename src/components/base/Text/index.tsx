@@ -6,14 +6,17 @@ const Text = ({
   children,
   size,
   color,
+  backgroundColor,
   bold,
   block,
+  stroke,
   dangerously = false,
   ...props
 }: TextProps): ReactElement => {
   if (dangerously && children) {
     return (
       <StyledText
+        backgroundColor={backgroundColor}
         block={block}
         bold={bold}
         color={color}
@@ -24,7 +27,15 @@ const Text = ({
     );
   }
   return (
-    <StyledText block={block} bold={bold} color={color} size={size} {...props}>
+    <StyledText
+      backgroundColor={backgroundColor}
+      block={block}
+      bold={bold}
+      color={color}
+      size={size}
+      stroke={stroke}
+      {...props}
+    >
       {children}
     </StyledText>
   );

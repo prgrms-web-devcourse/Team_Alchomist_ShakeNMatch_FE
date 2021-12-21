@@ -1,8 +1,8 @@
-import useSessionStorage from '@hooks/useSessionStorage';
 import type { ReactElement, ReactNode } from 'react';
 import { createContext, useContext, useEffect } from 'react';
 import type { IAuthContext, IAuthState } from './types';
 import type { ICocktailSimple } from '@models/types';
+import useLocalStorage from '@hooks/useLocalStorage';
 
 const AuthorizationContext = createContext<IAuthContext | null>(null);
 
@@ -18,7 +18,7 @@ const AuthorizationProvider = ({
 }: {
   children: ReactNode;
 }): ReactElement => {
-  const [state, setState, clearState] = useSessionStorage<IAuthState>('auth', {
+  const [state, setState, clearState] = useLocalStorage<IAuthState>('auth', {
     oauthToken: null,
     user: null,
     isAuthorized: false

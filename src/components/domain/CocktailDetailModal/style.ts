@@ -2,6 +2,13 @@ import { Modal } from '@base';
 import { COLOR } from '@constants';
 import styled from '@emotion/styled';
 
+const StyledFavoriteContainer = styled.div`
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 3;
+`;
+
 const StyledLeftSection = styled.div`
   background-color: ${COLOR.IVORY};
   overflow: hidden;
@@ -17,7 +24,7 @@ const StyledModal = styled(Modal)`
   border-bottom-right-radius: 0;
 `;
 
-const StyledIngredientListWrapper = styled.div`
+const StyledContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,6 +41,11 @@ const StyledIngredientListWrapper = styled.div`
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
   }
+`;
+
+const StyledIngredientListWrapper = styled.div`
+  height: 45%;
+  overflow-y: scroll;
 `;
 
 const StyledReviewListWrapper = styled.div`
@@ -61,11 +73,19 @@ const StyledImageContainer = styled.div`
   overflow: hidden;
 `;
 
+const StyledTextWrapper = styled.div`
+  width: 340px;
+  text-align: center;
+`;
+
 export {
+  StyledFavoriteContainer,
   StyledModal,
   StyledLeftSection,
   StyledRightSection,
+  StyledContentWrapper,
   StyledIngredientListWrapper,
   StyledReviewListWrapper,
-  StyledImageContainer
+  StyledImageContainer,
+  StyledTextWrapper
 };

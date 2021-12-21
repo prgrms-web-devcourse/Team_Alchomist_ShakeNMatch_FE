@@ -1,22 +1,17 @@
 import { Image, Modal } from '@base';
-import { BackButton, KaKaoButton, TitleSectionContainer } from '@domain';
+import { BackButton, LoginButton, TitleSectionContainer } from '@domain';
 import type { ReactElement } from 'react';
 import { useCallback } from 'react';
 import BartenderSrc from '@assets/characters/searchBartender.png';
 import { StyledPageContainerWithBackground } from '@base/PageContainerWithBackground/styled';
 import { useCustomNavigate } from '@contexts/CustomNavigate';
-import { DOMAINS } from '@constants';
 
 const LoginPage = (): ReactElement => {
-  const { navigate, redirectPath, redirectToSavedPath } = useCustomNavigate();
+  const { navigate } = useCustomNavigate();
 
   const handleBack = useCallback(() => {
-    if (redirectPath) {
-      redirectToSavedPath();
-    } else {
-      navigate(`/${DOMAINS.main}`);
-    }
-  }, [redirectPath, redirectToSavedPath]);
+    navigate(-1);
+  }, [navigate]);
 
   return (
     <StyledPageContainerWithBackground>
@@ -42,7 +37,7 @@ const LoginPage = (): ReactElement => {
               }}
             >
               <Image height={150} mode='fill' src={BartenderSrc} width={150} />
-              <KaKaoButton />
+              <LoginButton />
             </section>
           </TitleSectionContainer>
         </div>

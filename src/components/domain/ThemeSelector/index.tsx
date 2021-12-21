@@ -1,6 +1,6 @@
 import { SectionDivider } from '@base';
 import { Carousel } from '@compound';
-import { THEMES } from '@constants/themes';
+import { THEMES, THEMES_COLOR } from '@constants/themes';
 import type { ITHEME } from '@models';
 import type { ReactElement } from 'react';
 import { useMemo, useState, useEffect } from 'react';
@@ -57,8 +57,9 @@ const ThemeSelector = ({
           {(Object.keys(THEMES) as ITHEME[]).map((theme) => (
             <Carousel.Item
               key={theme}
-              backgroundColor='ORANGE'
+              backgroundColor={THEMES_COLOR[theme].main}
               imageSrc={mainImageSrcs[theme]}
+              textColor='BLACK'
               title={theme}
             />
           ))}
@@ -72,7 +73,9 @@ const ThemeSelector = ({
           {selectedDetailNames.map((detailTheme) => (
             <Carousel.Item
               key={detailTheme}
-              backgroundColor='BROWN'
+              backgroundColor={
+                THEMES_COLOR[selectedThemeName].detail[detailTheme]
+              }
               // 여기서 조금 더 정확한 타입명시를 하는 방법은 없을까
               imageSrc={
                 (
@@ -81,6 +84,7 @@ const ThemeSelector = ({
                   }
                 )[detailTheme]
               }
+              textColor='BLACK'
               title={selectedThemeName !== 'MBTI' ? detailTheme : undefined}
             />
           ))}

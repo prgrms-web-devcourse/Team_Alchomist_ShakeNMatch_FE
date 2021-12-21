@@ -40,6 +40,7 @@ const StyledWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   row-gap: 30px;
+  user-select: none;
 `;
 
 export { StyledContainer, StyledWrapper };

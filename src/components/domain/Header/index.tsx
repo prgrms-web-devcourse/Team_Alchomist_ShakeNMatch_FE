@@ -22,7 +22,9 @@ const Header = (): ReactElement => {
   const domain = useMemo(() => getDomain(location.pathname), [location]);
   const handleLink = useCallback(
     (to: string): void => {
-      savePath(to);
+      if (to !== `/${DOMAINS.login}`) {
+        savePath(to);
+      }
       navigate(to);
     },
     [navigate]

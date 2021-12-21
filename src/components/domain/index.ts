@@ -8,7 +8,7 @@ export { default as HeaderPageTemplate } from '@domain/HeaderPageTemplate';
 export { default as IngredientCarousel } from '@domain/IngredientCarousel';
 export { default as IngredientSelectModal } from '@domain/IngredientSelectModal';
 export { default as IngredientToggleList } from '@domain/IngredientToggleList';
-export { default as KaKaoButton } from '@domain/KaKaoButton';
+export { default as LoginButton } from '@domain/LoginButton';
 export { default as Logo } from '@domain/Logo';
 export { default as MainMenuSelector } from '@domain/MainMenuSelector';
 export { default as RatingStar } from '@domain/RatingStar';

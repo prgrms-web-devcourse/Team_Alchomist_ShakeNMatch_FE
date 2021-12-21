@@ -8,9 +8,8 @@ import {
   SearchBot,
   HeaderPageTemplate
 } from '@domain';
-import { StyledIngredientContainer } from './styled';
+import { StyledIngredientContainer, StyledTextButton } from './styled';
 import { Text } from '@base';
-import { TextButton } from '@compound';
 import type { ICocktail, IIngredient, IApiResponse } from '@models/types';
 import { useAuthorization } from '@contexts';
 import useSessionStorage from '@hooks/useSessionStorage';
@@ -82,23 +81,27 @@ const JangoPage = (): ReactElement => {
   }, [user?.ingredients]);
 
   useEffect(() => {
-    const mainIngredientsId = ingredients.main.map(
-      (ingredient) => ingredient.id
-    );
-    const subIngredientsId = ingredients.sub.map((ingredient) => ingredient.id);
-
-    const userIngredientsId = [...mainIngredientsId, ...subIngredientsId];
-
-    const setRecommendedCocktailsByIngredients = async (): Promise<void> => {
-      const recommendedCocktails = await getCocktailByIngredients(
-        userIngredientsId
+    if (ingredients.main.length || ingredients.sub.length) {
+      const mainIngredientsId = ingredients.main.map(
+        (ingredient) => ingredient.id
+      );
+      const subIngredientsId = ingredients.sub.map(
+        (ingredient) => ingredient.id
       );
 
-      setRecommendedCocktails(recommendedCocktails.data.cocktails);
-    };
+      const userIngredientsId = [...mainIngredientsId, ...subIngredientsId];
 
-    if (ingredients.main.length || ingredients.sub.length) {
+      const setRecommendedCocktailsByIngredients = async (): Promise<void> => {
+        const recommendedCocktails = await getCocktailByIngredients(
+          userIngredientsId
+        );
+
+        setRecommendedCocktails(recommendedCocktails.data.cocktails);
+      };
+
       setRecommendedCocktailsByIngredients();
+    } else {
+      setRecommendedCocktails([]);
     }
   }, [ingredients]);
 
@@ -153,9 +156,9 @@ const JangoPage = (): ReactElement => {
             itemList={ingredients.sub}
             row='double'
           />
-          <TextButton buttonType='LONG_PINK' onClick={openModal}>
-            내 재료 수정하기
-          </TextButton>
+          <StyledTextButton buttonType='SHORT_PINK' onClick={openModal}>
+            재료 수정
+          </StyledTextButton>
         </StyledIngredientContainer>
         <CocktailList
           cocktailList={recommendedCocktails.map((cocktail) => ({

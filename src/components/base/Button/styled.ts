@@ -10,13 +10,17 @@ const StyledButton = styled.button<ButtonProps>`
   border: none;
   border-radius: 7px;
   box-shadow: ${({ dropShadow = true }): string =>
-    dropShadow ? '0px 4px 4px rgba(0, 0, 0, 0.25)' : ''};
+    dropShadow ? '0px 1px 1px rgba(0, 0, 0, 0.25)' : ''};
   width: ${({ size }): string =>
     size ? BUTTON_SIZE[size].width : BUTTON_SIZE.short.width};
   height: ${({ size }): string =>
     size ? BUTTON_SIZE[size].height : BUTTON_SIZE.long.height};
   background-color: ${({ basicColor }): string =>
     basicColor ? COLOR[basicColor] : COLOR.BASIC_WHITE};
+
+  & span {
+    vertical-align: text-top;
+  }
 
   &:hover:not(:disabled) {
     ${({ hoverColor }): string | CSSObject =>

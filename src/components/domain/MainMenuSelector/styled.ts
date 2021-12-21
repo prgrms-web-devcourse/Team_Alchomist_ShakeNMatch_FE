@@ -18,7 +18,11 @@ const StyledMainMenuWrapper = styled.div`
 
 const StyledThemeContainer = styled.div<StyledMenuContainerProps>`
   position: relative;
-  background-color: ${COLOR.STRONG_PINK};
+  background: linear-gradient(
+    to top,
+    ${COLOR.MIDDLE_PINK},
+    ${COLOR.STRONG_PINK} 55%
+  );
   border-radius: 50px;
   cursor: ${({ selected }): string => (selected ? 'default' : 'pointer')};
   ${({ selected }): string =>
@@ -35,7 +39,11 @@ const StyledThemeContainer = styled.div<StyledMenuContainerProps>`
 
 const StyledJangoContainer = styled.div<StyledMenuContainerProps>`
   position: relative;
-  background-color: ${COLOR.NAVY};
+  background: linear-gradient(
+    to bottom,
+    ${COLOR.BRIGHT_NAVY},
+    ${COLOR.NAVY} 20%
+  );
   border-radius: 50px;
   cursor: ${({ selected }): string => (selected ? 'default' : 'pointer')};
   ${({ selected }): string =>
