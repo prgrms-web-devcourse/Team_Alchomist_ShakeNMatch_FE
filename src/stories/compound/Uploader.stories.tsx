@@ -1,7 +1,7 @@
-import Upload from '@base/Uploader';
+import Upload from '@compound/Uploader';
 import type { ReactElement } from 'react';
-import type { UploadProps } from '@base/Uploader/types';
-import { AcceptType } from '@base/Uploader/types';
+import type { UploadProps } from '@compound/Uploader/types';
+import { AcceptType } from '@compound/Uploader/types';
 
 export default {
   title: 'Component/base/Upload',

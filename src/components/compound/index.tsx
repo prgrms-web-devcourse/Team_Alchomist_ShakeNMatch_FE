@@ -8,3 +8,4 @@ export { default as MenuTab } from '@compound/MenuTab';
 export { default as TextButton } from '@compound/TextButton';
 export { default as TextToggle } from '@compound/TextToggle';
 export { default as UserInput } from '@compound/UserInput';
+export { default as Uploader } from '@compound/Uploader';

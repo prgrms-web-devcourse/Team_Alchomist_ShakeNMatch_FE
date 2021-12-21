@@ -12,7 +12,7 @@ interface UploadProps
 interface PreviewProps {
   dragging: boolean;
   fileSrcType: AcceptTypeKeys;
-  fileSrcUrl: string;
+  fileSrcUrl: string | null;
 }
 
 const AcceptType = {

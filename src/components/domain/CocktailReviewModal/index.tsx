@@ -1,10 +1,14 @@
 import type { ChangeEventHandler, FormEventHandler, ReactElement } from 'react';
 import { useState } from 'react';
-import Button from '@base/Button';
-import { Text, Modal } from '@base';
-import Upload from '@base/Uploader';
-import RatingStar from '@domain/RatingStar';
-import { StyledReviewForm, StyledTextEditor } from './style';
+import { Text, Modal, Button } from '@base';
+import { Uploader } from '@compound';
+import { RatingStar } from '@domain';
+import {
+  StyledReviewForm,
+  StyledTextEditor,
+  StyledWrapper,
+  StyledButtonWrapper
+} from './style';
 import type { CocktailReviewModalProps } from './types';
 import useAxios from '@hooks/useAxios';
 import { AXIOS_REQUEST_TYPE } from '@constants/axios';
@@ -14,6 +18,7 @@ const CocktailReviewModal = ({
   nickname,
   cocktailId,
   loginedUserId,
+  size = 'sm',
   handleOnSubmitted,
   onCancel,
   ...props
@@ -84,31 +89,38 @@ const CocktailReviewModal = ({
   };
 
   return (
-    <Modal backgroundColor='TRANSPARENT' {...props}>
+    <Modal backgroundColor='TRANSPARENT' size={size} {...props}>
       <StyledReviewForm>
-        <Text size='sm'>{'칵테일 리뷰 모달'}</Text>
-        <Upload
+        <Text
+          color='BRIGHT_BROWN'
+          size='sm'
+          style={{ textDecoration: 'underline' }}
+        >
+          {'소중한 리뷰를 남겨주세요'}
+        </Text>
+        <Uploader
           accept='image'
           droppable={true}
           value={null}
           onChangeFile={handleChangeFile}
         />
-        <RatingStar mode='edit' onRateChange={handleUserRate} />
-        <StyledTextEditor
-          autoFocus
-          maxLength={30}
-          placeholder='칵테일에 대한 간단한 코멘트를 적어주세요(최대 50자)'
-          onChange={handleUserComment}
-        />
-
-        <div>
+        <StyledWrapper>
+          <RatingStar mode='edit' onRateChange={handleUserRate} />
+          <StyledTextEditor
+            autoFocus
+            maxLength={30}
+            placeholder='칵테일 한 줄 평을 적어주세요. (최대 50자)'
+            onChange={handleUserComment}
+          />
+        </StyledWrapper>
+        <StyledButtonWrapper>
           <Button type='button' onClick={onSubmit}>
             {'작성완료'}
           </Button>
           <Button type='button' onClick={onCancel}>
             {'취소'}
           </Button>
-        </div>
+        </StyledButtonWrapper>
       </StyledReviewForm>
     </Modal>
   );
