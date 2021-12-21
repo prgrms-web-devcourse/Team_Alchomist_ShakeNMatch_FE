@@ -18,6 +18,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
   StyledResultButton,
   StyledResultContainer,
+  StyledSectionDivider,
   StyledThemePageContainer
 } from './styled';
 import SearchBot from '@domain/SearchBot';
@@ -155,7 +156,11 @@ const ThemePage = (): ReactElement => {
           {showResult ? (
             <>
               <Text>당신이 선택한 </Text>
-              <Text bold color={THEMES_COLOR[mainTheme].detail[detailTheme]}>
+              <Text
+                bold
+                color={THEMES_COLOR[mainTheme].detail[detailTheme]}
+                stroke
+              >
                 {`${detailTheme}`}
               </Text>
               <Text>에 어울리는 칵테일!</Text>
@@ -165,9 +170,9 @@ const ThemePage = (): ReactElement => {
           )}
         </h2>
         <Divider color='TRANSPARENT' gap={5} />
-        <SectionDivider
+        <StyledSectionDivider
           {...(showResult && { className: 'result' })}
-          width={`calc(200vw - ${HEADER_TEMPLATE_MARGIN}px)`}
+          width='200vw'
         >
           <ThemeSelector
             initialDetailIndex={parseInt(selectedThemesIndex.detail || '0', 10)}
@@ -183,7 +188,7 @@ const ThemePage = (): ReactElement => {
               )}
             </StyledResultContainer>
           </SectionDivider>
-        </SectionDivider>
+        </StyledSectionDivider>
         {!showResult ? (
           <StyledResultButton buttonType='LONG_WHITE' onClick={handleResult}>
             결과 보기

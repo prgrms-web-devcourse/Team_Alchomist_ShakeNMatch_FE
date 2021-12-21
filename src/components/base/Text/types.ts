@@ -10,6 +10,7 @@ interface TextProps extends HTMLAttributes<HTMLSpanElement> {
   block?: boolean;
   dangerously?: boolean;
   italic?: boolean;
+  stroke?: boolean;
 }
 
 export type { TextProps };

@@ -1,5 +1,5 @@
 import { Image, Modal } from '@base';
-import { BackButton, KaKaoButton, TitleSectionContainer } from '@domain';
+import { BackButton, LoginButton, TitleSectionContainer } from '@domain';
 import type { ReactElement } from 'react';
 import { useCallback } from 'react';
 import BartenderSrc from '@assets/characters/searchBartender.png';
@@ -37,7 +37,7 @@ const LoginPage = (): ReactElement => {
               }}
             >
               <Image height={150} mode='fill' src={BartenderSrc} width={150} />
-              <KaKaoButton />
+              <LoginButton />
             </section>
           </TitleSectionContainer>
         </div>

@@ -39,7 +39,7 @@ const StyledDescriptionContainer = styled.div`
   text-align: center;
 `;
 
-const StyledKaKaoButton = styled(ImageButton)`
+const StyledLoginButton = styled(ImageButton)`
   transition: opacity 0.5s ease-in-out;
   padding: 0;
 `;
@@ -56,6 +56,6 @@ const StyledLogo = styled(Logo)`
 export {
   StyledPageContainer,
   StyledDescriptionContainer,
-  StyledKaKaoButton,
+  StyledLoginButton,
   StyledLogo
 };

@@ -1,4 +1,4 @@
-import { MainMenuSelector, BackButton, KaKaoButton } from '@domain';
+import { MainMenuSelector, BackButton, LoginButton } from '@domain';
 import type { ReactElement } from 'react';
 import { useEffect, useState, useCallback } from 'react';
 import { TextButton } from '@compound';
@@ -69,11 +69,11 @@ const MainPage = (): ReactElement => {
             : '내 술장고 재료들로 <br> 칵테일을 추천받으세요!'}
         </Text>
         {isAuthorized || selectedMenu === 'theme' ? (
-          <TextButton buttonType='LONG_PINK' onClick={handleLink}>
+          <TextButton buttonType='LONG_WHITE' onClick={handleLink}>
             추천받으러 가기
           </TextButton>
         ) : (
-          <KaKaoButton redirectUrl={`/${DOMAINS.jango}`} />
+          <LoginButton redirectUrl={`/${DOMAINS.jango}`} />
         )}
       </StyledDescriptionContainer>
     </StyledPageContainer>
