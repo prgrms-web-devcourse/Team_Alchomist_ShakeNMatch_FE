@@ -7,11 +7,13 @@ import UserReviewItem from './UserReviewItem';
 import { TextButton, MenuTab, IconToggle } from '@compound';
 import { TitleSectionContainer, CocktailReviewModal } from '@domain';
 import {
-  StyledIngredientListWrapper,
+  StyledContentWrapper,
   StyledReviewListWrapper,
+  StyledIngredientListWrapper,
   StyledImageContainer,
   StyledModal,
-  StyledFavoriteContainer
+  StyledFavoriteContainer,
+  StyledTextWrapper
 } from './style';
 import { useAuthorization } from '@contexts';
 import useAxios from '@hooks/useAxios';
@@ -135,39 +137,43 @@ const CocktailDetailModal = ({
               dividerVisible
               titleText={cocktailData?.name}
             >
-              <StyledIngredientListWrapper>
+              <StyledContentWrapper>
                 <Text color='NAVY' size='sm'>
                   {'- 재료 -'}
                 </Text>
-                {Children.toArray(
-                  cocktailData?.volumes?.map((ingredient) => {
-                    let isExists = false;
-                    if (
-                      user?.ingredients
-                        .map((userIngredient) => userIngredient.id)
-                        .includes(ingredient.id)
-                    ) {
-                      isExists = true;
-                    }
-                    return (
-                      <IngredientItem
-                        amount={ingredient.amount}
-                        id={ingredient.id}
-                        isUserHas={isExists}
-                        measure={ingredient.measure}
-                        name={ingredient.name}
-                        type={ingredient.type}
-                      />
-                    );
-                  })
-                )}
+                <StyledIngredientListWrapper>
+                  {Children.toArray(
+                    cocktailData?.volumes?.map((ingredient) => {
+                      let isExists = false;
+                      if (
+                        user?.ingredients
+                          .map((userIngredient) => userIngredient.id)
+                          .includes(ingredient.id)
+                      ) {
+                        isExists = true;
+                      }
+                      return (
+                        <IngredientItem
+                          amount={ingredient.amount}
+                          id={ingredient.id}
+                          isUserHas={isExists}
+                          measure={ingredient.measure}
+                          name={ingredient.name}
+                          type={ingredient.type}
+                        />
+                      );
+                    })
+                  )}
+                </StyledIngredientListWrapper>
                 <Divider color='LIGHT_GREEN_OPACITY' gap={5} />
                 <Text color='NAVY' size='sm'>
                   {'- 조제법- '}
                 </Text>
                 <br />
-                <Text size='xs'>{cocktailData?.recipe}</Text>
-              </StyledIngredientListWrapper>
+                <StyledTextWrapper>
+                  <Text size='xs'>{cocktailData?.recipe}</Text>
+                </StyledTextWrapper>
+              </StyledContentWrapper>
             </TitleSectionContainer>
           </SectionDivider>
           <SectionDivider>
