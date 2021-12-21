@@ -14,7 +14,6 @@ import {
   StyledUploadPreview
 } from './styled';
 import { Text } from '@base';
-import defaultUploader from '../../../assets/defaultUploader.svg';
 
 const Uploader = ({
   droppable = true,
@@ -26,7 +25,7 @@ const Uploader = ({
 }: UploadProps): ReactElement => {
   const [file, setFile] = useState(value);
   const [dragging, setDragging] = useState(false);
-  const [fileSrcUrl, setFileSrcUrl] = useState(defaultUploader);
+  const [fileSrcUrl, setFileSrcUrl] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
   const handleFileChangeOrDrop: ChangeEventHandler<HTMLInputElement> &
@@ -112,9 +111,15 @@ const Uploader = ({
         fileSrcUrl={fileSrcUrl}
       >
         {!file ? (
-          <Text size='xs'>{`파일(${accept})을 선택/드래그 해 주세요`}</Text>
+          <Text
+            color='DARK_GRAY'
+            size='xs'
+          >{`${accept}를 선택/드래그 해 주세요`}</Text>
         ) : (
-          <Text size='xs'>{`새 파일(${accept})을 업로드 하려면 클릭/드래그`}</Text>
+          <Text
+            color='DARK_GRAY_OPACITY'
+            size='xs'
+          >{`다른 ${accept}를 업로드 하려면 선택/드래그`}</Text>
         )}
       </StyledUploadPreview>
     </StyledUploadContainer>
