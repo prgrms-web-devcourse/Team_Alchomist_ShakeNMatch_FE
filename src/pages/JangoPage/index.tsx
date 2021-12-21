@@ -8,9 +8,8 @@ import {
   SearchBot,
   HeaderPageTemplate
 } from '@domain';
-import { StyledIngredientContainer } from './styled';
+import { StyledIngredientContainer, StyledTextButton } from './styled';
 import { Text } from '@base';
-import { TextButton } from '@compound';
 import type { ICocktail, IIngredient, IApiResponse } from '@models/types';
 import { useAuthorization } from '@contexts';
 import useSessionStorage from '@hooks/useSessionStorage';
@@ -153,9 +152,9 @@ const JangoPage = (): ReactElement => {
             itemList={ingredients.sub}
             row='double'
           />
-          <TextButton buttonType='LONG_PINK' onClick={openModal}>
-            내 재료 수정하기
-          </TextButton>
+          <StyledTextButton buttonType='SHORT_PINK' onClick={openModal}>
+            재료 수정
+          </StyledTextButton>
         </StyledIngredientContainer>
         <CocktailList
           cocktailList={recommendedCocktails.map((cocktail) => ({
