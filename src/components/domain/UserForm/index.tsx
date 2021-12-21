@@ -24,7 +24,7 @@ const UserForm = ({
     useForm<IUserForm>({
       initialValues,
       validateOnChange: true,
-      validateOnInitial: true,
+      validateOnInitial: type === 'EditProfile' ? true : false,
       onSubmit,
       validateFn: validateUser
     });
