@@ -18,6 +18,7 @@ import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
   StyledResultButton,
   StyledResultContainer,
+  StyledSectionDivider,
   StyledThemePageContainer
 } from './styled';
 import SearchBot from '@domain/SearchBot';
@@ -169,7 +170,7 @@ const ThemePage = (): ReactElement => {
           )}
         </h2>
         <Divider color='TRANSPARENT' gap={5} />
-        <SectionDivider
+        <StyledSectionDivider
           {...(showResult && { className: 'result' })}
           width='200vw'
         >
@@ -187,7 +188,7 @@ const ThemePage = (): ReactElement => {
               )}
             </StyledResultContainer>
           </SectionDivider>
-        </SectionDivider>
+        </StyledSectionDivider>
         {!showResult ? (
           <StyledResultButton buttonType='LONG_WHITE' onClick={handleResult}>
             결과 보기
