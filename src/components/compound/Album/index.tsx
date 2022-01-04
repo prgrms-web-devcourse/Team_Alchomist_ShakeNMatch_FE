@@ -14,14 +14,15 @@ const Album = ({
   type = DEFAULT_TYPE,
   text = DEFAULT_TEXT,
   imageSrc = DEFAULT_IMAGE_SRC,
-  handleAlbumClick
+  onHandleAlbumClick
 }: AlbumProps): ReactElement => {
-  const onhandleClick = (): void => {
-    handleAlbumClick?.(cocktailId ? cocktailId : 0);
-  };
-
   return (
-    <StyledContainer type={type} onClick={onhandleClick}>
+    <StyledContainer
+      type={type}
+      onClick={(): void => {
+        onHandleAlbumClick?.(cocktailId ? cocktailId : 0);
+      }}
+    >
       <Image
         height={ALBUM_ATTRIBUTES[type].imageHeight}
         mode='contain'
