@@ -35,7 +35,7 @@ interface AlbumProps extends HTMLAttributes<HTMLDivElement> {
   type?: AlbumAttributeKeys;
   text?: string;
   imageSrc?: string;
-  handleAlbumClick?(id: number): void;
+  onHandleAlbumClick?(id: number): void;
 }
 
 export type { AlbumProps, AlbumAttributeKeys };

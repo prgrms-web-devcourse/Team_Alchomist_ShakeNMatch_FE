@@ -29,7 +29,6 @@ const CocktailList = ({
               <StyledMotionWrapper resultIndex={index}>
                 <Album
                   cocktailId={cocktail.id}
-                  handleAlbumClick={handleAlbumClick}
                   imageSrc={
                     CocktailIcons[
                       ((index + cocktail.id) %
@@ -38,6 +37,7 @@ const CocktailList = ({
                   }
                   text={cocktail.name}
                   type='result'
+                  onHandleAlbumClick={handleAlbumClick}
                 />
               </StyledMotionWrapper>
             ))
