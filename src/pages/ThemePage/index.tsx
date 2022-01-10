@@ -22,7 +22,7 @@ import {
   StyledThemePageContainer
 } from './styled';
 import SearchBot from '@domain/SearchBot';
-import { HEADER_TEMPLATE_MARGIN } from '@constants/margin';
+import { COLOR } from '@constants';
 
 const RADIX_TEN = 10;
 const DEBOUNCE_DELAY = 700;
@@ -169,7 +169,7 @@ const ThemePage = (): ReactElement => {
             <Text> 테마 별로 레시피를 추천받아 보세요!</Text>
           )}
         </h2>
-        <Divider color='TRANSPARENT' gap={5} />
+        <Divider color={COLOR.TRANSPARENT} gap={5} />
         <StyledSectionDivider
           {...(showResult && { className: 'result' })}
           width='200vw'

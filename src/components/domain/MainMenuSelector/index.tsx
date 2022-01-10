@@ -10,6 +10,7 @@ import {
   StyledThemeTextWrapper
 } from './styled';
 import type { MainMenuSelectorProps } from './types';
+import { COLOR, DIVIDER_DIRECTION } from '@constants';
 
 const ONE_POINT_TWO = 1.2;
 const INITIAL_GAP = '25vw';
@@ -73,8 +74,8 @@ const MainMenuSelector = ({
     <StyledMainMenuWrapper>
       <SectionDivider
         className='menuContainer'
-        direction='vertical'
-        dividerOptions={{ color: 'TRANSPARENT', gap }}
+        direction={DIVIDER_DIRECTION.VERTICAL}
+        dividerOptions={{ color: COLOR.TRANSPARENT, gap }}
         height='200vw'
         ratio={ratio}
         rotate='-45deg'

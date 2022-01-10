@@ -1,6 +1,7 @@
 export * from './axios';
 export * from './bartender';
 export * from './colors';
+export * from './divider';
 export * from './domain';
 export * from './headerHeight';
 export * from './icon';

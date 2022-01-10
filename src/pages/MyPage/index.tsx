@@ -18,7 +18,7 @@ import { useAuthorization } from '@contexts';
 import { Text } from '@base';
 import { getUserReducer, postUserReducer } from './reducer';
 import { StyledLogoutButton } from './styled';
-import { DOMAINS } from '@constants';
+import { DOMAINS, COLOR } from '@constants';
 
 const TEN_RADIX = 10;
 
@@ -106,7 +106,7 @@ const MyPage = (): ReactElement => {
   return (
     <HeaderPageTemplate>
       <SectionDividerWithTitle
-        dividerOptions={{ size: 1, color: 'LIGHT_GRAY' }}
+        dividerOptions={{ size: 1, color: COLOR.LIGHT_GRAY }}
         showContentsDivider
         withHeader
       >
