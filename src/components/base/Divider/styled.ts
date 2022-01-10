@@ -1,4 +1,3 @@
-import { COLOR } from '@constants/colors';
 import styled from '@emotion/styled';
 import type { DividerProps } from './types';
 
@@ -6,7 +5,7 @@ const StyledLine = styled.hr<
   Required<Pick<DividerProps, 'size' | 'gap' | 'color'>>
 >`
   border: none;
-  background-color: ${({ color }): string => COLOR[color]};
+  background-color: ${({ color }): string => color};
 
   &.horizontal {
     display: block;
