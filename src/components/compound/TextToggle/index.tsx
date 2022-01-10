@@ -4,7 +4,7 @@ import { StyledToggleContainer, StyledToggleInput } from './styled';
 import { TEXT_TOGGLE } from './types';
 import type { TextToggleProps } from './types';
 import { Text } from '@base';
-import { INPUT_TYPE } from '@constants';
+import { COLOR, INPUT_TYPE } from '@constants';
 
 const TextToggle = ({
   children,
@@ -30,7 +30,7 @@ const TextToggle = ({
         onChange={handleChange}
       />
       <Text
-        color={isToggled ? 'BASIC_WHITE' : 'BLACK'}
+        color={isToggled ? COLOR.BASIC_WHITE : COLOR.BLACK}
         {...TEXT_TOGGLE[toggleType].textProps}
       >
         {children}

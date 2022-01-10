@@ -12,7 +12,7 @@ import {
   StyledSection
 } from './styled';
 import type { IIngredient } from '@models/types';
-import { COLOR, MODAL_SIZE } from '@constants';
+import { COLOR, TEXT_SIZE, MODAL_SIZE } from '@constants';
 
 const IngredientSelectModal = ({
   visible,
@@ -77,11 +77,14 @@ const IngredientSelectModal = ({
                   onItemSelected={handleSelectMainItem}
                 />
               </TitleSectionContainer>
-              <TitleSectionContainer titleSize='sm' titleText='선택한 재료'>
+              <TitleSectionContainer
+                titleSize={TEXT_SIZE.sm}
+                titleText='선택한 재료'
+              >
                 <StyledTextContainer>
                   {Children.toArray(
                     selectedItems.main.map((id) => (
-                      <Text size='xs'>
+                      <Text size={TEXT_SIZE.xs}>
                         {totalIngredientsList[String(id)].name}
                       </Text>
                     ))
@@ -99,11 +102,14 @@ const IngredientSelectModal = ({
                   onItemSelected={handleSelectSubItem}
                 />
               </TitleSectionContainer>
-              <TitleSectionContainer titleSize='sm' titleText='선택한 재료'>
+              <TitleSectionContainer
+                titleSize={TEXT_SIZE.sm}
+                titleText='선택한 재료'
+              >
                 <StyledTextContainer>
                   {Children.toArray(
                     selectedItems.sub.map((id) => (
-                      <Text size='xs'>
+                      <Text size={TEXT_SIZE.xs}>
                         {totalIngredientsList[String(id)].name}
                       </Text>
                     ))

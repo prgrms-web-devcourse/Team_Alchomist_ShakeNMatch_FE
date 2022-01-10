@@ -6,7 +6,9 @@ import {
   USER_GENDER,
   USER_MBTI,
   INPUT_TYPE,
-  AXIOS_REQUEST_TYPE
+  AXIOS_REQUEST_TYPE,
+  COLOR,
+  TEXT_SIZE
 } from '@constants';
 import { useAuthorization } from '@contexts';
 import useAxios from '@hooks/useAxios';
@@ -135,7 +137,7 @@ const UserInput = ({
               type='button'
               onClick={handleCheckNickname}
             >
-              <Text bold color='BASIC_WHITE' size='xxxs'>
+              <Text bold color={COLOR.BASIC_WHITE} size={TEXT_SIZE.xxxs}>
                 {checkNicknameAPIState.isLoading
                   ? '체크 중...'
                   : checkNicknameAPIState.value
@@ -172,12 +174,12 @@ const UserInput = ({
 
   return (
     <StyledLabel>
-      <Text color='NAVY' dangerously size='xxs'>
+      <Text color={COLOR.NAVY} dangerously size={TEXT_SIZE.xxs}>
         {USER_FORM_LABEL_TEXT[formType][inputType]}
       </Text>
       {inputEl}
       <StyledErrorContainer>
-        <Text color='STRONG_PINK' size='xxxs'>
+        <Text color={COLOR.STRONG_PINK} size={TEXT_SIZE.xxxs}>
           {checkNicknameAPIState.error || errorMessage}
         </Text>
       </StyledErrorContainer>

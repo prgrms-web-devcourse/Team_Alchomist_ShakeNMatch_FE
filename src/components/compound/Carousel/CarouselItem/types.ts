@@ -1,4 +1,4 @@
-import type { ColorKeys } from '@models';
+import type { ColorType } from '@models';
 import type { HTMLAttributes } from 'react';
 
 const CAROUSEL_SIZE = {
@@ -18,8 +18,8 @@ const CAROUSEL_IMAGE_SIZE = {
 };
 
 interface CarouselItemProps extends HTMLAttributes<HTMLDivElement> {
-  backgroundColor?: ColorKeys;
-  textColor?: ColorKeys;
+  backgroundColor?: ColorType;
+  textColor?: ColorType;
   imageSrc: string;
   title?: string;
   selected?: boolean;

@@ -1,7 +1,7 @@
 import { Text, Image } from '@base';
-import TextButton from '@compound/TextButton';
-import { AXIOS_REQUEST_TYPE, IMG_MODE } from '@constants';
-import RatingStar from '@domain/RatingStar';
+import { TextButton } from '@compound';
+import { COLOR, TEXT_SIZE, AXIOS_REQUEST_TYPE, IMG_MODE } from '@constants';
+import { RatingStar } from '@domain';
 import useAxios from '@hooks/useAxios';
 import type { ReactElement } from 'react';
 import {
@@ -53,10 +53,10 @@ const UserReviewItem = ({
       </StyledImageWrapper>
       <StyledRatingCommentWrapper>
         <RatingStar mode='show' rateTobeDisplayed={userRating} />
-        <Text bold color='BLUE' dangerously={true} size='xxs'>
+        <Text bold color={COLOR.BLUE} dangerously={true} size={TEXT_SIZE.xxs}>
           {'from. ' + nickname}
         </Text>
-        <Text size='xxs'>{userComment}</Text>
+        <Text size={TEXT_SIZE.xxs}>{userComment}</Text>
       </StyledRatingCommentWrapper>
       {loginedUserId === reviewOwnerId && (
         <TextButton buttonType='X_SHORT_WHITE' onClick={onHandleDelete}>

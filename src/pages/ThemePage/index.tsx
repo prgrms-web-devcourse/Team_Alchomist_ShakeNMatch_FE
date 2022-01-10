@@ -158,7 +158,7 @@ const ThemePage = (): ReactElement => {
               <Text>당신이 선택한 </Text>
               <Text
                 bold
-                color={THEMES_COLOR[mainTheme].detail[detailTheme]}
+                color={COLOR[THEMES_COLOR[mainTheme].detail[detailTheme]]}
                 stroke
               >
                 {`${detailTheme}`}

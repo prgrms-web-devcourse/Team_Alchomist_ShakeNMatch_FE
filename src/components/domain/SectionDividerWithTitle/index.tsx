@@ -1,5 +1,5 @@
 import { SectionDivider } from '@base';
-import { COLOR, HEADER_HEIGHT } from '@constants';
+import { COLOR, TEXT_SIZE, HEADER_HEIGHT } from '@constants';
 import { TitleSectionContainer } from '@domain';
 import type { ReactElement } from 'react';
 import { Children } from 'react';
@@ -8,8 +8,8 @@ import type { SectionDividerWithTitleProps } from './types';
 
 const SectionDividerWithTitle = ({
   children,
-  titleColor = 'BLACK',
-  titleSize = 'md',
+  titleColor = COLOR.BLACK,
+  titleSize = TEXT_SIZE.md,
   titleText,
   bold,
   gap = '0px',

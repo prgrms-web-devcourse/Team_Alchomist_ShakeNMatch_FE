@@ -10,7 +10,7 @@ import {
   StyledThemeTextWrapper
 } from './styled';
 import type { MainMenuSelectorProps } from './types';
-import { COLOR, DIVIDER_DIRECTION } from '@constants';
+import { COLOR, TEXT_SIZE, DIVIDER_DIRECTION } from '@constants';
 
 const ONE_POINT_TWO = 1.2;
 const INITIAL_GAP = '25vw';
@@ -89,7 +89,7 @@ const MainMenuSelector = ({
         >
           {!selectedMenu && (
             <StyledThemeTextWrapper className='textWrapper'>
-              <Text color='BASIC_WHITE' size='sm'>
+              <Text color={COLOR.BASIC_WHITE} size={TEXT_SIZE.sm}>
                 당신에게 가장 어울리는 첫 칵테일을 찾아 볼까요?
               </Text>
             </StyledThemeTextWrapper>
@@ -102,7 +102,7 @@ const MainMenuSelector = ({
         >
           {!selectedMenu && (
             <StyledJangoTextWrapper className='textWrapper'>
-              <Text color='BASIC_WHITE' size='sm'>
+              <Text color={COLOR.BASIC_WHITE} size={TEXT_SIZE.sm}>
                 집에서도 칵테일을 만들어 보고 싶나요?
               </Text>
             </StyledJangoTextWrapper>

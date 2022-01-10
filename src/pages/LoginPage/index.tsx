@@ -5,7 +5,7 @@ import { useCallback } from 'react';
 import BartenderSrc from '@assets/characters/searchBartender.png';
 import { StyledPageContainerWithBackground } from '@base/PageContainerWithBackground/styled';
 import { useCustomNavigate } from '@contexts/CustomNavigate';
-import { COLOR, MODAL_SIZE, IMG_MODE } from '@constants';
+import { COLOR, MODAL_SIZE, TEXT_SIZE, IMG_MODE } from '@constants';
 
 const LoginPage = (): ReactElement => {
   const { navigate } = useCustomNavigate();
@@ -24,7 +24,7 @@ const LoginPage = (): ReactElement => {
       >
         <div style={{ padding: 20, height: '100%' }}>
           <TitleSectionContainer
-            titleSize='xs'
+            titleSize={TEXT_SIZE.xs}
             titleText='어서오세요! 오늘은 어떻게 드시겠어요?'
           >
             <section

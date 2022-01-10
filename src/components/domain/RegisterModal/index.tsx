@@ -8,7 +8,7 @@ import type { ReactElement } from 'react';
 import { useState } from 'react';
 import { IdentifierContainer } from './styled';
 import type { RegisterModalProps } from './types';
-import { COLOR, MODAL_SIZE } from '@constants';
+import { COLOR, TEXT_SIZE, MODAL_SIZE } from '@constants';
 
 const RegisterModal = ({
   onSubmit,
@@ -24,7 +24,7 @@ const RegisterModal = ({
     >
       <SectionDividerWithTitle
         ratio={[4, 3]}
-        titleSize='md'
+        titleSize={TEXT_SIZE.md}
         titleText='처음 뵙는 분이네요!'
       >
         <IdentifierContainer>

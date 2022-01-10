@@ -11,7 +11,7 @@ import {
 } from './styled';
 import useClickAway from '@hooks/useClickAway';
 import { ChangingSpeech } from '@domain';
-import { IMG_MODE, BARTENDER_CONVERSATION } from '@constants';
+import { IMG_MODE, TEXT_SIZE, BARTENDER_CONVERSATION } from '@constants';
 
 const SearchBot = (): ReactElement => {
   const [showInput, setShowInput] = useState(false);
@@ -47,7 +47,7 @@ const SearchBot = (): ReactElement => {
           width='150px'
         />
         <StyledInputBackground isVisible={showInput}>
-          <Text bold size='xs'>
+          <Text bold size={TEXT_SIZE.xs}>
             찾으시는 칵테일이 있나요?
           </Text>
           <Input

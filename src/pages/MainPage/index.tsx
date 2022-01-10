@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { TextButton } from '@compound';
 import { useAuthorization } from '@contexts';
 import { useNavigate } from 'react-router';
-import { DOMAINS } from '@constants';
+import { COLOR, DOMAINS } from '@constants';
 import {
   StyledLogo,
   StyledDescriptionContainer,
@@ -63,7 +63,7 @@ const MainPage = (): ReactElement => {
       <StyledDescriptionContainer
         style={{ display: isShowButton ? 'flex' : 'none' }}
       >
-        <Text color='BASIC_WHITE' dangerously>
+        <Text color={COLOR.BASIC_WHITE} dangerously>
           {selectedMenu === 'theme'
             ? '테마별로 칵테일을 <br> 추천받으세요!'
             : '내 술장고 재료들로 <br> 칵테일을 추천받으세요!'}

@@ -5,11 +5,11 @@ import { useCallback } from 'react';
 import { StyledContainer, StyledWrapper } from './styled';
 import type { CarouselItemProps } from './types';
 import { CAROUSEL_IMAGE_SIZE } from './types';
-import { IMG_MODE } from '@constants';
+import { COLOR, TEXT_SIZE, IMG_MODE } from '@constants';
 
 const CarouselItem = ({
-  backgroundColor = 'GREEN',
-  textColor = 'BASIC_WHITE',
+  backgroundColor = COLOR.GREEN,
+  textColor = COLOR.BASIC_WHITE,
   imageSrc,
   title,
   selected = false,
@@ -53,7 +53,7 @@ const CarouselItem = ({
           }
         />
         {title && (
-          <Text bold color={textColor} size='lg'>
+          <Text bold color={textColor} size={TEXT_SIZE.lg}>
             {title}
           </Text>
         )}

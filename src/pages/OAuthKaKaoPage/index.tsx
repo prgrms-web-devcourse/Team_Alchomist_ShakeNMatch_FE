@@ -2,8 +2,7 @@
 import { Text } from '@base';
 import { StyledPageContainerWithBackground } from '@base/PageContainerWithBackground/styled';
 import { Loader } from '@compound';
-import { DOMAINS } from '@constants';
-import { AXIOS_REQUEST_TYPE } from '@constants/axios';
+import { COLOR, DOMAINS, AXIOS_REQUEST_TYPE } from '@constants';
 import { useAuthorization } from '@contexts';
 import { useCustomNavigate } from '@contexts/CustomNavigate';
 import { BackButton } from '@domain';
@@ -99,7 +98,7 @@ const OAuthKaKaoPage = (): ReactElement => {
   return (
     <StyledPageContainerWithBackground>
       <StyledLoaderContainer>
-        <Text bold color='NAVY' dangerously>
+        <Text bold color={COLOR.NAVY} dangerously>
           {'로그인 중입니다. <br> 잠시만 기다려주세요...'}
         </Text>
         <Loader />

@@ -11,7 +11,7 @@ import {
 } from './style';
 import type { CocktailReviewModalProps } from './types';
 import useAxios from '@hooks/useAxios';
-import { AXIOS_REQUEST_TYPE, COLOR, MODAL_SIZE } from '@constants';
+import { AXIOS_REQUEST_TYPE, COLOR, TEXT_SIZE, MODAL_SIZE } from '@constants';
 import type { IReviewPostResponse } from '@models';
 
 const CocktailReviewModal = ({
@@ -92,8 +92,8 @@ const CocktailReviewModal = ({
     <Modal backgroundColor={COLOR.TRANSPARENT} size={size} {...props}>
       <StyledReviewForm>
         <Text
-          color='BRIGHT_BROWN'
-          size='sm'
+          color={COLOR.BRIGHT_BROWN}
+          size={TEXT_SIZE.sm}
           style={{ textDecoration: 'underline' }}
         >
           {'소중한 리뷰를 남겨주세요'}

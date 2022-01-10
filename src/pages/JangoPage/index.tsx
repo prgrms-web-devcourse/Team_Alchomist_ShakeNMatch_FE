@@ -14,7 +14,7 @@ import type { ICocktail, IIngredient, IApiResponse } from '@models/types';
 import { useAuthorization } from '@contexts';
 import useSessionStorage from '@hooks/useSessionStorage';
 import useAxios from '@hooks/useAxios';
-import { AXIOS_REQUEST_TYPE } from '@constants/axios';
+import { COLOR, AXIOS_REQUEST_TYPE } from '@constants';
 
 const JangoPage = (): ReactElement => {
   const [ingredients, setIngredients] = useState<{
@@ -144,13 +144,13 @@ const JangoPage = (): ReactElement => {
         withHeader
       >
         <StyledIngredientContainer style={{ width: '100%', height: '100%' }}>
-          <Text color='BLACK_OPACITY'>알콜</Text>
+          <Text color={COLOR.BLACK_OPACITY}>알콜</Text>
           <IngredientCarousel
             albumType='alcohol'
             itemList={ingredients.main}
             row='single'
           />
-          <Text color='BLACK_OPACITY'>감미료</Text>
+          <Text color={COLOR.BLACK_OPACITY}>감미료</Text>
           <IngredientCarousel
             albumType='sweetener'
             itemList={ingredients.sub}

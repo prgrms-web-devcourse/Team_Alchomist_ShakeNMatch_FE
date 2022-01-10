@@ -8,7 +8,7 @@ import {
   StyledTitle,
   StyledVerticalLine
 } from './styled';
-import { IMG_MODE } from '@constants';
+import { COLOR, TEXT_SIZE, IMG_MODE } from '@constants';
 
 const DEFAULT_IMAGE_WIDTH = '100px';
 const DEFAULT_IMAGE_HEIGHT = '100px';
@@ -38,16 +38,21 @@ const ShoppingItem = ({
         />
       </StyledImage>
       <StyledTitle>
-        <Text bold={true} color='BLACK' dangerously={true} size='xs'>
+        <Text
+          bold={true}
+          color={COLOR.BLACK}
+          dangerously={true}
+          size={TEXT_SIZE.xs}
+        >
           {title}
         </Text>
       </StyledTitle>
       <StyledVerticalLine />
       <StyledInfo>
-        <Text bold={true} color='BLACK' size='xs'>
+        <Text bold={true} color={COLOR.BLACK} size={TEXT_SIZE.xs}>
           {vendor}
         </Text>
-        <Text bold={true} color='RED' size='xs'>
+        <Text bold={true} color={COLOR.RED} size={TEXT_SIZE.xs}>
           {`${fommattedPrice}원`}
         </Text>
       </StyledInfo>

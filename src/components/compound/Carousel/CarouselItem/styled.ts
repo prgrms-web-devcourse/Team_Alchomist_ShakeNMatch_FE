@@ -1,4 +1,3 @@
-import { COLOR } from '@constants';
 import { keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import type { CarouselItemProps } from './types';
@@ -23,7 +22,7 @@ const StyledContainer = styled.div<
   display: ${({ selected }): string => (selected ? 'grid' : 'none')};
   width: ${CAROUSEL_SIZE.width};
   height: ${CAROUSEL_SIZE.height};
-  background-color: ${({ backgroundColor }): string => COLOR[backgroundColor]};
+  background-color: ${({ backgroundColor }): string => backgroundColor};
   border-radius: 70px;
   box-shadow: inset -3px -3px 4px rgba(0, 0, 0, 0.25);
   grid-template-columns: 1fr;

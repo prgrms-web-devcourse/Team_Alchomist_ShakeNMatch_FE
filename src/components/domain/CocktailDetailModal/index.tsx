@@ -17,7 +17,13 @@ import {
 } from './style';
 import { useAuthorization } from '@contexts';
 import useAxios from '@hooks/useAxios';
-import { AXIOS_REQUEST_TYPE, COLOR, MODAL_SIZE, IMG_MODE } from '@constants';
+import {
+  AXIOS_REQUEST_TYPE,
+  COLOR,
+  TEXT_SIZE,
+  MODAL_SIZE,
+  IMG_MODE
+} from '@constants';
 import type { IApiResponse, ICocktail, IReview } from '@models';
 
 const CocktailDetailModal = ({
@@ -141,7 +147,7 @@ const CocktailDetailModal = ({
                 titleText={cocktailData?.name}
               >
                 <StyledContentWrapper>
-                  <Text color='NAVY' size='sm'>
+                  <Text color={COLOR.NAVY} size={TEXT_SIZE.sm}>
                     {'- 재료 -'}
                   </Text>
                   <StyledIngredientListWrapper>
@@ -169,12 +175,12 @@ const CocktailDetailModal = ({
                     )}
                   </StyledIngredientListWrapper>
                   <Divider color={COLOR.LIGHT_GREEN_OPACITY} gap={5} />
-                  <Text color='NAVY' size='sm'>
+                  <Text color={COLOR.NAVY} size={TEXT_SIZE.sm}>
                     {'- 조제법- '}
                   </Text>
                   <br />
                   <StyledTextWrapper>
-                    <Text size='xs'>{cocktailData?.recipe}</Text>
+                    <Text size={TEXT_SIZE.sm}>{cocktailData?.recipe}</Text>
                   </StyledTextWrapper>
                 </StyledContentWrapper>
               </TitleSectionContainer>
@@ -194,7 +200,7 @@ const CocktailDetailModal = ({
                 titleText={cocktailData?.name}
               >
                 <StyledReviewListWrapper>
-                  <Text color='NAVY' size='sm'>
+                  <Text color={COLOR.NAVY} size={TEXT_SIZE.sm}>
                     {'- 사용자 리뷰- '}
                   </Text>
                   {user && (
@@ -226,7 +232,7 @@ const CocktailDetailModal = ({
                       ))
                     )
                   ) : (
-                    <Text color='DARK_GRAY'>
+                    <Text color={COLOR.DARK_GRAY}>
                       아직 작성된 리뷰가 없습니다..!
                     </Text>
                   )}

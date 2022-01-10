@@ -1,7 +1,9 @@
+import { TEXT_SIZE } from '@constants';
+
 const TEXT_TOGGLE = {
   ingredient: {
     textProps: {
-      size: 'xs'
+      size: TEXT_SIZE.xs
     }
   }
 } as const;
