@@ -1,9 +1,9 @@
-import type { TextSizeKeys } from '@models';
+import type { ITextSize } from '@models';
 import type { InputHTMLAttributes } from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   inputType?: 'text' | 'number';
-  fontSize?: TextSizeKeys;
+  fontSize?: ITextSize;
   alignCenter?: boolean;
 }
 

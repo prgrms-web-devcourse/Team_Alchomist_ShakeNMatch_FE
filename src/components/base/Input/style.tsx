@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 import type { InputProps } from './types';
 
-import { COLOR, TEXT_SIZE, TEXT_WEIGHT } from '@utils/constants';
+import { COLOR, TEXT_WEIGHT } from '@utils/constants';
 
 const StyledInput = styled.input<
   Required<Pick<InputProps, 'fontSize' | 'alignCenter'>>
 >`
-  font-size: ${({ fontSize }): string => TEXT_SIZE[fontSize]};
+  font-size: ${({ fontSize }): string => fontSize};
   width: 200px;
   height: 30px;
   background: transparent;
