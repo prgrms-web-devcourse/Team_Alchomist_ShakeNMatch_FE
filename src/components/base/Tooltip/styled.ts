@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import type { TooltipProps } from './types';
-import { TOOLTIP_SIZE } from './types';
+import { TOOLTIP_TYPE } from './types';
 
 const MARGIN = 5;
 const MINUS = -1;
@@ -36,7 +36,7 @@ const StyledTooltipContent = styled.div<
       case 'top':
         position =
           tooltipSize &&
-          ((TOOLTIP_SIZE[tooltipSize].height + MARGIN) * MINUS).toString() +
+          ((TOOLTIP_TYPE[tooltipSize].height + MARGIN) * MINUS).toString() +
             'px';
         break;
       case 'bottom':
@@ -67,7 +67,7 @@ const StyledTooltipContent = styled.div<
       case 'right':
         position =
           tooltipSize &&
-          ((TOOLTIP_SIZE[tooltipSize].width + MARGIN) * MINUS).toString() +
+          ((TOOLTIP_TYPE[tooltipSize].width + MARGIN) * MINUS).toString() +
             'px';
         break;
     }
@@ -75,9 +75,9 @@ const StyledTooltipContent = styled.div<
   }};
   visibility: hidden;
   width: ${({ tooltipSize }): string =>
-    tooltipSize && TOOLTIP_SIZE[tooltipSize].width + 'px'};
+    tooltipSize && TOOLTIP_TYPE[tooltipSize].width + 'px'};
   height: ${({ tooltipSize }): string =>
-    tooltipSize && TOOLTIP_SIZE[tooltipSize].height + 'px'};
+    tooltipSize && TOOLTIP_TYPE[tooltipSize].height + 'px'};
 `;
 
 export { StyledTooltipWrapper, StyledTooltipContent };

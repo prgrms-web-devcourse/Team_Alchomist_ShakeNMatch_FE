@@ -10,7 +10,13 @@ import { ImageButton } from '@compound';
 import { useAuthorization } from '@contexts';
 import { useLocation } from 'react-router';
 import { getDomain } from '@utils/lib/getDomain';
-import { DOMAINS, IMG_MODE } from '@constants';
+import {
+  DOMAINS,
+  IMG_MODE,
+  TEXT_SIZE,
+  TOOLTIP_DIRECTION,
+  TOOLTIP_SIZE
+} from '@constants';
 import { Tooltip } from '@base';
 import { useCustomNavigate } from '@contexts/CustomNavigate';
 
@@ -35,10 +41,10 @@ const Header = (): ReactElement => {
       <Logo className='logo' link size='sm' />
       {domain !== DOMAINS.jango && (
         <Tooltip
-          direction='bottom'
+          direction={TOOLTIP_DIRECTION.BOTTOM}
           tooltipMessage='내가 가지고 있는 재료를 기반으로 칵테일 추천받기!'
-          tooltipMessageSize='xs'
-          tooltipSize='md'
+          tooltipMessageSize={TEXT_SIZE.xs}
+          tooltipSize={TOOLTIP_SIZE.MD}
         >
           <ImageButton
             mode={IMG_MODE.CONTAIN}
@@ -52,10 +58,10 @@ const Header = (): ReactElement => {
       )}
       {domain !== DOMAINS.theme && (
         <Tooltip
-          direction='bottom'
+          direction={TOOLTIP_DIRECTION.BOTTOM}
           tooltipMessage='테마별로 칵테일 추천받기!'
-          tooltipMessageSize='xs'
-          tooltipSize='sm'
+          tooltipMessageSize={TEXT_SIZE.xs}
+          tooltipSize={TOOLTIP_SIZE.SM}
         >
           <ImageButton
             mode={IMG_MODE.CONTAIN}

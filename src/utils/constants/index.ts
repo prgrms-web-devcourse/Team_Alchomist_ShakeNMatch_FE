@@ -12,4 +12,5 @@ export * from './margin';
 export * from './modal';
 export * from './text';
 export * from './themes';
+export * from './tooltip';
 export * from './user';

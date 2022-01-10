@@ -22,7 +22,9 @@ import {
   COLOR,
   TEXT_SIZE,
   MODAL_SIZE,
-  IMG_MODE
+  IMG_MODE,
+  TOOLTIP_DIRECTION,
+  TOOLTIP_SIZE
 } from '@constants';
 import type { IApiResponse, ICocktail, IReview } from '@models';
 
@@ -116,10 +118,10 @@ const CocktailDetailModal = ({
           {user && (
             <StyledFavoriteContainer>
               <Tooltip
-                direction='top'
+                direction={TOOLTIP_DIRECTION.TOP}
                 tooltipMessage='즐겨찾기'
-                tooltipMessageSize='xxs'
-                tooltipSize='xs'
+                tooltipMessageSize={TEXT_SIZE.xxs}
+                tooltipSize={TOOLTIP_SIZE.XS}
               >
                 <IconToggle
                   initialState={user?.bookmarks?.some(
