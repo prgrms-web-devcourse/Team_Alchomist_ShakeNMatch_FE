@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { StyledImg } from './styled';
 import type { ReactElement } from 'react';
 import type { ImageProps } from './types';
+import { IMG_MODE } from '@constants/image';
 
 const LOAD_IMG_EVENT = 'loadImage';
 const DEFAULT_THRESHOLD = 0.3;
@@ -26,7 +27,7 @@ const Image = ({
   width,
   height,
   alt,
-  mode = 'cover',
+  mode = IMG_MODE.COVER,
   block = false,
   placeholder,
   threshold = DEFAULT_THRESHOLD,
