@@ -1,6 +1,6 @@
 import { Text, Image } from '@base';
 import TextButton from '@compound/TextButton';
-import { AXIOS_REQUEST_TYPE } from '@constants/axios';
+import { AXIOS_REQUEST_TYPE, IMG_MODE } from '@constants';
 import RatingStar from '@domain/RatingStar';
 import useAxios from '@hooks/useAxios';
 import type { ReactElement } from 'react';
@@ -44,7 +44,12 @@ const UserReviewItem = ({
   return (
     <StyledReview>
       <StyledImageWrapper>
-        <Image height='80px' mode='fill' src={userImageUrl} width='80px' />
+        <Image
+          height='80px'
+          mode={IMG_MODE.FILL}
+          src={userImageUrl}
+          width='80px'
+        />
       </StyledImageWrapper>
       <StyledRatingCommentWrapper>
         <RatingStar mode='show' rateTobeDisplayed={userRating} />

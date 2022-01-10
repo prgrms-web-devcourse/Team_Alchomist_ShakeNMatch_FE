@@ -8,6 +8,7 @@ import {
   StyledTitle,
   StyledVerticalLine
 } from './styled';
+import { IMG_MODE } from '@constants';
 
 const DEFAULT_IMAGE_WIDTH = '100px';
 const DEFAULT_IMAGE_HEIGHT = '100px';
@@ -31,7 +32,7 @@ const ShoppingItem = ({
       <StyledImage>
         <Image
           height={imageHeight}
-          mode='cover'
+          mode={IMG_MODE.COVER}
           src={imageSrc}
           width={imageWidth}
         />

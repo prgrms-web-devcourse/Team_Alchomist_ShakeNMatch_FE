@@ -1,6 +1,6 @@
 import { Image } from '@base';
 import type { ImageProps } from '@base/Image/types';
-import { DOMAINS } from '@constants';
+import { DOMAINS, IMG_MODE } from '@constants';
 import { LOGO } from '@constants/logos';
 import type { ReactElement } from 'react';
 import { useNavigate } from 'react-router';
@@ -21,7 +21,7 @@ const Logo = ({ size, link, ...props }: LogoProps): ReactElement => {
 
   return (
     <Image
-      mode='cover'
+      mode={IMG_MODE.COVER}
       src={LOGO[size]}
       style={{ cursor: link ? 'pointer' : 'default' }}
       onClick={handleLink}

@@ -13,7 +13,7 @@ import { StyledContentWrapper } from './styled';
 
 import useAxios from '@hooks/useAxios';
 import type { ICocktailSimple, IApiResponse } from '@models/types';
-import { AXIOS_REQUEST_TYPE } from '@constants/axios';
+import { IMG_MODE, AXIOS_REQUEST_TYPE } from '@constants';
 
 const SearchPage = (): ReactElement => {
   const [results, setResults] = useState<ICocktailSimple[]>([]);
@@ -47,7 +47,7 @@ const SearchPage = (): ReactElement => {
       <SectionDividerWithTitle alignItems withHeader>
         <StyledContentWrapper>
           <Text block>찾아 보고 싶은 칵테일이 있나요?</Text>
-          <Image mode='contain' src={searchBartender} />
+          <Image mode={IMG_MODE.CONTAIN} src={searchBartender} />
           <SearchCocktailInput initialValue={keyword} onSearch={handleSearch} />
         </StyledContentWrapper>
         <CocktailList cocktailList={results} />

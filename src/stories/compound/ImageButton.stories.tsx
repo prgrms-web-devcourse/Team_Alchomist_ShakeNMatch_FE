@@ -1,4 +1,4 @@
-import ImageButton from '@components/compound/ImageButton';
+import { ImageButton } from '@compound';
 import type { ReactElement } from 'react';
 import KaKaoSrc from '@assets/oauthAssets/kakao_login.png';
 import type { ImageButtonProps } from '@components/compound/ImageButton/types';

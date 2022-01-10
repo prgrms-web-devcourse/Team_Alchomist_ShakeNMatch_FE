@@ -11,6 +11,7 @@ import {
   StyledHasWrapper
 } from './style';
 import { useCustomNavigate } from '@contexts/CustomNavigate';
+import { IMG_MODE } from '@constants';
 
 const OPEN_WINDOW_HEIGHT = 1000;
 const OPEN_WINDOW_WIDTH = 1000;
@@ -37,7 +38,7 @@ const IngredientItem = (ingredient: IngredientItemProps): ReactElement => {
       <StyledIngredientInnerWrapper>
         <Image
           height={INGREDIENT_ICON_SIZE.height}
-          mode='cover'
+          mode={IMG_MODE.COVER}
           src={IngredientIcons[ingredient.type as IngredientIconsKeys]}
           width={INGREDIENT_ICON_SIZE.width}
         />

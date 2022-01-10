@@ -1,6 +1,6 @@
-import ImageButton from '@compound/ImageButton';
+import { ImageButton } from '@compound';
 import { COLOR } from '@constants';
-import Logo from '@domain/Logo';
+import { Logo } from '@domain';
 import type { CSSObject } from '@emotion/styled';
 import styled from '@emotion/styled';
 

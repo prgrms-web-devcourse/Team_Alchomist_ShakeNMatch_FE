@@ -10,8 +10,8 @@ import {
   StyledImage
 } from './styled';
 import useClickAway from '@hooks/useClickAway';
-import ChangingSpeech from '@domain/ChangingSpeech';
-import { BARTENDER_CONVERSATION } from '@constants/bartender';
+import { ChangingSpeech } from '@domain';
+import { IMG_MODE, BARTENDER_CONVERSATION } from '@constants';
 
 const SearchBot = (): ReactElement => {
   const [showInput, setShowInput] = useState(false);
@@ -42,7 +42,7 @@ const SearchBot = (): ReactElement => {
       <StyledBot ref={clickAwayRef} onClick={handleClick}>
         <StyledImage
           height='150px'
-          mode='contain'
+          mode={IMG_MODE.CONTAIN}
           src={searchBot}
           width='150px'
         />

@@ -6,11 +6,11 @@ import jangoImageSrc from '@assets/headerIcon/to_jango.png';
 import loginImageSrc from '@assets/headerIcon/to_login.png';
 import themeImageSrc from '@assets/headerIcon/to_theme.png';
 import profileImageSrc from '@assets/headerIcon/to_profile.png';
-import ImageButton from '@compound/ImageButton';
+import { ImageButton } from '@compound';
 import { useAuthorization } from '@contexts';
 import { useLocation } from 'react-router';
 import { getDomain } from '@utils/lib/getDomain';
-import { DOMAINS } from '@constants';
+import { DOMAINS, IMG_MODE } from '@constants';
 import { Tooltip } from '@base';
 import { useCustomNavigate } from '@contexts/CustomNavigate';
 
@@ -41,7 +41,7 @@ const Header = (): ReactElement => {
           tooltipSize='md'
         >
           <ImageButton
-            mode='contain'
+            mode={IMG_MODE.CONTAIN}
             size='headerIcon'
             src={jangoImageSrc}
             onClick={(): void => {
@@ -58,7 +58,7 @@ const Header = (): ReactElement => {
           tooltipSize='sm'
         >
           <ImageButton
-            mode='contain'
+            mode={IMG_MODE.CONTAIN}
             size='headerIcon'
             src={themeImageSrc}
             onClick={(): void => {
@@ -69,7 +69,7 @@ const Header = (): ReactElement => {
       )}
       {isAuthorized ? (
         <ImageButton
-          mode='contain'
+          mode={IMG_MODE.CONTAIN}
           size='headerIcon'
           src={profileImageSrc}
           onClick={(): void => {
@@ -78,7 +78,7 @@ const Header = (): ReactElement => {
         />
       ) : (
         <ImageButton
-          mode='contain'
+          mode={IMG_MODE.CONTAIN}
           size='headerIcon'
           src={loginImageSrc}
           onClick={(): void => {

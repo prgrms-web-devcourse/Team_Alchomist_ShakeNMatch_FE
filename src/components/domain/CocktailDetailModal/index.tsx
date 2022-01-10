@@ -17,7 +17,7 @@ import {
 } from './style';
 import { useAuthorization } from '@contexts';
 import useAxios from '@hooks/useAxios';
-import { AXIOS_REQUEST_TYPE, COLOR, MODAL_SIZE } from '@constants';
+import { AXIOS_REQUEST_TYPE, COLOR, MODAL_SIZE, IMG_MODE } from '@constants';
 import type { IApiResponse, ICocktail, IReview } from '@models';
 
 const CocktailDetailModal = ({
@@ -131,7 +131,7 @@ const CocktailDetailModal = ({
                 <Image
                   alt='Image'
                   height='100%'
-                  mode='cover'
+                  mode={IMG_MODE.COVER}
                   src={cocktailData?.type}
                   width='100%'
                 />
@@ -184,7 +184,7 @@ const CocktailDetailModal = ({
                 <Image
                   alt='Image'
                   height='100%'
-                  mode='cover'
+                  mode={IMG_MODE.COVER}
                   src={cocktailData?.type}
                   width='100%'
                 />

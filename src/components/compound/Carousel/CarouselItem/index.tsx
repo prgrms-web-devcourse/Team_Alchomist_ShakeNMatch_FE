@@ -5,6 +5,7 @@ import { useCallback } from 'react';
 import { StyledContainer, StyledWrapper } from './styled';
 import type { CarouselItemProps } from './types';
 import { CAROUSEL_IMAGE_SIZE } from './types';
+import { IMG_MODE } from '@constants';
 
 const CarouselItem = ({
   backgroundColor = 'GREEN',
@@ -43,7 +44,7 @@ const CarouselItem = ({
               ? CAROUSEL_IMAGE_SIZE.withTitle.height
               : CAROUSEL_IMAGE_SIZE.withoutTitle.height
           }
-          mode='contain'
+          mode={IMG_MODE.CONTAIN}
           src={imageSrc}
           width={
             title

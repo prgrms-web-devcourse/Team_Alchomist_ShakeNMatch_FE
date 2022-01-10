@@ -1,4 +1,4 @@
-import Image from '@base/Image';
+import { Image } from '@base';
 import type { ReactElement } from 'react';
 
 export default {

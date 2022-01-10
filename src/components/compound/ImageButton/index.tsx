@@ -3,12 +3,13 @@ import { BUTTON_SIZE } from '@base/Button/types';
 import type { MouseEventHandler, ReactElement } from 'react';
 import { useCallback } from 'react';
 import type { ImageButtonProps } from './types';
+import { IMG_MODE } from '@constants';
 
 const ImageButton = ({
   type = 'button',
   size = 'kakao',
   src,
-  mode = 'fill',
+  mode = IMG_MODE.FILL,
   onClick,
   disabled = false,
   dropShadow = false,

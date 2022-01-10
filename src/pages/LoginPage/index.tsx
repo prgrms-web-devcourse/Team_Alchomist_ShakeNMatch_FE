@@ -5,7 +5,7 @@ import { useCallback } from 'react';
 import BartenderSrc from '@assets/characters/searchBartender.png';
 import { StyledPageContainerWithBackground } from '@base/PageContainerWithBackground/styled';
 import { useCustomNavigate } from '@contexts/CustomNavigate';
-import { COLOR, MODAL_SIZE } from '@constants';
+import { COLOR, MODAL_SIZE, IMG_MODE } from '@constants';
 
 const LoginPage = (): ReactElement => {
   const { navigate } = useCustomNavigate();
@@ -37,7 +37,12 @@ const LoginPage = (): ReactElement => {
                 marginBottom: 50
               }}
             >
-              <Image height={150} mode='fill' src={BartenderSrc} width={150} />
+              <Image
+                height={150}
+                mode={IMG_MODE.FILL}
+                src={BartenderSrc}
+                width={150}
+              />
               <LoginButton />
             </section>
           </TitleSectionContainer>
