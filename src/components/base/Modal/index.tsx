@@ -4,12 +4,13 @@ import ReactDOM from 'react-dom';
 import type { ModalProps } from './types';
 import { StyledModalBackground, StyledModalContainer } from './styled';
 import useClickAway from '@hooks/useClickAway';
+import { COLOR, MODAL_SIZE } from '@constants';
 
 const Modal = ({
   children,
-  size = 'md',
-  color = 'BASIC_WHITE',
-  backgroundColor = 'DARK_GRAY',
+  size = MODAL_SIZE.MD,
+  color = COLOR.BASIC_WHITE,
+  backgroundColor = COLOR.DARK_GRAY,
   visible = false,
   onClose,
   ...props

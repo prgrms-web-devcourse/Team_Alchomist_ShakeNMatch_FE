@@ -5,6 +5,7 @@ import { useCallback } from 'react';
 import BartenderSrc from '@assets/characters/searchBartender.png';
 import { StyledPageContainerWithBackground } from '@base/PageContainerWithBackground/styled';
 import { useCustomNavigate } from '@contexts/CustomNavigate';
+import { COLOR, MODAL_SIZE } from '@constants';
 
 const LoginPage = (): ReactElement => {
   const { navigate } = useCustomNavigate();
@@ -16,9 +17,9 @@ const LoginPage = (): ReactElement => {
   return (
     <StyledPageContainerWithBackground>
       <Modal
-        backgroundColor='TRANSPARENT'
-        color='BASIC_WHITE_OPACITY'
-        size='sm'
+        backgroundColor={COLOR.TRANSPARENT}
+        color={COLOR.BASIC_WHITE_OPACITY}
+        size={MODAL_SIZE.SM}
         visible
       >
         <div style={{ padding: 20, height: '100%' }}>

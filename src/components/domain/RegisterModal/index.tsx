@@ -8,6 +8,7 @@ import type { ReactElement } from 'react';
 import { useState } from 'react';
 import { IdentifierContainer } from './styled';
 import type { RegisterModalProps } from './types';
+import { COLOR, MODAL_SIZE } from '@constants';
 
 const RegisterModal = ({
   onSubmit,
@@ -15,7 +16,12 @@ const RegisterModal = ({
 }: RegisterModalProps): ReactElement => {
   const [tasksDone, setTasksDone] = useState(0);
   return (
-    <Modal backgroundColor='TRANSPARENT' color='IVORY' size='md' visible={true}>
+    <Modal
+      backgroundColor={COLOR.TRANSPARENT}
+      color={COLOR.IVORY}
+      size={MODAL_SIZE.MD}
+      visible={true}
+    >
       <SectionDividerWithTitle
         ratio={[4, 3]}
         titleSize='md'

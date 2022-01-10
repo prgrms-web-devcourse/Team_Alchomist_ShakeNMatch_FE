@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 import { useState } from 'react';
 import CocktailReviewModal from '@domain/CocktailReviewModal';
 import type { IReview } from '@domain/CocktailReviewModal/types';
+import { COLOR } from '@constants';
 
 export default {
   title: 'Component/Domain/CocktailReviewModal',
@@ -40,7 +41,7 @@ export const Default = (): ReactElement => {
       </p>
       <CocktailReviewModal
         cocktailId={MOCK_COCKTAIL_ID}
-        color={'BASIC_WHITE'}
+        color={COLOR.BASIC_WHITE}
         handleOnSubmitted={handleComplete}
         nickname='승록'
         size={'sm'}

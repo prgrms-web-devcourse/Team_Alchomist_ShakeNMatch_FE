@@ -2,6 +2,7 @@ import Album from '@compound/Album';
 import CocktailDetailModal from '@domain/CocktailDetailModal';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
+import { COLOR, MODAL_SIZE } from '@constants';
 
 export default {
   title: 'Component/Domain/CocktailDetailModal',
@@ -21,10 +22,10 @@ export const Default = (): ReactElement => {
         }}
       />
       <CocktailDetailModal
-        backgroundColor='DARK_GRAY'
+        backgroundColor={COLOR.DARK_GRAY}
         cocktailId={1}
-        color='IVORY'
-        size='lg'
+        color={COLOR.IVORY}
+        size={MODAL_SIZE.LG}
         visible={isCocktailDetailModalVisible}
         onClose={(): void => {
           console.log('CocktailDetailModal Closed');

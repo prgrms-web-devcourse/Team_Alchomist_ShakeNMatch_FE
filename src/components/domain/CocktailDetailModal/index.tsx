@@ -17,7 +17,7 @@ import {
 } from './style';
 import { useAuthorization } from '@contexts';
 import useAxios from '@hooks/useAxios';
-import { AXIOS_REQUEST_TYPE } from '@constants/axios';
+import { AXIOS_REQUEST_TYPE, COLOR, MODAL_SIZE } from '@constants';
 import type { IApiResponse, ICocktail, IReview } from '@models';
 
 const CocktailDetailModal = ({
@@ -168,7 +168,7 @@ const CocktailDetailModal = ({
                       })
                     )}
                   </StyledIngredientListWrapper>
-                  <Divider color='LIGHT_GREEN_OPACITY' gap={5} />
+                  <Divider color={COLOR.LIGHT_GREEN_OPACITY} gap={5} />
                   <Text color='NAVY' size='sm'>
                     {'- 조제법- '}
                   </Text>
@@ -239,11 +239,11 @@ const CocktailDetailModal = ({
       {cocktailId && user && (
         <CocktailReviewModal
           cocktailId={cocktailId}
-          color='LIGHT_WHITE'
+          color={COLOR.LIGHT_WHITE}
           handleOnSubmitted={handleOnSubmitted}
           loginedUserId={user.id}
           nickname={user.nickname}
-          size='sm'
+          size={MODAL_SIZE.SM}
           visible={isReviewModalVisible}
           onCancel={(): void => {
             setIsReviewModalVisible(false);

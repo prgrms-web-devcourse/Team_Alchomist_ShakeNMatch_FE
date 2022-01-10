@@ -11,14 +11,14 @@ import {
 } from './style';
 import type { CocktailReviewModalProps } from './types';
 import useAxios from '@hooks/useAxios';
-import { AXIOS_REQUEST_TYPE } from '@constants/axios';
+import { AXIOS_REQUEST_TYPE, COLOR, MODAL_SIZE } from '@constants';
 import type { IReviewPostResponse } from '@models';
 
 const CocktailReviewModal = ({
   nickname,
   cocktailId,
   loginedUserId,
-  size = 'sm',
+  size = MODAL_SIZE.SM,
   handleOnSubmitted,
   onCancel,
   ...props
@@ -89,7 +89,7 @@ const CocktailReviewModal = ({
   };
 
   return (
-    <Modal backgroundColor='TRANSPARENT' size={size} {...props}>
+    <Modal backgroundColor={COLOR.TRANSPARENT} size={size} {...props}>
       <StyledReviewForm>
         <Text
           color='BRIGHT_BROWN'

@@ -1,5 +1,5 @@
 import type { HTMLAttributes } from 'react';
-import type { ColorKeys } from '@models/types';
+import type { ColorType } from '@models/types';
 
 const MODAL_SIZE = {
   sm: {
@@ -19,8 +19,8 @@ type ModalSizeKeys = keyof typeof MODAL_SIZE;
 
 interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   size: ModalSizeKeys;
-  color: ColorKeys;
-  backgroundColor: ColorKeys;
+  color: ColorType;
+  backgroundColor: ColorType;
   visible: boolean;
   onClose?(): void;
 }

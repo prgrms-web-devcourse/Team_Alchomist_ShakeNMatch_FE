@@ -12,6 +12,7 @@ import {
   StyledSection
 } from './styled';
 import type { IIngredient } from '@models/types';
+import { COLOR, MODAL_SIZE } from '@constants';
 
 const IngredientSelectModal = ({
   visible,
@@ -57,9 +58,9 @@ const IngredientSelectModal = ({
 
   return (
     <StyledModal
-      backgroundColor='BASIC_WHITE_OPACITY'
-      color='BRIGHT_IVORY'
-      size='lg'
+      backgroundColor={COLOR.BASIC_WHITE_OPACITY}
+      color={COLOR.BRIGHT_IVORY}
+      size={MODAL_SIZE.LG}
       visible={visible}
       onClose={handleClose}
     >
