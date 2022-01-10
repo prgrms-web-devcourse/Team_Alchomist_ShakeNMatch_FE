@@ -1,8 +1,13 @@
 import { Text, Input, Select } from '@base';
 import type { InputProps } from '@base/Input/types';
 import type { SelectProps } from '@base/Select/types';
-import { USER_FORM_LABEL_TEXT, USER_GENDER, USER_MBTI } from '@constants';
-import { AXIOS_REQUEST_TYPE } from '@constants/axios';
+import {
+  USER_FORM_LABEL_TEXT,
+  USER_GENDER,
+  USER_MBTI,
+  INPUT_TYPE,
+  AXIOS_REQUEST_TYPE
+} from '@constants';
 import { useAuthorization } from '@contexts';
 import useAxios from '@hooks/useAxios';
 import type { IApiResponse } from '@models';
@@ -105,7 +110,7 @@ const UserInput = ({
     case 'age':
       inputEl = (
         <Input
-          inputType='number'
+          inputType={INPUT_TYPE.NUMBER}
           name='age'
           value={value || ''}
           {...(props as InputProps)}
@@ -116,7 +121,7 @@ const UserInput = ({
       inputEl = (
         <StyledNicknameInputContainer>
           <Input
-            inputType='text'
+            inputType={INPUT_TYPE.TEXT}
             name='nickname'
             value={value || ''}
             {...(props as InputProps)}

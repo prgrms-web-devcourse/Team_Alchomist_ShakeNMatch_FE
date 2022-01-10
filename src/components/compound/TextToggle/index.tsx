@@ -4,6 +4,7 @@ import { StyledToggleContainer, StyledToggleInput } from './styled';
 import { TEXT_TOGGLE } from './types';
 import type { TextToggleProps } from './types';
 import { Text } from '@base';
+import { INPUT_TYPE } from '@constants';
 
 const TextToggle = ({
   children,
@@ -25,7 +26,7 @@ const TextToggle = ({
       <StyledToggleInput
         checked={isToggled}
         id={id.toString()}
-        type='checkbox'
+        type={INPUT_TYPE.CHECKBOX}
         onChange={handleChange}
       />
       <Text

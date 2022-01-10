@@ -14,6 +14,7 @@ import {
   StyledUploadPreview
 } from './styled';
 import { Text } from '@base';
+import { INPUT_TYPE } from '@constants';
 
 const Uploader = ({
   droppable = true,
@@ -102,7 +103,7 @@ const Uploader = ({
         ref={inputRef}
         accept={AcceptType[accept]}
         name={name}
-        type='file'
+        type={INPUT_TYPE.FILE}
         onChange={handleFileChangeOrDrop}
       />
       <StyledUploadPreview

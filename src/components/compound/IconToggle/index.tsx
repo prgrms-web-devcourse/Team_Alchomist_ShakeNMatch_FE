@@ -5,6 +5,7 @@ import { useMemo, useCallback } from 'react';
 import { StyledLabel } from './styled';
 import type { IconToggleProps } from './types';
 import { ICON_TOGGLE_NAME } from './types';
+import { INPUT_TYPE } from '@constants';
 
 const IconToggle = ({
   name,
@@ -30,7 +31,7 @@ const IconToggle = ({
       <input
         checked={isToggled}
         style={{ display: 'none' }}
-        type='checkbox'
+        type={INPUT_TYPE.CHECKBOX}
         onChange={handleToggle}
       />
       <Icon type={iconType} />

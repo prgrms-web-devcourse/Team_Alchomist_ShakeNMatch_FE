@@ -1,10 +1,9 @@
-import { Loader, TextButton } from '@compound';
+import { Loader, TextButton, UserInput } from '@compound';
 import useForm from '@hooks/useForm';
 import type { ReactElement } from 'react';
 import { useEffect, useMemo, useCallback, useState } from 'react';
 import { StyledForm } from './styled';
 import type { UserFormProps } from './types';
-import UserInput from '../../compound/UserInput';
 import { validateUser } from '@utils/lib/userValidator';
 import type { IUserForm } from '@models';
 
