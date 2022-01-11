@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes } from 'react';
-import type { ColorKeys } from '@models/types';
+import type { ColorType } from '@models/types';
 
 const BUTTON_SIZE = {
   short: {
@@ -33,10 +33,10 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   block?: boolean;
   size?: ButtonSizeKeys;
   dropShadow?: boolean;
-  basicColor?: ColorKeys;
-  hoverColor?: ColorKeys;
-  clickedColor?: ColorKeys;
-  disabledColor?: ColorKeys;
+  basicColor?: ColorType;
+  hoverColor?: ColorType;
+  clickedColor?: ColorType;
+  disabledColor?: ColorType;
 }
 
 export type { ButtonProps };

@@ -11,7 +11,13 @@ import {
 } from './style';
 import type { CocktailReviewModalProps } from './types';
 import useAxios from '@hooks/useAxios';
-import { AXIOS_REQUEST_TYPE, COLOR, TEXT_SIZE, MODAL_SIZE } from '@constants';
+import {
+  AXIOS_REQUEST_TYPE,
+  COLOR,
+  TEXT_SIZE,
+  MODAL_SIZE,
+  BUTTON_TYPE
+} from '@constants';
 import type { IReviewPostResponse } from '@models';
 
 const CocktailReviewModal = ({
@@ -114,10 +120,10 @@ const CocktailReviewModal = ({
           />
         </StyledWrapper>
         <StyledButtonWrapper>
-          <Button type='button' onClick={onSubmit}>
+          <Button type={BUTTON_TYPE.BUTTON} onClick={onSubmit}>
             {'작성완료'}
           </Button>
-          <Button type='button' onClick={onCancel}>
+          <Button type={BUTTON_TYPE.BUTTON} onClick={onCancel}>
             {'취소'}
           </Button>
         </StyledButtonWrapper>

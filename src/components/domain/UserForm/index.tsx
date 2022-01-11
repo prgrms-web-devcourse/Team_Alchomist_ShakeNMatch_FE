@@ -6,6 +6,7 @@ import { StyledForm } from './styled';
 import type { UserFormProps } from './types';
 import { validateUser } from '@utils/lib/userValidator';
 import type { IUserForm } from '@models';
+import { BUTTON_TYPE } from '@constants';
 
 const UserForm = ({
   type = 'Register',
@@ -103,7 +104,7 @@ const UserForm = ({
       <TextButton
         buttonType='LONG_PINK'
         disabled={!isValuesAllValidated || !isValuedChanged}
-        type='submit'
+        type={BUTTON_TYPE.SUBMIT}
       >
         {type === 'Register' ? '회원가입' : '수정하기'}
       </TextButton>

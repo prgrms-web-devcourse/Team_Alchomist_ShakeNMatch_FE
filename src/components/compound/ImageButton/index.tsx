@@ -3,11 +3,13 @@ import { BUTTON_SIZE } from '@base/Button/types';
 import type { MouseEventHandler, ReactElement } from 'react';
 import { useCallback } from 'react';
 import type { ImageButtonProps } from './types';
-import { IMG_MODE } from '@constants';
+import { COLOR, IMG_MODE, BUTTON_TYPE, IMG_BUTTON_SIZE } from '@constants';
+
+const DEFAULT_ALT = 'ImageButton';
 
 const ImageButton = ({
-  type = 'button',
-  size = 'kakao',
+  type = BUTTON_TYPE.BUTTON,
+  size = IMG_BUTTON_SIZE.KAKAO,
   src,
   mode = IMG_MODE.FILL,
   onClick,
@@ -24,7 +26,7 @@ const ImageButton = ({
 
   return (
     <Button
-      basicColor='TRANSPARENT'
+      basicColor={COLOR.TRANSPARENT}
       disabled={disabled}
       dropShadow={dropShadow}
       size={size}
@@ -34,7 +36,7 @@ const ImageButton = ({
       {...props}
     >
       <Image
-        alt='ImageButton'
+        alt={DEFAULT_ALT}
         height={BUTTON_SIZE[size].height}
         mode={mode}
         src={src}

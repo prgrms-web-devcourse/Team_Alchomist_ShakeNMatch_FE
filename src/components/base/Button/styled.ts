@@ -16,7 +16,7 @@ const StyledButton = styled.button<ButtonProps>`
   height: ${({ size }): string =>
     size ? BUTTON_SIZE[size].height : BUTTON_SIZE.long.height};
   background-color: ${({ basicColor }): string =>
-    basicColor ? COLOR[basicColor] : COLOR.BASIC_WHITE};
+    basicColor ? basicColor : COLOR.BASIC_WHITE};
 
   & span {
     vertical-align: text-top;
@@ -25,7 +25,7 @@ const StyledButton = styled.button<ButtonProps>`
   &:hover:not(:disabled) {
     ${({ hoverColor }): string | CSSObject =>
       hoverColor
-        ? { backgroundColor: `${COLOR[hoverColor]}` }
+        ? { backgroundColor: `${hoverColor}` }
         : { filter: 'brightness(0.95)' }};
   }
 
@@ -34,7 +34,7 @@ const StyledButton = styled.button<ButtonProps>`
     box-shadow: none;
     ${({ clickedColor }): string | CSSObject =>
       clickedColor
-        ? { backgroundColor: `${COLOR[clickedColor]}` }
+        ? { backgroundColor: `${clickedColor}` }
         : { filter: 'brightness(0.9)' }};
   }
 

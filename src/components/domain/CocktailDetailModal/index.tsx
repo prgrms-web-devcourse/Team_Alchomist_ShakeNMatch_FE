@@ -25,7 +25,8 @@ import {
   IMG_MODE,
   TOOLTIP_DIRECTION,
   TOOLTIP_SIZE,
-  ICON_TOGGLE_TYPE
+  ICON_TOGGLE_TYPE,
+  BUTTON_TYPE
 } from '@constants';
 import type { IApiResponse, ICocktail, IReview } from '@models';
 
@@ -210,7 +211,7 @@ const CocktailDetailModal = ({
                     <TextButton
                       buttonType='LONG_WHITE'
                       dropShadow
-                      type='button'
+                      type={BUTTON_TYPE.BUTTON}
                       onClick={(): void => {
                         setIsReviewModalVisible(true);
                       }}

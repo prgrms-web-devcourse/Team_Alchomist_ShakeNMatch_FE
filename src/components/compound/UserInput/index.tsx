@@ -8,7 +8,8 @@ import {
   INPUT_TYPE,
   AXIOS_REQUEST_TYPE,
   COLOR,
-  TEXT_SIZE
+  TEXT_SIZE,
+  BUTTON_TYPE
 } from '@constants';
 import { useAuthorization } from '@contexts';
 import useAxios from '@hooks/useAxios';
@@ -134,7 +135,7 @@ const UserInput = ({
               disabled={
                 checkNicknameAPIState.isLoading || !!checkNicknameAPIState.value
               }
-              type='button'
+              type={BUTTON_TYPE.BUTTON}
               onClick={handleCheckNickname}
             >
               <Text bold color={COLOR.BASIC_WHITE} size={TEXT_SIZE.xxxs}>
