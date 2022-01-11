@@ -12,7 +12,7 @@ import {
   StyledSection
 } from './styled';
 import type { IIngredient } from '@models/types';
-import { COLOR, TEXT_SIZE, MODAL_SIZE } from '@constants';
+import { COLOR, TEXT_SIZE, MODAL_SIZE, TEXT_BUTTON_TYPE } from '@constants';
 
 const IngredientSelectModal = ({
   visible,
@@ -120,7 +120,7 @@ const IngredientSelectModal = ({
           </MenuTab>
           <StyledTextButton
             block
-            buttonType='LONG_WHITE'
+            buttonType={TEXT_BUTTON_TYPE.LONG_WHITE}
             onClick={(): void => {
               onSelectDone([...selectedItems.main, ...selectedItems.sub]);
             }}

@@ -1,69 +1,70 @@
 import type { ButtonProps } from '@base/Button/types';
+import { COLOR, BUTTON_TYPE, BUTTON_SIZE, TEXT_SIZE } from '@constants';
 
 const TEXT_BUTTON = {
   SHORT_WHITE: {
     buttonProps: {
-      type: 'button',
-      size: 'short',
-      basicColor: 'BASIC_WHITE',
-      hoverColor: 'LIGHT_PINK',
-      clickedColor: 'BASIC_PINK'
+      type: BUTTON_TYPE.BUTTON,
+      size: BUTTON_SIZE.SHORT,
+      basicColor: COLOR.BASIC_WHITE,
+      hoverColor: COLOR.LIGHT_PINK,
+      clickedColor: COLOR.BASIC_PINK
     },
     textProps: {
-      size: 'xs',
-      color: 'BLACK'
+      size: TEXT_SIZE.xs,
+      color: COLOR.BLACK
     }
   },
   SHORT_PINK: {
     buttonProps: {
-      type: 'button',
-      size: 'short',
-      basicColor: 'BASIC_PINK',
-      hoverColor: 'MIDDLE_PINK',
-      clickedColor: 'STRONG_PINK'
+      type: BUTTON_TYPE.BUTTON,
+      size: BUTTON_SIZE.SHORT,
+      basicColor: COLOR.BASIC_PINK,
+      hoverColor: COLOR.MIDDLE_PINK,
+      clickedColor: COLOR.STRONG_PINK
     },
     textProps: {
-      size: 'xs',
-      color: 'BASIC_WHITE'
+      size: TEXT_SIZE.xs,
+      color: COLOR.BASIC_WHITE
     }
   },
   LONG_WHITE: {
     buttonProps: {
-      type: 'button',
-      size: 'long',
-      basicColor: 'BASIC_WHITE',
-      hoverColor: 'LIGHT_PINK',
-      clickedColor: 'BASIC_PINK'
+      type: BUTTON_TYPE.BUTTON,
+      size: BUTTON_SIZE.LONG,
+      basicColor: COLOR.BASIC_WHITE,
+      hoverColor: COLOR.LIGHT_PINK,
+      clickedColor: COLOR.BASIC_PINK
     },
     textProps: {
-      size: 'xs',
-      color: 'BLACK'
+      size: TEXT_SIZE.xs,
+      color: COLOR.BLACK
     }
   },
   LONG_PINK: {
     buttonProps: {
-      type: 'button',
-      size: 'long',
-      basicColor: 'BASIC_PINK',
-      hoverColor: 'MIDDLE_PINK',
-      clickedColor: 'STRONG_PINK'
+      type: BUTTON_TYPE.BUTTON,
+      size: BUTTON_SIZE.LONG,
+      basicColor: COLOR.BASIC_PINK,
+      hoverColor: COLOR.MIDDLE_PINK,
+      clickedColor: COLOR.STRONG_PINK
     },
     textProps: {
-      size: 'xs',
-      color: 'BASIC_WHITE'
+      size: TEXT_SIZE.xs,
+      color: COLOR.BASIC_WHITE
     }
   },
   X_SHORT_WHITE: {
     buttonProps: {
-      type: 'button',
-      size: 'xShort',
-      basicColor: 'BASIC_WHITE',
-      hoverColor: 'LIGHT_PINK',
-      clickedColor: 'BASIC_PINK'
+      type: BUTTON_TYPE.BUTTON,
+      size: BUTTON_SIZE.XSHORT,
+      basicColor: COLOR.BASIC_WHITE,
+      hoverColor: COLOR.LIGHT_PINK,
+      clickedColor: COLOR.BASIC_PINK
     },
     textProps: {
-      size: 'xxxs',
-      color: 'BLACK'
+      size: TEXT_SIZE.xxxs,
+      color: COLOR.BLACK
     }
   }
 } as const;

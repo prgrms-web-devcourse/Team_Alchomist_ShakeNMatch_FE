@@ -2,11 +2,12 @@ import { Button, Text } from '@base';
 import type { ReactElement } from 'react';
 import type { TextButtonProps } from './types';
 import { TEXT_BUTTON } from './types';
+import { TEXT_BUTTON_TYPE } from '@constants';
 
 const TextButton = ({
   children,
   block = false,
-  buttonType = 'SHORT_WHITE',
+  buttonType = TEXT_BUTTON_TYPE.SHORT_WHITE,
   ...props
 }: TextButtonProps): ReactElement => {
   return (

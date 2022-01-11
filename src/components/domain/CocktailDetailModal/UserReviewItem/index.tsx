@@ -1,6 +1,12 @@
 import { Text, Image } from '@base';
 import { TextButton } from '@compound';
-import { COLOR, TEXT_SIZE, AXIOS_REQUEST_TYPE, IMG_MODE } from '@constants';
+import {
+  COLOR,
+  TEXT_SIZE,
+  AXIOS_REQUEST_TYPE,
+  IMG_MODE,
+  TEXT_BUTTON_TYPE
+} from '@constants';
 import { RatingStar } from '@domain';
 import useAxios from '@hooks/useAxios';
 import type { ReactElement } from 'react';
@@ -59,7 +65,10 @@ const UserReviewItem = ({
         <Text size={TEXT_SIZE.xxs}>{userComment}</Text>
       </StyledRatingCommentWrapper>
       {loginedUserId === reviewOwnerId && (
-        <TextButton buttonType='X_SHORT_WHITE' onClick={onHandleDelete}>
+        <TextButton
+          buttonType={TEXT_BUTTON_TYPE.X_SHORT_WHITE}
+          onClick={onHandleDelete}
+        >
           {'삭제'}
         </TextButton>
       )}

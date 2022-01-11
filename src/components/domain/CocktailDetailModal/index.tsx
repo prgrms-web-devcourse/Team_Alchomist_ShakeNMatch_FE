@@ -26,7 +26,8 @@ import {
   TOOLTIP_DIRECTION,
   TOOLTIP_SIZE,
   ICON_TOGGLE_TYPE,
-  BUTTON_TYPE
+  BUTTON_TYPE,
+  TEXT_BUTTON_TYPE
 } from '@constants';
 import type { IApiResponse, ICocktail, IReview } from '@models';
 
@@ -209,7 +210,7 @@ const CocktailDetailModal = ({
                   </Text>
                   {user && (
                     <TextButton
-                      buttonType='LONG_WHITE'
+                      buttonType={TEXT_BUTTON_TYPE.LONG_WHITE}
                       dropShadow
                       type={BUTTON_TYPE.BUTTON}
                       onClick={(): void => {

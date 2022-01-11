@@ -6,7 +6,7 @@ import { StyledForm } from './styled';
 import type { UserFormProps } from './types';
 import { validateUser } from '@utils/lib/userValidator';
 import type { IUserForm } from '@models';
-import { BUTTON_TYPE } from '@constants';
+import { BUTTON_TYPE, TEXT_BUTTON_TYPE } from '@constants';
 
 const UserForm = ({
   type = 'Register',
@@ -102,7 +102,7 @@ const UserForm = ({
         onChange={handleChange}
       />
       <TextButton
-        buttonType='LONG_PINK'
+        buttonType={TEXT_BUTTON_TYPE.LONG_PINK}
         disabled={!isValuesAllValidated || !isValuedChanged}
         type={BUTTON_TYPE.SUBMIT}
       >

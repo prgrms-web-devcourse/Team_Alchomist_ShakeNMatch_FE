@@ -48,7 +48,7 @@ const LoginPage = (): ReactElement => {
           </TitleSectionContainer>
         </div>
       </Modal>
-      <BackButton color='NAVY' onClick={handleBack} />
+      <BackButton color={COLOR.NAVY} onClick={handleBack} />
     </StyledPageContainerWithBackground>
   );
 };

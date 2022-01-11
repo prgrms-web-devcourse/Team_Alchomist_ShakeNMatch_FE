@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes } from 'react';
 import type { ColorType } from '@models/types';
 
-const BUTTON_SIZE = {
+const BUTTON_TYPES_SIZE = {
   short: {
     width: '90px',
     height: '30px'
@@ -27,7 +27,7 @@ const BUTTON_SIZE = {
     height: '20px'
   }
 } as const;
-type ButtonSizeKeys = keyof typeof BUTTON_SIZE;
+type ButtonSizeKeys = keyof typeof BUTTON_TYPES_SIZE;
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   block?: boolean;
@@ -40,4 +40,4 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export type { ButtonProps };
-export { BUTTON_SIZE };
+export { BUTTON_TYPES_SIZE };

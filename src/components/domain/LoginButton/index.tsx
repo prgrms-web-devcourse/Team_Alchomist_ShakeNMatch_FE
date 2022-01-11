@@ -1,7 +1,7 @@
 import type { ReactElement } from 'react';
 import { useCustomNavigate } from '@contexts/CustomNavigate';
 import type { LoginButtonProps } from './types';
-import { DOMAINS } from '@constants';
+import { DOMAINS, TEXT_BUTTON_TYPE } from '@constants';
 import { TextButton } from '@compound';
 // import { useNavigate } from 'react-router';
 // import { DOMAINS } from '@constants';
@@ -37,7 +37,7 @@ const LoginButton = ({ redirectUrl }: LoginButtonProps): ReactElement => {
   };
 
   return (
-    <TextButton buttonType='LONG_PINK' onClick={handleLogin}>
+    <TextButton buttonType={TEXT_BUTTON_TYPE.LONG_PINK} onClick={handleLogin}>
       로그인 하기
     </TextButton>
   );

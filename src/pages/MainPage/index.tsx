@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { TextButton } from '@compound';
 import { useAuthorization } from '@contexts';
 import { useNavigate } from 'react-router';
-import { COLOR, DOMAINS } from '@constants';
+import { COLOR, DOMAINS, TEXT_BUTTON_TYPE } from '@constants';
 import {
   StyledLogo,
   StyledDescriptionContainer,
@@ -69,7 +69,10 @@ const MainPage = (): ReactElement => {
             : '내 술장고 재료들로 <br> 칵테일을 추천받으세요!'}
         </Text>
         {isAuthorized || selectedMenu === 'theme' ? (
-          <TextButton buttonType='LONG_WHITE' onClick={handleLink}>
+          <TextButton
+            buttonType={TEXT_BUTTON_TYPE.LONG_WHITE}
+            onClick={handleLink}
+          >
             추천받으러 가기
           </TextButton>
         ) : (

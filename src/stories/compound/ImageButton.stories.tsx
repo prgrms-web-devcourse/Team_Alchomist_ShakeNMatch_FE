@@ -2,7 +2,7 @@ import { ImageButton } from '@compound';
 import type { ReactElement } from 'react';
 import KaKaoSrc from '@assets/oauthAssets/kakao_login.png';
 import type { ImageButtonProps } from '@components/compound/ImageButton/types';
-import { BUTTON_SIZE } from '@base/Button/types';
+import { BUTTON_TYPES_SIZE } from '@base/Button/types';
 
 export default {
   title: 'Component/Compound/ImageButton',
@@ -16,7 +16,7 @@ export default {
     },
     size: {
       control: 'inline-radio',
-      options: Object.keys(BUTTON_SIZE)
+      options: Object.keys(BUTTON_TYPES_SIZE)
     }
   }
 };

@@ -4,7 +4,15 @@ const BUTTON_TYPE = {
   RESET: 'reset'
 } as const;
 
-const IMG_BUTTON_SIZE = {
+const TEXT_BUTTON_TYPE = {
+  SHORT_WHITE: 'SHORT_WHITE',
+  SHORT_PINK: 'SHORT_PINK',
+  LONG_WHITE: 'LONG_WHITE',
+  LONG_PINK: 'LONG_PINK',
+  X_SHORT_WHITE: 'X_SHORT_WHITE'
+} as const;
+
+const BUTTON_SIZE = {
   SHORT: 'short',
   LONG: 'long',
   KAKAO: 'kakao',
@@ -13,4 +21,4 @@ const IMG_BUTTON_SIZE = {
   XSHORT: 'xShort'
 } as const;
 
-export { BUTTON_TYPE, IMG_BUTTON_SIZE };
+export { BUTTON_TYPE, TEXT_BUTTON_TYPE, BUTTON_SIZE };

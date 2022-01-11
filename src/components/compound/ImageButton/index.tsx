@@ -1,15 +1,15 @@
 import { Button, Image } from '@base';
-import { BUTTON_SIZE } from '@base/Button/types';
+import { BUTTON_TYPES_SIZE } from '@base/Button/types';
 import type { MouseEventHandler, ReactElement } from 'react';
 import { useCallback } from 'react';
 import type { ImageButtonProps } from './types';
-import { COLOR, IMG_MODE, BUTTON_TYPE, IMG_BUTTON_SIZE } from '@constants';
+import { COLOR, IMG_MODE, BUTTON_TYPE, BUTTON_SIZE } from '@constants';
 
 const DEFAULT_ALT = 'ImageButton';
 
 const ImageButton = ({
   type = BUTTON_TYPE.BUTTON,
-  size = IMG_BUTTON_SIZE.KAKAO,
+  size = BUTTON_SIZE.KAKAO,
   src,
   mode = IMG_MODE.FILL,
   onClick,
@@ -37,10 +37,10 @@ const ImageButton = ({
     >
       <Image
         alt={DEFAULT_ALT}
-        height={BUTTON_SIZE[size].height}
+        height={BUTTON_TYPES_SIZE[size].height}
         mode={mode}
         src={src}
-        width={BUTTON_SIZE[size].width}
+        width={BUTTON_TYPES_SIZE[size].width}
       />
     </Button>
   );

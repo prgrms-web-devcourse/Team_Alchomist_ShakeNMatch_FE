@@ -14,7 +14,7 @@ import type { ICocktail, IIngredient, IApiResponse } from '@models/types';
 import { useAuthorization } from '@contexts';
 import useSessionStorage from '@hooks/useSessionStorage';
 import useAxios from '@hooks/useAxios';
-import { COLOR, AXIOS_REQUEST_TYPE } from '@constants';
+import { COLOR, AXIOS_REQUEST_TYPE, TEXT_BUTTON_TYPE } from '@constants';
 
 const JangoPage = (): ReactElement => {
   const [ingredients, setIngredients] = useState<{
@@ -156,7 +156,10 @@ const JangoPage = (): ReactElement => {
             itemList={ingredients.sub}
             row='double'
           />
-          <StyledTextButton buttonType='SHORT_PINK' onClick={openModal}>
+          <StyledTextButton
+            buttonType={TEXT_BUTTON_TYPE.SHORT_PINK}
+            onClick={openModal}
+          >
             재료 수정
           </StyledTextButton>
         </StyledIngredientContainer>

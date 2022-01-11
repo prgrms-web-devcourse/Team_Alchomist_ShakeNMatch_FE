@@ -103,7 +103,7 @@ const OAuthKaKaoPage = (): ReactElement => {
         </Text>
         <Loader />
         <BackButton
-          color='NAVY'
+          color={COLOR.NAVY}
           onClick={(): void => {
             navigate(`/${DOMAINS.main}`);
           }}

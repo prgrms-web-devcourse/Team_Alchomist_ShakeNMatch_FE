@@ -16,7 +16,7 @@ import {
   TEXT_SIZE,
   TOOLTIP_DIRECTION,
   TOOLTIP_SIZE,
-  IMG_BUTTON_SIZE
+  BUTTON_SIZE
 } from '@constants';
 import { Tooltip } from '@base';
 import { useCustomNavigate } from '@contexts/CustomNavigate';
@@ -49,7 +49,7 @@ const Header = (): ReactElement => {
         >
           <ImageButton
             mode={IMG_MODE.CONTAIN}
-            size={IMG_BUTTON_SIZE.HEADER_ICON}
+            size={BUTTON_SIZE.HEADER_ICON}
             src={jangoImageSrc}
             onClick={(): void => {
               handleLink(`/${DOMAINS.jango}`);
@@ -66,7 +66,7 @@ const Header = (): ReactElement => {
         >
           <ImageButton
             mode={IMG_MODE.CONTAIN}
-            size={IMG_BUTTON_SIZE.HEADER_ICON}
+            size={BUTTON_SIZE.HEADER_ICON}
             src={themeImageSrc}
             onClick={(): void => {
               handleLink(`/${DOMAINS.theme}`);
@@ -77,7 +77,7 @@ const Header = (): ReactElement => {
       {isAuthorized ? (
         <ImageButton
           mode={IMG_MODE.CONTAIN}
-          size={IMG_BUTTON_SIZE.HEADER_ICON}
+          size={BUTTON_SIZE.HEADER_ICON}
           src={profileImageSrc}
           onClick={(): void => {
             handleLink(`/${DOMAINS.profile}/${user?.id}`);
@@ -86,7 +86,7 @@ const Header = (): ReactElement => {
       ) : (
         <ImageButton
           mode={IMG_MODE.CONTAIN}
-          size={IMG_BUTTON_SIZE.HEADER_ICON}
+          size={BUTTON_SIZE.HEADER_ICON}
           src={loginImageSrc}
           onClick={(): void => {
             saveCurrentPath();
