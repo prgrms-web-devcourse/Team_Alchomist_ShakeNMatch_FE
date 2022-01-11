@@ -5,7 +5,7 @@ import { useCallback } from 'react';
 import { StyledContainer, StyledWrapper } from './styled';
 import type { CarouselItemProps } from './types';
 import { CAROUSEL_IMAGE_SIZE } from './types';
-import { COLOR, TEXT_SIZE, IMG_MODE } from '@constants';
+import { COLOR, TEXT_SIZE, IMG_MODE, BUTTON_TYPE, ICON_NAME } from '@constants';
 
 const CarouselItem = ({
   backgroundColor = COLOR.GREEN,
@@ -33,8 +33,8 @@ const CarouselItem = ({
     >
       <IconButton
         disabled={!selected}
-        name='arrowUpNavy'
-        type='button'
+        name={ICON_NAME.ARROW_UP_NAVY}
+        type={BUTTON_TYPE.BUTTON}
         onClick={handlePrev}
       />
       <StyledWrapper>
@@ -60,8 +60,8 @@ const CarouselItem = ({
       </StyledWrapper>
       <IconButton
         disabled={!selected}
-        name='arrowDownNavy'
-        type='button'
+        name={ICON_NAME.ARROW_DOWN_NAVY}
+        type={BUTTON_TYPE.BUTTON}
         onClick={handleNext}
       />
     </StyledContainer>

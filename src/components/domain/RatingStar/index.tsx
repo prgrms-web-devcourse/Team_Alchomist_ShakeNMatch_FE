@@ -2,6 +2,7 @@ import type { MouseEventHandler, ReactElement } from 'react';
 import { useState, Children } from 'react';
 import { IconButton } from '@compound';
 import type { RatingStarProps } from './types';
+import { ICON_NAME } from '@constants';
 
 const RatingStar = ({
   mode = 'edit',
@@ -28,7 +29,7 @@ const RatingStar = ({
         childrenArray.map((_, index) => (
           <IconButton
             id={(index + 1).toString()}
-            name={rating > index ? 'starFull' : 'starEmpty'}
+            name={rating > index ? ICON_NAME.STAR_FULL : ICON_NAME.STAR_EMPTY}
             onClick={handleClick}
           />
         ))
@@ -40,7 +41,11 @@ const RatingStar = ({
         childrenArray.map((_, index) => (
           <IconButton
             id={index.toString()}
-            name={rateTobeDisplayed > index ? 'starFull' : 'starEmpty'}
+            name={
+              rateTobeDisplayed > index
+                ? ICON_NAME.STAR_FULL
+                : ICON_NAME.STAR_EMPTY
+            }
           />
         ))
       )}

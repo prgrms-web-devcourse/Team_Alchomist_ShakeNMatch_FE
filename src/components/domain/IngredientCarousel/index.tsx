@@ -7,6 +7,7 @@ import type { IngredientCarouselProps, IngredientIconsKeys } from './types';
 import { ROW_TYPE } from './types';
 import { IngredientIcons } from '@assets/ingredients';
 import { IconButton, Album } from '@compound';
+import { ICON_NAME } from '@constants';
 
 const CLEAR_THROTTLE_TIME = 500;
 
@@ -59,7 +60,7 @@ const IngredientCarousel = ({
     <StyledCarouselContainer ref={wheelRef} row={row}>
       <IconButton
         disabled={itemIdx.head === 0}
-        name='arrowLeftNavy'
+        name={ICON_NAME.ARROW_LEFT_NAVY}
         style={{
           position: 'absolute',
           top: '50%',
@@ -79,7 +80,7 @@ const IngredientCarousel = ({
       )}
       <IconButton
         disabled={itemIdx.tail >= itemList.length - 1}
-        name='arrowRightNavy'
+        name={ICON_NAME.ARROW_RIGHT_NAVY}
         style={{
           position: 'absolute',
           top: '50%',

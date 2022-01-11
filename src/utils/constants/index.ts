@@ -1,5 +1,6 @@
 export * from './axios';
 export * from './bartender';
+export * from './button';
 export * from './colors';
 export * from './divider';
 export * from './domain';
