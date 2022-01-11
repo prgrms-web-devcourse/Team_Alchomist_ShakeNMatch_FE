@@ -24,7 +24,8 @@ import {
   MODAL_SIZE,
   IMG_MODE,
   TOOLTIP_DIRECTION,
-  TOOLTIP_SIZE
+  TOOLTIP_SIZE,
+  ICON_TOGGLE_TYPE
 } from '@constants';
 import type { IApiResponse, ICocktail, IReview } from '@models';
 
@@ -127,7 +128,7 @@ const CocktailDetailModal = ({
                   initialState={user?.bookmarks?.some(
                     (cocktail) => cocktail.id === cocktailId
                   )}
-                  name='flag'
+                  name={ICON_TOGGLE_TYPE.FLAG}
                   onChange={handleBookmark}
                 />
               </Tooltip>

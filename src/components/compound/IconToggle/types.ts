@@ -1,13 +1,14 @@
 import type { HTMLAttributes } from 'react';
+import { ICON_NAME } from '@constants';
 
 const ICON_TOGGLE_NAME = {
   star: {
-    notToggled: 'starEmpty',
-    toggled: 'starFull'
+    notToggled: ICON_NAME.STAR_EMPTY,
+    toggled: ICON_NAME.STAR_FULL
   },
   flag: {
-    notToggled: 'flagEmpty',
-    toggled: 'flagFull'
+    notToggled: ICON_NAME.FLAG_EMPTY,
+    toggled: ICON_NAME.FLAG_FULL
   }
 } as const;
 

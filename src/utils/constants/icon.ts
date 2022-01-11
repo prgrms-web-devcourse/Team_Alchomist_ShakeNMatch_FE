@@ -34,6 +34,11 @@ const ICON_NAME = {
   FLAG_EMPTY: 'flagEmpty'
 } as const;
 
+const ICON_TOGGLE_TYPE = {
+  STAR: 'star',
+  FLAG: 'flag'
+} as const;
+
 const ICON_TYPES = {
   arrowDownNavy: $arrowDown,
   arrowLeftNavy: $arrowLeft,
@@ -50,4 +55,4 @@ const ICON_TYPES = {
   flagEmpty: $flagEmpty
 } as const;
 
-export { ICON_NAME, ICON_TYPES };
+export { ICON_NAME, ICON_TYPES, ICON_TOGGLE_TYPE };
