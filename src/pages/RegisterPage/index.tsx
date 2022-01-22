@@ -1,6 +1,5 @@
 import { StyledPageContainerWithBackground } from '@base/PageContainerWithBackground/styled';
-import { DOMAINS } from '@constants';
-import { AXIOS_REQUEST_TYPE } from '@constants/axios';
+import { COLOR, AXIOS_REQUEST_TYPE, DOMAINS } from '@constants';
 import { useAuthorization } from '@contexts';
 import { BackButton, RegisterModal } from '@domain';
 import { useCustomNavigate } from '@contexts/CustomNavigate';
@@ -47,7 +46,7 @@ const RegisterPage = (): ReactElement => {
     <StyledPageContainerWithBackground>
       <RegisterModal onSubmit={handleRegister} />
       <BackButton
-        color='NAVY'
+        color={COLOR.NAVY}
         onClick={(): void => {
           navigate(-1);
         }}
