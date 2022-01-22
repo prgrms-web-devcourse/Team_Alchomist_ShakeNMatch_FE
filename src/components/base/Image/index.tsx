@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { StyledImg } from './styled';
 import type { ReactElement } from 'react';
 import type { ImageProps } from './types';
-import { IMG_MODE } from '@constants/image';
+import { IMG_MODE } from '@constants';
 
 const LOAD_IMG_EVENT = 'loadImage';
 const DEFAULT_THRESHOLD = 0.3;

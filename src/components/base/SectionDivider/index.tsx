@@ -1,4 +1,4 @@
-import Divider from '@base/Divider';
+import { Divider } from '@base';
 import type { ReactElement } from 'react';
 import { Children, isValidElement, useMemo, cloneElement } from 'react';
 import { StyledSectionContainer } from './styled';

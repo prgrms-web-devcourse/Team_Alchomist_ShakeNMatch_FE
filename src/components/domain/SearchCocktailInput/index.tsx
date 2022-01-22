@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import type { ChangeEvent, ReactElement, FormEvent } from 'react';
 import { Input } from '@base';
-import useDebounce from '@hooks/useDebounce';
+import { useDebounce } from '@hooks';
 import type { SearchCocktailInputProps } from './types';
 import { INPUT_TYPE } from '@constants';
 

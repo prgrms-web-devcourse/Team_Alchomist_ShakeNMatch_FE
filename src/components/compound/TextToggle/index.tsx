@@ -1,4 +1,4 @@
-import useToggle from '@hooks/useToggle';
+import { useToggle } from '@hooks';
 import type { ChangeEvent, ReactElement } from 'react';
 import { StyledToggleContainer, StyledToggleInput } from './styled';
 import { TEXT_TOGGLE } from './types';

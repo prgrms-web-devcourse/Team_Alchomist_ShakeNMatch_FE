@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Divider, SectionDivider, Text } from '@base';
 import { Loader } from '@compound';
 import {
@@ -8,8 +7,7 @@ import {
   HeaderPageTemplate,
   SearchBot
 } from '@domain';
-import useAxios from '@hooks/useAxios';
-import useDebounce from '@hooks/useDebounce';
+import { useAxios, useDebounce } from '@hooks';
 import type { IApiResponse, ICocktailSimple, ITHEME } from '@models';
 import type { ReactElement } from 'react';
 import { useCallback, useMemo, useState, useEffect } from 'react';

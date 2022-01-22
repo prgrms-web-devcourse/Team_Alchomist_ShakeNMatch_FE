@@ -1,5 +1,4 @@
-import useThrottle from '@hooks/useThrottle';
-import useWheel from '@hooks/useWheel';
+import { useThrottle, useWheel } from '@hooks';
 import type { AnimationEventHandler, ReactElement } from 'react';
 import {
   useEffect,

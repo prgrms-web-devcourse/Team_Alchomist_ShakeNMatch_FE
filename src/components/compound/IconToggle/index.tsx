@@ -1,5 +1,5 @@
 import { Icon } from '@base';
-import useToggle from '@hooks/useToggle';
+import { useToggle } from '@hooks';
 import type { ReactElement, ChangeEventHandler } from 'react';
 import { useMemo, useCallback } from 'react';
 import { StyledLabel } from './styled';

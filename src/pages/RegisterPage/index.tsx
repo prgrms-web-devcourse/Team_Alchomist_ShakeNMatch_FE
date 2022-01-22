@@ -3,7 +3,7 @@ import { COLOR, AXIOS_REQUEST_TYPE, DOMAINS } from '@constants';
 import { useAuthorization } from '@contexts';
 import { BackButton, RegisterModal } from '@domain';
 import { useCustomNavigate } from '@contexts/CustomNavigate';
-import useAxios from '@hooks/useAxios';
+import { useAxios } from '@hooks';
 import type { IApiResponse, IUser, IUserForm } from '@models';
 import type { ReactElement } from 'react';
 import type { IRegisterRequestBody } from './types';

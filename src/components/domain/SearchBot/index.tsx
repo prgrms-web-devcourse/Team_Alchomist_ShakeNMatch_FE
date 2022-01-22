@@ -9,7 +9,7 @@ import {
   StyledInputBackground,
   StyledImage
 } from './styled';
-import useClickAway from '@hooks/useClickAway';
+import { useClickAway } from '@hooks';
 import { ChangingSpeech } from '@domain';
 import { IMG_MODE, TEXT_SIZE, BARTENDER_CONVERSATION } from '@constants';
 

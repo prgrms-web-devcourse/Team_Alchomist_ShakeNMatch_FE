@@ -1,4 +1,3 @@
-// import { request } from '@apis/config';
 import { Text } from '@base';
 import { StyledPageContainerWithBackground } from '@base/PageContainerWithBackground/styled';
 import { Loader } from '@compound';
@@ -6,7 +5,7 @@ import { COLOR, DOMAINS, AXIOS_REQUEST_TYPE } from '@constants';
 import { useAuthorization } from '@contexts';
 import { useCustomNavigate } from '@contexts/CustomNavigate';
 import { BackButton } from '@domain';
-import useAxios from '@hooks/useAxios';
+import { useAxios } from '@hooks';
 import type { IApiResponse, IUser } from '@models';
 import type { ReactElement } from 'react';
 import { useEffect } from 'react';

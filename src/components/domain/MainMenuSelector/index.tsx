@@ -1,5 +1,5 @@
 import { SectionDivider, Text } from '@base';
-import useHover from '@hooks/useHover';
+import { useHover } from '@hooks';
 import type { ReactElement } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {

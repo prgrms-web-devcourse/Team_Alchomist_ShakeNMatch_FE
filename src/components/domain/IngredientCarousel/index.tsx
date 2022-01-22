@@ -1,6 +1,5 @@
 import { useState, useCallback, useEffect, Children } from 'react';
-import useWheel from '@hooks/useWheel';
-import useThrottle from '@hooks/useThrottle';
+import { useWheel, useThrottle } from '@hooks';
 import type { ReactElement } from 'react';
 import { StyledCarouselContainer } from './styled';
 import type { IngredientCarouselProps, IngredientIconsKeys } from './types';

@@ -16,7 +16,7 @@ import {
   StyledTextWrapper
 } from './style';
 import { useAuthorization } from '@contexts';
-import useAxios from '@hooks/useAxios';
+import { useAxios } from '@hooks';
 import {
   AXIOS_REQUEST_TYPE,
   COLOR,

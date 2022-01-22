@@ -13,7 +13,7 @@ import {
   USER_INPUT_TYPE
 } from '@constants';
 import { useAuthorization } from '@contexts';
-import useAxios from '@hooks/useAxios';
+import { useAxios } from '@hooks';
 import type { IApiResponse } from '@models';
 import type { ReactElement } from 'react';
 import { useCallback, useState, useEffect } from 'react';

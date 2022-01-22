@@ -12,7 +12,7 @@ import {
   SearchBot
 } from '@domain';
 import type { IApiResponse, IUser, IUserForm } from '@models';
-import useAxios from '@hooks/useAxios';
+import { useAxios } from '@hooks';
 import { useAuthorization } from '@contexts';
 import { Text } from '@base';
 import { getUserReducer, postUserReducer } from './reducer';

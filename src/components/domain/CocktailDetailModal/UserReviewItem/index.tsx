@@ -9,7 +9,7 @@ import {
   RATING_STAR_MODE
 } from '@constants';
 import { RatingStar } from '@domain';
-import useAxios from '@hooks/useAxios';
+import { useAxios } from '@hooks';
 import type { ReactElement } from 'react';
 import {
   StyledReview,

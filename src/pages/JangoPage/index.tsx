@@ -12,8 +12,7 @@ import { StyledIngredientContainer, StyledTextButton } from './styled';
 import { Text } from '@base';
 import type { ICocktail, IIngredient, IApiResponse } from '@models/types';
 import { useAuthorization } from '@contexts';
-import useSessionStorage from '@hooks/useSessionStorage';
-import useAxios from '@hooks/useAxios';
+import { useAxios, useSessionStorage } from '@hooks';
 import {
   COLOR,
   AXIOS_REQUEST_TYPE,

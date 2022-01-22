@@ -11,7 +11,7 @@ import {
 } from '@domain';
 import { StyledContentWrapper } from './styled';
 
-import useAxios from '@hooks/useAxios';
+import { useAxios } from '@hooks';
 import type { ICocktailSimple, IApiResponse } from '@models/types';
 import { IMG_MODE, AXIOS_REQUEST_TYPE } from '@constants';
 
