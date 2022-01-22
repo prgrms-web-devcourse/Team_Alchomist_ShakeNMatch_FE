@@ -19,7 +19,7 @@ interface IThemesColor {
   [key: string]: { main: ColorType; detail: { [key: string]: ColorType } };
 }
 // user Form
-type IUserFormType = 'Register' | 'EditProfile';
+type IUserFormType = 'register' | 'editProfile';
 type IUserInputType = 'nickname' | 'gender' | 'age' | 'mbti';
 type IUserGender = '남자' | '여자';
 type IUserMbti =

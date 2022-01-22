@@ -17,7 +17,14 @@ import { useAuthorization } from '@contexts';
 import { Text } from '@base';
 import { getUserReducer, postUserReducer } from './reducer';
 import { StyledLogoutButton } from './styled';
-import { DOMAINS, COLOR, TEXT_SIZE, AXIOS_REQUEST_TYPE } from '@constants';
+import {
+  DOMAINS,
+  COLOR,
+  TEXT_SIZE,
+  AXIOS_REQUEST_TYPE,
+  USERFORM_TYPES,
+  TEXT_BUTTON_TYPE
+} from '@constants';
 
 const TEN_RADIX = 10;
 
@@ -137,7 +144,7 @@ const MyPage = (): ReactElement => {
         ) : getUserAPIState.value ? (
           <UserForm
             initialValues={getUserAPIState.value}
-            type='EditProfile'
+            type={USERFORM_TYPES.EDIT_PROFILE}
             onSubmit={handleEditUserSubmit}
           />
         ) : (
@@ -149,7 +156,7 @@ const MyPage = (): ReactElement => {
       {postUserAPIState.value ? <Text>회원정보가 수정되었습니다!</Text> : ''}
       <SearchBot />
       <StyledLogoutButton
-        buttonType='SHORT_PINK'
+        buttonType={TEXT_BUTTON_TYPE.SHORT_PINK}
         onClick={(): void => {
           logout();
           navigate(`/${DOMAINS.main}`);

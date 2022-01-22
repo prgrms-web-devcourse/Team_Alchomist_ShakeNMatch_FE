@@ -6,10 +6,10 @@ import { StyledForm } from './styled';
 import type { UserFormProps } from './types';
 import { validateUser } from '@utils/lib/userValidator';
 import type { IUserForm } from '@models';
-import { BUTTON_TYPE, TEXT_BUTTON_TYPE } from '@constants';
+import { BUTTON_TYPE, TEXT_BUTTON_TYPE, USERFORM_TYPES } from '@constants';
 
 const UserForm = ({
-  type = 'Register',
+  type = USERFORM_TYPES.REGISTER,
   initialValues = {
     nickname: null,
     gender: null,
@@ -24,12 +24,12 @@ const UserForm = ({
     useForm<IUserForm>({
       initialValues,
       validateOnChange: true,
-      validateOnInitial: type === 'EditProfile' ? true : false,
+      validateOnInitial: type === USERFORM_TYPES.EDIT_PROFILE ? true : false,
       onSubmit,
       validateFn: validateUser
     });
   const [nicknameChecked, setNicknameChecked] = useState(
-    type === 'EditProfile' ? true : false
+    type === USERFORM_TYPES.EDIT_PROFILE ? true : false
   );
   const isValuedChanged = useMemo(
     () =>
@@ -106,7 +106,7 @@ const UserForm = ({
         disabled={!isValuesAllValidated || !isValuedChanged}
         type={BUTTON_TYPE.SUBMIT}
       >
-        {type === 'Register' ? '회원가입' : '수정하기'}
+        {type === USERFORM_TYPES.REGISTER ? '회원가입' : '수정하기'}
       </TextButton>
     </StyledForm>
   );

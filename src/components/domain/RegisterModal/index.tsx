@@ -8,7 +8,7 @@ import type { ReactElement } from 'react';
 import { useState } from 'react';
 import { IdentifierContainer } from './styled';
 import type { RegisterModalProps } from './types';
-import { COLOR, TEXT_SIZE, MODAL_SIZE } from '@constants';
+import { COLOR, TEXT_SIZE, MODAL_SIZE, USERFORM_TYPES } from '@constants';
 
 const RegisterModal = ({
   onSubmit,
@@ -36,7 +36,7 @@ const RegisterModal = ({
           />
         </IdentifierContainer>
         <UserForm
-          type='Register'
+          type={USERFORM_TYPES.REGISTER}
           onSubmit={onSubmit}
           onValidatedValuesChanged={(value): void => {
             setTasksDone(value);

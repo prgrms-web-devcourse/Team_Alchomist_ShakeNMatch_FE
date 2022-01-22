@@ -20,3 +20,4 @@ export * from './toggle';
 export * from './tooltip';
 export * from './uploader';
 export * from './user';
+export * from './userForm';
