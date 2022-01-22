@@ -7,14 +7,14 @@ import type { IngredientCarouselProps, IngredientIconsKeys } from './types';
 import { ROW_TYPE } from './types';
 import { IngredientIcons } from '@assets/ingredients';
 import { IconButton, Album } from '@compound';
-import { ICON_NAME } from '@constants';
+import { ICON_NAME, ALBUM_TYPES } from '@constants';
 
 const CLEAR_THROTTLE_TIME = 500;
 
 const IngredientCarousel = ({
   itemList = [],
   row = 'single',
-  albumType = 'alcohol'
+  albumType = ALBUM_TYPES.ALCOHOL
 }: IngredientCarouselProps): ReactElement => {
   const [itemIdx, setItemIdx] = useState({
     head: 0,

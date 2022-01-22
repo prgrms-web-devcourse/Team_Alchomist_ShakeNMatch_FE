@@ -2,7 +2,7 @@ import Album from '@compound/Album';
 import CocktailDetailModal from '@domain/CocktailDetailModal';
 import type { ReactElement } from 'react';
 import { useState } from 'react';
-import { COLOR, MODAL_SIZE } from '@constants';
+import { COLOR, MODAL_SIZE, ALBUM_TYPES } from '@constants';
 
 export default {
   title: 'Component/Domain/CocktailDetailModal',
@@ -16,7 +16,7 @@ export const Default = (): ReactElement => {
     <>
       <Album
         text='마티니'
-        type='result'
+        type={ALBUM_TYPES.RESULT}
         onClick={(): void => {
           setIsCocktailDetailModalVisible(true);
         }}

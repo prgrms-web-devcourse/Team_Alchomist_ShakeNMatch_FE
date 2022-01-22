@@ -5,7 +5,7 @@ import type { CocktailListProps, CocktailIconsKeys } from './types';
 import { CocktailIcons, TOTAL_COCKTAIL_ICONS } from '@assets/cocktails';
 import { Album } from '@compound';
 import { CocktailDetailModal } from '@domain';
-import { COLOR, TEXT_SIZE, MODAL_SIZE } from '@constants';
+import { COLOR, TEXT_SIZE, MODAL_SIZE, ALBUM_TYPES } from '@constants';
 
 const DEFAULT_MSG = '죄송합니다. 추천 칵테일이 존재하지 않습니다.';
 
@@ -38,7 +38,7 @@ const CocktailList = ({
                     ]
                   }
                   text={cocktail.name}
-                  type='result'
+                  type={ALBUM_TYPES.RESULT}
                 />
               </StyledMotionWrapper>
             ))

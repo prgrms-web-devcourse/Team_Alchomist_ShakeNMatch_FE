@@ -1,6 +1,7 @@
 import IngredientCarousel from '@domain/IngredientCarousel';
 import type { IngredientCarouselProps } from '@domain/IngredientCarousel/types';
 import type { ReactElement } from 'react';
+import { ALBUM_TYPES } from '@constants';
 
 export default {
   title: 'Component/domain/IngredientCarousel',
@@ -75,7 +76,7 @@ const DUMMY = [
 export const Default = (props: IngredientCarouselProps): ReactElement => {
   return (
     <IngredientCarousel
-      albumType='alcohol'
+      albumType={ALBUM_TYPES.ALCOHOL}
       itemList={DUMMY}
       row={props.row}
     ></IngredientCarousel>

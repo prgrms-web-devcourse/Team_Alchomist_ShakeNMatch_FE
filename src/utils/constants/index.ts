@@ -1,3 +1,4 @@
+export * from './album';
 export * from './axios';
 export * from './bartender';
 export * from './button';
