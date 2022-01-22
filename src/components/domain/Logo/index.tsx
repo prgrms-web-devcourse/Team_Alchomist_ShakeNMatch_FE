@@ -1,14 +1,8 @@
 import { Image } from '@base';
-import type { ImageProps } from '@base/Image/types';
-import { DOMAINS, IMG_MODE } from '@constants';
-import { LOGO } from '@constants/logos';
+import type { LogoProps } from './types';
+import { DOMAINS, IMG_MODE, LOGO } from '@constants';
 import type { ReactElement } from 'react';
 import { useNavigate } from 'react-router';
-
-interface LogoProps extends Omit<ImageProps, 'mode'> {
-  size: keyof typeof LOGO;
-  link?: boolean;
-}
 
 const Logo = ({ size, link, ...props }: LogoProps): ReactElement => {
   const navigate = useNavigate();

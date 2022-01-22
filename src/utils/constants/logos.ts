@@ -8,4 +8,10 @@ const LOGO = {
   lg: logoLgSrc
 } as const;
 
-export { LOGO };
+const LOGO_SIZE = {
+  SM: 'sm',
+  MD: 'md',
+  LG: 'lg'
+} as const;
+
+export { LOGO, LOGO_SIZE };

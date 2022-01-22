@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { TextButton } from '@compound';
 import { useAuthorization } from '@contexts';
 import { useNavigate } from 'react-router';
-import { COLOR, DOMAINS, TEXT_BUTTON_TYPE } from '@constants';
+import { COLOR, DOMAINS, TEXT_BUTTON_TYPE, LOGO_SIZE } from '@constants';
 import {
   StyledLogo,
   StyledDescriptionContainer,
@@ -59,7 +59,7 @@ const MainPage = (): ReactElement => {
           setSelectedMenu(menu);
         }}
       />
-      <StyledLogo className='logo' size='md' />
+      <StyledLogo className='logo' size={LOGO_SIZE.MD} />
       <StyledDescriptionContainer
         style={{ display: isShowButton ? 'flex' : 'none' }}
       >

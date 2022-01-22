@@ -16,7 +16,8 @@ import {
   TEXT_SIZE,
   TOOLTIP_DIRECTION,
   TOOLTIP_SIZE,
-  BUTTON_SIZE
+  BUTTON_SIZE,
+  LOGO_SIZE
 } from '@constants';
 import { Tooltip } from '@base';
 import { useCustomNavigate } from '@contexts/CustomNavigate';
@@ -39,7 +40,7 @@ const Header = (): ReactElement => {
 
   return (
     <StyledHeaderContainer>
-      <Logo className='logo' link size='sm' />
+      <Logo className='logo' link size={LOGO_SIZE.SM} />
       {domain !== DOMAINS.jango && (
         <Tooltip
           direction={TOOLTIP_DIRECTION.BOTTOM}
