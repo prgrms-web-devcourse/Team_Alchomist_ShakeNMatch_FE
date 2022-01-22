@@ -9,7 +9,8 @@ import {
   AXIOS_REQUEST_TYPE,
   COLOR,
   TEXT_SIZE,
-  BUTTON_TYPE
+  BUTTON_TYPE,
+  USER_INPUT_TYPE
 } from '@constants';
 import { useAuthorization } from '@contexts';
 import useAxios from '@hooks/useAxios';
@@ -110,22 +111,22 @@ const UserInput = ({
   }, [value, getVerifyNickname]);
 
   switch (inputType) {
-    case 'age':
+    case USER_INPUT_TYPE.AGE:
       inputEl = (
         <Input
           inputType={INPUT_TYPE.NUMBER}
-          name='age'
+          name={USER_INPUT_TYPE.AGE}
           value={value || ''}
           {...(props as InputProps)}
         />
       );
       break;
-    case 'nickname':
+    case USER_INPUT_TYPE.NICKNAME:
       inputEl = (
         <StyledNicknameInputContainer>
           <Input
             inputType={INPUT_TYPE.TEXT}
-            name='nickname'
+            name={USER_INPUT_TYPE.NICKNAME}
             value={value || ''}
             {...(props as InputProps)}
           />
@@ -150,9 +151,13 @@ const UserInput = ({
         </StyledNicknameInputContainer>
       );
       break;
-    case 'gender':
+    case USER_INPUT_TYPE.GENDER:
       inputEl = (
-        <Select name='gender' value={value || ''} {...(props as SelectProps)}>
+        <Select
+          name={USER_INPUT_TYPE.GENDER}
+          value={value || ''}
+          {...(props as SelectProps)}
+        >
           {USER_GENDER.map((gender) => (
             <option key={gender} value={gender}>
               {gender}
@@ -161,9 +166,13 @@ const UserInput = ({
         </Select>
       );
       break;
-    case 'mbti':
+    case USER_INPUT_TYPE.MBTI:
       inputEl = (
-        <Select name='mbti' value={value || ''} {...(props as SelectProps)}>
+        <Select
+          name={USER_INPUT_TYPE.MBTI}
+          value={value || ''}
+          {...(props as SelectProps)}
+        >
           {USER_MBTI.map((mbti) => (
             <option key={mbti} value={mbti}>
               {mbti}

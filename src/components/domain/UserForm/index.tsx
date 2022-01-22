@@ -6,7 +6,12 @@ import { StyledForm } from './styled';
 import type { UserFormProps } from './types';
 import { validateUser } from '@utils/lib/userValidator';
 import type { IUserForm } from '@models';
-import { BUTTON_TYPE, TEXT_BUTTON_TYPE, USERFORM_TYPES } from '@constants';
+import {
+  BUTTON_TYPE,
+  TEXT_BUTTON_TYPE,
+  USERFORM_TYPES,
+  USER_INPUT_TYPE
+} from '@constants';
 
 const UserForm = ({
   type = USERFORM_TYPES.REGISTER,
@@ -73,7 +78,7 @@ const UserForm = ({
         errorMessage={errors.nickname}
         formType={type}
         initialNicknameValidated={nicknameChecked}
-        inputType='nickname'
+        inputType={USER_INPUT_TYPE.NICKNAME}
         value={values.nickname || ''}
         onChange={handleChange}
         onNicknameChecked={handleNickNameChecked}
@@ -81,7 +86,7 @@ const UserForm = ({
       <UserInput
         errorMessage={errors.gender}
         formType={type}
-        inputType='gender'
+        inputType={USER_INPUT_TYPE.GENDER}
         value={values.gender || ''}
         onChange={handleChange}
       />
@@ -89,7 +94,7 @@ const UserForm = ({
       <UserInput
         errorMessage={errors.age}
         formType={type}
-        inputType='age'
+        inputType={USER_INPUT_TYPE.AGE}
         value={values.age || ''}
         onChange={handleChange}
       />
@@ -97,7 +102,7 @@ const UserForm = ({
       <UserInput
         errorMessage={errors.mbti}
         formType={type}
-        inputType='mbti'
+        inputType={USER_INPUT_TYPE.MBTI}
         value={values.mbti || ''}
         onChange={handleChange}
       />
