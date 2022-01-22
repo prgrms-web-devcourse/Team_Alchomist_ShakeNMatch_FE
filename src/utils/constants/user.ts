@@ -3,13 +3,13 @@ const MAX_NICKNAME_LENGTH = 12;
 const MIN_AGE = 20;
 
 const USER_FORM_LABEL_TEXT = {
-  Register: {
+  register: {
     nickname: '어떤 호칭으로 불러드리면 될까요?',
     gender: '실례가 되지 않는다면 손님의 성별이...?',
     age: '혹시 나이가...?',
     mbti: '처음 보는 사이엔 MBTI 이야기가 딱이죠! <br> 혹시 MBTI가 어떻게 되시는지...?'
   },
-  EditProfile: {
+  editProfile: {
     nickname: '어떤 새로운 호칭으로 불리기를 원하시나요?',
     gender: '성별이 혹시 바뀌셨을까요?',
     age: '나이가 변경되셨나요?',

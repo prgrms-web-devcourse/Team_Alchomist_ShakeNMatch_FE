@@ -31,7 +31,7 @@ export const Default = (args: SectionDividerWithTitleProps): ReactElement => (
       />
     </div>
     <div>
-      <UserForm type='Register' />
+      <UserForm type='register' />
     </div>
   </SectionDividerWithTitle>
 );
