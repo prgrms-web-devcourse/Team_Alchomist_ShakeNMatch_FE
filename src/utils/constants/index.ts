@@ -12,6 +12,7 @@ export * from './input';
 export * from './logos';
 export * from './margin';
 export * from './modal';
+export * from './row';
 export * from './text';
 export * from './themes';
 export * from './toggle';

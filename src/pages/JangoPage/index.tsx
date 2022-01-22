@@ -18,7 +18,8 @@ import {
   COLOR,
   AXIOS_REQUEST_TYPE,
   TEXT_BUTTON_TYPE,
-  ALBUM_TYPES
+  ALBUM_TYPES,
+  ROW_TYPES
 } from '@constants';
 
 const JangoPage = (): ReactElement => {
@@ -153,13 +154,13 @@ const JangoPage = (): ReactElement => {
           <IngredientCarousel
             albumType={ALBUM_TYPES.ALCOHOL}
             itemList={ingredients.main}
-            row='single'
+            row={ROW_TYPES.SINGLE}
           />
           <Text color={COLOR.BLACK_OPACITY}>감미료</Text>
           <IngredientCarousel
             albumType={ALBUM_TYPES.SWEETENER}
             itemList={ingredients.sub}
-            row='double'
+            row={ROW_TYPES.DOUBLE}
           />
           <StyledTextButton
             buttonType={TEXT_BUTTON_TYPE.SHORT_PINK}
