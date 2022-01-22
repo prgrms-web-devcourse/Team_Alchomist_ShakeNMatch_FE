@@ -14,12 +14,12 @@ import {
   StyledUploadPreview
 } from './styled';
 import { Text } from '@base';
-import { COLOR, TEXT_SIZE, INPUT_TYPE } from '@constants';
+import { COLOR, TEXT_SIZE, INPUT_TYPE, ACCEPT_TYPES } from '@constants';
 
 const Uploader = ({
   droppable = true,
   name = 'FileUploadInput',
-  accept = 'image',
+  accept = ACCEPT_TYPES.IMAGE,
   value,
   onChangeFile,
   ...props

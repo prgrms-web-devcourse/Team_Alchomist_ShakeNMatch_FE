@@ -16,7 +16,8 @@ import {
   COLOR,
   TEXT_SIZE,
   MODAL_SIZE,
-  BUTTON_TYPE
+  BUTTON_TYPE,
+  ACCEPT_TYPES
 } from '@constants';
 import type { IReviewPostResponse } from '@models';
 
@@ -105,7 +106,7 @@ const CocktailReviewModal = ({
           {'소중한 리뷰를 남겨주세요'}
         </Text>
         <Uploader
-          accept='image'
+          accept={ACCEPT_TYPES.IMAGE}
           droppable={true}
           value={null}
           onChangeFile={handleChangeFile}

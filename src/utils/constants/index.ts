@@ -15,4 +15,5 @@ export * from './text';
 export * from './themes';
 export * from './toggle';
 export * from './tooltip';
+export * from './uploader';
 export * from './user';
