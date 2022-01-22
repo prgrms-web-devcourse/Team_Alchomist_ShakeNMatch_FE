@@ -5,7 +5,8 @@ import {
   TEXT_SIZE,
   AXIOS_REQUEST_TYPE,
   IMG_MODE,
-  TEXT_BUTTON_TYPE
+  TEXT_BUTTON_TYPE,
+  RATING_STAR_MODE
 } from '@constants';
 import { RatingStar } from '@domain';
 import useAxios from '@hooks/useAxios';
@@ -58,7 +59,10 @@ const UserReviewItem = ({
         />
       </StyledImageWrapper>
       <StyledRatingCommentWrapper>
-        <RatingStar mode='show' rateTobeDisplayed={userRating} />
+        <RatingStar
+          mode={RATING_STAR_MODE.SHOW}
+          rateTobeDisplayed={userRating}
+        />
         <Text bold color={COLOR.BLUE} dangerously={true} size={TEXT_SIZE.xxs}>
           {'from. ' + nickname}
         </Text>

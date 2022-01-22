@@ -17,7 +17,8 @@ import {
   TEXT_SIZE,
   MODAL_SIZE,
   BUTTON_TYPE,
-  ACCEPT_TYPES
+  ACCEPT_TYPES,
+  RATING_STAR_MODE
 } from '@constants';
 import type { IReviewPostResponse } from '@models';
 
@@ -112,7 +113,10 @@ const CocktailReviewModal = ({
           onChangeFile={handleChangeFile}
         />
         <StyledWrapper>
-          <RatingStar mode='edit' onRateChange={handleUserRate} />
+          <RatingStar
+            mode={RATING_STAR_MODE.EDIT}
+            onRateChange={handleUserRate}
+          />
           <StyledTextEditor
             autoFocus
             maxLength={30}
