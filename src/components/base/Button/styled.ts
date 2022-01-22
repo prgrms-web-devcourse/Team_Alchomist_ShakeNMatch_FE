@@ -2,7 +2,7 @@ import type { CSSObject } from '@emotion/styled';
 import styled from '@emotion/styled';
 import { COLOR } from '@constants/colors';
 import type { ButtonProps } from './types';
-import { BUTTON_SIZE } from './types';
+import { BUTTON_TYPES_SIZE } from './types';
 
 const StyledButton = styled.button<ButtonProps>`
   display: ${({ block }): string => (block ? 'block' : 'inline-block')};
@@ -12,9 +12,9 @@ const StyledButton = styled.button<ButtonProps>`
   box-shadow: ${({ dropShadow = true }): string =>
     dropShadow ? '0px 1px 1px rgba(0, 0, 0, 0.25)' : ''};
   width: ${({ size }): string =>
-    size ? BUTTON_SIZE[size].width : BUTTON_SIZE.short.width};
+    size ? BUTTON_TYPES_SIZE[size].width : BUTTON_TYPES_SIZE.short.width};
   height: ${({ size }): string =>
-    size ? BUTTON_SIZE[size].height : BUTTON_SIZE.long.height};
+    size ? BUTTON_TYPES_SIZE[size].height : BUTTON_TYPES_SIZE.long.height};
   background-color: ${({ basicColor }): string =>
     basicColor ? basicColor : COLOR.BASIC_WHITE};
 

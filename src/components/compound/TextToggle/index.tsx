@@ -4,14 +4,14 @@ import { StyledToggleContainer, StyledToggleInput } from './styled';
 import { TEXT_TOGGLE } from './types';
 import type { TextToggleProps } from './types';
 import { Text } from '@base';
-import { COLOR, INPUT_TYPE } from '@constants';
+import { COLOR, INPUT_TYPE, TOGGLE_TYPES } from '@constants';
 
 const TextToggle = ({
   children,
   block = false,
   id,
   initialState = false,
-  toggleType = 'ingredient',
+  toggleType = TOGGLE_TYPES.INGREDIENT,
   onChange
 }: TextToggleProps): ReactElement => {
   const [isToggled, toggle] = useToggle(initialState);
