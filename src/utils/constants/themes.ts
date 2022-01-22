@@ -1,4 +1,5 @@
 import type { IThemesColor } from '@models';
+import { COLOR } from '@constants';
 
 const THEME_MOOD = ['HAPPY', 'ANGRY', 'SAD', 'ROMANTIC', 'LONELY'] as const;
 const THEME_WEATHER = ['SUNNY', 'RAINY', 'CLOUDY', 'SNOWY'] as const;
@@ -51,68 +52,67 @@ const THEMES = {
 
 const THEMES_COLOR: IThemesColor = {
   MOOD: {
-    main: 'BASIC_WHITE',
+    main: COLOR.BASIC_WHITE,
     detail: {
-      HAPPY: 'ORANGE',
-      ANGRY: 'STRONG_PINK',
-      SAD: 'BLUE',
-      ROMANTIC: 'LIGHT_PINK',
-      LONELY: 'DARK_GRAY'
+      HAPPY: COLOR.ORANGE,
+      ANGRY: COLOR.STRONG_PINK,
+      SAD: COLOR.BLUE,
+      ROMANTIC: COLOR.LIGHT_PINK,
+      LONELY: COLOR.DARK_GRAY
     }
   },
   WEATHER: {
-    main: 'BASIC_WHITE',
+    main: COLOR.BASIC_WHITE,
     detail: {
-      SUNNY: 'ORANGE',
-      RAINY: 'BLUE',
-      CLOUDY: 'DARK_GRAY',
-      SNOWY: 'BRIGHT_IVORY'
+      SUNNY: COLOR.ORANGE,
+      RAINY: COLOR.BLUE,
+      CLOUDY: COLOR.DARK_GRAY,
+      SNOWY: COLOR.BRIGHT_IVORY
     }
   },
   COLOR: {
-    main: 'BASIC_WHITE',
+    main: COLOR.BASIC_WHITE,
     detail: {
-      RED: 'STRONG_PINK',
-      ORANGE: 'ORANGE',
-      YELLOW: 'LIGHT_YELLOW',
-      GREEN: 'GREEN',
-      BLUE: 'BLUE',
-      PURPLE: 'VIOLET',
-      WHITE: 'BASIC_WHITE',
-      BLACK: 'BLACK_OPACITY'
+      RED: COLOR.STRONG_PINK,
+      ORANGE: COLOR.ORANGE,
+      YELLOW: COLOR.LIGHT_YELLOW,
+      GREEN: COLOR.GREEN,
+      BLUE: COLOR.BLUE,
+      PURPLE: COLOR.VIOLET,
+      WHITE: COLOR.BASIC_WHITE,
+      BLACK: COLOR.BLACK_OPACITY
     }
   },
   MUSIC: {
-    main: 'BASIC_WHITE',
-
+    main: COLOR.BASIC_WHITE,
     detail: {
-      JAZZ: 'DARK_GRAY',
-      ROCK: 'STRONG_PINK',
-      BALLAD: 'LIGHT_PINK',
-      HIPHOP: 'BLUE',
-      CLASSIC: 'BRIGHT_BROWN',
-      INDIE: 'GREEN'
+      JAZZ: COLOR.DARK_GRAY,
+      ROCK: COLOR.STRONG_PINK,
+      BALLAD: COLOR.LIGHT_PINK,
+      HIPHOP: COLOR.BLUE,
+      CLASSIC: COLOR.BRIGHT_BROWN,
+      INDIE: COLOR.GREEN
     }
   },
   MBTI: {
-    main: 'BASIC_WHITE',
+    main: COLOR.BASIC_WHITE,
     detail: {
-      INTJ: 'LIGHT_PINK',
-      INFP: 'LIGHT_PINK',
-      INTP: 'LIGHT_PINK',
-      ENTJ: 'LIGHT_PINK',
-      ENTP: 'LIGHT_PINK',
-      INFJ: 'LIGHT_PINK',
-      ENFJ: 'LIGHT_PINK',
-      ENFP: 'LIGHT_PINK',
-      ISTJ: 'LIGHT_PINK',
-      ISFJ: 'LIGHT_PINK',
-      ESTJ: 'LIGHT_PINK',
-      ESFJ: 'LIGHT_PINK',
-      ISTP: 'LIGHT_PINK',
-      ISFP: 'LIGHT_PINK',
-      ESTP: 'LIGHT_PINK',
-      ESFP: 'LIGHT_PINK'
+      INTJ: COLOR.LIGHT_PINK,
+      INFP: COLOR.LIGHT_PINK,
+      INTP: COLOR.LIGHT_PINK,
+      ENTJ: COLOR.LIGHT_PINK,
+      ENTP: COLOR.LIGHT_PINK,
+      INFJ: COLOR.LIGHT_PINK,
+      ENFJ: COLOR.LIGHT_PINK,
+      ENFP: COLOR.LIGHT_PINK,
+      ISTJ: COLOR.LIGHT_PINK,
+      ISFJ: COLOR.LIGHT_PINK,
+      ESTJ: COLOR.LIGHT_PINK,
+      ESFJ: COLOR.LIGHT_PINK,
+      ISTP: COLOR.LIGHT_PINK,
+      ISFP: COLOR.LIGHT_PINK,
+      ESTP: COLOR.LIGHT_PINK,
+      ESFP: COLOR.LIGHT_PINK
     }
   }
 } as const;

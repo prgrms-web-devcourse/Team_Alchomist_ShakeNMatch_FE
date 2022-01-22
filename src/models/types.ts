@@ -16,7 +16,7 @@ type ITextWeight = typeof TEXT_WEIGHT[TextWeightKeys];
 
 type ITHEME = keyof typeof THEMES;
 interface IThemesColor {
-  [key: string]: { main: ColorKeys; detail: { [key: string]: ColorKeys } };
+  [key: string]: { main: ColorType; detail: { [key: string]: ColorType } };
 }
 // user Form
 type IUserFormType = 'Register' | 'EditProfile';
