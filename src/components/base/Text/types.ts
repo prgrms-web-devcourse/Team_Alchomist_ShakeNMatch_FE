@@ -1,11 +1,11 @@
 import type { HTMLAttributes } from 'react';
-import type { ColorKeys, TextSizeKeys } from '@models/types';
+import type { ColorType, ITextSize } from '@models/types';
 
 interface TextProps extends HTMLAttributes<HTMLSpanElement> {
   children?: string | number;
-  size?: TextSizeKeys;
-  backgroundColor?: ColorKeys;
-  color?: ColorKeys;
+  size?: ITextSize;
+  backgroundColor?: ColorType;
+  color?: ColorType;
   bold?: boolean;
   block?: boolean;
   dangerously?: boolean;

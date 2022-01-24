@@ -1,8 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
 import type { ChangeEvent, ReactElement, FormEvent } from 'react';
 import { Input } from '@base';
-import useDebounce from '@hooks/useDebounce';
+import { useDebounce } from '@hooks';
 import type { SearchCocktailInputProps } from './types';
+import { INPUT_TYPE } from '@constants';
 
 const SEARCH_DEBOUNCE_TIME = 600;
 
@@ -42,7 +43,11 @@ const SearchCocktailInput = ({
 
   return (
     <form onSubmit={handleSubmit}>
-      <Input inputType='text' value={keyword} onChange={handleChange} />
+      <Input
+        inputType={INPUT_TYPE.TEXT}
+        value={keyword}
+        onChange={handleChange}
+      />
     </form>
   );
 };

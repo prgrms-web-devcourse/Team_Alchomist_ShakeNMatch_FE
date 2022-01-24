@@ -12,9 +12,14 @@ import { StyledIngredientContainer, StyledTextButton } from './styled';
 import { Text } from '@base';
 import type { ICocktail, IIngredient, IApiResponse } from '@models/types';
 import { useAuthorization } from '@contexts';
-import useSessionStorage from '@hooks/useSessionStorage';
-import useAxios from '@hooks/useAxios';
-import { AXIOS_REQUEST_TYPE } from '@constants/axios';
+import { useAxios, useSessionStorage } from '@hooks';
+import {
+  COLOR,
+  AXIOS_REQUEST_TYPE,
+  TEXT_BUTTON_TYPE,
+  ALBUM_TYPES,
+  ROW_TYPES
+} from '@constants';
 
 const JangoPage = (): ReactElement => {
   const [ingredients, setIngredients] = useState<{
@@ -144,19 +149,22 @@ const JangoPage = (): ReactElement => {
         withHeader
       >
         <StyledIngredientContainer style={{ width: '100%', height: '100%' }}>
-          <Text color='BLACK_OPACITY'>알콜</Text>
+          <Text color={COLOR.BLACK_OPACITY}>알콜</Text>
           <IngredientCarousel
-            albumType='alcohol'
+            albumType={ALBUM_TYPES.ALCOHOL}
             itemList={ingredients.main}
-            row='single'
+            row={ROW_TYPES.SINGLE}
           />
-          <Text color='BLACK_OPACITY'>감미료</Text>
+          <Text color={COLOR.BLACK_OPACITY}>감미료</Text>
           <IngredientCarousel
-            albumType='sweetener'
+            albumType={ALBUM_TYPES.SWEETENER}
             itemList={ingredients.sub}
-            row='double'
+            row={ROW_TYPES.DOUBLE}
           />
-          <StyledTextButton buttonType='SHORT_PINK' onClick={openModal}>
+          <StyledTextButton
+            buttonType={TEXT_BUTTON_TYPE.SHORT_PINK}
+            onClick={openModal}
+          >
             재료 수정
           </StyledTextButton>
         </StyledIngredientContainer>

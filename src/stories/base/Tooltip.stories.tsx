@@ -1,5 +1,5 @@
 import type { TooltipProps } from '@base/Tooltip/types';
-import Tooltip from '@base/Tooltip';
+import { Tooltip } from '@base';
 import styled from '@emotion/styled';
 import type { ReactElement } from 'react';
 

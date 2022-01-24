@@ -1,16 +1,17 @@
-import useToggle from '@hooks/useToggle';
+import { useToggle } from '@hooks';
 import type { ChangeEvent, ReactElement } from 'react';
 import { StyledToggleContainer, StyledToggleInput } from './styled';
 import { TEXT_TOGGLE } from './types';
 import type { TextToggleProps } from './types';
 import { Text } from '@base';
+import { COLOR, INPUT_TYPE, TOGGLE_TYPES } from '@constants';
 
 const TextToggle = ({
   children,
   block = false,
   id,
   initialState = false,
-  toggleType = 'ingredient',
+  toggleType = TOGGLE_TYPES.INGREDIENT,
   onChange
 }: TextToggleProps): ReactElement => {
   const [isToggled, toggle] = useToggle(initialState);
@@ -25,11 +26,11 @@ const TextToggle = ({
       <StyledToggleInput
         checked={isToggled}
         id={id.toString()}
-        type='checkbox'
+        type={INPUT_TYPE.CHECKBOX}
         onChange={handleChange}
       />
       <Text
-        color={isToggled ? 'BASIC_WHITE' : 'BLACK'}
+        color={isToggled ? COLOR.BASIC_WHITE : COLOR.BLACK}
         {...TEXT_TOGGLE[toggleType].textProps}
       >
         {children}

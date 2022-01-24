@@ -1,15 +1,20 @@
-import { Loader, TextButton } from '@compound';
+import { Loader, TextButton, UserInput } from '@compound';
 import useForm from '@hooks/useForm';
 import type { ReactElement } from 'react';
 import { useEffect, useMemo, useCallback, useState } from 'react';
 import { StyledForm } from './styled';
 import type { UserFormProps } from './types';
-import UserInput from '../../compound/UserInput';
 import { validateUser } from '@utils/lib/userValidator';
 import type { IUserForm } from '@models';
+import {
+  BUTTON_TYPE,
+  TEXT_BUTTON_TYPE,
+  USERFORM_TYPES,
+  USER_INPUT_TYPE
+} from '@constants';
 
 const UserForm = ({
-  type = 'Register',
+  type = USERFORM_TYPES.REGISTER,
   initialValues = {
     nickname: null,
     gender: null,
@@ -24,12 +29,12 @@ const UserForm = ({
     useForm<IUserForm>({
       initialValues,
       validateOnChange: true,
-      validateOnInitial: type === 'EditProfile' ? true : false,
+      validateOnInitial: type === USERFORM_TYPES.EDIT_PROFILE ? true : false,
       onSubmit,
       validateFn: validateUser
     });
   const [nicknameChecked, setNicknameChecked] = useState(
-    type === 'EditProfile' ? true : false
+    type === USERFORM_TYPES.EDIT_PROFILE ? true : false
   );
   const isValuedChanged = useMemo(
     () =>
@@ -73,7 +78,7 @@ const UserForm = ({
         errorMessage={errors.nickname}
         formType={type}
         initialNicknameValidated={nicknameChecked}
-        inputType='nickname'
+        inputType={USER_INPUT_TYPE.NICKNAME}
         value={values.nickname || ''}
         onChange={handleChange}
         onNicknameChecked={handleNickNameChecked}
@@ -81,7 +86,7 @@ const UserForm = ({
       <UserInput
         errorMessage={errors.gender}
         formType={type}
-        inputType='gender'
+        inputType={USER_INPUT_TYPE.GENDER}
         value={values.gender || ''}
         onChange={handleChange}
       />
@@ -89,7 +94,7 @@ const UserForm = ({
       <UserInput
         errorMessage={errors.age}
         formType={type}
-        inputType='age'
+        inputType={USER_INPUT_TYPE.AGE}
         value={values.age || ''}
         onChange={handleChange}
       />
@@ -97,16 +102,16 @@ const UserForm = ({
       <UserInput
         errorMessage={errors.mbti}
         formType={type}
-        inputType='mbti'
+        inputType={USER_INPUT_TYPE.MBTI}
         value={values.mbti || ''}
         onChange={handleChange}
       />
       <TextButton
-        buttonType='LONG_PINK'
+        buttonType={TEXT_BUTTON_TYPE.LONG_PINK}
         disabled={!isValuesAllValidated || !isValuedChanged}
-        type='submit'
+        type={BUTTON_TYPE.SUBMIT}
       >
-        {type === 'Register' ? '회원가입' : '수정하기'}
+        {type === USERFORM_TYPES.REGISTER ? '회원가입' : '수정하기'}
       </TextButton>
     </StyledForm>
   );

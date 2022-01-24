@@ -16,8 +16,19 @@ import {
   StyledTextWrapper
 } from './style';
 import { useAuthorization } from '@contexts';
-import useAxios from '@hooks/useAxios';
-import { AXIOS_REQUEST_TYPE } from '@constants/axios';
+import { useAxios } from '@hooks';
+import {
+  AXIOS_REQUEST_TYPE,
+  COLOR,
+  TEXT_SIZE,
+  MODAL_SIZE,
+  IMG_MODE,
+  TOOLTIP_DIRECTION,
+  TOOLTIP_SIZE,
+  ICON_TOGGLE_TYPE,
+  BUTTON_TYPE,
+  TEXT_BUTTON_TYPE
+} from '@constants';
 import type { IApiResponse, ICocktail, IReview } from '@models';
 
 const CocktailDetailModal = ({
@@ -110,16 +121,16 @@ const CocktailDetailModal = ({
           {user && (
             <StyledFavoriteContainer>
               <Tooltip
-                direction='top'
+                direction={TOOLTIP_DIRECTION.TOP}
                 tooltipMessage='즐겨찾기'
-                tooltipMessageSize='xxs'
-                tooltipSize='xs'
+                tooltipMessageSize={TEXT_SIZE.xxs}
+                tooltipSize={TOOLTIP_SIZE.XS}
               >
                 <IconToggle
                   initialState={user?.bookmarks?.some(
                     (cocktail) => cocktail.id === cocktailId
                   )}
-                  name='flag'
+                  name={ICON_TOGGLE_TYPE.FLAG}
                   onChange={handleBookmark}
                 />
               </Tooltip>
@@ -131,7 +142,7 @@ const CocktailDetailModal = ({
                 <Image
                   alt='Image'
                   height='100%'
-                  mode='cover'
+                  mode={IMG_MODE.COVER}
                   src={cocktailData?.type}
                   width='100%'
                 />
@@ -141,7 +152,7 @@ const CocktailDetailModal = ({
                 titleText={cocktailData?.name}
               >
                 <StyledContentWrapper>
-                  <Text color='NAVY' size='sm'>
+                  <Text color={COLOR.NAVY} size={TEXT_SIZE.sm}>
                     {'- 재료 -'}
                   </Text>
                   <StyledIngredientListWrapper>
@@ -168,13 +179,13 @@ const CocktailDetailModal = ({
                       })
                     )}
                   </StyledIngredientListWrapper>
-                  <Divider color='LIGHT_GREEN_OPACITY' gap={5} />
-                  <Text color='NAVY' size='sm'>
+                  <Divider color={COLOR.LIGHT_GREEN_OPACITY} gap={5} />
+                  <Text color={COLOR.NAVY} size={TEXT_SIZE.sm}>
                     {'- 조제법- '}
                   </Text>
                   <br />
                   <StyledTextWrapper>
-                    <Text size='xs'>{cocktailData?.recipe}</Text>
+                    <Text size={TEXT_SIZE.sm}>{cocktailData?.recipe}</Text>
                   </StyledTextWrapper>
                 </StyledContentWrapper>
               </TitleSectionContainer>
@@ -184,7 +195,7 @@ const CocktailDetailModal = ({
                 <Image
                   alt='Image'
                   height='100%'
-                  mode='cover'
+                  mode={IMG_MODE.COVER}
                   src={cocktailData?.type}
                   width='100%'
                 />
@@ -194,14 +205,14 @@ const CocktailDetailModal = ({
                 titleText={cocktailData?.name}
               >
                 <StyledReviewListWrapper>
-                  <Text color='NAVY' size='sm'>
+                  <Text color={COLOR.NAVY} size={TEXT_SIZE.sm}>
                     {'- 사용자 리뷰- '}
                   </Text>
                   {user && (
                     <TextButton
-                      buttonType='LONG_WHITE'
+                      buttonType={TEXT_BUTTON_TYPE.LONG_WHITE}
                       dropShadow
-                      type='button'
+                      type={BUTTON_TYPE.BUTTON}
                       onClick={(): void => {
                         setIsReviewModalVisible(true);
                       }}
@@ -226,7 +237,7 @@ const CocktailDetailModal = ({
                       ))
                     )
                   ) : (
-                    <Text color='DARK_GRAY'>
+                    <Text color={COLOR.DARK_GRAY}>
                       아직 작성된 리뷰가 없습니다..!
                     </Text>
                   )}
@@ -239,11 +250,11 @@ const CocktailDetailModal = ({
       {cocktailId && user && (
         <CocktailReviewModal
           cocktailId={cocktailId}
-          color='LIGHT_WHITE'
+          color={COLOR.LIGHT_WHITE}
           handleOnSubmitted={handleOnSubmitted}
           loginedUserId={user.id}
           nickname={user.nickname}
-          size='sm'
+          size={MODAL_SIZE.SM}
           visible={isReviewModalVisible}
           onCancel={(): void => {
             setIsReviewModalVisible(false);

@@ -1,8 +1,9 @@
-import Divider from '@base/Divider';
+import { Divider } from '@base';
 import type { ReactElement } from 'react';
 import { Children, isValidElement, useMemo, cloneElement } from 'react';
 import { StyledSectionContainer } from './styled';
 import type { SectionDividerProps } from './types';
+import { DIVIDER_DIRECTION } from '@constants';
 
 const FULL_PERCENTAGE = 100;
 const DEFAULT_RATIO = [1, 1];
@@ -11,7 +12,7 @@ const DEFAULT_SIZE = '100%';
 const SectionDivider = ({
   children,
   ratio = DEFAULT_RATIO,
-  direction = 'horizontal',
+  direction = DIVIDER_DIRECTION.HORIZONTAL,
   width = DEFAULT_SIZE,
   height = DEFAULT_SIZE,
   radius = '0px',
@@ -59,7 +60,11 @@ const SectionDivider = ({
             el,
             <Divider
               key={idx}
-              direction={direction === 'horizontal' ? 'vertical' : 'horizontal'}
+              direction={
+                direction === DIVIDER_DIRECTION.HORIZONTAL
+                  ? DIVIDER_DIRECTION.VERTICAL
+                  : DIVIDER_DIRECTION.HORIZONTAL
+              }
               {...dividerOptions}
             />
           ];

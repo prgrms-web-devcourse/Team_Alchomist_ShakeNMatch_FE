@@ -10,6 +10,7 @@ import enfjSrc from '@assets/carouselTheme/mbtiIcons/enfj.png';
 import Carousel from '@components/compound/Carousel';
 import type { CarouselItemProps } from '@components/compound/Carousel/CarouselItem/types';
 import styled from '@emotion/styled';
+import { COLOR } from '@constants';
 
 export default {
   title: 'Component/Compound/Carousel',
@@ -28,7 +29,7 @@ const Wrapper = styled.div`
 export const Card = (props: CarouselItemProps): ReactElement => (
   <Wrapper>
     <Carousel.Item
-      backgroundColor='DARK_GRAY'
+      backgroundColor={COLOR.DARK_GRAY}
       imageSrc='https://picsum.photos/180'
       selected={!props.selected}
       title='TRENDING'
@@ -54,36 +55,36 @@ export const Container = (): ReactElement => {
         }}
       >
         <Carousel.Item
-          backgroundColor='LIGHT_PINK'
+          backgroundColor={COLOR.LIGHT_PINK}
           imageSrc={moodSrc}
           title='MOOD'
         />
         <Carousel.Item
-          backgroundColor='LIGHT_YELLOW'
+          backgroundColor={COLOR.LIGHT_YELLOW}
           imageSrc={weatherSrc}
           title='WEATHER'
         />
         <Carousel.Item
-          backgroundColor='MIDDLE_PINK'
+          backgroundColor={COLOR.MIDDLE_PINK}
           imageSrc={mbtiSrc}
           title='MBTI'
         />
         <Carousel.Item
-          backgroundColor='NAVY'
+          backgroundColor={COLOR.NAVY}
           imageSrc={colorSrc}
           title='COLOR'
         />
         <Carousel.Item
-          backgroundColor='ORANGE'
+          backgroundColor={COLOR.ORANGE}
           imageSrc={musicSrc}
           title='MUSIC'
         />
         <Carousel.Item
-          backgroundColor='VIOLET'
+          backgroundColor={COLOR.VIOLET}
           imageSrc={trendingSrc}
           title='TRENDING'
         />
-        <Carousel.Item backgroundColor='NAVY' imageSrc={enfjSrc} />
+        <Carousel.Item backgroundColor={COLOR.NAVY} imageSrc={enfjSrc} />
       </Carousel.Container>
     </Wrapper>
   );

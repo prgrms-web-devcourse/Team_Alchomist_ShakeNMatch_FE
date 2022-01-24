@@ -1,4 +1,5 @@
 export { default as BackButton } from '@domain/BackButton';
+export { default as ChangingSpeech } from '@domain/ChangingSpeech';
 export { default as CocktailDetailModal } from '@domain/CocktailDetailModal';
 export { default as CocktailList } from '@domain/CocktailList';
 export { default as CocktailReviewModal } from '@domain/CocktailReviewModal';

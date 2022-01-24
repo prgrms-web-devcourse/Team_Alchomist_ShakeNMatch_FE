@@ -1,10 +1,10 @@
-import type { ColorKeys, TextSizeKeys } from '@models/types';
+import type { ColorType, ITextSize } from '@models/types';
 
 interface ChaningTextProps {
   textList: string[];
   intervalTime?: number;
-  textSize?: TextSizeKeys;
-  textColor?: ColorKeys;
+  textSize?: ITextSize;
+  textColor?: ColorType;
 }
 
 interface StyledContainerProps {

@@ -2,15 +2,16 @@ import type { ReactElement } from 'react';
 import { Text } from '@base';
 import { StyledContainer, StyledLine } from './styled';
 import type { TitleSectionContainerProps } from './types';
+import { COLOR, TEXT_SIZE } from '@constants';
 
 const TitleSectionContainer = ({
   children,
   titleText = '',
-  titleSize = 'md',
-  titleColor = 'BLACK',
+  titleSize = TEXT_SIZE.md,
+  titleColor = COLOR.BLACK,
   bold,
   dividerVisible = false,
-  dividerColor = 'DARK_GRAY',
+  dividerColor = COLOR.DARK_GRAY,
   dividerWidth = '200px',
   dividerThickness = '1px',
   gap = '5px',

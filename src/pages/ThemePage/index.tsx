@@ -1,16 +1,13 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Divider, SectionDivider, Text } from '@base';
 import { Loader } from '@compound';
-import { AXIOS_REQUEST_TYPE } from '@constants/axios';
-import { THEMES, THEMES_COLOR } from '@constants/themes';
 import {
   BackButton,
   CocktailList,
   ThemeSelector,
-  HeaderPageTemplate
+  HeaderPageTemplate,
+  SearchBot
 } from '@domain';
-import useAxios from '@hooks/useAxios';
-import useDebounce from '@hooks/useDebounce';
+import { useAxios, useDebounce } from '@hooks';
 import type { IApiResponse, ICocktailSimple, ITHEME } from '@models';
 import type { ReactElement } from 'react';
 import { useCallback, useMemo, useState, useEffect } from 'react';
@@ -21,8 +18,13 @@ import {
   StyledSectionDivider,
   StyledThemePageContainer
 } from './styled';
-import SearchBot from '@domain/SearchBot';
-import { HEADER_TEMPLATE_MARGIN } from '@constants/margin';
+import {
+  COLOR,
+  TEXT_BUTTON_TYPE,
+  THEMES,
+  THEMES_COLOR,
+  AXIOS_REQUEST_TYPE
+} from '@constants';
 
 const RADIX_TEN = 10;
 const DEBOUNCE_DELAY = 700;
@@ -169,7 +171,7 @@ const ThemePage = (): ReactElement => {
             <Text> 테마 별로 레시피를 추천받아 보세요!</Text>
           )}
         </h2>
-        <Divider color='TRANSPARENT' gap={5} />
+        <Divider color={COLOR.TRANSPARENT} gap={5} />
         <StyledSectionDivider
           {...(showResult && { className: 'result' })}
           width='200vw'
@@ -190,11 +192,14 @@ const ThemePage = (): ReactElement => {
           </SectionDivider>
         </StyledSectionDivider>
         {!showResult ? (
-          <StyledResultButton buttonType='LONG_WHITE' onClick={handleResult}>
+          <StyledResultButton
+            buttonType={TEXT_BUTTON_TYPE.LONG_WHITE}
+            onClick={handleResult}
+          >
             결과 보기
           </StyledResultButton>
         ) : (
-          <BackButton color='NAVY' onClick={handleBack} />
+          <BackButton color={COLOR.NAVY} onClick={handleBack} />
         )}
       </StyledThemePageContainer>
       <SearchBot />

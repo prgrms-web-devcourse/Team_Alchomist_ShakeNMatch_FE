@@ -15,6 +15,7 @@ import {
   StyledBackground
 } from './styled';
 import type { MenuTabProps } from './types';
+import { COLOR, TEXT_SIZE } from '@constants';
 
 const MenuTab = ({
   children,
@@ -87,10 +88,10 @@ const MenuTab = ({
               <Text
                 color={
                   index === parseInt(displayingChildIdx, 10)
-                    ? 'DEEP_BROWN'
-                    : 'BASIC_WHITE'
+                    ? COLOR.DEEP_BROWN
+                    : COLOR.BASIC_WHITE
                 }
-                size='sm'
+                size={TEXT_SIZE.sm}
               >
                 {text}
               </Text>

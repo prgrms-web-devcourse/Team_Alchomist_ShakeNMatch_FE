@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import type { BackgroundProps, ContainerProps } from './types';
-import { COLOR } from '@constants/colors';
 import { MODAL_SIZE } from './types';
 
 const StyledModalBackground = styled.div<BackgroundProps>`
@@ -11,7 +10,7 @@ const StyledModalBackground = styled.div<BackgroundProps>`
   width: 100vw;
   height: 100vh;
   z-index: 1000;
-  background-color: ${({ backgroundColor }): string => COLOR[backgroundColor]};
+  background-color: ${({ backgroundColor }): string => backgroundColor};
   animation: show 0.2s ease-in forwards;
 
   @keyframes show {
@@ -31,7 +30,7 @@ const StyledModalContainer = styled.div<ContainerProps>`
   transform: translate(-50%, -50%);
   width: ${({ size }): string => MODAL_SIZE[size].width};
   height: ${({ size }): string => MODAL_SIZE[size].height};
-  background-color: ${({ color }): string => COLOR[color]};
+  background-color: ${({ color }): string => color};
   border-radius: 12px;
   box-sizing: border-box;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);

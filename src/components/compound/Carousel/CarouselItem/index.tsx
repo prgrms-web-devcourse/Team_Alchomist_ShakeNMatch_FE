@@ -5,10 +5,11 @@ import { useCallback } from 'react';
 import { StyledContainer, StyledWrapper } from './styled';
 import type { CarouselItemProps } from './types';
 import { CAROUSEL_IMAGE_SIZE } from './types';
+import { COLOR, TEXT_SIZE, IMG_MODE, BUTTON_TYPE, ICON_NAME } from '@constants';
 
 const CarouselItem = ({
-  backgroundColor = 'GREEN',
-  textColor = 'BASIC_WHITE',
+  backgroundColor = COLOR.GREEN,
+  textColor = COLOR.BASIC_WHITE,
   imageSrc,
   title,
   selected = false,
@@ -32,8 +33,8 @@ const CarouselItem = ({
     >
       <IconButton
         disabled={!selected}
-        name='arrowUpNavy'
-        type='button'
+        name={ICON_NAME.ARROW_UP_NAVY}
+        type={BUTTON_TYPE.BUTTON}
         onClick={handlePrev}
       />
       <StyledWrapper>
@@ -43,7 +44,7 @@ const CarouselItem = ({
               ? CAROUSEL_IMAGE_SIZE.withTitle.height
               : CAROUSEL_IMAGE_SIZE.withoutTitle.height
           }
-          mode='contain'
+          mode={IMG_MODE.CONTAIN}
           src={imageSrc}
           width={
             title
@@ -52,15 +53,15 @@ const CarouselItem = ({
           }
         />
         {title && (
-          <Text bold color={textColor} size='lg'>
+          <Text bold color={textColor} size={TEXT_SIZE.lg}>
             {title}
           </Text>
         )}
       </StyledWrapper>
       <IconButton
         disabled={!selected}
-        name='arrowDownNavy'
-        type='button'
+        name={ICON_NAME.ARROW_DOWN_NAVY}
+        type={BUTTON_TYPE.BUTTON}
         onClick={handleNext}
       />
     </StyledContainer>

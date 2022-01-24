@@ -1,13 +1,13 @@
 import type { HTMLAttributes } from 'react';
-import type { TextSizeKeys, ColorKeys } from '@models/types';
+import type { ColorType, ITextSize } from '@models/types';
 
 interface TitleSectionContainerProps extends HTMLAttributes<HTMLDivElement> {
   titleText?: string;
-  titleSize?: TextSizeKeys;
-  titleColor?: ColorKeys;
+  titleSize?: ITextSize;
+  titleColor?: ColorType;
   bold?: boolean;
   dividerVisible?: boolean;
-  dividerColor?: ColorKeys;
+  dividerColor?: ColorType;
   dividerWidth?: string;
   dividerThickness?: string;
   gap?: string | number;
@@ -19,7 +19,7 @@ interface StyledLineProps {
   width?: string | number;
   height?: string | number;
   gap?: string | number;
-  color: ColorKeys;
+  color: ColorType;
 }
 
 export type { TitleSectionContainerProps, StyledLineProps };

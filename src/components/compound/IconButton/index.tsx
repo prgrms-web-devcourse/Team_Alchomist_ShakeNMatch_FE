@@ -2,9 +2,10 @@ import { StyledButton } from './styled';
 import { Icon } from '@base';
 import type { ReactElement } from 'react';
 import type { IconButtonProps } from './types';
+import { BUTTON_TYPE } from '@constants';
 
 const IconButton = ({
-  type = 'button',
+  type = BUTTON_TYPE.BUTTON,
   name,
   ...props
 }: IconButtonProps): ReactElement => {

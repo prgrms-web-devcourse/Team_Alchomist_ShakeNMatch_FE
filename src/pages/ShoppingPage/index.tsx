@@ -4,6 +4,7 @@ import type { ReactElement } from 'react';
 import { StyledContainer } from './styled';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { COLOR, TEXT_SIZE } from '@constants';
 
 const ShoppingPage = (): ReactElement => {
   const params = useParams();
@@ -80,13 +81,13 @@ const ShoppingPage = (): ReactElement => {
         <TitleSectionContainer
           alignItems={true}
           bold={true}
-          dividerColor='BLACK'
+          dividerColor={COLOR.BLACK}
           dividerThickness='5px'
           dividerVisible={true}
           dividerWidth='200px'
           gap='20px'
           style={{ marginTop: 50 }}
-          titleSize='lg'
+          titleSize={TEXT_SIZE.lg}
           titleText='부족한 재료를 채워보세요!'
         >
           <div>{shoppingItemList}</div>

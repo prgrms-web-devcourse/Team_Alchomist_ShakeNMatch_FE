@@ -3,14 +3,15 @@ import { useState, useRef, useEffect } from 'react';
 import { Text } from '@base';
 import type { ChaningTextProps } from './types';
 import { StyledContainer, StyledSpeechBubble } from './styled';
+import { COLOR, TEXT_SIZE } from '@constants';
 
 const DEFAULT_TIME = 3000;
 
 const ChangingText = ({
   textList,
   intervalTime = DEFAULT_TIME,
-  textSize = 'xs',
-  textColor = 'BLACK'
+  textSize = TEXT_SIZE.xs,
+  textColor = COLOR.BLACK
 }: ChaningTextProps): ReactElement => {
   const [textContent, setTextContent] = useState(textList[0]);
   const [visible, setVisible] = useState(false);

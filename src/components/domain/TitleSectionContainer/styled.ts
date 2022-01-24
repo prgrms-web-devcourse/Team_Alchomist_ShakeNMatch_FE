@@ -25,7 +25,7 @@ const StyledLine = styled.hr<StyledLineProps>`
   height: ${({ height }): string =>
     height ? (typeof height === 'string' ? height : `${height}px`) : '1px'};
   background-color: ${({ color }): string =>
-    color ? COLOR[color] : COLOR['DARK_GRAY']};
+    color ? color : COLOR['DARK_GRAY']};
   margin: ${({ gap }): string =>
     gap ? (typeof gap === 'string' ? `${gap} 0` : `${gap}px 0`) : '5px 0'};
 `;

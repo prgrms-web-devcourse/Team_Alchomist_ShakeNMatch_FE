@@ -3,6 +3,7 @@ import type { AlbumProps } from './types';
 import { ALBUM_ATTRIBUTES } from './types';
 import { Text, Image } from '@base';
 import { StyledContainer } from './styled';
+import { COLOR, TEXT_SIZE, IMG_MODE } from '@constants';
 
 const DEFAULT_ID = 1;
 const DEFAULT_TYPE = 'alcohol';
@@ -24,11 +25,11 @@ const Album = ({
     <StyledContainer type={type} onClick={onhandleClick}>
       <Image
         height={ALBUM_ATTRIBUTES[type].imageHeight}
-        mode='contain'
+        mode={IMG_MODE.CONTAIN}
         src={imageSrc}
         width={ALBUM_ATTRIBUTES[type].imageWidth}
       />
-      <Text color='BLACK' size='xs'>
+      <Text color={COLOR.BLACK} size={TEXT_SIZE.xs}>
         {text}
       </Text>
     </StyledContainer>

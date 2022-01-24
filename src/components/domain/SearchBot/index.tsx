@@ -9,9 +9,9 @@ import {
   StyledInputBackground,
   StyledImage
 } from './styled';
-import useClickAway from '@hooks/useClickAway';
-import ChangingSpeech from '@domain/ChangingSpeech';
-import { BARTENDER_CONVERSATION } from '@constants/bartender';
+import { useClickAway } from '@hooks';
+import { ChangingSpeech } from '@domain';
+import { IMG_MODE, TEXT_SIZE, BARTENDER_CONVERSATION } from '@constants';
 
 const SearchBot = (): ReactElement => {
   const [showInput, setShowInput] = useState(false);
@@ -42,12 +42,12 @@ const SearchBot = (): ReactElement => {
       <StyledBot ref={clickAwayRef} onClick={handleClick}>
         <StyledImage
           height='150px'
-          mode='contain'
+          mode={IMG_MODE.CONTAIN}
           src={searchBot}
           width='150px'
         />
         <StyledInputBackground isVisible={showInput}>
-          <Text bold size='xs'>
+          <Text bold size={TEXT_SIZE.xs}>
             찾으시는 칵테일이 있나요?
           </Text>
           <Input

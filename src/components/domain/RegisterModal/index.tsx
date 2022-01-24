@@ -8,6 +8,7 @@ import type { ReactElement } from 'react';
 import { useState } from 'react';
 import { IdentifierContainer } from './styled';
 import type { RegisterModalProps } from './types';
+import { COLOR, TEXT_SIZE, MODAL_SIZE, USERFORM_TYPES } from '@constants';
 
 const RegisterModal = ({
   onSubmit,
@@ -15,10 +16,15 @@ const RegisterModal = ({
 }: RegisterModalProps): ReactElement => {
   const [tasksDone, setTasksDone] = useState(0);
   return (
-    <Modal backgroundColor='TRANSPARENT' color='IVORY' size='md' visible={true}>
+    <Modal
+      backgroundColor={COLOR.TRANSPARENT}
+      color={COLOR.IVORY}
+      size={MODAL_SIZE.MD}
+      visible={true}
+    >
       <SectionDividerWithTitle
         ratio={[4, 3]}
-        titleSize='md'
+        titleSize={TEXT_SIZE.md}
         titleText='처음 뵙는 분이네요!'
       >
         <IdentifierContainer>
@@ -30,7 +36,7 @@ const RegisterModal = ({
           />
         </IdentifierContainer>
         <UserForm
-          type='Register'
+          type={USERFORM_TYPES.REGISTER}
           onSubmit={onSubmit}
           onValidatedValuesChanged={(value): void => {
             setTasksDone(value);

@@ -1,10 +1,19 @@
 import { Text, Input, Select } from '@base';
 import type { InputProps } from '@base/Input/types';
 import type { SelectProps } from '@base/Select/types';
-import { USER_FORM_LABEL_TEXT, USER_GENDER, USER_MBTI } from '@constants';
-import { AXIOS_REQUEST_TYPE } from '@constants/axios';
+import {
+  USER_FORM_LABEL_TEXT,
+  USER_GENDER,
+  USER_MBTI,
+  INPUT_TYPE,
+  AXIOS_REQUEST_TYPE,
+  COLOR,
+  TEXT_SIZE,
+  BUTTON_TYPE,
+  USER_INPUT_TYPE
+} from '@constants';
 import { useAuthorization } from '@contexts';
-import useAxios from '@hooks/useAxios';
+import { useAxios } from '@hooks';
 import type { IApiResponse } from '@models';
 import type { ReactElement } from 'react';
 import { useCallback, useState, useEffect } from 'react';
@@ -102,22 +111,22 @@ const UserInput = ({
   }, [value, getVerifyNickname]);
 
   switch (inputType) {
-    case 'age':
+    case USER_INPUT_TYPE.AGE:
       inputEl = (
         <Input
-          inputType='number'
-          name='age'
+          inputType={INPUT_TYPE.NUMBER}
+          name={USER_INPUT_TYPE.AGE}
           value={value || ''}
           {...(props as InputProps)}
         />
       );
       break;
-    case 'nickname':
+    case USER_INPUT_TYPE.NICKNAME:
       inputEl = (
         <StyledNicknameInputContainer>
           <Input
-            inputType='text'
-            name='nickname'
+            inputType={INPUT_TYPE.TEXT}
+            name={USER_INPUT_TYPE.NICKNAME}
             value={value || ''}
             {...(props as InputProps)}
           />
@@ -127,10 +136,10 @@ const UserInput = ({
               disabled={
                 checkNicknameAPIState.isLoading || !!checkNicknameAPIState.value
               }
-              type='button'
+              type={BUTTON_TYPE.BUTTON}
               onClick={handleCheckNickname}
             >
-              <Text bold color='BASIC_WHITE' size='xxxs'>
+              <Text bold color={COLOR.BASIC_WHITE} size={TEXT_SIZE.xxxs}>
                 {checkNicknameAPIState.isLoading
                   ? '체크 중...'
                   : checkNicknameAPIState.value
@@ -142,9 +151,13 @@ const UserInput = ({
         </StyledNicknameInputContainer>
       );
       break;
-    case 'gender':
+    case USER_INPUT_TYPE.GENDER:
       inputEl = (
-        <Select name='gender' value={value || ''} {...(props as SelectProps)}>
+        <Select
+          name={USER_INPUT_TYPE.GENDER}
+          value={value || ''}
+          {...(props as SelectProps)}
+        >
           {USER_GENDER.map((gender) => (
             <option key={gender} value={gender}>
               {gender}
@@ -153,9 +166,13 @@ const UserInput = ({
         </Select>
       );
       break;
-    case 'mbti':
+    case USER_INPUT_TYPE.MBTI:
       inputEl = (
-        <Select name='mbti' value={value || ''} {...(props as SelectProps)}>
+        <Select
+          name={USER_INPUT_TYPE.MBTI}
+          value={value || ''}
+          {...(props as SelectProps)}
+        >
           {USER_MBTI.map((mbti) => (
             <option key={mbti} value={mbti}>
               {mbti}
@@ -167,12 +184,12 @@ const UserInput = ({
 
   return (
     <StyledLabel>
-      <Text color='NAVY' dangerously size='xxs'>
+      <Text color={COLOR.NAVY} dangerously size={TEXT_SIZE.xxs}>
         {USER_FORM_LABEL_TEXT[formType][inputType]}
       </Text>
       {inputEl}
       <StyledErrorContainer>
-        <Text color='STRONG_PINK' size='xxxs'>
+        <Text color={COLOR.STRONG_PINK} size={TEXT_SIZE.xxxs}>
           {checkNicknameAPIState.error || errorMessage}
         </Text>
       </StyledErrorContainer>

@@ -1,6 +1,6 @@
 import { SectionDivider } from '@base';
 import { Carousel } from '@compound';
-import { THEMES, THEMES_COLOR } from '@constants/themes';
+import { COLOR, THEMES, THEMES_COLOR } from '@constants';
 import type { ITHEME } from '@models';
 import type { ReactElement } from 'react';
 import { useMemo, useState, useEffect } from 'react';
@@ -59,7 +59,7 @@ const ThemeSelector = ({
               key={theme}
               backgroundColor={THEMES_COLOR[theme].main}
               imageSrc={mainImageSrcs[theme]}
-              textColor='BLACK'
+              textColor={COLOR.BLACK}
               title={theme}
             />
           ))}
@@ -84,7 +84,7 @@ const ThemeSelector = ({
                   }
                 )[detailTheme]
               }
-              textColor='BLACK'
+              textColor={COLOR.BLACK}
               title={selectedThemeName !== 'MBTI' ? detailTheme : undefined}
             />
           ))}

@@ -5,6 +5,7 @@ import type { CocktailListProps, CocktailIconsKeys } from './types';
 import { CocktailIcons, TOTAL_COCKTAIL_ICONS } from '@assets/cocktails';
 import { Album } from '@compound';
 import { CocktailDetailModal } from '@domain';
+import { COLOR, TEXT_SIZE, MODAL_SIZE, ALBUM_TYPES } from '@constants';
 
 const DEFAULT_MSG = '죄송합니다. 추천 칵테일이 존재하지 않습니다.';
 
@@ -37,22 +38,22 @@ const CocktailList = ({
                     ]
                   }
                   text={cocktail.name}
-                  type='result'
+                  type={ALBUM_TYPES.RESULT}
                 />
               </StyledMotionWrapper>
             ))
           )
         ) : (
-          <StyledText block color='DARK_GRAY' size='sm'>
+          <StyledText block color={COLOR.DARK_GRAY} size={TEXT_SIZE.sm}>
             {noResultMsg}
           </StyledText>
         )}
       </StyledContainer>
       <CocktailDetailModal
-        backgroundColor='DARK_GRAY_OPACITY'
+        backgroundColor={COLOR.DARK_GRAY_OPACITY}
         cocktailId={clickedCocktailId}
-        color='IVORY'
-        size='lg'
+        color={COLOR.IVORY}
+        size={MODAL_SIZE.LG}
         visible={!!clickedCocktailId}
         onClose={(): void => {
           setClickedCocktailId(null);

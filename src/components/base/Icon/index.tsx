@@ -1,8 +1,7 @@
 import type { ReactElement } from 'react';
 import type { IconProps } from './types';
-import { ICON_TYPES } from '@constants/icon';
+import { ICON_TYPES, ICON_COLOR } from '@constants';
 import { ICON_SIZE } from './types';
-import { ICON_COLOR } from '@constants/colors';
 
 const Icon = ({ type, ...props }: IconProps): ReactElement => {
   const IconTag = ICON_TYPES[type];

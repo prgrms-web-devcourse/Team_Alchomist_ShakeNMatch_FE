@@ -11,12 +11,13 @@ import {
   StyledHasWrapper
 } from './style';
 import { useCustomNavigate } from '@contexts/CustomNavigate';
+import { COLOR, TEXT_SIZE, IMG_MODE } from '@constants';
 
 const OPEN_WINDOW_HEIGHT = 1000;
 const OPEN_WINDOW_WIDTH = 1000;
 
 const IngredientItem = (ingredient: IngredientItemProps): ReactElement => {
-  const innerTextColor = ingredient.isUserHas ? 'BLACK' : 'BASIC_WHITE';
+  const innerTextColor = ingredient.isUserHas ? COLOR.BLACK : COLOR.BASIC_WHITE;
   const { savePath } = useCustomNavigate();
 
   const handleClick = (): void => {
@@ -37,12 +38,12 @@ const IngredientItem = (ingredient: IngredientItemProps): ReactElement => {
       <StyledIngredientInnerWrapper>
         <Image
           height={INGREDIENT_ICON_SIZE.height}
-          mode='cover'
+          mode={IMG_MODE.COVER}
           src={IngredientIcons[ingredient.type as IngredientIconsKeys]}
           width={INGREDIENT_ICON_SIZE.width}
         />
         <StyledNameAmoutMeasureWrapper>
-          <Text color={innerTextColor} size='xs'>
+          <Text color={innerTextColor} size={TEXT_SIZE.xs}>
             {ingredient.name +
               ' ' +
               (ingredient.amount ? ingredient.amount.toString() : '') +
@@ -59,7 +60,7 @@ const IngredientItem = (ingredient: IngredientItemProps): ReactElement => {
             <Text
               block={false}
               color={innerTextColor}
-              size='xxs'
+              size={TEXT_SIZE.xxs}
               style={{ float: 'right' }}
             >
               {'보유중'}
@@ -68,7 +69,7 @@ const IngredientItem = (ingredient: IngredientItemProps): ReactElement => {
             <Text
               block={false}
               color={innerTextColor}
-              size='xxs'
+              size={TEXT_SIZE.xxs}
               style={{ float: 'right' }}
             >
               {'구매하기'}

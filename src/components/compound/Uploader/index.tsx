@@ -14,11 +14,12 @@ import {
   StyledUploadPreview
 } from './styled';
 import { Text } from '@base';
+import { COLOR, TEXT_SIZE, INPUT_TYPE, ACCEPT_TYPES } from '@constants';
 
 const Uploader = ({
   droppable = true,
   name = 'FileUploadInput',
-  accept = 'image',
+  accept = ACCEPT_TYPES.IMAGE,
   value,
   onChangeFile,
   ...props
@@ -102,7 +103,7 @@ const Uploader = ({
         ref={inputRef}
         accept={AcceptType[accept]}
         name={name}
-        type='file'
+        type={INPUT_TYPE.FILE}
         onChange={handleFileChangeOrDrop}
       />
       <StyledUploadPreview
@@ -112,13 +113,13 @@ const Uploader = ({
       >
         {!file ? (
           <Text
-            color='DARK_GRAY'
-            size='xs'
+            color={COLOR.DARK_GRAY}
+            size={TEXT_SIZE.xs}
           >{`${accept}를 선택/드래그 해 주세요`}</Text>
         ) : (
           <Text
-            color='DARK_GRAY_OPACITY'
-            size='xs'
+            color={COLOR.DARK_GRAY_OPACITY}
+            size={TEXT_SIZE.xs}
           >{`다른 ${accept}를 업로드 하려면 선택/드래그`}</Text>
         )}
       </StyledUploadPreview>

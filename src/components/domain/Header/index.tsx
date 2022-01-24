@@ -6,11 +6,19 @@ import jangoImageSrc from '@assets/headerIcon/to_jango.png';
 import loginImageSrc from '@assets/headerIcon/to_login.png';
 import themeImageSrc from '@assets/headerIcon/to_theme.png';
 import profileImageSrc from '@assets/headerIcon/to_profile.png';
-import ImageButton from '@compound/ImageButton';
+import { ImageButton } from '@compound';
 import { useAuthorization } from '@contexts';
 import { useLocation } from 'react-router';
 import { getDomain } from '@utils/lib/getDomain';
-import { DOMAINS } from '@constants';
+import {
+  DOMAINS,
+  IMG_MODE,
+  TEXT_SIZE,
+  TOOLTIP_DIRECTION,
+  TOOLTIP_SIZE,
+  BUTTON_SIZE,
+  LOGO_SIZE
+} from '@constants';
 import { Tooltip } from '@base';
 import { useCustomNavigate } from '@contexts/CustomNavigate';
 
@@ -32,17 +40,17 @@ const Header = (): ReactElement => {
 
   return (
     <StyledHeaderContainer>
-      <Logo className='logo' link size='sm' />
+      <Logo className='logo' link size={LOGO_SIZE.SM} />
       {domain !== DOMAINS.jango && (
         <Tooltip
-          direction='bottom'
+          direction={TOOLTIP_DIRECTION.BOTTOM}
           tooltipMessage='내가 가지고 있는 재료를 기반으로 칵테일 추천받기!'
-          tooltipMessageSize='xs'
-          tooltipSize='md'
+          tooltipMessageSize={TEXT_SIZE.xs}
+          tooltipSize={TOOLTIP_SIZE.MD}
         >
           <ImageButton
-            mode='contain'
-            size='headerIcon'
+            mode={IMG_MODE.CONTAIN}
+            size={BUTTON_SIZE.HEADER_ICON}
             src={jangoImageSrc}
             onClick={(): void => {
               handleLink(`/${DOMAINS.jango}`);
@@ -52,14 +60,14 @@ const Header = (): ReactElement => {
       )}
       {domain !== DOMAINS.theme && (
         <Tooltip
-          direction='bottom'
+          direction={TOOLTIP_DIRECTION.BOTTOM}
           tooltipMessage='테마별로 칵테일 추천받기!'
-          tooltipMessageSize='xs'
-          tooltipSize='sm'
+          tooltipMessageSize={TEXT_SIZE.xs}
+          tooltipSize={TOOLTIP_SIZE.SM}
         >
           <ImageButton
-            mode='contain'
-            size='headerIcon'
+            mode={IMG_MODE.CONTAIN}
+            size={BUTTON_SIZE.HEADER_ICON}
             src={themeImageSrc}
             onClick={(): void => {
               handleLink(`/${DOMAINS.theme}`);
@@ -69,8 +77,8 @@ const Header = (): ReactElement => {
       )}
       {isAuthorized ? (
         <ImageButton
-          mode='contain'
-          size='headerIcon'
+          mode={IMG_MODE.CONTAIN}
+          size={BUTTON_SIZE.HEADER_ICON}
           src={profileImageSrc}
           onClick={(): void => {
             handleLink(`/${DOMAINS.profile}/${user?.id}`);
@@ -78,8 +86,8 @@ const Header = (): ReactElement => {
         />
       ) : (
         <ImageButton
-          mode='contain'
-          size='headerIcon'
+          mode={IMG_MODE.CONTAIN}
+          size={BUTTON_SIZE.HEADER_ICON}
           src={loginImageSrc}
           onClick={(): void => {
             saveCurrentPath();

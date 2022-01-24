@@ -1,8 +1,12 @@
-import type { DOMAINS, TEXT_SIZE, TEXT_WEIGHT } from '@constants';
-import type { COLOR } from '@constants/colors';
-import type { THEMES } from '@constants/themes';
-import type { USER_VALIDATE_ERROR_MESSAGES } from '@constants/user';
-import type { AXIOS_REQUEST_TYPE } from '@constants/axios';
+import type {
+  AXIOS_REQUEST_TYPE,
+  COLOR,
+  DOMAINS,
+  TEXT_SIZE,
+  TEXT_WEIGHT,
+  THEMES,
+  USER_VALIDATE_ERROR_MESSAGES
+} from '@constants';
 
 type ColorKeys = keyof typeof COLOR;
 type ColorType = typeof COLOR[ColorKeys];
@@ -16,10 +20,10 @@ type ITextWeight = typeof TEXT_WEIGHT[TextWeightKeys];
 
 type ITHEME = keyof typeof THEMES;
 interface IThemesColor {
-  [key: string]: { main: ColorKeys; detail: { [key: string]: ColorKeys } };
+  [key: string]: { main: ColorType; detail: { [key: string]: ColorType } };
 }
 // user Form
-type IUserFormType = 'Register' | 'EditProfile';
+type IUserFormType = 'register' | 'editProfile';
 type IUserInputType = 'nickname' | 'gender' | 'age' | 'mbti';
 type IUserGender = '남자' | '여자';
 type IUserMbti =

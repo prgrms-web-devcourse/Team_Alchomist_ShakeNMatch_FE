@@ -12,13 +12,19 @@ import {
   SearchBot
 } from '@domain';
 import type { IApiResponse, IUser, IUserForm } from '@models';
-import useAxios from '@hooks/useAxios';
-import { AXIOS_REQUEST_TYPE } from '@constants/axios';
+import { useAxios } from '@hooks';
 import { useAuthorization } from '@contexts';
 import { Text } from '@base';
 import { getUserReducer, postUserReducer } from './reducer';
 import { StyledLogoutButton } from './styled';
-import { DOMAINS } from '@constants';
+import {
+  DOMAINS,
+  COLOR,
+  TEXT_SIZE,
+  AXIOS_REQUEST_TYPE,
+  USERFORM_TYPES,
+  TEXT_BUTTON_TYPE
+} from '@constants';
 
 const TEN_RADIX = 10;
 
@@ -106,7 +112,7 @@ const MyPage = (): ReactElement => {
   return (
     <HeaderPageTemplate>
       <SectionDividerWithTitle
-        dividerOptions={{ size: 1, color: 'LIGHT_GRAY' }}
+        dividerOptions={{ size: 1, color: COLOR.LIGHT_GRAY }}
         showContentsDivider
         withHeader
       >
@@ -115,12 +121,12 @@ const MyPage = (): ReactElement => {
           onChangeItem={handleChangeItem}
         >
           <Carousel.Item
-            backgroundColor='LIGHT_PINK'
+            backgroundColor={COLOR.LIGHT_PINK}
             imageSrc={favoriteImageSrc}
             title='즐겨찾기 목록'
           />
           <Carousel.Item
-            backgroundColor='GREEN'
+            backgroundColor={COLOR.GREEN}
             imageSrc={editProfileImageSrc}
             title='개인정보 수정'
           />
@@ -129,7 +135,7 @@ const MyPage = (): ReactElement => {
           user?.bookmarks.length ? (
             <CocktailList cocktailList={user.bookmarks} />
           ) : (
-            <Text color='LIGHT_GRAY' size='sm'>
+            <Text color={COLOR.LIGHT_GRAY} size={TEXT_SIZE.sm}>
               Cocktail 정보를 받아올수 없습니다
             </Text>
           )
@@ -138,11 +144,11 @@ const MyPage = (): ReactElement => {
         ) : getUserAPIState.value ? (
           <UserForm
             initialValues={getUserAPIState.value}
-            type='EditProfile'
+            type={USERFORM_TYPES.EDIT_PROFILE}
             onSubmit={handleEditUserSubmit}
           />
         ) : (
-          <Text color='LIGHT_GRAY' size='sm'>
+          <Text color={COLOR.LIGHT_GRAY} size={TEXT_SIZE.sm}>
             User 정보를 받아올수 없습니다
           </Text>
         )}
@@ -150,7 +156,7 @@ const MyPage = (): ReactElement => {
       {postUserAPIState.value ? <Text>회원정보가 수정되었습니다!</Text> : ''}
       <SearchBot />
       <StyledLogoutButton
-        buttonType='SHORT_PINK'
+        buttonType={TEXT_BUTTON_TYPE.SHORT_PINK}
         onClick={(): void => {
           logout();
           navigate(`/${DOMAINS.main}`);

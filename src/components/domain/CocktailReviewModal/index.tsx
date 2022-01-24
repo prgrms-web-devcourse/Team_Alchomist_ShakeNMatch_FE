@@ -11,14 +11,22 @@ import {
 } from './style';
 import type { CocktailReviewModalProps } from './types';
 import useAxios from '@hooks/useAxios';
-import { AXIOS_REQUEST_TYPE } from '@constants/axios';
+import {
+  AXIOS_REQUEST_TYPE,
+  COLOR,
+  TEXT_SIZE,
+  MODAL_SIZE,
+  BUTTON_TYPE,
+  ACCEPT_TYPES,
+  RATING_STAR_MODE
+} from '@constants';
 import type { IReviewPostResponse } from '@models';
 
 const CocktailReviewModal = ({
   nickname,
   cocktailId,
   loginedUserId,
-  size = 'sm',
+  size = MODAL_SIZE.SM,
   handleOnSubmitted,
   onCancel,
   ...props
@@ -89,23 +97,26 @@ const CocktailReviewModal = ({
   };
 
   return (
-    <Modal backgroundColor='TRANSPARENT' size={size} {...props}>
+    <Modal backgroundColor={COLOR.TRANSPARENT} size={size} {...props}>
       <StyledReviewForm>
         <Text
-          color='BRIGHT_BROWN'
-          size='sm'
+          color={COLOR.BRIGHT_BROWN}
+          size={TEXT_SIZE.sm}
           style={{ textDecoration: 'underline' }}
         >
           {'소중한 리뷰를 남겨주세요'}
         </Text>
         <Uploader
-          accept='image'
+          accept={ACCEPT_TYPES.IMAGE}
           droppable={true}
           value={null}
           onChangeFile={handleChangeFile}
         />
         <StyledWrapper>
-          <RatingStar mode='edit' onRateChange={handleUserRate} />
+          <RatingStar
+            mode={RATING_STAR_MODE.EDIT}
+            onRateChange={handleUserRate}
+          />
           <StyledTextEditor
             autoFocus
             maxLength={30}
@@ -114,10 +125,10 @@ const CocktailReviewModal = ({
           />
         </StyledWrapper>
         <StyledButtonWrapper>
-          <Button type='button' onClick={onSubmit}>
+          <Button type={BUTTON_TYPE.BUTTON} onClick={onSubmit}>
             {'작성완료'}
           </Button>
-          <Button type='button' onClick={onCancel}>
+          <Button type={BUTTON_TYPE.BUTTON} onClick={onCancel}>
             {'취소'}
           </Button>
         </StyledButtonWrapper>
